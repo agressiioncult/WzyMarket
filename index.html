@@ -18,10 +18,12 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .logo span{color:#8065ff}
 .nav-links{display:flex;gap:30px}
 .nav-links a{color:#aeb2c0;text-decoration:none;font-size:14px;font-weight:600}
-.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links a:hover{color:#fff}
+#adminLink{display:none;color:#ffb35c}
 .login,.logout,.secondary{background:#151722;border:1px solid #383b4a;color:#fff;padding:10px 18px;border-radius:9px;font-weight:700}
 .user-menu{display:none;align-items:center;gap:10px}
 #usernameDisplay{color:#c9c2ff;font-weight:700;font-size:14px}
+.badge{display:inline-block;min-width:18px;padding:2px 6px;border-radius:9px;background:#8065ff;color:#fff;font-size:11px;font-weight:800;margin-left:4px;text-align:center}
 
 .hero-content{max-width:900px;margin:auto;text-align:center;padding:70px 20px}
 .hero-content h1{font-size:clamp(38px,6vw,70px);line-height:1;font-weight:900;letter-spacing:-3px;margin-bottom:20px}
@@ -62,33 +64,48 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .product-image img{width:100%;height:100%;object-fit:cover}
 .category{color:#8065ff;font-size:11px;font-weight:800;text-transform:uppercase;margin-bottom:7px}
 .product h3{font-size:16px;margin-bottom:8px}
-.seller{color:#777d8c;font-size:12px;margin-bottom:14px}
+.seller{color:#777d8c;font-size:12px;margin-bottom:10px}
 .product-bottom,.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .price{font-size:18px;font-weight:800}
 .view{padding:8px 13px;font-size:12px}
 .muted{color:#777d8c}
 
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{background:#1a1d27;border:1px solid #2c3040;color:#c3c7d4;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px}
+.rating{color:#e7c45d;font-weight:700}
+
 .panel{background:#11131a;border:1px solid #292d39;border-radius:16px;padding:22px;margin-bottom:20px}
 .panel h2{font-size:20px;margin-bottom:18px}
+.panel h3.sub{font-size:15px;margin:6px 0 4px;color:#c3c7d4}
 .form{display:flex;flex-direction:column;gap:13px}
 .form input,.form textarea,.form select{width:100%;background:#0b0d12;border:1px solid #292d39;color:#fff;padding:13px;border-radius:9px;outline:0}
 .form input:focus,.form textarea:focus,.form select:focus{border-color:#8065ff}
+.form input:disabled{opacity:.4}
 .form textarea{min-height:100px;resize:vertical}
 .form label{color:#858b9b;font-size:12px;margin-bottom:-7px}
 .primary{padding:13px}
 .secondary{padding:13px}
+.link-btn{background:none;border:0;color:#8065ff;font-size:13px;text-align:left;padding:0}
+
+.method-list{display:flex;flex-direction:column;gap:8px}
+.method-row{display:grid;grid-template-columns:170px 1fr;gap:10px;align-items:center}
+.form .method-row label{margin:0;color:#c3c7d4;font-size:14px;display:flex;align-items:center;gap:8px;cursor:pointer}
+.form .method-row input[type=checkbox]{width:16px;height:16px;accent-color:#8065ff}
+
 .shop-info{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
 .shop-actions{display:flex;gap:10px;flex-wrap:wrap}
 .shop-name{font-size:22px;font-weight:800}
-.shop-desc{color:#858b9b;margin-top:5px}
+.shop-desc{color:#858b9b;margin:5px 0 10px}
 .own-card{background:#0b0d12;border:1px solid #292d39;border-radius:12px;padding:15px}
 .own-card h3{margin-bottom:7px}
 .own-card p{color:#858b9b;font-size:13px;margin-bottom:10px}
-.own-buttons{display:flex;gap:6px}
+.own-buttons{display:flex;gap:6px;flex-wrap:wrap}
 .small{background:#191b24;border:1px solid #303441;color:#fff;padding:8px 12px;border-radius:8px;font-size:12px}
 .danger{background:#38171b;border:1px solid #63252c;color:#ff8d96;padding:8px 12px;border-radius:8px;font-size:12px}
 .ok{background:#142a20;border:1px solid #23573d;color:#65d69a;padding:8px 12px;border-radius:8px;font-size:12px}
-.notice{padding:12px;border-radius:9px;background:#191b24;color:#9da3b3;font-size:13px;margin-bottom:15px}
+.big{padding:13px 16px;font-size:14px;font-weight:800;border-radius:9px}
+.notice{padding:12px;border-radius:9px;background:#191b24;color:#9da3b3;font-size:13px;margin-bottom:15px;line-height:1.5}
+.notice.warn{background:#2a2414;color:#e7c45d}
 .success{color:#65d69a}
 .error{color:#ff7777}
 
@@ -100,40 +117,89 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .product-page-info h1{font-size:34px;margin-bottom:12px;word-break:break-word}
 .product-page-description{color:#9298a8;font-size:15px;line-height:1.7;margin-bottom:24px;white-space:pre-wrap;word-break:break-word}
 .product-page-price{font-size:30px;font-weight:900;margin-bottom:8px}
-.product-page-stock{color:#777d8c;font-size:13px;margin-bottom:22px}
+.product-page-stock{color:#777d8c;font-size:13px;margin-bottom:18px}
+.pay-label{color:#707687;font-size:12px;margin-bottom:8px}
 .buy-button,.shop-button{width:100%;padding:15px;border-radius:10px;font-weight:800;font-size:15px}
 .buy-button{margin-bottom:10px}
-.shop-button{background:#191b24;border:1px solid #303441;color:#fff}
-.seller-box{margin-top:22px;padding-top:20px;border-top:1px solid #292d39}
+.shop-button{background:#191b24;border:1px solid #303441;color:#fff;margin-bottom:10px}
+.seller-box{margin-top:12px;padding-top:20px;border-top:1px solid #292d39}
 .seller-label{color:#707687;font-size:12px;margin-bottom:6px}
 .seller-name{font-size:16px;font-weight:800}
 
 .shop-header{background:#11131a;border:1px solid #292d39;border-radius:18px;padding:28px;margin-bottom:25px}
 .shop-header h1{font-size:32px;margin-bottom:7px}
 .shop-header p{color:#858b9b;line-height:1.6}
+.review{border-top:1px solid #222533;padding:12px 0}
+.review:first-child{border-top:0}
+.review p{color:#9298a8;font-size:14px;margin-top:5px}
 
 .orders-list{display:flex;flex-direction:column;gap:12px}
-.order-card{background:#11131a;border:1px solid #292d39;border-radius:14px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.orders-list .order-card{background:#0b0d12}
-#ordersList .order-card{background:#11131a}
+.order-card{background:#11131a;border:1px solid #292d39;border-radius:14px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;transition:.2s}
+.order-card:hover{border-color:#8065ff}
+.panel .order-card{background:#0b0d12}
 .order-left h3{font-size:17px;margin-bottom:7px}
 .order-left p{color:#777d8c;font-size:13px;margin-top:4px}
 .order-left b{color:#c9c2ff}
 .order-right{text-align:right}
 .order-price{font-size:19px;font-weight:800;margin-bottom:8px}
-.order-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:10px}
+.action-tag{display:inline-block;margin-left:6px;background:#8065ff;color:#fff;font-size:10px;font-weight:800;padding:4px 7px;border-radius:6px;text-transform:uppercase;vertical-align:middle}
+
 .status{display:inline-block;padding:6px 10px;border-radius:7px;font-size:11px;font-weight:800;text-transform:uppercase;background:#28251a;color:#e7c45d}
-.status.completed{background:#142a20;color:#65d69a}
-.status.cancelled{background:#32181b;color:#ff7777}
+.s-payment_sent{background:#14223a;color:#6aa7ff}
+.s-paid{background:#221a3d;color:#a995ff}
+.s-delivered{background:#11303a;color:#5fd4e8}
+.s-completed{background:#142a20;color:#65d69a}
+.s-cancelled{background:#32181b;color:#ff7777}
+.s-disputed{background:#33220f;color:#ffb35c}
+
+/* ORDER PAGE */
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.order-top{display:flex;gap:16px;align-items:center}
+.order-thumb{width:78px;height:78px;border-radius:12px;background:#1a1d27;display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden;flex-shrink:0}
+.order-thumb img{width:100%;height:100%;object-fit:cover}
+.order-top h2{margin-bottom:6px!important}
+.info-rows{margin-top:18px;font-size:14px}
+.info-rows div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid #1f2230}
+.info-rows span{color:#777d8c}
+.stepper{display:flex;gap:6px;margin:4px 0 18px}
+.step{flex:1;text-align:center;font-size:11px;color:#5d6273;font-weight:700}
+.step::before{content:"";display:block;height:5px;border-radius:3px;background:#22252f;margin-bottom:7px}
+.step.done{color:#a995ff}
+.step.done::before{background:#8065ff}
+.pay-box{background:#0b0d12;border:1px solid #8065ff;border-radius:12px;padding:16px;margin-bottom:14px}
+.pay-amount{font-size:26px;font-weight:900;margin:6px 0 12px}
+.addr{display:flex;gap:8px;align-items:center;background:#151722;border:1px solid #303441;border-radius:9px;padding:10px 12px;font-family:Consolas,monospace;font-size:13px;word-break:break-all}
+.addr span{flex:1}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn-row button{flex:1;min-width:140px}
+
+.chat{display:flex;flex-direction:column;height:620px}
+.chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px;margin-bottom:12px}
+.msg{max-width:80%;align-self:flex-start;background:#1a1d27;border:1px solid #262a35;border-radius:12px 12px 12px 4px;padding:9px 12px}
+.msg.me{align-self:flex-end;background:#2b2160;border-color:#40338a;border-radius:12px 12px 4px 12px}
+.msg.sys{align-self:center;max-width:95%;background:none;border:1px dashed #2c3040;color:#8e94a4;font-size:12px;text-align:center;border-radius:9px}
+.msg-name{font-size:11px;color:#8e94a4;margin-bottom:4px;font-weight:700}
+.msg-body{font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
+.chat-form{display:flex;gap:8px}
+.chat-form input{flex:1;background:#0b0d12;border:1px solid #292d39;color:#fff;padding:12px;border-radius:9px;outline:0}
+.chat-form button{padding:0 18px}
+.chat-closed{text-align:center;font-size:13px;padding:10px;background:#0b0d12;border-radius:9px}
+.stars{display:flex;gap:4px;font-size:26px}
+.stars button{background:none;border:0;color:#3a3e4d;font-size:26px;line-height:1}
+.stars button.on{color:#e7c45d}
 
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:500;align-items:center;justify-content:center;padding:20px}
-.modal-box{width:100%;max-width:420px;background:#11131a;border:1px solid #292d39;border-radius:17px;padding:28px}
+.modal-box{width:100%;max-width:440px;background:#11131a;border:1px solid #292d39;border-radius:17px;padding:28px;max-height:92vh;overflow-y:auto}
 .modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
 .close{background:none;border:0;color:#777d8c;font-size:25px}
 .switch{background:none;border:0;color:#8065ff;margin-top:17px;width:100%}
 .message{font-size:13px;margin-top:8px;display:none}
 .summary{background:#0b0d12;border:1px solid #292d39;border-radius:10px;padding:14px;margin-bottom:15px;font-size:14px;line-height:1.7}
 .summary b{float:right}
+.pay-options{display:flex;flex-direction:column;gap:8px}
+.pay-option{display:flex;align-items:center;gap:10px;background:#0b0d12;border:1px solid #292d39;border-radius:9px;padding:12px;cursor:pointer;font-size:14px}
+.pay-option:has(input:checked){border-color:#8065ff;background:#17142b}
+.form .pay-option input{width:auto;accent-color:#8065ff}
 
 .toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(20px);background:#151722;border:1px solid #383b4a;color:#fff;padding:13px 20px;border-radius:10px;font-size:14px;font-weight:700;z-index:999;opacity:0;pointer-events:none;transition:.25s;max-width:90%;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -142,7 +208,11 @@ button:disabled{opacity:.5;cursor:not-allowed}
 
 footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px;font-size:13px}
 
-@media(max-width:1000px){.products,.own-products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1000px){
+.products,.own-products{grid-template-columns:repeat(2,1fr)}
+.order-grid{grid-template-columns:1fr}
+.chat{height:520px}
+}
 @media(max-width:750px){
 .nav-links{display:none}
 .games{display:flex;overflow-x:auto}
@@ -152,7 +222,7 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
 .product-page-image{height:300px}
 .order-card{flex-direction:column;align-items:flex-start}
 .order-right{text-align:left}
-.order-actions{justify-content:flex-start}
+.method-row{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -164,7 +234,8 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
     <div class="nav-links">
       <a href="#" onclick="showHome();return false">Marketplace</a>
       <a href="#" onclick="openSell();return false">Sell Items</a>
-      <a href="#" onclick="openOrders();return false">My Orders</a>
+      <a href="#" onclick="openOrders();return false">My Orders<span id="ordersBadge"></span></a>
+      <a href="#" id="adminLink" onclick="openAdmin();return false">Admin</a>
     </div>
     <button class="login" id="loginButton" onclick="openLogin()">Login</button>
     <div class="user-menu" id="userMenu">
@@ -270,6 +341,9 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
       <form class="form" onsubmit="createShop(event)">
         <input id="shopName" placeholder="Shop Name" maxlength="40" required>
         <textarea id="shopDescription" placeholder="Shop Description" maxlength="300"></textarea>
+        <h3 class="sub">Payment methods</h3>
+        <p class="muted" style="font-size:13px">Choose how buyers can pay you and enter where the money should go. Buyers only see your address after they ordered.</p>
+        <div id="createMethods" class="method-list"></div>
         <button class="primary" type="submit">Create Shop</button>
       </form>
     </div>
@@ -279,6 +353,7 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
         <div>
           <div class="shop-name" id="myShopName"></div>
           <div class="shop-desc" id="myShopDescription"></div>
+          <div id="myShopMethods"></div>
         </div>
         <div class="shop-actions">
           <button class="secondary" onclick="openShop(currentShop.id)">View Shop</button>
@@ -293,6 +368,8 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
       <form class="form" onsubmit="updateShop(event)">
         <input id="editShopName" placeholder="Shop Name" maxlength="40" required>
         <textarea id="editShopDescription" placeholder="Shop Description" maxlength="300"></textarea>
+        <h3 class="sub">Payment methods</h3>
+        <div id="editMethods" class="method-list"></div>
         <button class="primary" type="submit">Save</button>
         <button type="button" class="secondary" onclick="$('editShopPanel').style.display='none'">Cancel</button>
       </form>
@@ -332,17 +409,61 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
     </div>
   </section>
 
-  <!-- ORDERS PAGE -->
+  <!-- MY ORDERS PAGE -->
   <section id="ordersPage" class="orders-page">
     <button class="back" onclick="showHome()">← Back to Marketplace</button>
     <h1>My Orders</h1>
     <p class="orders-subtitle">View your purchases and order status.</p>
+    <br>
     <div id="ordersList" class="orders-list"></div>
+  </section>
+
+  <!-- SINGLE ORDER PAGE (Payment + Chat) -->
+  <section id="orderPage" class="orders-page">
+    <button class="back" onclick="goBackFromOrder()">← Back</button>
+    <div class="order-grid">
+      <div id="orderInfo"></div>
+      <div class="panel chat">
+        <h2>Chat</h2>
+        <div id="chatMessages" class="chat-messages"></div>
+        <form id="chatForm" class="chat-form" onsubmit="sendMessage(event)" style="display:none">
+          <input id="chatInput" maxlength="1000" placeholder="Write a message..." autocomplete="off">
+          <button class="primary" type="submit">Send</button>
+        </form>
+        <p id="chatClosed" class="muted chat-closed">💬 The chat opens as soon as the seller confirms the payment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN PAGE -->
+  <section id="adminPage" class="orders-page">
+    <button class="back" onclick="showHome()">← Back to Marketplace</button>
+    <h1>Admin</h1>
+    <p class="orders-subtitle">Handle disputes and ban scammers.</p>
+    <br>
+    <div class="panel">
+      <h2>Open disputes</h2>
+      <div id="adminDisputes" class="orders-list"></div>
+    </div>
+    <div class="panel">
+      <h2>Ban / Unban user</h2>
+      <form class="form" onsubmit="return false">
+        <input id="banUsername" placeholder="Username">
+        <div class="btn-row">
+          <button type="button" class="danger big" onclick="setBan(true)">Ban user</button>
+          <button type="button" class="ok big" onclick="setBan(false)">Unban user</button>
+        </div>
+      </form>
+    </div>
+    <div class="panel">
+      <h2>Recent orders</h2>
+      <div id="adminOrders" class="orders-list"></div>
+    </div>
   </section>
 
 </main>
 
-<!-- LOGIN / SIGNUP MODAL -->
+<!-- LOGIN / SIGNUP / RESET MODAL -->
 <div class="modal" id="loginModal">
   <div class="modal-box">
     <div class="modal-top">
@@ -352,6 +473,7 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
     <form class="form" id="loginForm" onsubmit="login(event)">
       <input id="loginEmail" type="email" placeholder="Email" required>
       <input id="loginPassword" type="password" placeholder="Password" required>
+      <button type="button" class="link-btn" onclick="setAuthMode('reset')">Forgot password?</button>
       <button class="primary" type="submit">Login</button>
     </form>
     <form class="form" id="signupForm" style="display:none" onsubmit="signup(event)">
@@ -360,8 +482,29 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
       <input id="signupPassword" type="password" placeholder="Password" minlength="6" required>
       <button class="primary" type="submit">Create Account</button>
     </form>
+    <form class="form" id="resetForm" style="display:none" onsubmit="sendReset(event)">
+      <p class="muted" style="font-size:14px">Enter your email. We will send you a link to set a new password.</p>
+      <input id="resetEmail" type="email" placeholder="Email" required>
+      <button class="primary" type="submit">Send reset link</button>
+    </form>
     <p class="message" id="authMessage"></p>
     <button class="switch" id="switchButton" onclick="switchAuth()">Don't have an account? Sign Up</button>
+  </div>
+</div>
+
+<!-- NEW PASSWORD MODAL (after clicking reset link) -->
+<div class="modal" id="newPasswordModal">
+  <div class="modal-box">
+    <div class="modal-top">
+      <h2>Set new password</h2>
+      <button class="close" onclick="$('newPasswordModal').style.display='none'">×</button>
+    </div>
+    <form class="form" onsubmit="saveNewPassword(event)">
+      <input id="newPassword" type="password" placeholder="New password" minlength="6" required>
+      <input id="newPassword2" type="password" placeholder="Repeat new password" minlength="6" required>
+      <button class="primary" type="submit">Save password</button>
+    </form>
+    <p class="message" id="newPasswordMessage"></p>
   </div>
 </div>
 
@@ -374,8 +517,11 @@ footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px
     </div>
     <div class="summary" id="buySummary"></div>
     <form class="form" onsubmit="confirmPurchase(event)">
-      <input id="buyRobloxName" placeholder="Your Roblox username (for delivery)" maxlength="30" required>
-      <button class="primary" type="submit" id="buyConfirm">Confirm Order</button>
+      <label>Payment method</label>
+      <div id="buyMethods" class="pay-options"></div>
+      <label for="buyRobloxName">Your Roblox username</label>
+      <input id="buyRobloxName" placeholder="Roblox username (for delivery)" maxlength="30" required>
+      <button class="primary" type="submit" id="buyConfirm">Create Order</button>
       <button type="button" class="secondary" onclick="closeBuy()">Cancel</button>
     </form>
     <p class="message" id="buyMessage"></p>
@@ -392,20 +538,47 @@ const SUPABASE_URL = "https://tejyxzbagctgxymmefyg.supabase.co";
 const SUPABASE_KEY = "sb_publishable_AH2UNs734NFskZLWwLdaLw_jAHGKUkZ";
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-/* ================= STATE ================= */
+/* ================= CONSTANTS ================= */
 const CATEGORIES = {
   pets:  ["Pets", "Tickets"],
   robux: ["Ingame Gifting", "Gamepass", "Roblox Plus"]
 };
 const ICONS = { "Pets":"🐾", "Tickets":"🎟️", "Ingame Gifting":"🎁", "Gamepass":"🎮", "Roblox Plus":"⭐" };
 
+const PAY = {
+  paypal:  { label:"PayPal",       icon:"🅿️", hint:"Your PayPal email" },
+  cashapp: { label:"Cash App",     icon:"💵", hint:"Your $Cashtag" },
+  venmo:   { label:"Venmo",        icon:"💸", hint:"Your @Venmo username" },
+  btc:     { label:"Bitcoin",      icon:"₿",  hint:"Your BTC address" },
+  ltc:     { label:"Litecoin",     icon:"Ł",  hint:"Your LTC address" },
+  eth:     { label:"Ethereum",     icon:"Ξ",  hint:"Your ETH address" },
+  usdt:    { label:"USDT (TRC20)", icon:"₮",  hint:"Your TRC20 address" }
+};
+
+const STATUS = {
+  pending_payment: "Awaiting payment",
+  payment_sent:    "Payment sent",
+  paid:            "Paid · Delivering",
+  delivered:       "Delivered",
+  completed:       "Completed",
+  cancelled:       "Cancelled",
+  disputed:        "Disputed",
+  pending:         "Pending"
+};
+const STEPS = ["pending_payment","payment_sent","paid","delivered","completed"];
+const CHAT_OPEN = ["paid","delivered","completed","disputed"];
+
+/* ================= STATE ================= */
 let filters = { pets:"All", robux:"All" };
 let currentUser = null;
+let currentProfile = null;
 let currentShop = null;
 let currentView = "home";
 let previousView = { view:"home", arg:null };
 let editingProductId = null;
 let buyingProduct = null;
+let orderBackTo = "orders";
+let order = { id:null, data:null, names:{}, product:null, seen:new Set(), lastId:0, channel:null, timer:null };
 
 /* ================= HELPERS ================= */
 const $ = id => document.getElementById(id);
@@ -416,13 +589,24 @@ function esc(v){
 function money(v){ return "$" + Number(v || 0).toFixed(2); }
 function safeUrl(u){ return /^https?:\/\//i.test(u || "") ? u : ""; }
 function loading(text){ return `<p class="muted">${text}</p>`; }
+function payLabel(m){ return PAY[m] ? `${PAY[m].icon} ${PAY[m].label}` : esc(m || "—"); }
+function statusBadge(s){ return `<span class="status s-${esc(s)}">${esc(STATUS[s] || s)}</span>`; }
 
 function imageOrIcon(p, fallback){
-  const url = safeUrl(p.image_url);
-  const icon = ICONS[p.category] || fallback || "🛍️";
+  const url = safeUrl(p?.image_url);
+  const icon = ICONS[p?.category] || fallback || "🛍️";
   return url
     ? `<img src="${esc(url)}" alt="" onerror="this.replaceWith(document.createTextNode('${icon}'))">`
     : icon;
+}
+
+function methodChips(list){
+  if (!list?.length) return "";
+  return `<div class="chips">${list.map(m => `<span class="chip">${payLabel(m)}</span>`).join("")}</div>`;
+}
+
+function ratingText(r){
+  return r ? `<span class="rating">⭐ ${Number(r.avg_rating).toFixed(1)}</span> (${r.review_count})` : "New seller";
 }
 
 function showMessage(el, text, type=""){
@@ -437,7 +621,7 @@ function toast(text, type=""){
   t.textContent = text;
   t.className = "toast show " + type;
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.className = "toast", 3200);
+  toastTimer = setTimeout(() => t.className = "toast", 3500);
 }
 
 function showSellNotice(text, isError=false){
@@ -447,12 +631,46 @@ function showSellNotice(text, isError=false){
   n.textContent = text;
   clearTimeout(n._t);
   n._t = setTimeout(() => n.style.display = "none", 5000);
+  if (isError) n.scrollIntoView({ behavior:"smooth", block:"center" });
+}
+
+function copyText(t){
+  navigator.clipboard.writeText(t)
+    .then(() => toast("Copied!", "success"))
+    .catch(() => toast("Could not copy. Please copy it manually.", "error"));
 }
 
 async function getUser(){
   const { data:{ user } } = await supabaseClient.auth.getUser();
   currentUser = user;
   return user;
+}
+
+async function getMethodsMap(shopIds){
+  const ids = [...new Set(shopIds.filter(Boolean))];
+  const map = {};
+  if (!ids.length) return map;
+  const { data } = await supabaseClient.rpc("shop_methods", { p_shop_ids: ids });
+  (data || []).forEach(r => (map[r.shop_id] ||= []).push(r.method));
+  return map;
+}
+
+async function getRatingsMap(sellerIds){
+  const ids = [...new Set(sellerIds.filter(Boolean))];
+  const map = {};
+  if (!ids.length) return map;
+  const { data } = await supabaseClient.rpc("seller_ratings", { p_seller_ids: ids });
+  (data || []).forEach(r => map[r.seller_id] = r);
+  return map;
+}
+
+async function getNamesMap(userIds){
+  const ids = [...new Set(userIds.filter(Boolean))];
+  const map = {};
+  if (!ids.length) return map;
+  const { data } = await supabaseClient.from("profiles").select("id,username").in("id", ids);
+  (data || []).forEach(p => map[p.id] = p.username);
+  return map;
 }
 
 const renderTimers = {};
@@ -462,22 +680,21 @@ function debouncedRender(game){
 }
 
 /* ================= NAVIGATION ================= */
-const SECTIONS = ["home","petsMarket","robuxMarket","productPage","shopPage","sellPage","ordersPage"];
+const SECTIONS = ["home","petsMarket","robuxMarket","productPage","shopPage","sellPage","ordersPage","orderPage","adminPage"];
 
-function hideAllSections(){
-  SECTIONS.forEach(id => $(id).style.display = "none");
-}
 function showSection(id){
-  hideAllSections();
+  if (id !== "orderPage") stopOrderLive();
+  SECTIONS.forEach(s => $(s).style.display = "none");
   $(id).style.display = "block";
   window.scrollTo({ top:0, behavior:"smooth" });
 }
+
 function rememberView(){
-  if (currentView === "petsMarket")  previousView = { view:"game", arg:"pets" };
+  if (currentView === "petsMarket")       previousView = { view:"game", arg:"pets" };
   else if (currentView === "robuxMarket") previousView = { view:"game", arg:"robux" };
-  else if (currentView === "shopPage") previousView = { view:"shop", arg:previousView.shopId };
-  else if (currentView === "sellPage") previousView = { view:"sell" };
-  else if (currentView === "home") previousView = { view:"home" };
+  else if (currentView === "shopPage")    previousView = { view:"shop", arg:previousView.shopId };
+  else if (currentView === "sellPage")    previousView = { view:"sell" };
+  else if (currentView === "home")        previousView = { view:"home" };
 }
 
 function showHome(){
@@ -490,18 +707,25 @@ function showHome(){
 function openLogin(){
   $("loginModal").style.display = "flex";
   $("authMessage").style.display = "none";
-  setTimeout(() => ($("loginForm").style.display !== "none" ? $("loginEmail") : $("signupUsername")).focus(), 50);
+  setTimeout(() => {
+    const f = ["loginForm","signupForm","resetForm"].find(id => $(id).style.display !== "none");
+    $(f)?.querySelector("input")?.focus();
+  }, 50);
 }
 function closeLogin(){ $("loginModal").style.display = "none"; }
 
-function switchAuth(){
-  const l = $("loginForm"), s = $("signupForm");
-  const signup = s.style.display !== "none";
-  l.style.display = signup ? "flex" : "none";
-  s.style.display = signup ? "none" : "flex";
-  $("authTitle").textContent = signup ? "Login" : "Create Account";
-  $("switchButton").textContent = signup ? "Don't have an account? Sign Up" : "Already have an account? Login";
+function setAuthMode(mode){
+  $("loginForm").style.display  = mode === "login"  ? "flex" : "none";
+  $("signupForm").style.display = mode === "signup" ? "flex" : "none";
+  $("resetForm").style.display  = mode === "reset"  ? "flex" : "none";
+  $("authTitle").textContent = mode === "signup" ? "Create Account" : mode === "reset" ? "Reset Password" : "Login";
+  $("switchButton").textContent = mode === "login" ? "Don't have an account? Sign Up" : "Already have an account? Login";
   $("authMessage").style.display = "none";
+  if (mode === "reset") $("resetEmail").value = $("loginEmail").value;
+}
+
+function switchAuth(){
+  setAuthMode($("loginForm").style.display !== "none" ? "signup" : "login");
 }
 
 async function signup(e){
@@ -520,17 +744,19 @@ async function signup(e){
   btn.disabled = true;
   showMessage(m, "Creating account...");
   try{
+    const { data:taken } = await supabaseClient.from("profiles").select("id").ilike("username", username).maybeSingle();
+    if (taken) throw new Error("This username is already taken.");
+
     const { data, error } = await supabaseClient.auth.signUp({ email, password, options:{ data:{ username } } });
     if (error) throw error;
     if (!data.user) throw new Error("Account could not be created.");
 
+    e.target.reset();
     if (!data.session){
       showMessage(m, "Account created! Please confirm your email, then log in.", "success");
-      e.target.reset();
-      setTimeout(() => { switchAuth(); $("loginEmail").value = email; }, 1800);
+      setTimeout(() => { setAuthMode("login"); $("loginEmail").value = email; }, 1800);
     } else {
       showMessage(m, "Account created successfully!", "success");
-      e.target.reset();
       setTimeout(() => { closeLogin(); toast("Welcome, " + username + "!", "success"); }, 700);
     }
   }catch(err){
@@ -560,9 +786,41 @@ async function login(e){
   setTimeout(() => { closeLogin(); toast("Logged in!", "success"); }, 500);
 }
 
+async function sendReset(e){
+  e.preventDefault();
+  const m = $("authMessage");
+  const btn = e.target.querySelector("button[type=submit]");
+  btn.disabled = true;
+  showMessage(m, "Sending...");
+
+  const { error } = await supabaseClient.auth.resetPasswordForEmail($("resetEmail").value.trim(), {
+    redirectTo: location.origin + location.pathname
+  });
+  btn.disabled = false;
+
+  if (error){ showMessage(m, error.message, "error"); return; }
+  showMessage(m, "Check your email for the reset link!", "success");
+}
+
+async function saveNewPassword(e){
+  e.preventDefault();
+  const m = $("newPasswordMessage");
+  const p1 = $("newPassword").value, p2 = $("newPassword2").value;
+  if (p1 !== p2){ showMessage(m, "Passwords do not match.", "error"); return; }
+
+  const { error } = await supabaseClient.auth.updateUser({ password:p1 });
+  if (error){ showMessage(m, error.message, "error"); return; }
+
+  e.target.reset();
+  $("newPasswordModal").style.display = "none";
+  history.replaceState(null, "", location.pathname);
+  toast("Password changed!", "success");
+}
+
 async function logout(){
   await supabaseClient.auth.signOut();
   currentUser = null;
+  currentProfile = null;
   currentShop = null;
   showHome();
   toast("Logged out.");
@@ -572,13 +830,33 @@ async function updateUserUI(){
   const user = await getUser();
   $("loginButton").style.display = user ? "none" : "block";
   $("userMenu").style.display = user ? "flex" : "none";
+  $("adminLink").style.display = "none";
+  $("ordersBadge").innerHTML = "";
+  currentProfile = null;
   if (!user) return;
 
-  const { data:profile } = await supabaseClient.from("profiles").select("username").eq("id", user.id).maybeSingle();
+  const { data:profile } = await supabaseClient.from("profiles").select("username,is_admin,banned").eq("id", user.id).maybeSingle();
+  currentProfile = profile;
   $("usernameDisplay").textContent = profile?.username || user.user_metadata?.username || user.email.split("@")[0];
+  if (profile?.is_admin) $("adminLink").style.display = "inline";
+  if (profile?.banned) toast("Your account is banned. You cannot buy or sell.", "error");
+  updateOrdersBadge();
 }
 
-supabaseClient.auth.onAuthStateChange(() => setTimeout(updateUserUI, 0));
+async function updateOrdersBadge(){
+  if (!currentUser) return;
+  const uid = currentUser.id;
+  const { data } = await supabaseClient.from("orders").select("buyer_id,seller_id,status")
+    .or(`buyer_id.eq.${uid},seller_id.eq.${uid}`)
+    .in("status", ["pending_payment","payment_sent","paid","delivered"]);
+  const n = (data || []).filter(o => needsAction(o, o.buyer_id === uid ? "buyer" : "seller")).length;
+  $("ordersBadge").innerHTML = n ? `<span class="badge">${n}</span>` : "";
+}
+
+supabaseClient.auth.onAuthStateChange((event) => {
+  if (event === "PASSWORD_RECOVERY") $("newPasswordModal").style.display = "flex";
+  setTimeout(updateUserUI, 0);
+});
 
 /* ================= MARKETPLACE ================= */
 async function loadGameCounts(){
@@ -594,16 +872,18 @@ function openGame(game){
   renderProducts(game);
 }
 
-function productCard(p, fallbackIcon, showSeller=true){
+function productCard(p, fallbackIcon, extra={}){
+  const { methods=[], rating=null, showSeller=true } = extra;
   return `
   <div class="product">
     <div class="product-image">${imageOrIcon(p, fallbackIcon)}</div>
     <div class="category">${esc(p.category)}</div>
     <h3>${esc(p.name)}</h3>
     <div class="seller">
-      ${showSeller ? "Seller: " + esc(p.profiles?.username || "Seller") + " · " : ""}
+      ${showSeller ? esc(p.profiles?.username || "Seller") + " · " + ratingText(rating) + " · " : ""}
       ${Number(p.stock) > 0 ? "Stock: " + Number(p.stock) : "<span class='error'>Sold out</span>"}
     </div>
+    ${methodChips(methods)}
     <div class="product-bottom">
       <div class="price">${money(p.price)}</div>
       <button class="view" onclick="viewProduct(${Number(p.id)})">View</button>
@@ -637,13 +917,18 @@ async function renderProducts(game){
     `${p.name || ""} ${p.category || ""} ${p.description || ""} ${p.profiles?.username || ""}`
       .toLowerCase().includes(search)
   );
-
-  // Ausverkaufte Produkte ans Ende
   list.sort((a, b) => (b.stock > 0) - (a.stock > 0));
 
-  box.innerHTML = list.length
-    ? list.map(p => productCard(p, game === "pets" ? "🐾" : "💰")).join("")
-    : loading("No products found.");
+  if (!list.length){ box.innerHTML = loading("No products found."); return; }
+
+  const [methods, ratings] = await Promise.all([
+    getMethodsMap(list.map(p => p.shop_id)),
+    getRatingsMap(list.map(p => p.seller_id))
+  ]);
+
+  box.innerHTML = list.map(p => productCard(p, game === "pets" ? "🐾" : "💰", {
+    methods: methods[p.shop_id], rating: ratings[p.seller_id]
+  })).join("");
 }
 
 function setFilter(game, category, button){
@@ -657,7 +942,6 @@ async function globalSearch(){
   const q = $("globalSearch").value.trim();
   if (!q) return;
 
-  // In beiden Spielen suchen und das mit mehr Treffern öffnen
   const like = `%${q.replace(/[%_,()]/g, "")}%`;
   const counts = {};
   for (const game of ["pets","robux"]){
@@ -703,8 +987,13 @@ async function viewProduct(id){
 
   if (previousView.view === "home") previousView = { view:"game", arg:p.game };
 
+  const [methodsMap, ratingsMap] = await Promise.all([getMethodsMap([p.shop_id]), getRatingsMap([p.seller_id])]);
+  const methods = methodsMap[p.shop_id] || [];
+  const rating = ratingsMap[p.seller_id];
+
   const inStock = Number(p.stock) > 0;
   const isOwn = currentUser && currentUser.id === p.seller_id;
+  const canBuy = inStock && methods.length;
 
   box.innerHTML = `
   <div class="product-page-inner">
@@ -716,16 +1005,20 @@ async function viewProduct(id){
       <div class="product-page-price">${money(p.price)}</div>
       <div class="product-page-stock">${inStock ? Number(p.stock) + " available" : "Out of stock"}</div>
 
+      <div class="pay-label">ACCEPTED PAYMENT METHODS</div>
+      ${methods.length ? methodChips(methods) : `<p class="muted" style="font-size:13px;margin-bottom:14px">This seller has not set up payment methods yet.</p>`}
+
       ${isOwn
         ? `<button class="buy-button" onclick="editProduct(${p.id})">Edit Your Product</button>`
-        : `<button class="buy-button" onclick="startPurchase(${p.id})" ${inStock ? "" : "disabled"}>${inStock ? "Buy Now" : "Out of Stock"}</button>`}
+        : `<button class="buy-button" onclick="startPurchase(${p.id})" ${canBuy ? "" : "disabled"}>${!inStock ? "Out of Stock" : !methods.length ? "Not available" : "Buy Now"}</button>`}
 
       <button class="shop-button" onclick="openShop(${Number(p.shop_id) || 0})">Visit Shop</button>
+      ${currentProfile?.is_admin && !isOwn ? `<button class="danger big" style="width:100%" onclick="adminDeleteProduct(${p.id})">Delete product (Admin)</button>` : ""}
 
       <div class="seller-box">
         <div class="seller-label">SELLER</div>
         <div class="seller-name">${esc(p.profiles?.username || "Seller")}</div>
-        <p class="muted" style="font-size:12px;margin-top:6px">Listed ${new Date(p.created_at).toLocaleDateString()}</p>
+        <p class="muted" style="font-size:13px;margin-top:6px">${ratingText(rating)} · Listed ${new Date(p.created_at).toLocaleDateString()}</p>
       </div>
     </div>
   </div>`;
@@ -760,19 +1053,68 @@ async function openShop(shopId){
     return;
   }
 
-  const { data:owner } = await supabaseClient.from("profiles").select("username").eq("id", shop.owner_id).maybeSingle();
+  const [names, methodsMap, ratingsMap, { data:reviews }] = await Promise.all([
+    getNamesMap([shop.owner_id]),
+    getMethodsMap([shop.id]),
+    getRatingsMap([shop.owner_id]),
+    supabaseClient.from("reviews").select("rating,comment,created_at,buyer_id").eq("seller_id", shop.owner_id).order("created_at", { ascending:false }).limit(20)
+  ]);
+  const buyerNames = await getNamesMap((reviews || []).map(r => r.buyer_id));
+  const methods = methodsMap[shop.id] || [];
 
   box.innerHTML = `
   <div class="shop-header">
     <h1>${esc(shop.name)}</h1>
     <p>${esc(shop.description || "No shop description.")}</p>
-    <p class="muted" style="font-size:13px;margin-top:10px">
-      Owner: ${esc(owner?.username || "Seller")} · ${products?.length || 0} product(s)
+    <p class="muted" style="font-size:13px;margin:10px 0">
+      Owner: ${esc(names[shop.owner_id] || "Seller")} · ${ratingText(ratingsMap[shop.owner_id])} · ${products?.length || 0} product(s)
     </p>
+    ${methodChips(methods)}
   </div>
-  <div class="products">
-    ${products?.length ? products.map(p => productCard(p, null, false)).join("") : loading("This shop has no products yet.")}
+  <div class="products" style="margin-bottom:25px">
+    ${products?.length ? products.map(p => productCard(p, null, { methods, showSeller:false })).join("") : loading("This shop has no products yet.")}
+  </div>
+  <div class="panel">
+    <h2>Reviews</h2>
+    ${reviews?.length ? reviews.map(r => `
+      <div class="review">
+        <span class="rating">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</span>
+        <span class="muted" style="font-size:12px"> · ${esc(buyerNames[r.buyer_id] || "Buyer")} · ${new Date(r.created_at).toLocaleDateString()}</span>
+        ${r.comment ? `<p>${esc(r.comment)}</p>` : ""}
+      </div>`).join("") : loading("No reviews yet.")}
   </div>`;
+}
+
+/* ================= PAYMENT METHOD EDITOR ================= */
+function renderMethodEditor(containerId, existing={}){
+  $(containerId).innerHTML = Object.entries(PAY).map(([key, m]) => `
+    <div class="method-row">
+      <label><input type="checkbox" data-method="${key}" ${existing[key] ? "checked" : ""}
+        onchange="const i=this.closest('.method-row').querySelector('input[type=text]');i.disabled=!this.checked;if(this.checked)i.focus()">
+        ${m.icon} ${m.label}</label>
+      <input type="text" data-address="${key}" placeholder="${m.hint}" maxlength="120"
+        value="${esc(existing[key] || "")}" ${existing[key] ? "" : "disabled"}>
+    </div>`).join("");
+}
+
+function readMethods(containerId){
+  const out = [];
+  $(containerId).querySelectorAll("input[type=checkbox]:checked").forEach(cb => {
+    const key = cb.dataset.method;
+    const address = $(containerId).querySelector(`input[data-address="${key}"]`).value.trim();
+    if (address.length < 3) throw new Error(`Please enter your ${PAY[key].label} address.`);
+    out.push({ method:key, address });
+  });
+  if (!out.length) throw new Error("Please add at least one payment method.");
+  return out;
+}
+
+async function saveMethods(shopId, list){
+  const { error:delErr } = await supabaseClient.from("payment_methods").delete().eq("shop_id", shopId).eq("owner_id", currentUser.id);
+  if (delErr) throw delErr;
+  const { error } = await supabaseClient.from("payment_methods")
+    .insert(list.map(m => ({ shop_id:shopId, owner_id:currentUser.id, method:m.method, address:m.address })));
+  if (error) throw error;
 }
 
 /* ================= SELL / MY SHOP ================= */
@@ -798,8 +1140,14 @@ async function loadShop(){
   if (shop){
     $("myShopName").textContent = shop.name;
     $("myShopDescription").textContent = shop.description || "No description";
+    const { data:pm } = await supabaseClient.from("payment_methods").select("method,address").eq("shop_id", shop.id);
+    currentShop.methods = pm || [];
+    $("myShopMethods").innerHTML = currentShop.methods.length
+      ? methodChips(currentShop.methods.map(m => m.method))
+      : `<p class="error" style="font-size:13px">⚠️ No payment methods yet – buyers can't buy. Click "Edit Shop" to add them.</p>`;
     await Promise.all([loadMyProducts(), loadSellerOrders()]);
   } else {
+    renderMethodEditor("createMethods");
     $("productFormPanel").style.display = "none";
     $("myProducts").innerHTML = loading("Create your shop first.");
     $("sellerOrders").innerHTML = loading("Create your shop first.");
@@ -810,6 +1158,10 @@ async function createShop(e){
   e.preventDefault();
   if (!currentUser) return;
 
+  let methods;
+  try{ methods = readMethods("createMethods"); }
+  catch(err){ showSellNotice(err.message, true); return; }
+
   const { data, error } = await supabaseClient
     .from("shops")
     .insert({ owner_id:currentUser.id, name:$("shopName").value.trim(), description:$("shopDescription").value.trim() })
@@ -818,7 +1170,9 @@ async function createShop(e){
 
   if (error){ showSellNotice(error.message, true); return; }
 
-  currentShop = data;
+  try{ await saveMethods(data.id, methods); }
+  catch(err){ showSellNotice("Shop created, but payment methods failed: " + err.message, true); }
+
   showSellNotice("Shop created successfully!");
   e.target.reset();
   await loadShop();
@@ -827,12 +1181,20 @@ async function createShop(e){
 function showEditShop(){
   $("editShopName").value = currentShop.name;
   $("editShopDescription").value = currentShop.description || "";
+  const existing = {};
+  (currentShop.methods || []).forEach(m => existing[m.method] = m.address);
+  renderMethodEditor("editMethods", existing);
   $("editShopPanel").style.display = "block";
   $("editShopPanel").scrollIntoView({ behavior:"smooth" });
 }
 
 async function updateShop(e){
   e.preventDefault();
+
+  let methods;
+  try{ methods = readMethods("editMethods"); }
+  catch(err){ showSellNotice(err.message, true); return; }
+
   const { error } = await supabaseClient
     .from("shops")
     .update({ name:$("editShopName").value.trim(), description:$("editShopDescription").value.trim() })
@@ -840,6 +1202,10 @@ async function updateShop(e){
     .eq("owner_id", currentUser.id);
 
   if (error){ showSellNotice(error.message, true); return; }
+
+  try{ await saveMethods(currentShop.id, methods); }
+  catch(err){ showSellNotice(err.message, true); return; }
+
   showSellNotice("Shop updated!");
   await loadShop();
 }
@@ -969,22 +1335,29 @@ async function deleteProduct(id){
 async function startPurchase(productId){
   const user = await getUser();
   if (!user){ openLogin(); toast("Please log in to buy."); return; }
+  if (currentProfile?.banned){ toast("Your account is banned.", "error"); return; }
 
-  const { data:p, error } = await supabaseClient.from("products").select("id,name,price,stock,seller_id,category").eq("id", productId).single();
+  const { data:p, error } = await supabaseClient.from("products").select("id,name,price,stock,seller_id,shop_id,category").eq("id", productId).single();
 
   if (error || !p){ toast("Product could not be found.", "error"); return; }
   if (Number(p.stock) <= 0){ toast("This product is out of stock.", "error"); return; }
   if (p.seller_id === user.id){ toast("You cannot buy your own product.", "error"); return; }
+
+  const methods = (await getMethodsMap([p.shop_id]))[p.shop_id] || [];
+  if (!methods.length){ toast("This seller has no payment methods yet.", "error"); return; }
 
   buyingProduct = p;
   $("buySummary").innerHTML = `
     Product <b>${esc(p.name)}</b><br>
     Category <b>${esc(p.category)}</b><br>
     Price <b>${money(p.price)}</b>`;
+  $("buyMethods").innerHTML = methods.map((m, i) => `
+    <label class="pay-option">
+      <input type="radio" name="buyMethod" value="${esc(m)}" ${i === 0 ? "checked" : ""}> ${payLabel(m)}
+    </label>`).join("");
   $("buyMessage").style.display = "none";
   $("buyConfirm").disabled = false;
   $("buyModal").style.display = "flex";
-  setTimeout(() => $("buyRobloxName").focus(), 50);
 }
 
 function closeBuy(){
@@ -996,14 +1369,18 @@ async function confirmPurchase(e){
   e.preventDefault();
   if (!buyingProduct) return;
 
+  const method = document.querySelector('input[name="buyMethod"]:checked')?.value;
+  if (!method){ showMessage($("buyMessage"), "Choose a payment method.", "error"); return; }
+
   const m = $("buyMessage");
   const btn = $("buyConfirm");
   btn.disabled = true;
   showMessage(m, "Creating order...");
 
-  const { data:order, error } = await supabaseClient.rpc("purchase_product", {
+  const { data:created, error } = await supabaseClient.rpc("purchase_product", {
     p_product_id: buyingProduct.id,
-    p_roblox_username: $("buyRobloxName").value.trim()
+    p_roblox_username: $("buyRobloxName").value.trim(),
+    p_payment_method: method
   });
 
   if (error){
@@ -1012,25 +1389,35 @@ async function confirmPurchase(e){
     return;
   }
 
-  const created = Array.isArray(order) ? order[0] : order;
+  const o = Array.isArray(created) ? created[0] : created;
   closeBuy();
-  toast(`Order #${created?.id ?? ""} created! Status: Pending`, "success");
-  await openOrders();
+  toast("Order created! Now send the payment.", "success");
+  orderBackTo = "orders";
+  await openOrder(o.id);
 }
 
-/* ================= ORDERS ================= */
-function statusClass(s){ return s === "completed" ? "completed" : s === "cancelled" ? "cancelled" : ""; }
+/* ================= ORDER LISTS ================= */
+function needsAction(o, role){
+  return role === "buyer"
+    ? ["pending_payment","delivered"].includes(o.status)
+    : ["payment_sent","paid"].includes(o.status);
+}
 
-async function changeOrderStatus(orderId, status){
-  const label = status === "completed" ? "Mark this order as completed?" : "Cancel this order? (Stock will be returned.)";
-  if (!confirm(label)) return;
-
-  const { error } = await supabaseClient.rpc("update_order_status", { p_order_id:orderId, p_status:status });
-  if (error){ toast(error.message, "error"); return; }
-
-  toast("Order " + status + ".", "success");
-  if (currentView === "sellPage"){ await loadSellerOrders(); await loadMyProducts(); }
-  else await openOrders();
+function orderCard(o, opts){
+  const { productName, otherLabel, otherName, role, backTo } = opts;
+  return `
+  <div class="order-card" onclick="orderBackTo='${backTo}';openOrder(${o.id})">
+    <div class="order-left">
+      <h3>${esc(productName)}${role && needsAction(o, role) ? `<span class="action-tag">Action needed</span>` : ""}</h3>
+      <p>Order #${o.id} · ${payLabel(o.payment_method)}</p>
+      <p>${otherLabel}: ${esc(otherName || "—")}</p>
+      <p>${new Date(o.created_at).toLocaleString()}</p>
+    </div>
+    <div class="order-right">
+      <div class="order-price">${money(o.price)}</div>
+      ${statusBadge(o.status)}
+    </div>
+  </div>`;
 }
 
 async function openOrders(){
@@ -1044,10 +1431,7 @@ async function openOrders(){
   box.innerHTML = loading("Loading orders...");
 
   const { data:orders, error } = await supabaseClient
-    .from("orders")
-    .select("id,price,status,created_at,product_id,product_name,roblox_username,seller_id")
-    .eq("buyer_id", user.id)
-    .order("created_at", { ascending:false });
+    .from("orders").select("*").eq("buyer_id", user.id).order("created_at", { ascending:false });
 
   if (error){ box.innerHTML = `<div class="panel"><p class="error">${esc(error.message)}</p></div>`; return; }
   if (!orders?.length){
@@ -1055,89 +1439,391 @@ async function openOrders(){
     return;
   }
 
-  const pids = [...new Set(orders.map(o => o.product_id).filter(Boolean))];
-  const sids = [...new Set(orders.map(o => o.seller_id))];
-
-  const [{ data:products }, { data:sellers }] = await Promise.all([
-    pids.length ? supabaseClient.from("products").select("id,name,category").in("id", pids) : { data:[] },
-    supabaseClient.from("profiles").select("id,username").in("id", sids)
-  ]);
-
-  const pm = {}, sm = {};
-  (products || []).forEach(p => pm[p.id] = p);
-  (sellers || []).forEach(s => sm[s.id] = s.username);
-
-  box.innerHTML = orders.map(o => {
-    const p = pm[o.product_id];
-    return `
-    <div class="order-card">
-      <div class="order-left">
-        <h3>${esc(p?.name || o.product_name || "Deleted product")}</h3>
-        <p>Order #${o.id}${p?.category ? " · " + esc(p.category) : ""}</p>
-        <p>Seller: ${esc(sm[o.seller_id] || "Seller")}</p>
-        ${o.roblox_username ? `<p>Delivery to: <b>${esc(o.roblox_username)}</b></p>` : ""}
-        <p>${new Date(o.created_at).toLocaleString()}</p>
-      </div>
-      <div class="order-right">
-        <div class="order-price">${money(o.price)}</div>
-        <span class="status ${statusClass(o.status)}">${esc(o.status)}</span>
-        ${o.status === "pending" ? `<div class="order-actions"><button class="danger" onclick="changeOrderStatus(${o.id},'cancelled')">Cancel</button></div>` : ""}
-      </div>
-    </div>`;
-  }).join("");
+  const names = await getNamesMap(orders.map(o => o.seller_id));
+  box.innerHTML = orders.map(o => orderCard(o, {
+    productName: o.product_name || "Product", otherLabel:"Seller", otherName:names[o.seller_id], role:"buyer", backTo:"orders"
+  })).join("");
+  updateOrdersBadge();
 }
 
 async function loadSellerOrders(){
   const box = $("sellerOrders");
 
   const { data:orders, error } = await supabaseClient
-    .from("orders")
-    .select("id,buyer_id,product_id,product_name,roblox_username,price,status,created_at")
-    .eq("seller_id", currentUser.id)
-    .order("created_at", { ascending:false });
+    .from("orders").select("*").eq("seller_id", currentUser.id).order("created_at", { ascending:false });
 
   if (error){ box.innerHTML = `<p class="error">${esc(error.message)}</p>`; return; }
   if (!orders?.length){ box.innerHTML = loading("No orders yet."); return; }
 
-  const pids = [...new Set(orders.map(o => o.product_id).filter(Boolean))];
-  const bids = [...new Set(orders.map(o => o.buyer_id))];
-
-  const [{ data:ps }, { data:bs }] = await Promise.all([
-    pids.length ? supabaseClient.from("products").select("id,name,category").in("id", pids) : { data:[] },
-    supabaseClient.from("profiles").select("id,username").in("id", bids)
-  ]);
-
-  const pm = {}, bm = {};
-  (ps || []).forEach(p => pm[p.id] = p);
-  (bs || []).forEach(b => bm[b.id] = b.username);
-
-  const pending = orders.filter(o => o.status === "pending").length;
+  const names = await getNamesMap(orders.map(o => o.buyer_id));
+  const todo = orders.filter(o => needsAction(o, "seller")).length;
   const earned = orders.filter(o => o.status === "completed").reduce((s, o) => s + Number(o.price), 0);
 
   box.innerHTML = `
-    <div class="notice">${pending} pending · ${money(earned)} from completed orders</div>
-    ${orders.map(o => {
-      const p = pm[o.product_id];
-      return `
-      <div class="order-card">
-        <div class="order-left">
-          <h3>${esc(p?.name || o.product_name || "Deleted product")}</h3>
-          <p>Order #${o.id}</p>
-          <p>Buyer: ${esc(bm[o.buyer_id] || "Buyer")}</p>
-          ${o.roblox_username ? `<p>Roblox username: <b>${esc(o.roblox_username)}</b></p>` : ""}
-          <p>${new Date(o.created_at).toLocaleString()}</p>
+    <div class="notice">${todo} order(s) need your action · ${money(earned)} from completed orders</div>
+    ${orders.map(o => orderCard(o, {
+      productName: o.product_name || "Product", otherLabel:"Buyer", otherName:names[o.buyer_id], role:"seller", backTo:"sell"
+    })).join("")}`;
+}
+
+/* ================= SINGLE ORDER PAGE ================= */
+async function openOrder(id){
+  const user = await getUser();
+  if (!user){ openLogin(); return; }
+
+  currentView = "orderPage";
+  showSection("orderPage");
+  stopOrderLive();
+
+  order = { id, data:null, names:{}, product:null, seen:new Set(), lastId:0, channel:null, timer:null };
+  $("orderInfo").innerHTML = `<div class="panel">${loading("Loading order...")}</div>`;
+  $("chatMessages").innerHTML = "";
+
+  const ok = await renderOrderInfo(true);
+  if (!ok) return;
+  await loadMessages();
+  startOrderLive();
+}
+
+function goBackFromOrder(){
+  if (orderBackTo === "sell") openSell();
+  else if (orderBackTo === "admin") openAdmin();
+  else openOrders();
+}
+
+async function renderOrderInfo(first=false){
+  const { data:o, error } = await supabaseClient.from("orders").select("*").eq("id", order.id).single();
+  if (error || !o){
+    $("orderInfo").innerHTML = `<div class="panel"><h2>Order not found</h2><p class="error">${esc(error?.message || "")}</p></div>`;
+    return false;
+  }
+
+  const statusChanged = order.data && order.data.status !== o.status;
+  order.data = o;
+
+  if (first){
+    order.names = await getNamesMap([o.buyer_id, o.seller_id]);
+    if (o.product_id){
+      const { data:p } = await supabaseClient.from("products").select("name,category,image_url,game").eq("id", o.product_id).maybeSingle();
+      order.product = p;
+    }
+  }
+
+  const uid = currentUser?.id;
+  const role = uid === o.buyer_id ? "buyer" : uid === o.seller_id ? "seller" : "admin";
+  const p = order.product;
+  const stepIndex = STEPS.indexOf(o.status);
+
+  let review = null;
+  if (role === "buyer" && o.status === "completed"){
+    const { data } = await supabaseClient.from("reviews").select("*").eq("order_id", o.id).maybeSingle();
+    review = data;
+  }
+
+  $("orderInfo").innerHTML = `
+  <div class="panel">
+    <div class="order-top">
+      <div class="order-thumb">${imageOrIcon(p || { category:"" })}</div>
+      <div>
+        <h2>${esc(o.product_name || p?.name || "Product")}</h2>
+        <div class="muted" style="font-size:13px">Order #${o.id} · ${new Date(o.created_at).toLocaleString()}</div>
+        <div style="margin-top:8px">${statusBadge(o.status)}</div>
+      </div>
+    </div>
+    <div class="info-rows">
+      <div><span>Price</span><b>${money(o.price)}</b></div>
+      <div><span>Payment method</span><b>${payLabel(o.payment_method)}</b></div>
+      <div><span>Buyer</span><b>${esc(order.names[o.buyer_id] || "Buyer")}</b></div>
+      <div><span>Seller</span><b>${esc(order.names[o.seller_id] || "Seller")}</b></div>
+      <div><span>Roblox username</span><b>${esc(o.roblox_username || "—")}</b></div>
+      ${o.payment_reference ? `<div><span>Payment reference</span><b>${esc(o.payment_reference)}</b></div>` : ""}
+    </div>
+  </div>
+
+  ${o.status !== "cancelled" && o.status !== "disputed" ? `
+  <div class="stepper">
+    ${["Payment","Sent","Paid","Delivered","Done"].map((s, i) => `<div class="step ${i <= stepIndex ? "done" : ""}">${s}</div>`).join("")}
+  </div>` : ""}
+
+  <div class="panel">${orderActionsHtml(o, role)}</div>
+  ${role === "buyer" && o.status === "completed" ? `<div class="panel">${reviewHtml(review)}</div>` : ""}`;
+
+  // Chat ein- oder ausblenden
+  const chatOpen = CHAT_OPEN.includes(o.status);
+  $("chatForm").style.display = chatOpen ? "flex" : "none";
+  $("chatClosed").style.display = chatOpen ? "none" : "block";
+  $("chatClosed").textContent = o.status === "cancelled"
+    ? "This order was cancelled."
+    : "💬 The chat opens as soon as the seller confirms the payment.";
+
+  if (statusChanged && !first){
+    toast("Order status: " + (STATUS[o.status] || o.status));
+    updateOrdersBadge();
+  }
+  return true;
+}
+
+function addressBox(o){
+  return `
+    <div class="addr">
+      <span>${esc(o.payment_address || "—")}</span>
+      <button class="small" data-v="${esc(o.payment_address || "")}" onclick="copyText(this.dataset.v)">Copy</button>
+    </div>`;
+}
+
+function orderActionsHtml(o, role){
+  const method = PAY[o.payment_method]?.label || o.payment_method || "the payment method";
+  const buyerName = esc(order.names[o.buyer_id] || "the buyer");
+
+  if (role === "buyer"){
+    switch (o.status){
+      case "pending_payment": return `
+        <h2>Send your payment</h2>
+        <div class="pay-box">
+          <div class="muted" style="font-size:13px">Send exactly</div>
+          <div class="pay-amount">${money(o.price)}</div>
+          <div class="muted" style="font-size:13px;margin-bottom:8px">via <b style="color:#fff">${payLabel(o.payment_method)}</b> to:</div>
+          ${addressBox(o)}
         </div>
-        <div class="order-right">
-          <div class="order-price">${money(o.price)}</div>
-          <span class="status ${statusClass(o.status)}">${esc(o.status)}</span>
-          ${o.status === "pending" ? `
-          <div class="order-actions">
-            <button class="ok" onclick="changeOrderStatus(${o.id},'completed')">Complete</button>
-            <button class="danger" onclick="changeOrderStatus(${o.id},'cancelled')">Cancel</button>
-          </div>` : ""}
+        <div class="notice warn">⚠️ WzyMarket does not hold your money – you pay the seller directly. Only pay if you trust the seller and check the seller's reviews first. Write "Order #${o.id}" in the payment note if possible.</div>
+        <div class="form">
+          <input id="payRef" placeholder="Transaction ID / payment note (optional)" maxlength="120">
         </div>
-      </div>`;
-    }).join("")}`;
+        <div class="btn-row">
+          <button class="primary big" onclick="orderAction('mark_paid')">✅ I have paid</button>
+          <button class="danger big" onclick="orderAction('cancel','Cancel this order?')">Cancel order</button>
+        </div>`;
+      case "payment_sent": return `
+        <h2>Waiting for the seller</h2>
+        <p class="muted">You marked the payment as sent. The seller will check their ${esc(method)} account and confirm. The chat opens after that.</p>
+        <br>${addressBox(o)}`;
+      case "paid": return `
+        <h2>Payment confirmed 🎉</h2>
+        <p class="muted">Talk to the seller in the chat to receive your item. When you got it, confirm below.</p>
+        <div class="btn-row">
+          <button class="ok big" onclick="orderAction('confirm_received','Did you receive your item? This completes the order.')">I received my item</button>
+          <button class="danger big" onclick="orderAction('dispute','Open a dispute? An admin will check this order.')">Open dispute</button>
+        </div>`;
+      case "delivered": return `
+        <h2>Item delivered</h2>
+        <p class="muted">The seller says the item was delivered. Please check in Roblox and confirm.</p>
+        <div class="btn-row">
+          <button class="ok big" onclick="orderAction('confirm_received','Did you receive your item? This completes the order.')">I received my item</button>
+          <button class="danger big" onclick="orderAction('dispute','Open a dispute? An admin will check this order.')">I did not receive it</button>
+        </div>`;
+      case "completed": return `<h2>Order completed ✅</h2><p class="muted">Thanks for your purchase!</p>`;
+      case "cancelled": return `<h2>Order cancelled</h2><p class="muted">This order was cancelled.</p>`;
+      case "disputed":  return `<h2>Dispute open</h2><p class="muted">An admin will check the chat and decide. Please explain the problem in the chat.</p>`;
+    }
+  }
+
+  if (role === "seller"){
+    switch (o.status){
+      case "pending_payment": return `
+        <h2>Waiting for payment</h2>
+        <p class="muted">${buyerName} has to send <b style="color:#fff">${money(o.price)}</b> to your ${payLabel(o.payment_method)}:</p>
+        <br>${addressBox(o)}
+        <div class="btn-row">
+          <button class="ok big" onclick="orderAction('confirm_payment','Did you really receive ${money(o.price)}? Only confirm if the money is in your account.')">I received the payment</button>
+          <button class="danger big" onclick="orderAction('cancel','Cancel this order?')">Cancel order</button>
+        </div>`;
+      case "payment_sent": return `
+        <h2>Buyer says they paid</h2>
+        <p class="muted">Check your ${payLabel(o.payment_method)} account for <b style="color:#fff">${money(o.price)}</b>.
+        ${o.payment_reference ? `Reference: <b style="color:#fff">${esc(o.payment_reference)}</b>` : ""}</p>
+        <div class="btn-row">
+          <button class="ok big" onclick="orderAction('confirm_payment','Confirm that you received ${money(o.price)}? The chat will open.')">✅ Confirm payment</button>
+          <button class="small big" onclick="orderAction('reject_payment','Tell the buyer you did not receive the payment?')">Not received</button>
+          <button class="danger big" onclick="orderAction('cancel','Cancel this order?')">Cancel</button>
+        </div>`;
+      case "paid": return `
+        <h2>Deliver the item</h2>
+        <p class="muted">Send the item to Roblox user <b style="color:#fff">${esc(o.roblox_username || "?")}</b>. Use the chat to talk with the buyer. Then mark it as delivered.</p>
+        <div class="btn-row">
+          <button class="primary big" onclick="orderAction('deliver','Did you deliver the item?')">📦 Mark as delivered</button>
+          <button class="danger big" onclick="orderAction('dispute','Open a dispute? An admin will check this order.')">Open dispute</button>
+        </div>`;
+      case "delivered": return `
+        <h2>Waiting for the buyer</h2>
+        <p class="muted">You marked the order as delivered. The buyer has to confirm.</p>
+        <div class="btn-row"><button class="danger big" onclick="orderAction('dispute','Open a dispute? An admin will check this order.')">Open dispute</button></div>`;
+      case "completed": return `<h2>Order completed ✅</h2><p class="muted">Great job! The buyer confirmed the order.</p>`;
+      case "cancelled": return `<h2>Order cancelled</h2>`;
+      case "disputed":  return `<h2>Dispute open</h2><p class="muted">An admin will check the chat and decide.</p>`;
+    }
+  }
+
+  // Admin
+  if (o.status === "disputed") return `
+    <h2>Resolve dispute (Admin)</h2>
+    <p class="muted">Read the chat, then decide.</p>
+    <div class="btn-row">
+      <button class="ok big" onclick="orderAction('resolve_complete','Close dispute as COMPLETED (seller was right)?')">Complete order</button>
+      <button class="danger big" onclick="orderAction('resolve_cancel','Close dispute as CANCELLED (buyer was right)?')">Cancel order</button>
+    </div>`;
+  return `<h2>Admin view</h2><p class="muted">Status: ${esc(STATUS[o.status] || o.status)}</p>`;
+}
+
+function reviewHtml(review){
+  if (review) return `
+    <h2>Your review</h2>
+    <span class="rating" style="font-size:20px">${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}</span>
+    ${review.comment ? `<p class="muted" style="margin-top:8px">${esc(review.comment)}</p>` : ""}`;
+  return `
+    <h2>Rate the seller</h2>
+    <div class="form">
+      <div class="stars" id="stars">
+        ${[1,2,3,4,5].map(n => `<button type="button" data-n="${n}" onclick="setStars(${n})">★</button>`).join("")}
+      </div>
+      <textarea id="reviewComment" placeholder="How was the seller? (optional)" maxlength="500"></textarea>
+      <button class="primary" onclick="submitReview()">Submit review</button>
+    </div>`;
+}
+
+let reviewStars = 0;
+function setStars(n){
+  reviewStars = n;
+  document.querySelectorAll("#stars button").forEach(b => b.classList.toggle("on", Number(b.dataset.n) <= n));
+}
+
+async function submitReview(){
+  if (!reviewStars){ toast("Please choose 1–5 stars.", "error"); return; }
+  const { error } = await supabaseClient.rpc("leave_review", {
+    p_order_id: order.id, p_rating: reviewStars, p_comment: $("reviewComment").value.trim()
+  });
+  if (error){ toast(error.message, "error"); return; }
+  reviewStars = 0;
+  toast("Thanks for your review!", "success");
+  await renderOrderInfo();
+}
+
+async function orderAction(action, confirmText){
+  if (confirmText && !confirm(confirmText)) return;
+  const note = action === "mark_paid" ? ($("payRef")?.value.trim() || null) : null;
+
+  const { error } = await supabaseClient.rpc("order_action", { p_order_id:order.id, p_action:action, p_note:note });
+  if (error){ toast(error.message, "error"); return; }
+
+  toast("Done!", "success");
+  await renderOrderInfo();
+  await loadMessages();
+  updateOrdersBadge();
+}
+
+/* ---------- Chat ---------- */
+function msgHtml(m){
+  if (m.is_system) return `<div class="msg sys">${esc(m.body)}</div>`;
+  const me = m.sender_id === currentUser?.id;
+  const name = me ? "You" : (order.names[m.sender_id] || "Admin");
+  const time = new Date(m.created_at).toLocaleTimeString([], { hour:"2-digit", minute:"2-digit" });
+  return `<div class="msg ${me ? "me" : ""}"><div class="msg-name">${esc(name)} · ${time}</div><div class="msg-body">${esc(m.body)}</div></div>`;
+}
+
+function appendMessages(list){
+  const box = $("chatMessages");
+  const nearBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 80;
+  let added = false;
+  list.forEach(m => {
+    if (m.order_id !== order.id || order.seen.has(m.id)) return;
+    order.seen.add(m.id);
+    order.lastId = Math.max(order.lastId, m.id);
+    box.insertAdjacentHTML("beforeend", msgHtml(m));
+    added = true;
+  });
+  if (added && (nearBottom || list.length > 1)) box.scrollTop = box.scrollHeight;
+}
+
+async function loadMessages(){
+  if (!order.id) return;
+  const { data } = await supabaseClient.from("messages").select("*")
+    .eq("order_id", order.id).gt("id", order.lastId).order("id", { ascending:true });
+  appendMessages(data || []);
+}
+
+async function sendMessage(e){
+  e.preventDefault();
+  const input = $("chatInput");
+  const body = input.value.trim();
+  if (!body) return;
+
+  input.value = "";
+  const { data, error } = await supabaseClient.from("messages")
+    .insert({ order_id:order.id, sender_id:currentUser.id, body })
+    .select().single();
+
+  if (error){ input.value = body; toast(error.message, "error"); return; }
+  appendMessages([data]);
+  $("chatMessages").scrollTop = $("chatMessages").scrollHeight;
+}
+
+function startOrderLive(){
+  const id = order.id;
+  order.channel = supabaseClient.channel("order-" + id)
+    .on("postgres_changes", { event:"INSERT", schema:"public", table:"messages", filter:`order_id=eq.${id}` },
+        payload => appendMessages([payload.new]))
+    .on("postgres_changes", { event:"UPDATE", schema:"public", table:"orders", filter:`id=eq.${id}` },
+        () => renderOrderInfo())
+    .subscribe();
+
+  // Sicherheitsnetz, falls Realtime nicht verbunden ist
+  order.timer = setInterval(async () => {
+    if (order.id !== id) return;
+    await loadMessages();
+    const { data } = await supabaseClient.from("orders").select("status,updated_at").eq("id", id).single();
+    if (data && order.data && (data.status !== order.data.status || data.updated_at !== order.data.updated_at)) renderOrderInfo();
+  }, 6000);
+}
+
+function stopOrderLive(){
+  if (order.channel){ supabaseClient.removeChannel(order.channel); order.channel = null; }
+  if (order.timer){ clearInterval(order.timer); order.timer = null; }
+}
+
+/* ================= ADMIN ================= */
+async function openAdmin(){
+  await getUser();
+  if (!currentProfile?.is_admin){ toast("Admins only.", "error"); return; }
+
+  currentView = "adminPage";
+  showSection("adminPage");
+  $("adminDisputes").innerHTML = loading("Loading...");
+  $("adminOrders").innerHTML = loading("Loading...");
+
+  const [{ data:disputes }, { data:recent }] = await Promise.all([
+    supabaseClient.from("orders").select("*").eq("status", "disputed").order("updated_at", { ascending:false }),
+    supabaseClient.from("orders").select("*").order("created_at", { ascending:false }).limit(30)
+  ]);
+
+  const all = [...(disputes || []), ...(recent || [])];
+  const names = await getNamesMap(all.flatMap(o => [o.buyer_id, o.seller_id]));
+  const card = o => orderCard(o, {
+    productName: o.product_name || "Product",
+    otherLabel: "Buyer → Seller",
+    otherName: `${names[o.buyer_id] || "?"} → ${names[o.seller_id] || "?"}`,
+    role: null, backTo: "admin"
+  });
+
+  $("adminDisputes").innerHTML = disputes?.length ? disputes.map(card).join("") : loading("No open disputes 🎉");
+  $("adminOrders").innerHTML = recent?.length ? recent.map(card).join("") : loading("No orders yet.");
+}
+
+async function setBan(banned){
+  const username = $("banUsername").value.trim();
+  if (!username){ toast("Enter a username.", "error"); return; }
+  if (!confirm(`${banned ? "Ban" : "Unban"} ${username}?`)) return;
+
+  const { error } = await supabaseClient.rpc("admin_set_ban", { p_username:username, p_banned:banned });
+  if (error){ toast(error.message, "error"); return; }
+  toast(`${username} was ${banned ? "banned" : "unbanned"}.`, "success");
+  $("banUsername").value = "";
+}
+
+async function adminDeleteProduct(id){
+  if (!confirm("Delete this product as admin?")) return;
+  const { error } = await supabaseClient.from("products").delete().eq("id", id);
+  if (error){ toast(error.message, "error"); return; }
+  toast("Product deleted.", "success");
+  goBackFromProduct();
 }
 
 /* ================= MODALS: click outside / ESC ================= */
