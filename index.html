@@ -1,262 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WzyMarket</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WzyMarket</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #08090d;
-      color: white;
-    }
+body {
+  background: #08090d;
+  color: white;
+}
 
-    header {
-      height: 70px;
-      border-bottom: 1px solid #20232c;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 7%;
-    }
+header {
+  height: 70px;
+  border-bottom: 1px solid #20232c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  position: sticky;
+  top: 0;
+  background: #08090df2;
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-    }
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+}
 
-    .logo span {
-      color: #6c63ff;
-    }
+.logo span {
+  color: #6c63ff;
+}
 
-    nav {
-      display: flex;
-      gap: 28px;
-    }
+nav {
+  display: flex;
+  gap: 28px;
+}
 
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 15px;
-    }
+nav a {
+  color: #aaa;
+  text-decoration: none;
+}
 
-    nav a:hover {
-      color: white;
-    }
+nav a:hover {
+  color: white;
+}
 
-    .login {
-      background: #6c63ff;
-      padding: 11px 18px;
-      border-radius: 9px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.login,
+.sell {
+  padding: 11px 18px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px 70px;
-    }
+.login {
+  background: #6c63ff;
+  color: white;
+}
 
-    .hero h1 {
-      font-size: 58px;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.05;
-    }
+.hero {
+  text-align: center;
+  padding: 85px 20px 55px;
+}
 
-    .hero h1 span {
-      color: #6c63ff;
-    }
+.hero h1 {
+  font-size: 55px;
+  line-height: 1.05;
+}
 
-    .hero p {
-      color: #999;
-      font-size: 18px;
-      margin: 25px auto;
-      max-width: 600px;
-      line-height: 1.6;
-    }
+.hero h1 span {
+  color: #6c63ff;
+}
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 30px;
-    }
+.hero p {
+  color: #999;
+  font-size: 17px;
+  max-width: 600px;
+  margin: 22px auto;
+  line-height: 1.6;
+}
 
-    .button {
-      padding: 14px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
 
-    .primary {
-      background: #6c63ff;
-      color: white;
-    }
+.button {
+  padding: 14px 23px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .secondary {
-      border: 1px solid #30333d;
-      color: white;
-      background: #11131a;
-    }
+.primary {
+  background: #6c63ff;
+  color: white;
+}
 
-    .section {
-      padding: 50px 7%;
-    }
+.secondary {
+  border: 1px solid #30333d;
+  color: white;
+  background: #11131a;
+}
 
-    .section h2 {
-      margin-bottom: 25px;
-      font-size: 28px;
-    }
+.section {
+  padding: 40px 6%;
+}
 
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 18px;
-    }
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
 
-    .game {
-      background: #11131a;
-      border: 1px solid #20232c;
-      border-radius: 14px;
-      padding: 25px;
-      text-align: center;
-      transition: 0.2s;
-    }
+.section-title h2 {
+  font-size: 28px;
+}
 
-    .game:hover {
-      transform: translateY(-4px);
-      border-color: #6c63ff;
-    }
+.search {
+  width: 100%;
+  background: #11131a;
+  border: 1px solid #252832;
+  border-radius: 11px;
+  padding: 15px;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 25px;
+  outline: none;
+}
 
-    .game-icon {
-      font-size: 40px;
-      margin-bottom: 12px;
-    }
+.search:focus {
+  border-color: #6c63ff;
+}
 
-    .game h3 {
-      font-size: 17px;
-    }
+.games {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
 
-    .game p {
-      color: #777;
-      margin-top: 7px;
-      font-size: 13px;
-    }
+.game {
+  background: #11131a;
+  border: 1px solid #20232c;
+  border-radius: 14px;
+  padding: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+}
 
-    footer {
-      border-top: 1px solid #20232c;
-      text-align: center;
-      padding: 30px;
-      color: #666;
-      margin-top: 50px;
-    }
+.game:hover {
+  border-color: #6c63ff;
+  transform: translateY(-3px);
+}
 
-    @media (max-width: 600px) {
-      header {
-        padding: 0 20px;
-      }
+.game-icon {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
 
-      nav {
-        display: none;
-      }
+.game h3 {
+  font-size: 16px;
+}
 
-      .hero {
-        padding-top: 70px;
-      }
+.game p {
+  color: #777;
+  font-size: 12px;
+  margin-top: 6px;
+}
 
-      .hero h1 {
-        font-size: 42px;
-      }
+.market {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
 
-      .hero p {
-        font-size: 16px;
-      }
+.item {
+  background: #11131a;
+  border: 1px solid #20232c;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: .2s;
+}
 
-      .buttons {
-        flex-direction: column;
-        max-width: 280px;
-        margin: 30px auto;
-      }
-    }
-  </style>
+.item:hover {
+  border-color: #6c63ff;
+  transform: translateY(-3px);
+}
+
+.item-image {
+  height: 150px;
+  background: #171923;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+}
+
+.item-info {
+  padding: 18px;
+}
+
+.game-name {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.item-name {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.seller {
+  color: #777;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.buy {
+  background: #6c63ff;
+  color: white;
+  border: none;
+  padding: 9px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sell-box {
+  margin-top: 35px;
+  background: linear-gradient(135deg, #11131a, #17152b);
+  border: 1px solid #29253f;
+  border-radius: 18px;
+  padding: 35px;
+  text-align: center;
+}
+
+.sell-box h2 {
+  font-size: 27px;
+}
+
+.sell-box p {
+  color: #999;
+  margin: 12px auto 22px;
+  max-width: 550px;
+}
+
+.sell-button {
+  display: inline-block;
+  background: #6c63ff;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  border-top: 1px solid #20232c;
+  margin-top: 50px;
+  padding: 30px;
+  text-align: center;
+  color: #666;
+}
+
+@media(max-width: 700px) {
+
+  header {
+    padding: 0 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 65px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    max-width: 280px;
+    margin: auto;
+  }
+
+  .games {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .market {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 35px 20px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">Wzy<span>Market</span></div>
+<header>
 
-    <nav>
-      <a href="#">Marketplace</a>
-      <a href="#">Games</a>
-      <a href="#">Sell</a>
-    </nav>
+  <div class="logo">
+    Wzy<span>Market</span>
+  </div>
 
-    <a href="#" class="login">Login</a>
-  </header>
+  <nav>
+    <a href="#marketplace">Marketplace</a>
+    <a href="#games">Games</a>
+    <a href="#sell">Sell</a>
+  </nav>
 
-  <section class="hero">
-    <h1>
-      The marketplace for<br>
-      <span>gaming items.</span>
-    </h1>
+  <a href="#" class="login">Login</a>
+
+</header>
+
+
+<section class="hero">
+
+  <h1>
+    Buy & Sell<br>
+    <span>Gaming Items.</span>
+  </h1>
+
+  <p>
+    WzyMarket is a marketplace for gaming items,
+    currencies and digital goods from independent sellers.
+  </p>
+
+  <div class="buttons">
+
+    <a href="#marketplace" class="button primary">
+      Explore Marketplace
+    </a>
+
+    <a href="#sell" class="button secondary">
+      Start Selling
+    </a>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="games">
+
+  <div class="section-title">
+    <h2>Popular Games</h2>
+  </div>
+
+  <div class="games">
+
+    <div class="game">
+      <div class="game-icon">🎮</div>
+      <h3>Roblox</h3>
+      <p>Items & Currency</p>
+    </div>
+
+    <div class="game">
+      <div class="game-icon">🔫</div>
+      <h3>Fortnite</h3>
+      <p>Skins & Items</p>
+    </div>
+
+    <div class="game">
+      <div class="game-icon">🔥</div>
+      <h3>Valorant</h3>
+      <p>Gaming Items</p>
+    </div>
+
+    <div class="game">
+      <div class="game-icon">⛏️</div>
+      <h3>Minecraft</h3>
+      <p>Items & Currency</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="marketplace">
+
+  <div class="section-title">
+    <h2>Marketplace</h2>
+  </div>
+
+  <input
+    class="search"
+    type="text"
+    placeholder="🔎 Search gaming items..."
+  >
+
+  <div class="market">
+
+    <div class="item">
+
+      <div class="item-image">💎</div>
+
+      <div class="item-info">
+
+        <div class="game-name">ROBLOX</div>
+
+        <div class="item-name">
+          10,000 Robux
+        </div>
+
+        <div class="seller">
+          Sold by @Seller
+        </div>
+
+        <div class="price-row">
+
+          <div class="price">
+            $45.00
+          </div>
+
+          <button class="buy">
+            Buy
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="item">
+
+      <div class="item-image">🦙</div>
+
+      <div class="item-info">
+
+        <div class="game-name">FORTNITE</div>
+
+        <div class="item-name">
+          Rare Skin
+        </div>
+
+        <div class="seller">
+          Sold by @Player
+        </div>
+
+        <div class="price-row">
+
+          <div class="price">
+            $12.99
+          </div>
+
+          <button class="buy">
+            Buy
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="item">
+
+      <div class="item-image">💠</div>
+
+      <div class="item-info">
+
+        <div class="game-name">MINECRAFT</div>
+
+        <div class="item-name">
+          5,000 Coins
+        </div>
+
+        <div class="seller">
+          Sold by @Builder
+        </div>
+
+        <div class="price-row">
+
+          <div class="price">
+            $7.50
+          </div>
+
+          <button class="buy">
+            Buy
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="sell">
+
+  <div class="sell-box">
+
+    <h2>Start selling on WzyMarket</h2>
 
     <p>
-      Buy and sell in-game items, currencies and digital gaming goods
-      from trusted sellers.
+      Create your own seller shop and list your
+      gaming items for thousands of potential buyers.
     </p>
 
-    <div class="buttons">
-      <a href="#" class="button primary">Explore Marketplace</a>
-      <a href="#" class="button secondary">Start Selling</a>
-    </div>
-  </section>
+    <a href="#" class="sell-button">
+      Create Your Shop
+    </a>
 
-  <section class="section">
-    <h2>Popular Games</h2>
+  </div>
 
-    <div class="games">
+</section>
 
-      <div class="game">
-        <div class="game-icon">🎮</div>
-        <h3>Roblox</h3>
-        <p>Items & Currency</p>
-      </div>
 
-      <div class="game">
-        <div class="game-icon">⚔️</div>
-        <h3>Fortnite</h3>
-        <p>Skins & Items</p>
-      </div>
-
-      <div class="game">
-        <div class="game-icon">🔥</div>
-        <h3>Valorant</h3>
-        <p>Gaming Items</p>
-      </div>
-
-      <div class="game">
-        <div class="game-icon">💎</div>
-        <h3>Minecraft</h3>
-        <p>Items & Accounts</p>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    © 2026 WzyMarket — Gaming Marketplace
-  </footer>
+<footer>
+  © 2026 WzyMarket — Gaming Marketplace
+</footer>
 
 </body>
 </html>
