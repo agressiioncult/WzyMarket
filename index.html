@@ -2,874 +2,620 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>WzyMarket</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#08090d;
-color:white
+    font-family:Arial,Helvetica,sans-serif;
+    background:#08090d;
+    color:#fff;
 }
 
-button,input,textarea,select{
-font:inherit
-}
-
-button{
-cursor:pointer
-}
-
-/* NAV */
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
 
 .hero{
-min-height:430px;
-background:
-radial-gradient(circle at 20% 20%,#34266b 0%,transparent 35%),
-radial-gradient(circle at 80% 40%,#191b45 0%,transparent 35%),
-linear-gradient(135deg,#10111b,#08090d);
-border-bottom:1px solid #242633
+    min-height:430px;
+    background:
+    radial-gradient(circle at 20% 20%,#34266b 0%,transparent 35%),
+    radial-gradient(circle at 80% 40%,#191b45 0%,transparent 35%),
+    linear-gradient(135deg,#10111b,#08090d);
+    border-bottom:1px solid #242633;
 }
 
 .navbar{
-height:76px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-max-width:1250px;
-width:90%;
-margin:auto
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1250px;
+    width:90%;
+    margin:auto;
 }
 
 .logo{
-font-size:25px;
-font-weight:900
+    font-size:25px;
+    font-weight:900;
 }
 
-.logo span{
-color:#8065ff
-}
+.logo span{color:#8065ff}
 
 .nav-links{
-display:flex;
-gap:30px
+    display:flex;
+    gap:30px;
 }
 
 .nav-links a{
-color:#aeb2c0;
-text-decoration:none;
-font-size:14px;
-font-weight:600
+    color:#aeb2c0;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
 }
 
-.nav-links a:hover{
-color:white
-}
+.nav-links a:hover{color:white}
 
-.login{
-border:1px solid #383b4a;
-background:#151722;
-color:white;
-padding:10px 18px;
-border-radius:9px;
-font-weight:700
+.login,.logout{
+    border:1px solid #383b4a;
+    background:#151722;
+    color:white;
+    padding:10px 18px;
+    border-radius:9px;
+    font-weight:700;
 }
 
 .user-menu{
-display:none;
-align-items:center;
-gap:10px
+    display:none;
+    align-items:center;
+    gap:10px;
 }
 
 .username{
-color:white;
-font-weight:700;
-font-size:14px
+    color:white;
+    font-weight:700;
 }
-
-.logout{
-background:#1a1c26;
-border:1px solid #303441;
-color:#aaa;
-padding:8px 12px;
-border-radius:8px
-}
-
-/* HERO */
 
 .hero-content{
-max-width:900px;
-margin:auto;
-text-align:center;
-padding:75px 20px 60px
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    padding:75px 20px 60px;
 }
 
 .hero-content h1{
-font-size:clamp(38px,6vw,70px);
-line-height:1;
-font-weight:900;
-letter-spacing:-3px;
-margin-bottom:20px
+    font-size:clamp(38px,6vw,70px);
+    line-height:1;
+    font-weight:900;
+    letter-spacing:-3px;
+    margin-bottom:20px;
 }
 
-.hero-content h1 span{
-color:#8065ff
-}
+.hero-content h1 span{color:#8065ff}
 
 .hero-content p{
-color:#9297a7;
-font-size:17px;
-line-height:1.6;
-margin-bottom:30px
+    color:#9297a7;
+    font-size:17px;
+    line-height:1.6;
+    margin-bottom:30px;
 }
 
 .hero-search{
-max-width:620px;
-margin:auto;
-display:flex;
-background:#11131c;
-border:1px solid #343746;
-border-radius:12px;
-padding:6px
+    max-width:620px;
+    margin:auto;
+    display:flex;
+    background:#11131c;
+    border:1px solid #343746;
+    border-radius:12px;
+    padding:6px;
 }
 
 .hero-search input{
-flex:1;
-background:transparent;
-border:none;
-outline:none;
-color:white;
-padding:13px
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:white;
+    padding:13px;
 }
 
-.hero-search button{
-background:#8065ff;
-border:none;
-color:white;
-padding:0 22px;
-border-radius:8px;
-font-weight:700
+.hero-search button,
+.primary{
+    background:#8065ff;
+    border:none;
+    color:white;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:700;
 }
-
-/* MAIN */
 
 .main{
-width:90%;
-max-width:1250px;
-margin:auto
+    width:90%;
+    max-width:1250px;
+    margin:auto;
 }
 
-.games-section{
-padding:55px 0 80px
+.games-section,.marketplace,.sell-page,.orders-page,.product-page,.shop-page{
+    padding:55px 0 80px;
 }
 
-.section-header{
-margin-bottom:22px
-}
+.section-header{margin-bottom:22px}
 
-.section-header h2{
-font-size:25px
-}
+.section-header h2{font-size:25px}
 
-.section-header p{
-color:#747989;
-font-size:13px;
-margin-top:5px
+.section-header p,
+.marketplace-subtitle,
+.orders-subtitle{
+    color:#747989;
+    font-size:13px;
+    margin-top:5px;
 }
 
 .games{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
 }
 
 .game-card{
-height:220px;
-position:relative;
-overflow:hidden;
-background:
-linear-gradient(
-135deg,
-rgba(128,101,255,.18),
-rgba(20,22,31,.95)
-);
-border:1px solid #292c39;
-border-radius:18px;
-padding:28px;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-cursor:pointer;
-transition:.2s
+    background:#11131a;
+    border:1px solid #292d39;
+    border-radius:16px;
+    padding:35px;
+    transition:.2s;
 }
 
 .game-card:hover{
-transform:translateY(-4px);
-border-color:#8065ff;
-box-shadow:0 15px 40px rgba(0,0,0,.3)
+    transform:translateY(-3px);
+    border-color:#8065ff;
 }
 
 .game-icon{
-position:absolute;
-top:25px;
-left:28px;
-width:65px;
-height:65px;
-border-radius:16px;
-background:#202332;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px
+    font-size:45px;
+    margin-bottom:20px;
 }
 
 .game-card h3{
-font-size:23px;
-margin-bottom:7px
+    font-size:23px;
+    margin-bottom:8px;
 }
 
-.game-card p{
-color:#8e94a4;
-font-size:14px
+.game-card p{color:#777d8c}
+
+.back{
+    background:#151722;
+    border:1px solid #303441;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    margin-bottom:25px;
 }
 
-/* MARKET */
-
-.marketplace{
-display:none;
-padding:45px 0 80px
-}
-
-.back,
-.small-back{
-background:none;
-border:none;
-color:#9298a8;
-margin-bottom:25px
-}
-
-.marketplace h1{
-font-size:34px;
-margin-bottom:8px
-}
-
-.marketplace-subtitle{
-color:#858b9b;
-margin-bottom:25px
+.marketplace h1,
+.sell-page h1,
+.orders-page h1{
+    font-size:35px;
 }
 
 .market-search{
-width:100%;
-background:#11131a;
-border:1px solid #292d39;
-border-radius:11px;
-padding:15px;
-color:white;
-outline:none;
-margin-bottom:18px
+    width:100%;
+    margin:25px 0 15px;
+    background:#11131a;
+    border:1px solid #292d39;
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    outline:none;
 }
 
 .filters{
-display:flex;
-gap:9px;
-overflow-x:auto;
-margin-bottom:25px
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
 }
 
 .filter{
-white-space:nowrap;
-background:#11131a;
-border:1px solid #292d39;
-color:#969cab;
-padding:9px 14px;
-border-radius:8px
+    background:#151722;
+    color:#aaa;
+    border:1px solid #303441;
+    padding:9px 15px;
+    border-radius:8px;
 }
 
-.filter.active,
-.filter:hover{
-background:#8065ff;
-border-color:#8065ff;
-color:white
+.filter.active{
+    background:#8065ff;
+    border-color:#8065ff;
+    color:white;
 }
 
 .products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
 .product{
-background:#11131a;
-border:1px solid #262a35;
-border-radius:13px;
-padding:16px;
-transition:.2s
+    background:#11131a;
+    border:1px solid #292d39;
+    border-radius:14px;
+    padding:14px;
+    transition:.2s;
 }
 
 .product:hover{
-border-color:#8065ff;
-transform:translateY(-2px)
+    transform:translateY(-3px);
+    border-color:#8065ff;
 }
 
 .product-image{
-height:130px;
-border-radius:10px;
-background:#1a1d27;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:45px;
-margin-bottom:14px;
-overflow:hidden
+    height:180px;
+    border-radius:10px;
+    background:#191c27;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+    overflow:hidden;
+    margin-bottom:15px;
 }
 
 .category{
-color:#8065ff;
-font-size:11px;
-font-weight:800;
-text-transform:uppercase;
-margin-bottom:7px
+    color:#8065ff;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:7px;
 }
 
 .product h3{
-font-size:16px;
-margin-bottom:8px
+    font-size:17px;
+    margin-bottom:9px;
 }
 
 .seller{
-color:#777d8c;
-font-size:12px;
-margin-bottom:14px
+    color:#777d8c;
+    font-size:12px;
+    margin-bottom:15px;
 }
 
 .product-bottom{
-display:flex;
-justify-content:space-between;
-align-items:center
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .price{
-font-size:18px;
-font-weight:800
+    font-weight:900;
+    font-size:18px;
 }
 
 .view{
-background:#8065ff;
-border:none;
-color:white;
-padding:8px 13px;
-border-radius:7px;
-font-size:12px;
-font-weight:700
-}
-
-/* SELL */
-
-.sell-page{
-display:none;
-padding:45px 0 80px
-}
-
-.sell-page h1{
-font-size:34px;
-margin-bottom:8px
-}
-
-.sell-subtitle{
-color:#858b9b;
-margin-bottom:25px
+    background:#8065ff;
+    border:none;
+    color:white;
+    padding:9px 14px;
+    border-radius:8px;
+    font-weight:700;
 }
 
 .panel{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:16px;
-padding:22px;
-margin-bottom:20px
+    background:#11131a;
+    border:1px solid #292d39;
+    border-radius:15px;
+    padding:25px;
+    margin-top:20px;
 }
 
-.panel h2{
-font-size:20px;
-margin-bottom:18px
-}
+.panel h2{margin-bottom:18px}
 
 .form{
-display:flex;
-flex-direction:column;
-gap:13px
+    display:flex;
+    flex-direction:column;
+    gap:12px;
 }
 
 .form input,
 .form textarea,
 .form select{
-width:100%;
-background:#0b0d12;
-border:1px solid #292d39;
-color:white;
-padding:13px;
-border-radius:9px;
-outline:none
+    width:100%;
+    background:#0c0e14;
+    border:1px solid #303441;
+    color:white;
+    padding:13px;
+    border-radius:9px;
+    outline:none;
 }
 
 .form textarea{
-min-height:100px;
-resize:vertical
-}
-
-.form input:focus,
-.form textarea:focus,
-.form select:focus{
-border-color:#8065ff
-}
-
-.primary{
-background:#8065ff;
-color:white;
-border:none;
-padding:13px;
-border-radius:9px;
-font-weight:800;
-margin-top:5px
-}
-
-.danger{
-background:#38171b;
-border:1px solid #63252c;
-color:#ff8d96;
-padding:8px 12px;
-border-radius:8px
-}
-
-.shop-info{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px
-}
-
-.shop-name{
-font-size:22px;
-font-weight:800
-}
-
-.shop-desc{
-color:#858b9b;
-margin-top:5px
-}
-
-.own-products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px
-}
-
-.own-card{
-background:#0b0d12;
-border:1px solid #292d39;
-border-radius:12px;
-padding:15px
-}
-
-.own-card h3{
-margin-bottom:7px
-}
-
-.own-card p{
-color:#858b9b;
-font-size:13px;
-margin-bottom:10px
-}
-
-.own-card .row{
-display:flex;
-justify-content:space-between;
-align-items:center
+    min-height:120px;
+    resize:vertical;
 }
 
 .notice{
-padding:12px;
-border-radius:9px;
-background:#191b24;
-color:#9da3b3;
-font-size:13px;
-margin-bottom:15px
+    display:none;
+    padding:13px;
+    border-radius:9px;
+    margin:15px 0;
+    font-size:13px;
 }
 
-.success{
-color:#65d69a
+.notice.success{
+    display:block;
+    background:#13291f;
+    color:#69dc9d;
 }
 
-.error{
-color:#ff7777
+.notice.error{
+    display:block;
+    background:#32191d;
+    color:#ff7777;
 }
 
-/* PRODUCT PAGE */
+.own-products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
 
-.product-page{
-display:none;
-padding:45px 0 80px
+.own-card{
+    background:#0c0e14;
+    border:1px solid #292d39;
+    border-radius:10px;
+    padding:16px;
+}
+
+.own-card h3{margin-bottom:8px}
+
+.own-card p{
+    color:#777d8c;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.danger{
+    background:#32191d;
+    color:#ff7777;
+    border:1px solid #5b272d;
+    padding:8px 12px;
+    border-radius:7px;
 }
 
 .product-page-inner{
-display:grid;
-grid-template-columns:1.05fr .95fr;
-gap:35px;
-align-items:start
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
 }
 
 .product-page-image{
-height:430px;
-background:#11131a;
-border:1px solid #292d39;
-border-radius:18px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:120px;
-overflow:hidden
+    height:500px;
+    background:#11131a;
+    border:1px solid #292d39;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:100px;
+    overflow:hidden;
 }
 
 .product-page-image img{
-width:100%;
-height:100%;
-object-fit:cover
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .product-page-info{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:18px;
-padding:28px
-}
-
-.product-page-category{
-color:#8065ff;
-font-size:12px;
-font-weight:800;
-text-transform:uppercase;
-margin-bottom:10px
+    background:#11131a;
+    border:1px solid #292d39;
+    border-radius:15px;
+    padding:35px;
 }
 
 .product-page-info h1{
-font-size:34px;
-margin-bottom:12px
+    font-size:38px;
+    margin-bottom:15px;
 }
 
 .product-page-description{
-color:#9298a8;
-font-size:15px;
-line-height:1.7;
-margin-bottom:24px;
-white-space:pre-wrap
+    color:#9297a7;
+    line-height:1.7;
+    margin:20px 0;
 }
 
 .product-page-price{
-font-size:30px;
-font-weight:900;
-margin-bottom:8px
+    font-size:32px;
+    font-weight:900;
+    margin-bottom:8px;
 }
 
 .product-page-stock{
-color:#777d8c;
-font-size:13px;
-margin-bottom:22px
+    color:#69dc9d;
+    margin-bottom:25px;
 }
 
 .buy-button{
-width:100%;
-background:#8065ff;
-border:none;
-color:white;
-padding:15px;
-border-radius:10px;
-font-weight:800;
-font-size:15px;
-margin-bottom:10px
-}
-
-.buy-button:hover{
-background:#927cff
+    width:100%;
+    background:#8065ff;
+    border:none;
+    color:white;
+    padding:15px;
+    border-radius:9px;
+    font-weight:800;
+    margin-bottom:10px;
 }
 
 .buy-button:disabled{
-opacity:.5;
-cursor:not-allowed
+    opacity:.4;
+    cursor:not-allowed;
 }
 
 .shop-button{
-width:100%;
-background:#191b24;
-border:1px solid #303441;
-color:white;
-padding:14px;
-border-radius:10px;
-font-weight:700
+    width:100%;
+    background:#151722;
+    border:1px solid #303441;
+    color:white;
+    padding:13px;
+    border-radius:9px;
 }
 
 .seller-box{
-margin-top:22px;
-padding-top:20px;
-border-top:1px solid #292d39
+    margin-top:25px;
+    padding:15px;
+    background:#0c0e14;
+    border-radius:9px;
 }
 
 .seller-label{
-color:#707687;
-font-size:12px;
-margin-bottom:6px
+    color:#777d8c;
+    font-size:10px;
+    margin-bottom:5px;
 }
 
-.seller-name{
-font-size:16px;
-font-weight:800
-}
-
-/* SHOP */
-
-.shop-page{
-display:none;
-padding:45px 0 80px
-}
+.seller-name{font-weight:700}
 
 .shop-header{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:18px;
-padding:28px;
-margin-bottom:25px
+    background:#11131a;
+    border:1px solid #292d39;
+    border-radius:15px;
+    padding:30px;
+    margin-bottom:25px;
 }
 
 .shop-header h1{
-font-size:32px;
-margin-bottom:7px
+    font-size:35px;
+    margin-bottom:8px;
 }
 
-.shop-header p{
-color:#858b9b;
-line-height:1.6
-}
-
-/* ORDERS */
-
-.orders-page{
-display:none;
-padding:45px 0 80px
-}
-
-.orders-page h1{
-font-size:34px;
-margin-bottom:8px
-}
-
-.orders-subtitle{
-color:#858b9b;
-margin-bottom:25px
-}
-
-.orders-list{
-display:flex;
-flex-direction:column;
-gap:12px
-}
+.shop-header p{color:#777d8c}
 
 .order-card{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:14px;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px
+    background:#11131a;
+    border:1px solid #292d39;
+    padding:20px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
 }
 
-.order-left h3{
-font-size:17px;
-margin-bottom:7px
-}
+.order-left h3{margin-bottom:8px}
 
 .order-left p{
-color:#777d8c;
-font-size:13px;
-margin-top:4px
+    color:#777d8c;
+    font-size:12px;
 }
 
-.order-right{
-text-align:right
-}
-
-.order-price{
-font-size:19px;
-font-weight:800;
-margin-bottom:8px
-}
+.order-right{text-align:right}
 
 .status{
-display:inline-block;
-padding:6px 10px;
-border-radius:7px;
-font-size:11px;
-font-weight:800;
-text-transform:uppercase;
-background:#28251a;
-color:#e7c45d
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:7px;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    background:#28251a;
+    color:#e7c45d;
 }
 
 .status.completed{
-background:#142a20;
-color:#65d69a
+    background:#142a20;
+    color:#65d69a;
 }
 
 .status.cancelled{
-background:#32181b;
-color:#ff7777
+    background:#32181b;
+    color:#ff7777;
 }
 
-/* MODAL */
-
 .modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(8px);
-z-index:500;
-align-items:center;
-justify-content:center;
-padding:20px
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+    z-index:500;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
 .modal-box{
-width:100%;
-max-width:420px;
-background:#11131a;
-border:1px solid #292d39;
-border-radius:17px;
-padding:28px;
-box-shadow:0 25px 80px rgba(0,0,0,.5)
+    width:100%;
+    max-width:420px;
+    background:#11131a;
+    border:1px solid #292d39;
+    border-radius:17px;
+    padding:28px;
 }
 
 .modal-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px
-}
-
-.modal-top h2{
-font-size:24px
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
 }
 
 .close{
-background:transparent;
-border:none;
-color:#777d8c;
-font-size:25px
+    background:transparent;
+    border:none;
+    color:#777d8c;
+    font-size:25px;
 }
 
 .switch{
-background:transparent;
-border:none;
-color:#8065ff;
-margin-top:17px;
-width:100%
+    background:transparent;
+    border:none;
+    color:#8065ff;
+    margin-top:17px;
+    width:100%;
 }
 
 .message{
-font-size:13px;
-margin-top:8px;
-display:none
+    font-size:13px;
+    margin-top:8px;
 }
-
-/* FOOTER */
 
 footer{
-border-top:1px solid #20232d;
-color:#666c7b;
-text-align:center;
-padding:30px;
-font-size:13px
+    border-top:1px solid #20232d;
+    color:#666c7b;
+    text-align:center;
+    padding:30px;
+    font-size:13px;
 }
 
-/* MOBILE */
+.hidden{display:none!important}
+
+@media(max-width:900px){
+    .products{grid-template-columns:repeat(2,1fr)}
+    .own-products{grid-template-columns:1fr}
+}
 
 @media(max-width:750px){
-
-.navbar{
-width:90%
+    .nav-links{display:none}
+    .games{display:flex;overflow-x:auto}
+    .game-card{min-width:280px}
+    .products{grid-template-columns:1fr}
+    .product-page-inner{grid-template-columns:1fr}
+    .product-page-image{height:300px}
+    .order-card{flex-direction:column;align-items:flex-start;gap:15px}
+    .order-right{text-align:left}
 }
-
-.nav-links{
-display:none
-}
-
-.hero-content{
-padding-top:55px
-}
-
-.hero-content h1{
-letter-spacing:-2px
-}
-
-.games{
-display:flex;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:8px
-}
-
-.game-card{
-min-width:280px;
-scroll-snap-align:start
-}
-
-.products,
-.own-products{
-grid-template-columns:1fr
-}
-
-.product-page-inner{
-grid-template-columns:1fr;
-gap:18px
-}
-
-.product-page-image{
-height:300px
-}
-
-.product-page-info{
-padding:22px
-}
-
-.product-page-info h1{
-font-size:27px
-}
-
-.order-card{
-flex-direction:column;
-align-items:flex-start
-}
-
-.order-right{
-text-align:left
-}
-
-}
-
 </style>
 </head>
 
 <body>
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -880,43 +626,18 @@ Wzy<span>Market</span>
 </div>
 
 <div class="nav-links">
-
-<a href="#" onclick="showHome();return false">
-Marketplace
-</a>
-
-<a href="#" onclick="openSell();return false">
-Sell Items
-</a>
-
-<a href="#" onclick="openOrders();return false">
-My Orders
-</a>
-
+<a href="#" onclick="showHome();return false">Marketplace</a>
+<a href="#" onclick="openSell();return false">Sell Items</a>
+<a href="#" onclick="openOrders();return false">My Orders</a>
 </div>
 
-<button
-class="login"
-id="loginButton"
-onclick="openLogin()">
+<button class="login" id="loginButton" onclick="openLogin()">
 Login
 </button>
 
-<div
-class="user-menu"
-id="userMenu">
-
-<span
-class="username"
-id="usernameDisplay">
-</span>
-
-<button
-class="logout"
-onclick="logout()">
-Logout
-</button>
-
+<div class="user-menu" id="userMenu">
+<span class="username" id="usernameDisplay"></span>
+<button class="logout" onclick="logout()">Logout</button>
 </div>
 
 </nav>
@@ -928,21 +649,16 @@ Buy & Sell <span>Roblox Items.</span>
 </h1>
 
 <p>
-Find the best Roblox items, services and offers from trusted sellers on WzyMarket.
+Find Roblox items, services and offers from sellers on WzyMarket.
 </p>
 
 <div class="hero-search">
-
 <input
 id="globalSearch"
 type="text"
 placeholder="Search for items..."
-onkeydown="if(event.key==='Enter') globalSearch()">
-
-<button onclick="globalSearch()">
-Search
-</button>
-
+onkeydown="if(event.key==='Enter')globalSearch()">
+<button onclick="globalSearch()">Search</button>
 </div>
 
 </div>
@@ -954,59 +670,25 @@ Search
 
 <!-- HOME -->
 
-<section
-id="home"
-class="games-section">
+<section id="home" class="games-section">
 
 <div class="section-header">
-
-<h2>
-Roblox Games
-</h2>
-
-<p>
-Choose a game to browse its marketplace.
-</p>
-
+<h2>Roblox Games</h2>
+<p>Choose a game to browse its marketplace.</p>
 </div>
 
 <div class="games">
 
-<div
-class="game-card"
-onclick="openGame('pets')">
-
-<div class="game-icon">
-🐾
+<div class="game-card" onclick="openGame('pets')">
+<div class="game-icon">🐾</div>
+<h3>Pets Universe</h3>
+<p>Pets & Tickets</p>
 </div>
 
-<h3>
-Pets Universe
-</h3>
-
-<p>
-Pets & Tickets
-</p>
-
-</div>
-
-
-<div
-class="game-card"
-onclick="openGame('robux')">
-
-<div class="game-icon">
-💰
-</div>
-
-<h3>
-Robux
-</h3>
-
-<p>
-Ingame Gifting, Gamepass & Roblox Plus
-</p>
-
+<div class="game-card" onclick="openGame('robux')">
+<div class="game-icon">💰</div>
+<h3>Robux</h3>
+<p>Ingame Gifting, Gamepass & Roblox Plus</p>
 </div>
 
 </div>
@@ -1014,24 +696,15 @@ Ingame Gifting, Gamepass & Roblox Plus
 </section>
 
 
-<!-- PETS MARKET -->
+<!-- PETS -->
 
-<section
-id="petsMarket"
-class="marketplace">
+<section id="petsMarket" class="marketplace hidden">
 
-<button
-class="back"
-onclick="showHome()">
-← Back to Games
-</button>
+<button class="back" onclick="showHome()">← Back to Games</button>
 
-<h1>
-Pets Universe
-</h1>
-
+<h1>Pets Universe</h1>
 <p class="marketplace-subtitle">
-Buy Pets Universe items from different sellers.
+Buy Pets Universe items from real sellers.
 </p>
 
 <input
@@ -1042,52 +715,38 @@ oninput="renderProducts('pets')">
 
 <div class="filters">
 
-<button
-class="filter active"
+<button class="filter active"
 onclick="setFilter('pets','All',this)">
 All
 </button>
 
-<button
-class="filter"
+<button class="filter"
 onclick="setFilter('pets','Pets',this)">
 🐾 Pets
 </button>
 
-<button
-class="filter"
+<button class="filter"
 onclick="setFilter('pets','Tickets',this)">
 🎟️ Tickets
 </button>
 
 </div>
 
-<div
-id="petsProducts"
-class="products">
-</div>
+<div id="petsProducts" class="products"></div>
 
 </section>
 
 
-<!-- ROBUX MARKET -->
+<!-- ROBUX -->
 
-<section
-id="robuxMarket"
-class="marketplace">
+<section id="robuxMarket" class="marketplace hidden">
 
-<button
-class="back"
-onclick="showHome()">
-← Back to Games
-</button>
+<button class="back" onclick="showHome()">← Back to Games</button>
 
-<h1>
-Robux
-</h1>
+<h1>Robux</h1>
 
 <p class="marketplace-subtitle">
-Buy Roblox services from different sellers.
+Buy Robux related products from real sellers.
 </p>
 
 <input
@@ -1098,225 +757,137 @@ oninput="renderProducts('robux')">
 
 <div class="filters">
 
-<button
-class="filter active"
+<button class="filter active"
 onclick="setFilter('robux','All',this)">
 All
 </button>
 
-<button
-class="filter"
+<button class="filter"
 onclick="setFilter('robux','Ingame Gifting',this)">
 🎁 Ingame Gifting
 </button>
 
-<button
-class="filter"
+<button class="filter"
 onclick="setFilter('robux','Gamepass',this)">
 🎮 Gamepass
 </button>
 
-<button
-class="filter"
+<button class="filter"
 onclick="setFilter('robux','Roblox Plus',this)">
 ⭐ Roblox Plus
 </button>
 
 </div>
 
-<div
-id="robuxProducts"
-class="products">
-</div>
+<div id="robuxProducts" class="products"></div>
 
 </section>
 
 
-<!-- PRODUCT PAGE -->
+<!-- PRODUCT -->
 
-<section
-id="productPage"
-class="product-page">
+<section id="productPage" class="product-page hidden">
 
-<button
-class="back"
-onclick="goBackFromProduct()">
+<button class="back" onclick="goBackFromProduct()">
 ← Back
 </button>
 
-<div id="productPageContent">
-</div>
+<div id="productPageContent"></div>
 
 </section>
 
 
-<!-- SHOP PAGE -->
+<!-- SHOP -->
 
-<section
-id="shopPage"
-class="shop-page">
+<section id="shopPage" class="shop-page hidden">
 
-<button
-class="back"
-onclick="showHome()">
-← Back to Marketplace
+<button class="back" onclick="showHome()">
+← Marketplace
 </button>
 
-<div id="shopPageContent">
-</div>
+<div id="shopPageContent"></div>
 
 </section>
 
 
-<!-- SELL PAGE -->
+<!-- SELL -->
 
-<section
-id="sellPage"
-class="sell-page">
+<section id="sellPage" class="sell-page hidden">
 
-<button
-class="small-back"
-onclick="showHome()">
-← Back to Marketplace
+<button class="back" onclick="showHome()">
+← Marketplace
 </button>
 
-<h1>
-My Shop
-</h1>
+<h1>Sell Items</h1>
 
-<p class="sell-subtitle">
-Create your shop and publish products on WzyMarket.
+<p class="marketplace-subtitle">
+Create your shop and publish products.
 </p>
 
-<div
-id="sellNotice"
-class="notice"
-style="display:none">
-</div>
+<div id="sellNotice" class="notice"></div>
 
 
-<div
-id="createShopPanel"
-class="panel">
+<div class="panel">
 
-<h2>
-Create your shop
-</h2>
+<h2>My Shop</h2>
 
-<form
-class="form"
-onsubmit="createShop(event)">
+<form id="shopForm" class="form" onsubmit="createShop(event)">
 
 <input
 id="shopName"
-placeholder="Shop Name"
+placeholder="Shop name"
 maxlength="40"
 required>
 
 <textarea
 id="shopDescription"
-placeholder="Shop Description"
+placeholder="Shop description"
 maxlength="300"></textarea>
 
-<button
-class="primary"
-type="submit">
-Create Shop
+<button class="primary" type="submit">
+Create / Update Shop
 </button>
 
 </form>
 
-</div>
-
-
-<div
-id="shopPanel"
-class="panel"
-style="display:none">
-
-<div class="shop-info">
-
-<div>
-
-<div
-class="shop-name"
-id="myShopName">
-</div>
-
-<div
-class="shop-desc"
-id="myShopDescription">
-</div>
-
-</div>
-
-<button
-class="primary"
-onclick="showProductForm()">
-+ Add Product
-</button>
-
-</div>
+<div id="shopStatus"></div>
 
 </div>
 
 
-<div
-id="productFormPanel"
-class="panel"
-style="display:none">
+<div class="panel">
 
-<h2>
-Add Product
-</h2>
+<h2>Add Product</h2>
 
 <form
+id="productForm"
 class="form"
 onsubmit="createProduct(event)">
 
-<select
-id="productGame"
+<select id="productGame"
 onchange="updateCategories()"
 required>
 
-<option value="">
-Choose Game
-</option>
-
-<option value="pets">
-Pets Universe
-</option>
-
-<option value="robux">
-Robux
-</option>
+<option value="">Choose Game</option>
+<option value="pets">Pets Universe</option>
+<option value="robux">Robux</option>
 
 </select>
 
-
-<select
-id="productCategory"
-required>
-
-<option value="">
-Choose Category
-</option>
-
+<select id="productCategory" required>
+<option value="">Choose Category</option>
 </select>
-
 
 <input
 id="productName"
-placeholder="Product Name"
+placeholder="Product name"
 maxlength="80"
 required>
 
-
 <textarea
 id="productDescription"
-placeholder="Product Description"
+placeholder="Product description"
 maxlength="500"></textarea>
-
 
 <input
 id="productPrice"
@@ -1325,7 +896,6 @@ min="0.01"
 step="0.01"
 placeholder="Price in USD"
 required>
-
 
 <input
 id="productStock"
@@ -1336,23 +906,12 @@ value="1"
 placeholder="Stock"
 required>
 
-
 <input
 id="productImage"
 placeholder="Product image URL (optional)">
 
-
-<button
-class="primary"
-type="submit">
+<button class="primary" type="submit">
 Publish Product
-</button>
-
-<button
-type="button"
-class="logout"
-onclick="hideProductForm()">
-Cancel
 </button>
 
 </form>
@@ -1362,66 +921,39 @@ Cancel
 
 <div class="panel">
 
-<h2>
-My Products
-</h2>
+<h2>My Products</h2>
 
-<div
-id="myProducts"
-class="own-products">
-</div>
+<div id="myProducts" class="own-products"></div>
 
 </div>
 
-
-<!-- SELLER ORDERS -->
 
 <div class="panel">
 
-<h2>
-Orders for My Products
-</h2>
+<h2>Orders for My Products</h2>
 
-<div
-id="sellerOrders"
-class="orders-list">
-
-<p style="color:#777d8c">
-Loading orders...
-</p>
-
-</div>
+<div id="sellerOrders"></div>
 
 </div>
 
 </section>
 
 
-<!-- MY ORDERS -->
+<!-- ORDERS -->
 
-<section
-id="ordersPage"
-class="orders-page">
+<section id="ordersPage" class="orders-page hidden">
 
-<button
-class="back"
-onclick="showHome()">
-← Back to Marketplace
+<button class="back" onclick="showHome()">
+← Marketplace
 </button>
 
-<h1>
-My Orders
-</h1>
+<h1>My Orders</h1>
 
 <p class="orders-subtitle">
 View your purchases and order status.
 </p>
 
-<div
-id="ordersList"
-class="orders-list">
-
-</div>
+<div id="ordersList"></div>
 
 </section>
 
@@ -1430,23 +962,15 @@ class="orders-list">
 
 <!-- LOGIN -->
 
-<div
-class="modal"
-id="loginModal">
+<div class="modal" id="loginModal">
 
 <div class="modal-box">
 
 <div class="modal-top">
 
-<h2 id="authTitle">
-Login
-</h2>
+<h2 id="authTitle">Login</h2>
 
-<button
-class="close"
-onclick="closeLogin()">
-×
-</button>
+<button class="close" onclick="closeLogin()">×</button>
 
 </div>
 
@@ -1468,9 +992,7 @@ type="password"
 placeholder="Password"
 required>
 
-<button
-class="primary"
-type="submit">
+<button class="primary" type="submit">
 Login
 </button>
 
@@ -1503,20 +1025,13 @@ placeholder="Password"
 minlength="6"
 required>
 
-<button
-class="primary"
-type="submit">
+<button class="primary" type="submit">
 Create Account
 </button>
 
 </form>
 
-
-<p
-class="message"
-id="authMessage">
-</p>
-
+<p class="message" id="authMessage"></p>
 
 <button
 class="switch"
@@ -1526,7 +1041,6 @@ Don't have an account? Sign Up
 </button>
 
 </div>
-
 </div>
 
 
@@ -1537,7 +1051,9 @@ Don't have an account? Sign Up
 
 <script>
 
-/* SUPABASE */
+/* =====================================
+   SUPABASE
+===================================== */
 
 const SUPABASE_URL =
 "https://tejyxzbagctgxymmefyg.supabase.co";
@@ -1552,2197 +1068,1633 @@ SUPABASE_KEY
 );
 
 
-/* DEMO PRODUCTS */
-
-const demoProducts = {
-
-pets:[
-{
-name:"Exclusive Pet",
-category:"Pets",
-seller:"ExampleSeller",
-price:"$2.99",
-icon:"🐾"
-},
-{
-name:"Rare Pet",
-category:"Pets",
-seller:"PetTrader",
-price:"$4.50",
-icon:"🐶"
-},
-{
-name:"Legendary Pet",
-category:"Pets",
-seller:"WzySeller",
-price:"$8.99",
-icon:"🦄"
-},
-{
-name:"100 Tickets",
-category:"Tickets",
-seller:"TicketShop",
-price:"$3.49",
-icon:"🎟️"
-}
-],
-
-robux:[
-{
-name:"1,000 Robux Gamepass",
-category:"Gamepass",
-seller:"RobuxShop",
-price:"$4.99",
-icon:"🎮"
-},
-{
-name:"5,000 Robux Gamepass",
-category:"Gamepass",
-seller:"FastRobux",
-price:"$22.99",
-icon:"🎮"
-},
-{
-name:"Ingame Gifting",
-category:"Ingame Gifting",
-seller:"GiftStore",
-price:"$5.00",
-icon:"🎁"
-},
-{
-name:"Roblox Plus",
-category:"Roblox Plus",
-seller:"PremiumSeller",
-price:"$6.99",
-icon:"⭐"
-}
-]
-
-};
-
-
-/* STATE */
-
-let filters = {
-pets:"All",
-robux:"All"
-};
+/* =====================================
+   STATE
+===================================== */
 
 let currentUser = null;
 let currentShop = null;
 let previousProductGame = "pets";
 
+const filters = {
+    pets:"All",
+    robux:"All"
+};
 
-/* LOGIN */
 
-function openLogin(){
+/* =====================================
+   HELPERS
+===================================== */
 
-document.getElementById("loginModal")
-.style.display="flex";
-
-document.getElementById("authMessage")
-.style.display="none";
-
+function escapeHtml(value){
+    return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
-
-function closeLogin(){
-
-document.getElementById("loginModal")
-.style.display="none";
-
+function escapeAttr(value){
+    return escapeHtml(value);
 }
-
-
-function switchAuth(){
-
-const l =
-document.getElementById("loginForm");
-
-const s =
-document.getElementById("signupForm");
-
-const t =
-document.getElementById("authTitle");
-
-const b =
-document.getElementById("switchButton");
-
-
-if(l.style.display!=="none"){
-
-l.style.display="none";
-
-s.style.display="flex";
-
-t.textContent="Create Account";
-
-b.textContent=
-"Already have an account? Login";
-
-}
-
-else{
-
-l.style.display="flex";
-
-s.style.display="none";
-
-t.textContent="Login";
-
-b.textContent=
-"Don't have an account? Sign Up";
-
-}
-
-}
-
-
-/* SIGN UP */
-
-async function signup(e){
-
-e.preventDefault();
-
-const m =
-document.getElementById("authMessage");
-
-m.style.display="block";
-
-m.className="message";
-
-m.textContent=
-"Creating your account...";
-
-
-const username =
-document.getElementById("signupUsername")
-.value.trim();
-
-const email =
-document.getElementById("signupEmail")
-.value.trim();
-
-const password =
-document.getElementById("signupPassword")
-.value;
-
-
-try{
-
-const {
-data,
-error
-} =
-await supabaseClient.auth.signUp({
-email,
-password
-});
-
-if(error)
-throw error;
-
-if(!data.user)
-throw new Error(
-"Account could not be created."
-);
-
-
-const {
-error:profileError
-} =
-await supabaseClient
-.from("profiles")
-.insert({
-id:data.user.id,
-username
-});
-
-
-if(profileError)
-throw new Error(profileError.message);
-
-
-m.className="message success";
-
-m.textContent=
-"Account created successfully!";
-
-setTimeout(
-closeLogin,
-900
-);
-
-}
-
-catch(err){
-
-m.className="message error";
-
-m.textContent=
-err.message;
-
-}
-
-}
-
-
-/* LOGIN */
-
-async function login(e){
-
-e.preventDefault();
-
-const m =
-document.getElementById("authMessage");
-
-m.style.display="block";
-
-m.className="message";
-
-m.textContent=
-"Logging in...";
-
-
-const email =
-document.getElementById("loginEmail")
-.value.trim();
-
-const password =
-document.getElementById("loginPassword")
-.value;
-
-
-const {
-error
-} =
-await supabaseClient.auth
-.signInWithPassword({
-email,
-password
-});
-
-
-if(error){
-
-m.className="message error";
-
-m.textContent=
-error.message;
-
-return;
-
-}
-
-
-m.className="message success";
-
-m.textContent=
-"Login successful!";
-
-setTimeout(
-closeLogin,
-600
-);
-
-}
-
-
-/* LOGOUT */
-
-async function logout(){
-
-await supabaseClient
-.auth.signOut();
-
-currentUser=null;
-
-currentShop=null;
-
-showHome();
-
-}
-
-
-/* USER UI */
-
-async function updateUserUI(){
-
-const {
-data:{user}
-} =
-await supabaseClient.auth.getUser();
-
-currentUser=user;
-
-
-const lb =
-document.getElementById("loginButton");
-
-const um =
-document.getElementById("userMenu");
-
-const ud =
-document.getElementById("usernameDisplay");
-
-
-if(!user){
-
-lb.style.display="block";
-
-um.style.display="none";
-
-return;
-
-}
-
-
-lb.style.display="none";
-
-um.style.display="flex";
-
-
-const {
-data:profile
-} =
-await supabaseClient
-.from("profiles")
-.select("username")
-.eq("id",user.id)
-.maybeSingle();
-
-
-ud.textContent =
-profile?.username ||
-user.email.split("@")[0];
-
-}
-
-
-/* AUTH LISTENER */
-
-supabaseClient.auth.onAuthStateChange(
-() => {
-
-setTimeout(
-updateUserUI,
-0
-);
-
-}
-);
-
-
-/* SECTIONS */
 
 function hideAllSections(){
 
-document.getElementById("home")
-.style.display="none";
-
-document.getElementById("petsMarket")
-.style.display="none";
-
-document.getElementById("robuxMarket")
-.style.display="none";
-
-document.getElementById("productPage")
-.style.display="none";
-
-document.getElementById("shopPage")
-.style.display="none";
-
-document.getElementById("sellPage")
-.style.display="none";
-
-document.getElementById("ordersPage")
-.style.display="none";
+    [
+        "home",
+        "petsMarket",
+        "robuxMarket",
+        "productPage",
+        "shopPage",
+        "sellPage",
+        "ordersPage"
+    ].forEach(id=>{
+        document.getElementById(id)
+        .classList.add("hidden");
+    });
 
 }
-
-
-/* HOME */
 
 function showHome(){
 
-hideAllSections();
+    hideAllSections();
 
-document.getElementById("home")
-.style.display="block";
+    document.getElementById("home")
+    .classList.remove("hidden");
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
-/* GAME */
+/* =====================================
+   AUTH
+===================================== */
+
+function openLogin(){
+
+    document.getElementById("loginModal")
+    .style.display="flex";
+
+}
+
+function closeLogin(){
+
+    document.getElementById("loginModal")
+    .style.display="none";
+
+}
+
+function switchAuth(){
+
+    const loginForm =
+    document.getElementById("loginForm");
+
+    const signupForm =
+    document.getElementById("signupForm");
+
+    const title =
+    document.getElementById("authTitle");
+
+    const button =
+    document.getElementById("switchButton");
+
+    const loginVisible =
+    loginForm.style.display !== "none";
+
+    if(loginVisible){
+
+        loginForm.style.display="none";
+        signupForm.style.display="flex";
+
+        title.textContent="Create Account";
+
+        button.textContent=
+        "Already have an account? Login";
+
+    }else{
+
+        loginForm.style.display="flex";
+        signupForm.style.display="none";
+
+        title.textContent="Login";
+
+        button.textContent=
+        "Don't have an account? Sign Up";
+
+    }
+
+}
+
+async function login(event){
+
+    event.preventDefault();
+
+    const email =
+    document.getElementById("loginEmail").value;
+
+    const password =
+    document.getElementById("loginPassword").value;
+
+    const message =
+    document.getElementById("authMessage");
+
+    const {error} =
+    await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+    });
+
+    if(error){
+
+        message.style.display="block";
+        message.style.color="#ff7777";
+        message.textContent=error.message;
+
+        return;
+    }
+
+    message.style.display="none";
+
+    closeLogin();
+
+    await updateUserUI();
+
+}
+
+async function signup(event){
+
+    event.preventDefault();
+
+    const username =
+    document.getElementById("signupUsername").value.trim();
+
+    const email =
+    document.getElementById("signupEmail").value;
+
+    const password =
+    document.getElementById("signupPassword").value;
+
+    const message =
+    document.getElementById("authMessage");
+
+    const {data,error} =
+    await supabaseClient.auth.signUp({
+
+        email,
+        password,
+
+        options:{
+            data:{
+                username
+            }
+        }
+
+    });
+
+    if(error){
+
+        message.style.display="block";
+        message.style.color="#ff7777";
+        message.textContent=error.message;
+
+        return;
+    }
+
+    if(data.user){
+
+        /*
+        If email confirmation is disabled,
+        create/update profile here.
+        */
+
+        if(data.session){
+
+            await supabaseClient
+            .from("profiles")
+            .upsert({
+                id:data.user.id,
+                username
+            });
+
+        }
+
+    }
+
+    message.style.display="block";
+    message.style.color="#69dc9d";
+    message.textContent=
+    data.session
+    ? "Account created successfully!"
+    : "Account created. Check your email to confirm your account.";
+
+}
+
+async function logout(){
+
+    await supabaseClient.auth.signOut();
+
+    currentUser=null;
+    currentShop=null;
+
+    updateUserUI();
+
+    showHome();
+
+}
+
+async function updateUserUI(){
+
+    const {
+        data:{user}
+    } =
+    await supabaseClient.auth.getUser();
+
+    currentUser=user;
+
+    const loginButton =
+    document.getElementById("loginButton");
+
+    const userMenu =
+    document.getElementById("userMenu");
+
+    const usernameDisplay =
+    document.getElementById("usernameDisplay");
+
+    if(user){
+
+        loginButton.style.display="none";
+        userMenu.style.display="flex";
+
+        let username="User";
+
+        const {data:profile} =
+        await supabaseClient
+        .from("profiles")
+        .select("username")
+        .eq("id",user.id)
+        .maybeSingle();
+
+        if(profile?.username){
+            username=profile.username;
+        }else if(user.user_metadata?.username){
+            username=user.user_metadata.username;
+        }
+
+        usernameDisplay.textContent=username;
+
+    }else{
+
+        loginButton.style.display="block";
+        userMenu.style.display="none";
+
+    }
+
+}
+
+
+/* =====================================
+   GAME MARKET
+===================================== */
 
 function openGame(game){
 
-hideAllSections();
+    hideAllSections();
 
-document.getElementById(
-game==="pets"
-?"petsMarket"
-:"robuxMarket"
-).style.display="block";
+    document.getElementById(
+        game==="pets"
+        ?"petsMarket"
+        :"robuxMarket"
+    ).classList.remove("hidden");
 
-renderProducts(game);
+    renderProducts(game);
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+function setFilter(game,category,button){
+
+    filters[game]=category;
+
+    const parent=button.parentElement;
+
+    parent.querySelectorAll(".filter")
+    .forEach(b=>b.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderProducts(game);
 
 }
 
 
-/* SELL PAGE */
-
-async function openSell(){
-
-const {
-data:{user}
-} =
-await supabaseClient.auth.getUser();
-
-
-if(!user){
-
-openLogin();
-
-return;
-
-}
-
-
-currentUser=user;
-
-hideAllSections();
-
-document.getElementById("sellPage")
-.style.display="block";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-await loadShop();
-
-}
-
-
-/* SHOP */
-
-async function loadShop(){
-
-const {
-data:shop,
-error
-} =
-await supabaseClient
-.from("shops")
-.select("*")
-.eq("owner_id",currentUser.id)
-.maybeSingle();
-
-
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
-}
-
-
-currentShop=shop||null;
-
-
-document.getElementById(
-"createShopPanel"
-).style.display =
-shop
-?"none"
-:"block";
-
-
-document.getElementById(
-"shopPanel"
-).style.display =
-shop
-?"block"
-:"none";
-
-
-if(shop){
-
-document.getElementById(
-"myShopName"
-).textContent =
-shop.name;
-
-document.getElementById(
-"myShopDescription"
-).textContent =
-shop.description ||
-"No description";
-
-await loadMyProducts();
-
-await loadSellerOrders();
-
-}
-
-else{
-
-document.getElementById(
-"myProducts"
-).innerHTML =
-"<p style='color:#777d8c'>Create your shop first.</p>";
-
-document.getElementById(
-"sellerOrders"
-).innerHTML =
-"<p style='color:#777d8c'>Create your shop first.</p>";
-
-}
-
-}
-
-
-/* CREATE SHOP */
-
-async function createShop(e){
-
-e.preventDefault();
-
-if(!currentUser)
-return;
-
-
-const name =
-document.getElementById("shopName")
-.value.trim();
-
-const description =
-document.getElementById("shopDescription")
-.value.trim();
-
-
-const {
-data,
-error
-} =
-await supabaseClient
-.from("shops")
-.insert({
-owner_id:currentUser.id,
-name,
-description
-})
-.select()
-.single();
-
-
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
-}
-
-
-currentShop=data;
-
-showSellNotice(
-"Shop created successfully!",
-false
-);
-
-await loadShop();
-
-}
-
-
-/* NOTICE */
-
-function showSellNotice(
-text,
-error
-){
-
-const n =
-document.getElementById(
-"sellNotice"
-);
-
-n.style.display="block";
-
-n.className =
-error
-?"notice error"
-:"notice success";
-
-n.textContent=text;
-
-}
-
-
-/* PRODUCT FORM */
-
-function showProductForm(){
-
-document.getElementById(
-"productFormPanel"
-).style.display="block";
-
-document.getElementById(
-"productFormPanel"
-).scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-function hideProductForm(){
-
-document.getElementById(
-"productFormPanel"
-).style.display="none";
-
-}
-
-
-/* CATEGORIES */
-
-function updateCategories(){
-
-const game =
-document.getElementById(
-"productGame"
-).value;
-
-const select =
-document.getElementById(
-"productCategory"
-);
-
-select.innerHTML =
-'<option value="">Choose Category</option>';
-
-
-const cats =
-game==="pets"
-?
-["Pets","Tickets"]
-:
-game==="robux"
-?
-[
-"Ingame Gifting",
-"Gamepass",
-"Roblox Plus"
-]
-:
-[];
-
-
-cats.forEach(c=>{
-
-const option =
-document.createElement("option");
-
-option.value=c;
-
-option.textContent=c;
-
-select.appendChild(option);
-
-});
-
-}
-
-
-/* CREATE PRODUCT */
-
-async function createProduct(e){
-
-e.preventDefault();
-
-if(!currentUser || !currentShop){
-
-showSellNotice(
-"Create a shop first.",
-true
-);
-
-return;
-
-}
-
-
-const game =
-document.getElementById(
-"productGame"
-).value;
-
-const category =
-document.getElementById(
-"productCategory"
-).value;
-
-const name =
-document.getElementById(
-"productName"
-).value.trim();
-
-const description =
-document.getElementById(
-"productDescription"
-).value.trim();
-
-const price =
-Number(
-document.getElementById(
-"productPrice"
-).value
-);
-
-const stock =
-Number(
-document.getElementById(
-"productStock"
-).value
-);
-
-const image_url =
-document.getElementById(
-"productImage"
-).value.trim()
-||
-null;
-
-
-const {
-error
-} =
-await supabaseClient
-.from("products")
-.insert({
-seller_id:currentUser.id,
-shop_id:currentShop.id,
-game,
-category,
-name,
-description,
-price,
-stock,
-image_url
-});
-
-
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
-}
-
-
-showSellNotice(
-"Product published successfully!",
-false
-);
-
-e.target.reset();
-
-hideProductForm();
-
-await loadMyProducts();
-
-renderProducts("pets");
-renderProducts("robux");
-
-}
-
-
-/* MY PRODUCTS */
-
-async function loadMyProducts(){
-
-const box =
-document.getElementById(
-"myProducts"
-);
-
-
-const {
-data,
-error
-} =
-await supabaseClient
-.from("products")
-.select("*")
-.eq("seller_id",currentUser.id)
-.order(
-"created_at",
-{ascending:false}
-);
-
-
-if(error){
-
-box.innerHTML =
-"<p class='error'>" +
-escapeHtml(error.message) +
-"</p>";
-
-return;
-
-}
-
-
-if(!data?.length){
-
-box.innerHTML =
-"<p style='color:#777d8c'>No products yet.</p>";
-
-return;
-
-}
-
-
-box.innerHTML =
-data.map(p=>`
-
-<div class="own-card">
-
-<h3>
-${escapeHtml(p.name)}
-</h3>
-
-<p>
-${escapeHtml(p.game)}
-·
-${escapeHtml(p.category)}
-·
-Stock ${p.stock}
-</p>
-
-<div class="row">
-
-<b>
-$${Number(p.price).toFixed(2)}
-</b>
-
-<button
-class="danger"
-onclick="deleteProduct(${p.id})">
-Delete
-</button>
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-/* DELETE PRODUCT */
-
-async function deleteProduct(id){
-
-if(!confirm(
-"Delete this product?"
-))
-return;
-
-
-const {
-error
-} =
-await supabaseClient
-.from("products")
-.delete()
-.eq("id",id)
-.eq("seller_id",currentUser.id);
-
-
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
-}
-
-
-showSellNotice(
-"Product deleted.",
-false
-);
-
-await loadMyProducts();
-
-renderProducts("pets");
-renderProducts("robux");
-
-}
-
-
-/* MARKET PRODUCTS */
+/* =====================================
+   REAL SUPABASE PRODUCTS
+===================================== */
 
 async function renderProducts(game){
 
-const container =
-document.getElementById(
-game==="pets"
-?"petsProducts"
-:"robuxProducts"
-);
+    const container =
+    document.getElementById(
+        game==="pets"
+        ?"petsProducts"
+        :"robuxProducts"
+    );
 
-const search =
-document.getElementById(
-game==="pets"
-?"petsSearch"
-:"robuxSearch"
-).value
-.toLowerCase()
-.trim();
+    const search =
+    document.getElementById(
+        game==="pets"
+        ?"petsSearch"
+        :"robuxSearch"
+    ).value
+    .toLowerCase()
+    .trim();
 
+    container.innerHTML=
+    "<p style='color:#777d8c'>Loading products...</p>";
 
-container.innerHTML =
-"<p style='color:#777d8c'>Loading products...</p>";
+    const {data,error} =
+    await supabaseClient
+    .from("products")
+    .select(`
+        id,
+        name,
+        category,
+        price,
+        stock,
+        image_url,
+        seller_id,
+        shop_id,
+        description,
+        profiles(username)
+    `)
+    .eq("game",game)
+    .order("created_at",{ascending:false});
 
+    if(error){
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,category,price,stock,image_url,seller_id,shop_id,description,profiles(username)"
-)
-.eq("game",game)
-.order(
-"created_at",
-{ascending:false}
-);
+        console.error(error);
 
+        container.innerHTML=
+        `<p style="color:#ff7777">
+        Could not load products:<br>
+        ${escapeHtml(error.message)}
+        </p>`;
 
-let list=data||[];
+        return;
+    }
 
+    const products =
+    (data || []).filter(product=>{
 
-if(error){
+        const categoryMatch =
+        filters[game]==="All" ||
+        product.category===filters[game];
 
-console.error(error);
+        const searchMatch =
+        (product.name || "")
+        .toLowerCase()
+        .includes(search)
+        ||
+        (product.category || "")
+        .toLowerCase()
+        .includes(search)
+        ||
+        (product.profiles?.username || "")
+        .toLowerCase()
+        .includes(search);
 
-list=[];
+        return categoryMatch && searchMatch;
 
-}
+    });
 
+    if(!products.length){
 
-const filtered =
-list.filter(p=>
-(
-filters[game]==="All" ||
-p.category===filters[game]
-)
-&&
-(
-(p.name||"")
-.toLowerCase()
-.includes(search)
+        container.innerHTML=
+        `<div class="panel">
+        <p style="color:#777d8c">
+        No real products found.
+        Sellers can publish products from "Sell Items".
+        </p>
+        </div>`;
 
-||
+        return;
+    }
 
-(p.category||"")
-.toLowerCase()
-.includes(search)
+    container.innerHTML=
+    products.map(product=>{
 
-||
+        const image =
+        product.image_url
 
-(p.profiles?.username||"")
-.toLowerCase()
-.includes(search)
-)
-);
+        ?
 
+        `<img
+        src="${escapeAttr(product.image_url)}"
+        onerror="this.style.display='none'"
+        style="width:100%;height:100%;object-fit:cover">`
 
-if(!filtered.length){
+        :
 
-const demos =
-demoProducts[game].filter(p=>
-(
-filters[game]==="All" ||
-p.category===filters[game]
-)
-&&
-(
-p.name+" "+
-p.category+" "+
-p.seller
-)
-.toLowerCase()
-.includes(search)
-);
+        game==="pets"
+        ?"🐾"
+        :"💰";
 
+        return `
 
-container.innerHTML =
-demos.length
-?
-demos.map(demoCard).join("")
-:
-"<p style='color:#777d8c'>No products found.</p>";
+        <div class="product">
 
-return;
+            <div class="product-image">
+                ${image}
+            </div>
 
-}
+            <div class="category">
+                ${escapeHtml(product.category)}
+            </div>
 
+            <h3>
+                ${escapeHtml(product.name)}
+            </h3>
 
-container.innerHTML =
-filtered.map(p=>{
+            <div class="seller">
+                Seller:
+                ${escapeHtml(
+                    product.profiles?.username ||
+                    "Seller"
+                )}
+                · Stock:
+                ${Number(product.stock)}
+            </div>
 
-const image =
-p.image_url
-?
-`<img
-src="${escapeAttr(p.image_url)}"
-style="width:100%;height:100%;object-fit:cover;border-radius:10px"
-onerror="this.style.display='none'">`
-:
-(
-game==="pets"
-?
-"🐾"
-:
-"💰"
-);
+            <div class="product-bottom">
 
+                <div class="price">
+                    $${Number(product.price).toFixed(2)}
+                </div>
 
-return `
+                <button
+                class="view"
+                onclick="viewProduct(${product.id})">
+                    View
+                </button>
 
-<div class="product">
+            </div>
 
-<div class="product-image">
-${image}
-</div>
+        </div>
 
-<div class="category">
-${escapeHtml(p.category)}
-</div>
+        `;
 
-<h3>
-${escapeHtml(p.name)}
-</h3>
-
-<div class="seller">
-Seller:
-${escapeHtml(
-p.profiles?.username ||
-"Seller"
-)}
-· Stock:
-${p.stock}
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-$${Number(p.price).toFixed(2)}
-</div>
-
-<button
-class="view"
-onclick="viewProduct(${p.id})">
-View
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
+    }).join("");
 
 }
 
 
-/* DEMO CARD */
-
-function demoCard(p){
-
-return `
-
-<div class="product">
-
-<div class="product-image">
-${p.icon}
-</div>
-
-<div class="category">
-${escapeHtml(p.category)}
-</div>
-
-<h3>
-${escapeHtml(p.name)}
-</h3>
-
-<div class="seller">
-Seller:
-${escapeHtml(p.seller)}
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-${escapeHtml(p.price)}
-</div>
-
-<button
-class="view"
-onclick="alert('This is a demo product. Create a real product through Sell Items to purchase it.')">
-View
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* PRODUCT PAGE */
-
-async function viewProduct(id){
-
-previousProductGame =
-document.getElementById("petsMarket")
-.style.display==="block"
-?
-"pets"
-:
-"robux";
-
-
-hideAllSections();
-
-document.getElementById(
-"productPage"
-).style.display="block";
-
-
-const content =
-document.getElementById(
-"productPageContent"
-);
-
-content.innerHTML =
-"<p style='color:#777d8c'>Loading product...</p>";
-
-
-const {
-data:p,
-error
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,category,price,stock,image_url,description,seller_id,shop_id,profiles(username)"
-)
-.eq("id",id)
-.single();
-
-
-if(error || !p){
-
-content.innerHTML = `
-
-<div class="panel">
-
-<h2>
-Product not found
-</h2>
-
-<p style="color:#858b9b">
-This product could not be found.
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-const seller =
-p.profiles?.username ||
-"Seller";
-
-
-const image =
-p.image_url
-?
-`
-<img
-src="${escapeAttr(p.image_url)}"
-alt="${escapeAttr(p.name)}">
-`
-:
-(
-p.category==="Pets"
-?
-"🐾"
-:
-p.category==="Tickets"
-?
-"🎟️"
-:
-p.category==="Gamepass"
-?
-"🎮"
-:
-p.category==="Ingame Gifting"
-?
-"🎁"
-:
-"⭐"
-);
-
-
-content.innerHTML = `
-
-<div class="product-page-inner">
-
-<div class="product-page-image">
-${image}
-</div>
-
-
-<div class="product-page-info">
-
-<div class="product-page-category">
-${escapeHtml(p.category)}
-</div>
-
-<h1>
-${escapeHtml(p.name)}
-</h1>
-
-<div class="product-page-description">
-${escapeHtml(
-p.description ||
-"No description provided by the seller."
-)}
-</div>
-
-<div class="product-page-price">
-$${Number(p.price).toFixed(2)}
-</div>
-
-<div class="product-page-stock">
-${
-Number(p.stock)>0
-?
-`${Number(p.stock)} available`
-:
-"Out of stock"
-}
-</div>
-
-<button
-class="buy-button"
-onclick="startPurchase(${p.id})"
-${
-Number(p.stock)<=0
-?
-"disabled"
-:
-""
-}>
-${
-Number(p.stock)>0
-?
-"Buy Now"
-:
-"Out of Stock"
-}
-</button>
-
-<button
-class="shop-button"
-onclick="openShop(${p.shop_id})">
-Visit Shop
-</button>
-
-
-<div class="seller-box">
-
-<div class="seller-label">
-SELLER
-</div>
-
-<div class="seller-name">
-${escapeHtml(seller)}
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-/* BACK FROM PRODUCT */
-
-function goBackFromProduct(){
-
-openGame(previousProductGame);
-
-}
-
-
-/* SHOP PAGE */
-
-async function openShop(shopId){
-
-if(!shopId){
-
-alert(
-"This product has no shop attached."
-);
-
-return;
-
-}
-
-
-hideAllSections();
-
-document.getElementById("shopPage")
-.style.display="block";
-
-
-const content =
-document.getElementById(
-"shopPageContent"
-);
-
-content.innerHTML =
-"<p style='color:#777d8c'>Loading shop...</p>";
-
-
-const {
-data:shop,
-error
-} =
-await supabaseClient
-.from("shops")
-.select("*")
-.eq("id",shopId)
-.single();
-
-
-if(error || !shop){
-
-content.innerHTML = `
-
-<div class="panel">
-
-<h2>
-Shop not found
-</h2>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-const {
-data:products
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,category,price,stock,image_url,seller_id,shop_id,description,profiles(username)"
-)
-.eq("shop_id",shopId)
-.order(
-"created_at",
-{ascending:false}
-);
-
-
-content.innerHTML = `
-
-<div class="shop-header">
-
-<h1>
-${escapeHtml(shop.name)}
-</h1>
-
-<p>
-${escapeHtml(
-shop.description ||
-"No shop description."
-)}
-</p>
-
-</div>
-
-<div class="products">
-
-${
-products?.length
-?
-products.map(p=>{
-
-const icon =
-p.image_url
-?
-`<img
-src="${escapeAttr(p.image_url)}"
-style="width:100%;height:100%;object-fit:cover;border-radius:10px">`
-:
-"🐾";
-
-
-return `
-
-<div class="product">
-
-<div class="product-image">
-${icon}
-</div>
-
-<div class="category">
-${escapeHtml(p.category)}
-</div>
-
-<h3>
-${escapeHtml(p.name)}
-</h3>
-
-<div class="seller">
-Stock: ${p.stock}
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-$${Number(p.price).toFixed(2)}
-</div>
-
-<button
-class="view"
-onclick="viewProduct(${p.id})">
-View
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}).join("")
-:
-"<p style='color:#777d8c'>This shop has no products yet.</p>"
-}
-
-</div>
-
-`;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-/* =========================
-   CREATE REAL ORDER
-========================= */
-
-async function startPurchase(productId){
-
-const {
-data:{user}
-} =
-await supabaseClient.auth.getUser();
-
-
-if(!user){
-
-openLogin();
-
-return;
-
-}
-
-
-/* LOAD PRODUCT */
-
-const {
-data:product,
-error:productError
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,price,stock,seller_id"
-)
-.eq("id",productId)
-.single();
-
-
-if(productError || !product){
-
-alert(
-"Product could not be found."
-);
-
-return;
-
-}
-
-
-/* STOCK CHECK */
-
-if(Number(product.stock)<=0){
-
-alert(
-"This product is out of stock."
-);
-
-return;
-
-}
-
-
-/* PREVENT BUYING OWN PRODUCT */
-
-if(product.seller_id===user.id){
-
-alert(
-"You cannot buy your own product."
-);
-
-return;
-
-}
-
-
-/* CREATE ORDER */
-
-const {
-data:order,
-error:orderError
-} =
-await supabaseClient
-.from("orders")
-.insert({
-buyer_id:user.id,
-product_id:product.id,
-seller_id:product.seller_id,
-price:product.price,
-status:"pending"
-})
-.select()
-.single();
-
-
-if(orderError){
-
-alert(
-"Could not create order:\n\n"+
-orderError.message
-);
-
-return;
-
-}
-
-
-/* SUCCESS */
-
-alert(
-"Order created successfully!\n\n"+
-"Product: "+
-product.name+
-"\nPrice: $"+
-Number(product.price).toFixed(2)+
-"\nOrder ID: "+
-order.id+
-"\n\nStatus: Pending"
-);
-
-
-/* OPEN ORDERS */
-
-await openOrders();
-
-}
-
-
-/* =========================
-   MY ORDERS
-========================= */
-
-async function openOrders(){
-
-const {
-data:{user}
-} =
-await supabaseClient.auth.getUser();
-
-
-if(!user){
-
-openLogin();
-
-return;
-
-}
-
-
-currentUser=user;
-
-hideAllSections();
-
-document.getElementById(
-"ordersPage"
-).style.display="block";
-
-
-const box =
-document.getElementById(
-"ordersList"
-);
-
-box.innerHTML =
-"<p style='color:#777d8c'>Loading orders...</p>";
-
-
-const {
-data:orders,
-error
-} =
-await supabaseClient
-.from("orders")
-.select(
-"id,price,status,created_at,product_id,seller_id"
-)
-.eq(
-"buyer_id",
-user.id
-)
-.order(
-"created_at",
-{ascending:false}
-);
-
-
-if(error){
-
-box.innerHTML =
-`
-<div class="panel">
-
-<p class="error">
-${escapeHtml(error.message)}
-</p>
-
-</div>
-`;
-
-return;
-
-}
-
-
-if(!orders?.length){
-
-box.innerHTML =
-`
-<div class="panel">
-
-<h2>
-No orders yet
-</h2>
-
-<p style="color:#777d8c">
-Your purchases will appear here.
-</p>
-
-</div>
-`;
-
-return;
-
-}
-
-
-/* LOAD PRODUCTS */
-
-const productIds =
-orders
-.map(o=>o.product_id)
-.filter(Boolean);
-
-
-let productMap={};
-
-
-if(productIds.length){
-
-const {
-data:products
-} =
-await supabaseClient
-.from("products")
-.select("id,name,category")
-.in("id",productIds);
-
-
-(products||[]).forEach(p=>{
-productMap[p.id]=p;
-});
-
-}
-
-
-/* RENDER */
-
-box.innerHTML =
-orders.map(order=>{
-
-const product =
-productMap[order.product_id];
-
-
-let statusClass="";
-
-if(order.status==="completed"){
-statusClass="completed";
-}
-
-if(order.status==="cancelled"){
-statusClass="cancelled";
-}
-
-
-return `
-
-<div class="order-card">
-
-<div class="order-left">
-
-<h3>
-${escapeHtml(
-product?.name ||
-"Product"
-)}
-</h3>
-
-<p>
-Order #${order.id}
-</p>
-
-<p>
-${
-product?.category
-?
-escapeHtml(product.category)
-:
-""
-}
-</p>
-
-<p>
-${new Date(
-order.created_at
-).toLocaleString()}
-</p>
-
-</div>
-
-
-<div class="order-right">
-
-<div class="order-price">
-$${Number(order.price).toFixed(2)}
-</div>
-
-<span class="status ${statusClass}">
-${escapeHtml(
-order.status
-)}
-</span>
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-/* =========================
-   SELLER ORDERS
-========================= */
-
-async function loadSellerOrders(){
-
-const box =
-document.getElementById(
-"sellerOrders"
-);
-
-
-if(!currentUser){
-
-box.innerHTML =
-"<p style='color:#777d8c'>Login required.</p>";
-
-return;
-
-}
-
-
-box.innerHTML =
-"<p style='color:#777d8c'>Loading orders...</p>";
-
-
-const {
-data:orders,
-error
-} =
-await supabaseClient
-.from("orders")
-.select(
-"id,buyer_id,product_id,price,status,created_at"
-)
-.eq(
-"seller_id",
-currentUser.id
-)
-.order(
-"created_at",
-{ascending:false}
-);
-
-
-if(error){
-
-box.innerHTML =
-`
-<p class="error">
-${escapeHtml(error.message)}
-</p>
-`;
-
-return;
-
-}
-
-
-if(!orders?.length){
-
-box.innerHTML =
-"<p style='color:#777d8c'>No orders yet.</p>";
-
-return;
-
-}
-
-
-const productIds =
-orders
-.map(o=>o.product_id)
-.filter(Boolean);
-
-
-let productMap={};
-
-
-if(productIds.length){
-
-const {
-data:products
-} =
-await supabaseClient
-.from("products")
-.select("id,name,category")
-.in("id",productIds);
-
-
-(products||[]).forEach(p=>{
-productMap[p.id]=p;
-});
-
-}
-
-
-const buyerIds =
-orders
-.map(o=>o.buyer_id)
-.filter(Boolean);
-
-
-let buyerMap={};
-
-
-if(buyerIds.length){
-
-const {
-data:buyers
-} =
-await supabaseClient
-.from("profiles")
-.select("id,username")
-.in("id",buyerIds);
-
-
-(buyers||[]).forEach(b=>{
-buyerMap[b.id]=b.username;
-});
-
-}
-
-
-box.innerHTML =
-orders.map(order=>{
-
-const product =
-productMap[order.product_id];
-
-const buyer =
-buyerMap[order.buyer_id] ||
-"Buyer";
-
-
-let statusClass="";
-
-if(order.status==="completed"){
-statusClass="completed";
-}
-
-if(order.status==="cancelled"){
-statusClass="cancelled";
-}
-
-
-return `
-
-<div class="order-card">
-
-<div class="order-left">
-
-<h3>
-${escapeHtml(
-product?.name ||
-"Product"
-)}
-</h3>
-
-<p>
-Order #${order.id}
-</p>
-
-<p>
-Buyer:
-${escapeHtml(buyer)}
-</p>
-
-<p>
-${new Date(
-order.created_at
-).toLocaleString()}
-</p>
-
-</div>
-
-
-<div class="order-right">
-
-<div class="order-price">
-$${Number(order.price).toFixed(2)}
-</div>
-
-<span class="status ${statusClass}">
-${escapeHtml(
-order.status
-)}
-</span>
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-}
-
-
-/* FILTER */
-
-function setFilter(
-game,
-category,
-button
-){
-
-filters[game]=category;
-
-button.parentElement
-.querySelectorAll(".filter")
-.forEach(
-b=>b.classList.remove("active")
-);
-
-button.classList.add("active");
-
-renderProducts(game);
-
-}
-
-
-/* GLOBAL SEARCH */
+/* =====================================
+   GLOBAL SEARCH
+===================================== */
 
 function globalSearch(){
 
-const q =
-document.getElementById(
-"globalSearch"
-).value
-.trim()
-.toLowerCase();
+    const search =
+    document.getElementById("globalSearch")
+    .value
+    .trim();
 
+    if(!search){
 
-if(!q)
-return;
+        showHome();
+        return;
 
+    }
 
-if(
-q.includes("pet") ||
-q.includes("ticket")
-){
+    const lower=search.toLowerCase();
 
-openGame("pets");
+    if(
+        lower.includes("pet") ||
+        lower.includes("ticket")
+    ){
 
-document.getElementById(
-"petsSearch"
-).value=q;
+        openGame("pets");
 
-renderProducts("pets");
+        document.getElementById(
+            "petsSearch"
+        ).value=search;
+
+        renderProducts("pets");
+
+    }else{
+
+        openGame("robux");
+
+        document.getElementById(
+            "robuxSearch"
+        ).value=search;
+
+        renderProducts("robux");
+
+    }
 
 }
 
-else{
 
-openGame("robux");
+/* =====================================
+   PRODUCT PAGE
+===================================== */
 
-document.getElementById(
-"robuxSearch"
-).value=q;
+async function viewProduct(id){
 
-renderProducts("robux");
+    hideAllSections();
+
+    document.getElementById("productPage")
+    .classList.remove("hidden");
+
+    const content =
+    document.getElementById(
+        "productPageContent"
+    );
+
+    content.innerHTML=
+    "<p style='color:#777d8c'>Loading product...</p>";
+
+    const {data:p,error} =
+    await supabaseClient
+    .from("products")
+    .select(`
+        id,
+        name,
+        category,
+        price,
+        stock,
+        image_url,
+        description,
+        seller_id,
+        shop_id,
+        game,
+        profiles(username)
+    `)
+    .eq("id",id)
+    .single();
+
+    if(error || !p){
+
+        content.innerHTML=
+        `<div class="panel">
+        <h2>Product not found</h2>
+        </div>`;
+
+        return;
+    }
+
+    previousProductGame=p.game;
+
+    const image =
+    p.image_url
+
+    ?
+
+    `<img
+    src="${escapeAttr(p.image_url)}">`
+
+    :
+
+    p.game==="pets"
+    ?"🐾"
+    :"💰";
+
+    const seller =
+    p.profiles?.username ||
+    "Seller";
+
+    content.innerHTML=`
+
+    <div class="product-page-inner">
+
+        <div class="product-page-image">
+            ${image}
+        </div>
+
+        <div class="product-page-info">
+
+            <div class="category">
+                ${escapeHtml(p.category)}
+            </div>
+
+            <h1>
+                ${escapeHtml(p.name)}
+            </h1>
+
+            <div class="product-page-description">
+                ${escapeHtml(
+                    p.description ||
+                    "No description provided."
+                )}
+            </div>
+
+            <div class="product-page-price">
+                $${Number(p.price).toFixed(2)}
+            </div>
+
+            <div class="product-page-stock">
+
+                ${
+                    Number(p.stock)>0
+                    ?
+                    `${Number(p.stock)} available`
+                    :
+                    "Out of stock"
+                }
+
+            </div>
+
+            <button
+            class="buy-button"
+            onclick="startPurchase(${p.id})"
+            ${Number(p.stock)<=0?"disabled":""}>
+
+                ${
+                    Number(p.stock)>0
+                    ?"Buy Now"
+                    :"Out of Stock"
+                }
+
+            </button>
+
+            <button
+            class="shop-button"
+            onclick="openShop(${p.shop_id})">
+
+                Visit Shop
+
+            </button>
+
+            <div class="seller-box">
+
+                <div class="seller-label">
+                    SELLER
+                </div>
+
+                <div class="seller-name">
+                    ${escapeHtml(seller)}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
+function goBackFromProduct(){
+
+    openGame(previousProductGame);
+
 }
 
 
-/* SECURITY */
+/* =====================================
+   SHOP
+===================================== */
 
-function escapeHtml(v){
+async function openShop(shopId){
 
-return String(v??"")
-.replace(
-/[&<>"']/g,
-c=>({
+    if(!shopId){
 
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
+        alert("This product has no shop attached.");
+        return;
 
-}[c])
+    }
+
+    hideAllSections();
+
+    document.getElementById("shopPage")
+    .classList.remove("hidden");
+
+    const content =
+    document.getElementById("shopPageContent");
+
+    content.innerHTML=
+    "<p style='color:#777d8c'>Loading shop...</p>";
+
+    const {data:shop,error} =
+    await supabaseClient
+    .from("shops")
+    .select("*")
+    .eq("id",shopId)
+    .single();
+
+    if(error || !shop){
+
+        content.innerHTML=
+        `<div class="panel">
+        <h2>Shop not found</h2>
+        </div>`;
+
+        return;
+    }
+
+    const {data:products} =
+    await supabaseClient
+    .from("products")
+    .select(`
+        id,
+        name,
+        category,
+        price,
+        stock,
+        image_url
+    `)
+    .eq("shop_id",shopId)
+    .order("created_at",{ascending:false});
+
+    content.innerHTML=`
+
+    <div class="shop-header">
+
+        <h1>
+            ${escapeHtml(shop.name)}
+        </h1>
+
+        <p>
+            ${escapeHtml(
+                shop.description ||
+                "No shop description."
+            )}
+        </p>
+
+    </div>
+
+    <div class="products">
+
+        ${
+            products?.length
+
+            ?
+
+            products.map(p=>{
+
+                const image =
+                p.image_url
+
+                ?
+
+                `<img
+                src="${escapeAttr(p.image_url)}"
+                style="width:100%;height:100%;object-fit:cover">`
+
+                :
+
+                "🐾";
+
+                return `
+
+                <div class="product">
+
+                    <div class="product-image">
+                        ${image}
+                    </div>
+
+                    <div class="category">
+                        ${escapeHtml(p.category)}
+                    </div>
+
+                    <h3>
+                        ${escapeHtml(p.name)}
+                    </h3>
+
+                    <div class="seller">
+                        Stock: ${Number(p.stock)}
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            $${Number(p.price).toFixed(2)}
+                        </div>
+
+                        <button
+                        class="view"
+                        onclick="viewProduct(${p.id})">
+                            View
+                        </button>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }).join("")
+
+            :
+
+            `<p style="color:#777d8c">
+            This shop has no products yet.
+            </p>`
+        }
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   SELL PAGE
+===================================== */
+
+async function openSell(){
+
+    const {
+        data:{user}
+    } =
+    await supabaseClient.auth.getUser();
+
+    if(!user){
+
+        openLogin();
+        return;
+
+    }
+
+    currentUser=user;
+
+    hideAllSections();
+
+    document.getElementById("sellPage")
+    .classList.remove("hidden");
+
+    await loadShop();
+
+    await loadMyProducts();
+
+    await loadSellerOrders();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+async function createShop(event){
+
+    event.preventDefault();
+
+    if(!currentUser){
+
+        openLogin();
+        return;
+
+    }
+
+    const name =
+    document.getElementById("shopName")
+    .value.trim();
+
+    const description =
+    document.getElementById("shopDescription")
+    .value.trim();
+
+    const {data,error} =
+    await supabaseClient
+    .from("shops")
+    .upsert({
+
+        owner_id:currentUser.id,
+        name,
+        description
+
+    },{
+
+        onConflict:"owner_id"
+
+    })
+    .select()
+    .single();
+
+    if(error){
+
+        showSellNotice(
+            error.message,
+            true
+        );
+
+        return;
+
+    }
+
+    currentShop=data;
+
+    showSellNotice(
+        "Shop saved successfully!",
+        false
+    );
+
+    document.getElementById("shopStatus")
+    .innerHTML=
+    `<p style="color:#69dc9d;margin-top:15px">
+    Your shop: ${escapeHtml(data.name)}
+    </p>`;
+
+}
+
+async function loadShop(){
+
+    const {data,error} =
+    await supabaseClient
+    .from("shops")
+    .select("*")
+    .eq("owner_id",currentUser.id)
+    .maybeSingle();
+
+    if(error){
+
+        console.error(error);
+        return;
+
+    }
+
+    currentShop=data;
+
+    if(data){
+
+        document.getElementById("shopName")
+        .value=data.name || "";
+
+        document.getElementById(
+            "shopDescription"
+        ).value=data.description || "";
+
+        document.getElementById("shopStatus")
+        .innerHTML=
+        `<p style="color:#69dc9d;margin-top:15px">
+        Shop loaded: ${escapeHtml(data.name)}
+        </p>`;
+
+    }else{
+
+        document.getElementById("shopStatus")
+        .innerHTML=
+        `<p style="color:#777d8c;margin-top:15px">
+        Create your shop before publishing products.
+        </p>`;
+
+    }
+
+}
+
+
+/* =====================================
+   CATEGORIES
+===================================== */
+
+function updateCategories(){
+
+    const game =
+    document.getElementById("productGame")
+    .value;
+
+    const select =
+    document.getElementById("productCategory");
+
+    select.innerHTML=
+    '<option value="">Choose Category</option>';
+
+    let categories=[];
+
+    if(game==="pets"){
+
+        categories=[
+            "Pets",
+            "Tickets"
+        ];
+
+    }
+
+    if(game==="robux"){
+
+        categories=[
+            "Ingame Gifting",
+            "Gamepass",
+            "Roblox Plus"
+        ];
+
+    }
+
+    categories.forEach(category=>{
+
+        const option =
+        document.createElement("option");
+
+        option.value=category;
+        option.textContent=category;
+
+        select.appendChild(option);
+
+    });
+
+}
+
+
+/* =====================================
+   CREATE PRODUCT
+===================================== */
+
+async function createProduct(event){
+
+    event.preventDefault();
+
+    if(!currentUser){
+
+        openLogin();
+        return;
+
+    }
+
+    if(!currentShop){
+
+        showSellNotice(
+            "Create a shop first.",
+            true
+        );
+
+        return;
+
+    }
+
+    const game =
+    document.getElementById("productGame")
+    .value;
+
+    const category =
+    document.getElementById("productCategory")
+    .value;
+
+    const name =
+    document.getElementById("productName")
+    .value.trim();
+
+    const description =
+    document.getElementById("productDescription")
+    .value.trim();
+
+    const price =
+    Number(
+        document.getElementById("productPrice")
+        .value
+    );
+
+    const stock =
+    Number(
+        document.getElementById("productStock")
+        .value
+    );
+
+    const image_url =
+    document.getElementById("productImage")
+    .value.trim() || null;
+
+    if(!game || !category || !name ||
+       price<=0 || stock<1){
+
+        showSellNotice(
+            "Please fill in all required fields.",
+            true
+        );
+
+        return;
+
+    }
+
+    const {error} =
+    await supabaseClient
+    .from("products")
+    .insert({
+
+        seller_id:currentUser.id,
+        shop_id:currentShop.id,
+        game,
+        category,
+        name,
+        description,
+        price,
+        stock,
+        image_url
+
+    });
+
+    if(error){
+
+        showSellNotice(
+            error.message,
+            true
+        );
+
+        return;
+
+    }
+
+    showSellNotice(
+        "Product published successfully!",
+        false
+    );
+
+    event.target.reset();
+
+    updateCategories();
+
+    await loadMyProducts();
+
+    renderProducts("pets");
+    renderProducts("robux");
+
+}
+
+
+/* =====================================
+   MY PRODUCTS
+===================================== */
+
+async function loadMyProducts(){
+
+    const box =
+    document.getElementById("myProducts");
+
+    const {data,error} =
+    await supabaseClient
+    .from("products")
+    .select("*")
+    .eq("seller_id",currentUser.id)
+    .order("created_at",{ascending:false});
+
+    if(error){
+
+        box.innerHTML=
+        `<p style="color:#ff7777">
+        ${escapeHtml(error.message)}
+        </p>`;
+
+        return;
+    }
+
+    if(!data?.length){
+
+        box.innerHTML=
+        `<p style="color:#777d8c">
+        No products yet.
+        </p>`;
+
+        return;
+    }
+
+    box.innerHTML=
+    data.map(p=>`
+
+        <div class="own-card">
+
+            <h3>
+                ${escapeHtml(p.name)}
+            </h3>
+
+            <p>
+                ${escapeHtml(p.game)}
+                ·
+                ${escapeHtml(p.category)}
+                ·
+                Stock ${Number(p.stock)}
+            </p>
+
+            <div class="row">
+
+                <b>
+                    $${Number(p.price).toFixed(2)}
+                </b>
+
+                <button
+                class="danger"
+                onclick="deleteProduct(${p.id})">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =====================================
+   DELETE PRODUCT
+===================================== */
+
+async function deleteProduct(id){
+
+    if(!confirm("Delete this product?"))
+    return;
+
+    const {error} =
+    await supabaseClient
+    .from("products")
+    .delete()
+    .eq("id",id)
+    .eq("seller_id",currentUser.id);
+
+    if(error){
+
+        showSellNotice(
+            error.message,
+            true
+        );
+
+        return;
+
+    }
+
+    showSellNotice(
+        "Product deleted.",
+        false
+    );
+
+    await loadMyProducts();
+
+    renderProducts("pets");
+    renderProducts("robux");
+
+}
+
+
+/* =====================================
+   CREATE ORDER
+===================================== */
+
+async function startPurchase(productId){
+
+    const {
+        data:{user}
+    } =
+    await supabaseClient.auth.getUser();
+
+    if(!user){
+
+        openLogin();
+        return;
+
+    }
+
+    const {data:product,error} =
+    await supabaseClient
+    .from("products")
+    .select(`
+        id,
+        name,
+        price,
+        stock,
+        seller_id
+    `)
+    .eq("id",productId)
+    .single();
+
+    if(error || !product){
+
+        alert("Product could not be found.");
+        return;
+
+    }
+
+    if(Number(product.stock)<=0){
+
+        alert("This product is out of stock.");
+        return;
+
+    }
+
+    if(product.seller_id===user.id){
+
+        alert("You cannot buy your own product.");
+        return;
+
+    }
+
+    const {data:order,error:orderError} =
+    await supabaseClient
+    .from("orders")
+    .insert({
+
+        buyer_id:user.id,
+        product_id:product.id,
+        seller_id:product.seller_id,
+        price:product.price,
+        status:"pending"
+
+    })
+    .select()
+    .single();
+
+    if(orderError){
+
+        alert(
+            "Could not create order:\n\n"+
+            orderError.message
+        );
+
+        return;
+
+    }
+
+    alert(
+        "Order created successfully!\n\n"+
+        "Product: "+product.name+
+        "\nPrice: $"+
+        Number(product.price).toFixed(2)+
+        "\n\nStatus: Pending"
+    );
+
+    await openOrders();
+
+}
+
+
+/* =====================================
+   BUYER ORDERS
+===================================== */
+
+async function openOrders(){
+
+    const {
+        data:{user}
+    } =
+    await supabaseClient.auth.getUser();
+
+    if(!user){
+
+        openLogin();
+        return;
+
+    }
+
+    currentUser=user;
+
+    hideAllSections();
+
+    document.getElementById("ordersPage")
+    .classList.remove("hidden");
+
+    const box =
+    document.getElementById("ordersList");
+
+    box.innerHTML=
+    "<p style='color:#777d8c'>Loading orders...</p>";
+
+    const {data,error} =
+    await supabaseClient
+    .from("orders")
+    .select(`
+        id,
+        price,
+        status,
+        created_at,
+        product_id
+    `)
+    .eq("buyer_id",user.id)
+    .order("created_at",{ascending:false});
+
+    if(error){
+
+        box.innerHTML=
+        `<p style="color:#ff7777">
+        ${escapeHtml(error.message)}
+        </p>`;
+
+        return;
+
+    }
+
+    if(!data?.length){
+
+        box.innerHTML=
+        `<div class="panel">
+        <p style="color:#777d8c">
+        You have no orders yet.
+        </p>
+        </div>`;
+
+        return;
+
+    }
+
+    box.innerHTML=
+    data.map(order=>`
+
+        <div class="order-card">
+
+            <div class="order-left">
+
+                <h3>
+                    Order #${order.id}
+                </h3>
+
+                <p>
+                    Product ID:
+                    ${order.product_id}
+                </p>
+
+                <p>
+                    ${new Date(
+                        order.created_at
+                    ).toLocaleString()}
+                </p>
+
+            </div>
+
+            <div class="order-right">
+
+                <strong>
+                    $${Number(order.price).toFixed(2)}
+                </strong>
+
+                <br><br>
+
+                <span class="status ${
+                    order.status==="completed"
+                    ?"completed"
+                    :
+                    order.status==="cancelled"
+                    ?"cancelled"
+                    :""
+                }">
+                    ${escapeHtml(order.status)}
+                </span>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =====================================
+   SELLER ORDERS
+===================================== */
+
+async function loadSellerOrders(){
+
+    const box =
+    document.getElementById("sellerOrders");
+
+    if(!currentUser){
+
+        box.innerHTML="";
+        return;
+
+    }
+
+    const {data,error} =
+    await supabaseClient
+    .from("orders")
+    .select(`
+        id,
+        price,
+        status,
+        created_at,
+        product_id,
+        buyer_id
+    `)
+    .eq("seller_id",currentUser.id)
+    .order("created_at",{ascending:false});
+
+    if(error){
+
+        box.innerHTML=
+        `<p style="color:#ff7777">
+        ${escapeHtml(error.message)}
+        </p>`;
+
+        return;
+
+    }
+
+    if(!data?.length){
+
+        box.innerHTML=
+        `<p style="color:#777d8c">
+        No orders yet.
+        </p>`;
+
+        return;
+
+    }
+
+    box.innerHTML=
+    data.map(order=>`
+
+        <div class="order-card">
+
+            <div class="order-left">
+
+                <h3>
+                    Order #${order.id}
+                </h3>
+
+                <p>
+                    Product ID:
+                    ${order.product_id}
+                </p>
+
+                <p>
+                    Buyer ID:
+                    ${escapeHtml(order.buyer_id)}
+                </p>
+
+            </div>
+
+            <div class="order-right">
+
+                <strong>
+                    $${Number(order.price).toFixed(2)}
+                </strong>
+
+                <br><br>
+
+                <span class="status ${
+                    order.status==="completed"
+                    ?"completed"
+                    :
+                    order.status==="cancelled"
+                    ?"cancelled"
+                    :""
+                }">
+                    ${escapeHtml(order.status)}
+                </span>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =====================================
+   SELL NOTICE
+===================================== */
+
+function showSellNotice(text,isError){
+
+    const notice =
+    document.getElementById("sellNotice");
+
+    notice.textContent=text;
+
+    notice.className =
+    isError
+    ?"notice error"
+    :"notice success";
+
+}
+
+
+/* =====================================
+   START
+===================================== */
+
+supabaseClient.auth.onAuthStateChange(
+    async()=>{
+        await updateUserUI();
+    }
 );
 
-}
+(async()=>{
 
+    await updateUserUI();
 
-function escapeAttr(v){
+    /*
+    Do NOT load demo products.
+    Only products from Supabase are shown.
+    */
 
-return String(v??"")
-.replace(
-/"/g,
-"&quot;"
-);
-
-}
-
-
-/* START */
-
-updateUserUI();
+})();
 
 </script>
 
