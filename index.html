@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>WzyMarket</title>
 
 <style>
@@ -18,207 +19,268 @@ body {
     color: white;
 }
 
-button,
-input {
-    font: inherit;
+/* ================= HEADER / HERO ================= */
+
+.hero {
+    min-height: 430px;
+    background:
+        radial-gradient(circle at 20% 20%, #34266b 0%, transparent 35%),
+        radial-gradient(circle at 80% 40%, #191b45 0%, transparent 35%),
+        linear-gradient(135deg, #10111b, #08090d);
+
+    border-bottom: 1px solid #242633;
 }
 
-button {
-    cursor: pointer;
-}
+/* NAVIGATION */
 
-/* HEADER */
-
-header {
-    height: 72px;
-    background: #0d0f15;
-    border-bottom: 1px solid #20232d;
+.navbar {
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 6%;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    max-width: 1250px;
+    width: 90%;
+    margin: auto;
 }
 
 .logo {
     font-size: 25px;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -1px;
 }
 
 .logo span {
-    color: #7c5cff;
+    color: #8065ff;
 }
 
-.nav {
+.nav-links {
     display: flex;
-    gap: 28px;
+    gap: 30px;
 }
 
-.nav a {
-    color: #aeb3c2;
+.nav-links a {
+    color: #aeb2c0;
     text-decoration: none;
     font-size: 14px;
+    font-weight: 600;
 }
 
-.nav a:hover {
+.nav-links a:hover {
     color: white;
 }
 
 .login {
-    background: #7c5cff;
-    border: none;
+    border: 1px solid #383b4a;
+    background: #151722;
     color: white;
-    padding: 11px 20px;
+    padding: 10px 18px;
     border-radius: 9px;
     font-weight: 700;
 }
 
-/* MAIN */
+/* HERO CONTENT */
 
-.container {
-    width: 88%;
+.hero-content {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    padding: 75px 20px 60px;
+}
+
+.hero-content h1 {
+    font-size: clamp(38px, 6vw, 70px);
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+    color: #8065ff;
+}
+
+.hero-content p {
+    color: #9297a7;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* SEARCH */
+
+.hero-search {
+    max-width: 620px;
+    margin: auto;
+    display: flex;
+    background: #11131c;
+    border: 1px solid #343746;
+    border-radius: 12px;
+    padding: 6px;
+}
+
+.hero-search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 13px;
+    font-size: 14px;
+}
+
+.hero-search button {
+    background: #8065ff;
+    border: none;
+    color: white;
+    padding: 0 22px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+/* ================= MAIN ================= */
+
+.main {
+    width: 90%;
     max-width: 1250px;
     margin: auto;
 }
 
-.hero {
-    padding: 70px 0 45px;
+.games-section {
+    padding: 55px 0 80px;
 }
 
-.hero h1 {
-    font-size: clamp(35px, 6vw, 64px);
-    line-height: 1;
-    margin-bottom: 18px;
-}
-
-.hero h1 span {
-    color: #7c5cff;
-}
-
-.hero p {
-    color: #8e94a5;
-    max-width: 650px;
-    line-height: 1.6;
-    font-size: 16px;
-}
-
-/* GAMES */
-
-.section-title {
+.section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
-.section-title h2 {
-    font-size: 23px;
+.section-header h2 {
+    font-size: 25px;
 }
 
-.game-grid {
+.section-header p {
+    color: #747989;
+    font-size: 13px;
+}
+
+/* ================= GAME CARDS ================= */
+
+.games {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
 }
 
 .game-card {
-    min-height: 190px;
-    border: 1px solid #252936;
-    background: linear-gradient(145deg, #12151d, #0c0e13);
-    border-radius: 17px;
-    padding: 25px;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(128,101,255,.18),
+            rgba(20,22,31,.95)
+        );
+
+    border: 1px solid #292c39;
+    border-radius: 18px;
+
+    padding: 28px;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    cursor: pointer;
+
     transition: .2s;
-    position: relative;
-    overflow: hidden;
 }
 
 .game-card:hover {
-    transform: translateY(-3px);
-    border-color: #7c5cff;
+    transform: translateY(-4px);
+    border-color: #8065ff;
+    box-shadow: 0 15px 40px rgba(0,0,0,.3);
 }
 
 .game-icon {
     position: absolute;
-    top: 22px;
-    left: 23px;
-    width: 58px;
-    height: 58px;
-    border-radius: 14px;
-    background: #202431;
+    top: 25px;
+    left: 28px;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 16px;
+
+    background: #202332;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 29px;
+
+    font-size: 34px;
 }
 
 .game-card h3 {
-    font-size: 21px;
-    margin-bottom: 6px;
+    font-size: 23px;
+    margin-bottom: 7px;
 }
 
 .game-card p {
-    color: #818797;
-    font-size: 13px;
+    color: #8e94a4;
+    font-size: 14px;
 }
 
-/* MARKETPLACE */
+/* ================= MARKETPLACE ================= */
 
 .marketplace {
     display: none;
-    padding: 40px 0 70px;
+    padding: 45px 0 80px;
 }
 
 .back {
+    background: none;
     border: none;
-    background: transparent;
-    color: #969cac;
+    color: #9298a8;
+    cursor: pointer;
     margin-bottom: 25px;
-    padding: 0;
 }
 
 .back:hover {
     color: white;
 }
 
-.market-header {
-    margin-bottom: 25px;
+.marketplace h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
 }
 
-.market-header h1 {
-    font-size: 32px;
-    margin-bottom: 7px;
-}
-
-.market-header p {
+.marketplace-subtitle {
     color: #858b9b;
+    margin-bottom: 25px;
 }
 
 /* SEARCH */
 
-.search-area {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 22px;
-}
-
-.search {
-    flex: 1;
-    background: #11141b;
-    border: 1px solid #292d38;
+.market-search {
+    width: 100%;
+    background: #11131a;
+    border: 1px solid #292d39;
     border-radius: 11px;
-    padding: 14px 16px;
+
+    padding: 15px;
+
     color: white;
     outline: none;
+
+    margin-bottom: 18px;
 }
 
-.search:focus {
-    border-color: #7c5cff;
+.market-search:focus {
+    border-color: #8065ff;
 }
 
 /* FILTERS */
@@ -227,75 +289,86 @@ header {
     display: flex;
     gap: 9px;
     overflow-x: auto;
-    padding-bottom: 10px;
     margin-bottom: 25px;
 }
 
 .filter {
     white-space: nowrap;
-    border: 1px solid #292d38;
-    background: #11141b;
-    color: #9ca2b1;
+
+    background: #11131a;
+    border: 1px solid #292d39;
+
+    color: #969cab;
+
     padding: 9px 14px;
+
     border-radius: 8px;
+
+    cursor: pointer;
 }
 
 .filter.active,
 .filter:hover {
-    background: #7c5cff;
-    border-color: #7c5cff;
+    background: #8065ff;
+    border-color: #8065ff;
     color: white;
 }
 
 /* PRODUCTS */
 
-.product-grid {
+.products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
 .product {
-    background: #11141b;
-    border: 1px solid #242833;
+    background: #11131a;
+    border: 1px solid #262a35;
     border-radius: 13px;
-    padding: 17px;
+    padding: 16px;
+
     transition: .2s;
 }
 
 .product:hover {
-    border-color: #7c5cff;
+    border-color: #8065ff;
     transform: translateY(-2px);
 }
 
 .product-image {
-    height: 125px;
+    height: 130px;
     border-radius: 10px;
-    background: #191d27;
+
+    background: #1a1d27;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 42px;
+
+    font-size: 45px;
+
     margin-bottom: 14px;
 }
 
-.product-category {
-    color: #7c5cff;
+.category {
+    color: #8065ff;
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 800;
     text-transform: uppercase;
+
     margin-bottom: 7px;
 }
 
 .product h3 {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .seller {
-    color: #858b99;
+    color: #777d8c;
     font-size: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .product-bottom {
@@ -309,96 +382,63 @@ header {
     font-weight: 800;
 }
 
-.buy {
-    background: #7c5cff;
+.view {
+    background: #8065ff;
     border: none;
     color: white;
+
     padding: 8px 13px;
+
     border-radius: 7px;
+
     font-size: 12px;
-    font-weight: bold;
-}
-
-.no-products {
-    color: #73798a;
-    padding: 30px 0;
-}
-
-/* SELL */
-
-.sell-section {
-    margin: 70px 0;
-    background: linear-gradient(135deg, #151525, #101119);
-    border: 1px solid #272b39;
-    border-radius: 18px;
-    padding: 35px;
-}
-
-.sell-section h2 {
-    margin-bottom: 10px;
-}
-
-.sell-section p {
-    color: #858b9b;
-    margin-bottom: 20px;
-}
-
-.sell-button {
-    background: white;
-    color: #111;
-    border: none;
-    border-radius: 9px;
-    padding: 12px 18px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 /* FOOTER */
 
 footer {
     border-top: 1px solid #20232d;
-    padding: 30px 6%;
     color: #666c7b;
+    text-align: center;
+    padding: 30px;
     font-size: 13px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media (max-width: 750px) {
 
-    header {
-        padding: 0 5%;
-    }
-
-    .nav {
-        display: none;
-    }
-
-    .container {
+    .navbar {
         width: 90%;
     }
 
-    .hero {
-        padding-top: 45px;
+    .nav-links {
+        display: none;
     }
 
-    .game-grid {
-        grid-template-columns: 1fr;
+    .hero-content {
+        padding-top: 55px;
     }
 
-    .product-grid {
-        grid-template-columns: 1fr;
+    .hero-content h1 {
+        letter-spacing: -2px;
     }
 
-    .search-area {
-        flex-direction: column;
+    .games {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 8px;
     }
 
     .game-card {
-        min-height: 165px;
+        min-width: 280px;
+        scroll-snap-align: start;
     }
 
-    .sell-section {
-        padding: 25px;
+    .products {
+        grid-template-columns: 1fr;
     }
 }
 </style>
@@ -406,97 +446,156 @@ footer {
 
 <body>
 
-<header>
-    <div class="logo">Wzy<span>Market</span></div>
+<!-- ================= HERO ================= -->
 
-    <nav class="nav">
-        <a href="#" onclick="showHome()">Marketplace</a>
-        <a href="#sell">Sell</a>
+<section class="hero">
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Wzy<span>Market</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#" onclick="showHome()">Marketplace</a>
+            <a href="#sell">Sell Items</a>
+            <a href="#">Buy Items</a>
+        </div>
+
+        <button class="login">
+            Login
+        </button>
+
     </nav>
 
-    <button class="login">Login</button>
-</header>
+
+    <div class="hero-content">
+
+        <h1>
+            Buy & Sell
+            <span>Roblox Items.</span>
+        </h1>
+
+        <p>
+            Find the best Roblox items, services and offers
+            from trusted sellers on WzyMarket.
+        </p>
+
+        <div class="hero-search">
+
+            <input
+                type="text"
+                placeholder="Search for items..."
+            >
+
+            <button>
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-<main class="container">
+<!-- ================= MAIN ================= -->
+
+<main class="main">
 
     <!-- HOME -->
 
-    <section id="home">
+    <section id="home" class="games-section">
 
-        <div class="hero">
-            <h1>Trade your favorite<br><span>Roblox items.</span></h1>
+        <div class="section-header">
 
-            <p>
-                Buy and sell Roblox items, currencies and services
-                from different sellers on WzyMarket.
-            </p>
-        </div>
-
-
-        <div class="section-title">
-            <h2>Roblox Games</h2>
-        </div>
-
-
-        <div class="game-grid">
-
-            <div class="game-card" onclick="openGame('pets')">
-                <div class="game-icon">🐾</div>
-                <h3>Pets Universe</h3>
-                <p>Pets & Tickets</p>
-            </div>
-
-
-            <div class="game-card" onclick="openGame('robux')">
-                <div class="game-icon">💰</div>
-                <h3>Robux</h3>
-                <p>Gifting, Gamepass & Roblox Plus</p>
+            <div>
+                <h2>Roblox Games</h2>
+                <p>Choose a game to browse its marketplace.</p>
             </div>
 
         </div>
 
 
-        <section class="sell-section" id="sell">
-            <h2>Start selling on WzyMarket</h2>
+        <div class="games">
 
-            <p>
-                Create your shop and sell your Roblox products
-                to buyers on WzyMarket.
-            </p>
+            <!-- PETS UNIVERSE -->
 
-            <button class="sell-button">
-                Start selling
-            </button>
-        </section>
+            <div
+                class="game-card"
+                onclick="openGame('pets')"
+            >
+
+                <div class="game-icon">
+                    🐾
+                </div>
+
+                <h3>
+                    Pets Universe
+                </h3>
+
+                <p>
+                    Pets & Tickets
+                </p>
+
+            </div>
+
+
+            <!-- ROBUX -->
+
+            <div
+                class="game-card"
+                onclick="openGame('robux')"
+            >
+
+                <div class="game-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Robux
+                </h3>
+
+                <p>
+                    Ingame Gifting, Gamepass & Roblox Plus
+                </p>
+
+            </div>
+
+        </div>
 
     </section>
 
 
+    <!-- ================= PETS UNIVERSE ================= -->
 
-    <!-- PETS UNIVERSE -->
+    <section
+        id="petsMarket"
+        class="marketplace"
+    >
 
-    <section class="marketplace" id="petsMarket">
-
-        <button class="back" onclick="showHome()">
-            ← Back to games
+        <button
+            class="back"
+            onclick="showHome()"
+        >
+            ← Back to Games
         </button>
 
-        <div class="market-header">
-            <h1>Pets Universe</h1>
-            <p>Buy Pets Universe products from different sellers.</p>
-        </div>
+        <h1>
+            Pets Universe
+        </h1>
+
+        <p class="marketplace-subtitle">
+            Buy Pets Universe items from different sellers.
+        </p>
 
 
-        <div class="search-area">
-            <input
-                class="search"
-                id="petsSearch"
-                type="text"
-                placeholder="Search Pets Universe items..."
-                oninput="filterProducts('pets')"
-            >
-        </div>
+        <input
+            id="petsSearch"
+            class="market-search"
+            placeholder="Search Pets Universe..."
+            oninput="renderProducts('pets')"
+        >
 
 
         <div class="filters">
@@ -525,35 +624,43 @@ footer {
         </div>
 
 
-        <div class="product-grid" id="petsProducts"></div>
+        <div
+            id="petsProducts"
+            class="products"
+        ></div>
 
     </section>
 
 
+    <!-- ================= ROBUX ================= -->
 
-    <!-- ROBUX -->
+    <section
+        id="robuxMarket"
+        class="marketplace"
+    >
 
-    <section class="marketplace" id="robuxMarket">
-
-        <button class="back" onclick="showHome()">
-            ← Back to games
+        <button
+            class="back"
+            onclick="showHome()"
+        >
+            ← Back to Games
         </button>
 
-        <div class="market-header">
-            <h1>Robux</h1>
-            <p>Buy Roblox services from different sellers.</p>
-        </div>
+        <h1>
+            Robux
+        </h1>
+
+        <p class="marketplace-subtitle">
+            Buy Roblox services from different sellers.
+        </p>
 
 
-        <div class="search-area">
-            <input
-                class="search"
-                id="robuxSearch"
-                type="text"
-                placeholder="Search Robux products..."
-                oninput="filterProducts('robux')"
-            >
-        </div>
+        <input
+            id="robuxSearch"
+            class="market-search"
+            placeholder="Search Robux products..."
+            oninput="renderProducts('robux')"
+        >
 
 
         <div class="filters">
@@ -589,7 +696,10 @@ footer {
         </div>
 
 
-        <div class="product-grid" id="robuxProducts"></div>
+        <div
+            id="robuxProducts"
+            class="products"
+        ></div>
 
     </section>
 
@@ -597,13 +707,13 @@ footer {
 
 
 <footer>
-    © 2026 WzyMarket — Roblox Marketplace
+    © 2026 WzyMarket
 </footer>
 
 
 <script>
 
-/* SAMPLE PRODUCTS */
+/* ================= PRODUCTS ================= */
 
 const products = {
 
@@ -634,17 +744,9 @@ const products = {
         },
 
         {
-            name: "Pets Universe Tickets",
-            category: "Tickets",
-            seller: "TicketShop",
-            price: "$1.99",
-            icon: "🎟️"
-        },
-
-        {
             name: "100 Tickets",
             category: "Tickets",
-            seller: "GameStore",
+            seller: "TicketShop",
             price: "$3.49",
             icon: "🎟️"
         }
@@ -691,22 +793,24 @@ const products = {
 };
 
 
-/* CURRENT FILTER */
+/* ================= FILTER ================= */
 
-let currentFilters = {
+let filters = {
     pets: "All",
     robux: "All"
 };
 
 
-/* OPEN GAME */
+/* ================= OPEN GAME ================= */
 
 function openGame(game) {
 
     document.getElementById("home").style.display = "none";
 
     document.getElementById("petsMarket").style.display = "none";
+
     document.getElementById("robuxMarket").style.display = "none";
+
 
     if (game === "pets") {
 
@@ -716,6 +820,7 @@ function openGame(game) {
 
     }
 
+
     if (game === "robux") {
 
         document.getElementById("robuxMarket").style.display = "block";
@@ -724,11 +829,15 @@ function openGame(game) {
 
     }
 
-    window.scrollTo(0, 0);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
-/* HOME */
+/* ================= HOME ================= */
 
 function showHome() {
 
@@ -738,11 +847,14 @@ function showHome() {
 
     document.getElementById("robuxMarket").style.display = "none";
 
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
-/* RENDER PRODUCTS */
+/* ================= RENDER ================= */
 
 function renderProducts(game) {
 
@@ -753,6 +865,7 @@ function renderProducts(game) {
             : "robuxProducts"
         );
 
+
     const search =
         document.getElementById(
             game === "pets"
@@ -760,20 +873,24 @@ function renderProducts(game) {
             : "robuxSearch"
         ).value.toLowerCase();
 
-    let filtered = products[game].filter(product => {
 
-        const matchesCategory =
-            currentFilters[game] === "All" ||
-            product.category === currentFilters[game];
+    const filtered =
+        products[game].filter(product => {
 
-        const matchesSearch =
-            product.name.toLowerCase().includes(search) ||
-            product.category.toLowerCase().includes(search) ||
-            product.seller.toLowerCase().includes(search);
+            const categoryMatch =
+                filters[game] === "All" ||
+                product.category === filters[game];
 
-        return matchesCategory && matchesSearch;
 
-    });
+            const searchMatch =
+                product.name.toLowerCase().includes(search) ||
+                product.category.toLowerCase().includes(search) ||
+                product.seller.toLowerCase().includes(search);
+
+
+            return categoryMatch && searchMatch;
+
+        });
 
 
     container.innerHTML = "";
@@ -782,17 +899,20 @@ function renderProducts(game) {
     if (filtered.length === 0) {
 
         container.innerHTML =
-            '<div class="no-products">No products found.</div>';
+            "<p style='color:#777d8c;'>No products found.</p>";
 
         return;
+
     }
 
 
     filtered.forEach(product => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
 
         card.className = "product";
+
 
         card.innerHTML = `
 
@@ -800,7 +920,7 @@ function renderProducts(game) {
                 ${product.icon}
             </div>
 
-            <div class="product-category">
+            <div class="category">
                 ${product.category}
             </div>
 
@@ -818,12 +938,14 @@ function renderProducts(game) {
                     ${product.price}
                 </div>
 
-                <button class="buy">
+                <button class="view">
                     View
                 </button>
 
             </div>
+
         `;
+
 
         container.appendChild(card);
 
@@ -832,29 +954,27 @@ function renderProducts(game) {
 }
 
 
-/* SEARCH */
-
-function filterProducts(game) {
-    renderProducts(game);
-}
-
-
-/* CATEGORY FILTER */
+/* ================= SET FILTER ================= */
 
 function setFilter(game, category, button) {
 
-    currentFilters[game] = category;
+    filters[game] = category;
+
 
     const buttons =
         button.parentElement.querySelectorAll(".filter");
+
 
     buttons.forEach(btn => {
         btn.classList.remove("active");
     });
 
+
     button.classList.add("active");
 
+
     renderProducts(game);
+
 }
 
 </script>
