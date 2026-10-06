@@ -6,6 +6,8 @@
 
 <title>WzyMarket</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 * {
     box-sizing: border-box;
@@ -19,10 +21,20 @@ body {
     color: white;
 }
 
-/* ================= HEADER / HERO ================= */
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ================= HERO ================= */
 
 .hero {
     min-height: 430px;
+
     background:
         radial-gradient(circle at 20% 20%, #34266b 0%, transparent 35%),
         radial-gradient(circle at 80% 40%, #191b45 0%, transparent 35%),
@@ -31,13 +43,15 @@ body {
     border-bottom: 1px solid #242633;
 }
 
-/* NAVIGATION */
+/* ================= NAVBAR ================= */
 
 .navbar {
     height: 76px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     max-width: 1250px;
     width: 90%;
     margin: auto;
@@ -46,7 +60,6 @@ body {
 .logo {
     font-size: 25px;
     font-weight: 900;
-    letter-spacing: -1px;
 }
 
 .logo span {
@@ -78,12 +91,33 @@ body {
     font-weight: 700;
 }
 
-/* HERO CONTENT */
+.user-menu {
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.logout {
+    background: #1a1c26;
+    border: 1px solid #303441;
+    color: #aaa;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+/* ================= HERO CONTENT ================= */
 
 .hero-content {
     max-width: 900px;
     margin: auto;
     text-align: center;
+
     padding: 75px 20px 60px;
 }
 
@@ -91,7 +125,9 @@ body {
     font-size: clamp(38px, 6vw, 70px);
     line-height: 1;
     font-weight: 900;
+
     letter-spacing: -3px;
+
     margin-bottom: 20px;
 }
 
@@ -103,36 +139,44 @@ body {
     color: #9297a7;
     font-size: 17px;
     line-height: 1.6;
+
     margin-bottom: 30px;
 }
-
-/* SEARCH */
 
 .hero-search {
     max-width: 620px;
     margin: auto;
+
     display: flex;
+
     background: #11131c;
     border: 1px solid #343746;
+
     border-radius: 12px;
+
     padding: 6px;
 }
 
 .hero-search input {
     flex: 1;
+
     background: transparent;
     border: none;
     outline: none;
+
     color: white;
+
     padding: 13px;
-    font-size: 14px;
 }
 
 .hero-search button {
     background: #8065ff;
     border: none;
+
     color: white;
+
     padding: 0 22px;
+
     border-radius: 8px;
     font-weight: 700;
 }
@@ -150,9 +194,6 @@ body {
 }
 
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 22px;
 }
 
@@ -163,18 +204,22 @@ body {
 .section-header p {
     color: #747989;
     font-size: 13px;
+    margin-top: 5px;
 }
 
-/* ================= GAME CARDS ================= */
+/* ================= GAMES ================= */
 
 .games {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 18px;
 }
 
 .game-card {
     height: 220px;
+
     position: relative;
     overflow: hidden;
 
@@ -186,6 +231,7 @@ body {
         );
 
     border: 1px solid #292c39;
+
     border-radius: 18px;
 
     padding: 28px;
@@ -201,12 +247,15 @@ body {
 
 .game-card:hover {
     transform: translateY(-4px);
+
     border-color: #8065ff;
+
     box-shadow: 0 15px 40px rgba(0,0,0,.3);
 }
 
 .game-icon {
     position: absolute;
+
     top: 25px;
     left: 28px;
 
@@ -238,19 +287,17 @@ body {
 
 .marketplace {
     display: none;
+
     padding: 45px 0 80px;
 }
 
 .back {
     background: none;
     border: none;
-    color: #9298a8;
-    cursor: pointer;
-    margin-bottom: 25px;
-}
 
-.back:hover {
-    color: white;
+    color: #9298a8;
+
+    margin-bottom: 25px;
 }
 
 .marketplace h1 {
@@ -263,12 +310,13 @@ body {
     margin-bottom: 25px;
 }
 
-/* SEARCH */
-
 .market-search {
     width: 100%;
+
     background: #11131a;
+
     border: 1px solid #292d39;
+
     border-radius: 11px;
 
     padding: 15px;
@@ -279,16 +327,12 @@ body {
     margin-bottom: 18px;
 }
 
-.market-search:focus {
-    border-color: #8065ff;
-}
-
-/* FILTERS */
-
 .filters {
     display: flex;
     gap: 9px;
+
     overflow-x: auto;
+
     margin-bottom: 25px;
 }
 
@@ -296,6 +340,7 @@ body {
     white-space: nowrap;
 
     background: #11131a;
+
     border: 1px solid #292d39;
 
     color: #969cab;
@@ -303,29 +348,32 @@ body {
     padding: 9px 14px;
 
     border-radius: 8px;
-
-    cursor: pointer;
 }
 
 .filter.active,
 .filter:hover {
     background: #8065ff;
+
     border-color: #8065ff;
+
     color: white;
 }
 
-/* PRODUCTS */
-
 .products {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 15px;
 }
 
 .product {
     background: #11131a;
+
     border: 1px solid #262a35;
+
     border-radius: 13px;
+
     padding: 16px;
 
     transition: .2s;
@@ -333,11 +381,13 @@ body {
 
 .product:hover {
     border-color: #8065ff;
+
     transform: translateY(-2px);
 }
 
 .product-image {
     height: 130px;
+
     border-radius: 10px;
 
     background: #1a1d27;
@@ -353,8 +403,11 @@ body {
 
 .category {
     color: #8065ff;
+
     font-size: 11px;
+
     font-weight: 800;
+
     text-transform: uppercase;
 
     margin-bottom: 7px;
@@ -367,24 +420,31 @@ body {
 
 .seller {
     color: #777d8c;
+
     font-size: 12px;
+
     margin-bottom: 14px;
 }
 
 .product-bottom {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
 .price {
     font-size: 18px;
+
     font-weight: 800;
 }
 
 .view {
     background: #8065ff;
+
     border: none;
+
     color: white;
 
     padding: 8px 13px;
@@ -392,16 +452,148 @@ body {
     border-radius: 7px;
 
     font-size: 12px;
+
     font-weight: 700;
 }
 
-/* FOOTER */
+/* ================= LOGIN MODAL ================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.75);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 500;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 420px;
+
+    background: #11131a;
+
+    border: 1px solid #292d39;
+
+    border-radius: 17px;
+
+    padding: 28px;
+
+    box-shadow: 0 25px 80px rgba(0,0,0,.5);
+}
+
+.modal-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.modal-top h2 {
+    font-size: 24px;
+}
+
+.close {
+    background: transparent;
+
+    border: none;
+
+    color: #777d8c;
+
+    font-size: 25px;
+}
+
+.form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+.form input {
+    width: 100%;
+
+    background: #0b0d12;
+
+    border: 1px solid #292d39;
+
+    color: white;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    outline: none;
+}
+
+.form input:focus {
+    border-color: #8065ff;
+}
+
+.primary {
+    background: #8065ff;
+
+    color: white;
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 9px;
+
+    font-weight: 800;
+
+    margin-top: 5px;
+}
+
+.switch {
+    background: transparent;
+
+    border: none;
+
+    color: #8065ff;
+
+    margin-top: 17px;
+
+    width: 100%;
+}
+
+.message {
+    color: #ff7777;
+
+    font-size: 13px;
+
+    margin-top: 8px;
+
+    display: none;
+}
+
+/* ================= FOOTER ================= */
 
 footer {
     border-top: 1px solid #20232d;
+
     color: #666c7b;
+
     text-align: center;
+
     padding: 30px;
+
     font-size: 13px;
 }
 
@@ -427,13 +619,17 @@ footer {
 
     .games {
         display: flex;
+
         overflow-x: auto;
+
         scroll-snap-type: x mandatory;
+
         padding-bottom: 8px;
     }
 
     .game-card {
         min-width: 280px;
+
         scroll-snap-align: start;
     }
 
@@ -450,51 +646,72 @@ footer {
 
 <section class="hero">
 
-    <nav class="navbar">
+<nav class="navbar">
 
-        <div class="logo">
-            Wzy<span>Market</span>
-        </div>
+    <div class="logo">
+        Wzy<span>Market</span>
+    </div>
 
-        <div class="nav-links">
-            <a href="#" onclick="showHome()">Marketplace</a>
-            <a href="#sell">Sell Items</a>
-            <a href="#">Buy Items</a>
-        </div>
+    <div class="nav-links">
+        <a href="#" onclick="showHome()">Marketplace</a>
+        <a href="#sell">Sell Items</a>
+        <a href="#">Buy Items</a>
+    </div>
 
-        <button class="login">
-            Login
+    <button
+        class="login"
+        id="loginButton"
+        onclick="openLogin()"
+    >
+        Login
+    </button>
+
+    <div
+        class="user-menu"
+        id="userMenu"
+    >
+        <span
+            class="username"
+            id="usernameDisplay"
+        ></span>
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+    </div>
+
+</nav>
+
+
+<div class="hero-content">
+
+    <h1>
+        Buy & Sell
+        <span>Roblox Items.</span>
+    </h1>
+
+    <p>
+        Find the best Roblox items, services and offers
+        from trusted sellers on WzyMarket.
+    </p>
+
+    <div class="hero-search">
+
+        <input
+            type="text"
+            placeholder="Search for items..."
+        >
+
+        <button>
+            Search
         </button>
 
-    </nav>
-
-
-    <div class="hero-content">
-
-        <h1>
-            Buy & Sell
-            <span>Roblox Items.</span>
-        </h1>
-
-        <p>
-            Find the best Roblox items, services and offers
-            from trusted sellers on WzyMarket.
-        </p>
-
-        <div class="hero-search">
-
-            <input
-                type="text"
-                placeholder="Search for items..."
-            >
-
-            <button>
-                Search
-            </button>
-
-        </div>
-
     </div>
+
+</div>
 
 </section>
 
@@ -503,217 +720,347 @@ footer {
 
 <main class="main">
 
-    <!-- HOME -->
+<section
+    id="home"
+    class="games-section"
+>
 
-    <section id="home" class="games-section">
+    <div class="section-header">
 
-        <div class="section-header">
+        <h2>Roblox Games</h2>
 
-            <div>
-                <h2>Roblox Games</h2>
-                <p>Choose a game to browse its marketplace.</p>
-            </div>
-
-        </div>
-
-
-        <div class="games">
-
-            <!-- PETS UNIVERSE -->
-
-            <div
-                class="game-card"
-                onclick="openGame('pets')"
-            >
-
-                <div class="game-icon">
-                    🐾
-                </div>
-
-                <h3>
-                    Pets Universe
-                </h3>
-
-                <p>
-                    Pets & Tickets
-                </p>
-
-            </div>
-
-
-            <!-- ROBUX -->
-
-            <div
-                class="game-card"
-                onclick="openGame('robux')"
-            >
-
-                <div class="game-icon">
-                    💰
-                </div>
-
-                <h3>
-                    Robux
-                </h3>
-
-                <p>
-                    Ingame Gifting, Gamepass & Roblox Plus
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= PETS UNIVERSE ================= -->
-
-    <section
-        id="petsMarket"
-        class="marketplace"
-    >
-
-        <button
-            class="back"
-            onclick="showHome()"
-        >
-            ← Back to Games
-        </button>
-
-        <h1>
-            Pets Universe
-        </h1>
-
-        <p class="marketplace-subtitle">
-            Buy Pets Universe items from different sellers.
+        <p>
+            Choose a game to browse its marketplace.
         </p>
 
+    </div>
 
-        <input
-            id="petsSearch"
-            class="market-search"
-            placeholder="Search Pets Universe..."
-            oninput="renderProducts('pets')"
+
+    <div class="games">
+
+        <div
+            class="game-card"
+            onclick="openGame('pets')"
         >
 
+            <div class="game-icon">
+                🐾
+            </div>
 
-        <div class="filters">
+            <h3>
+                Pets Universe
+            </h3>
 
-            <button
-                class="filter active"
-                onclick="setFilter('pets','All',this)"
-            >
-                All
-            </button>
-
-            <button
-                class="filter"
-                onclick="setFilter('pets','Pets',this)"
-            >
-                🐾 Pets
-            </button>
-
-            <button
-                class="filter"
-                onclick="setFilter('pets','Tickets',this)"
-            >
-                🎟️ Tickets
-            </button>
+            <p>
+                Pets & Tickets
+            </p>
 
         </div>
 
 
         <div
-            id="petsProducts"
-            class="products"
-        ></div>
-
-    </section>
-
-
-    <!-- ================= ROBUX ================= -->
-
-    <section
-        id="robuxMarket"
-        class="marketplace"
-    >
-
-        <button
-            class="back"
-            onclick="showHome()"
-        >
-            ← Back to Games
-        </button>
-
-        <h1>
-            Robux
-        </h1>
-
-        <p class="marketplace-subtitle">
-            Buy Roblox services from different sellers.
-        </p>
-
-
-        <input
-            id="robuxSearch"
-            class="market-search"
-            placeholder="Search Robux products..."
-            oninput="renderProducts('robux')"
+            class="game-card"
+            onclick="openGame('robux')"
         >
 
+            <div class="game-icon">
+                💰
+            </div>
 
-        <div class="filters">
+            <h3>
+                Robux
+            </h3>
 
-            <button
-                class="filter active"
-                onclick="setFilter('robux','All',this)"
-            >
-                All
-            </button>
-
-            <button
-                class="filter"
-                onclick="setFilter('robux','Ingame Gifting',this)"
-            >
-                🎁 Ingame Gifting
-            </button>
-
-            <button
-                class="filter"
-                onclick="setFilter('robux','Gamepass',this)"
-            >
-                🎮 Gamepass
-            </button>
-
-            <button
-                class="filter"
-                onclick="setFilter('robux','Roblox Plus',this)"
-            >
-                ⭐ Roblox Plus
-            </button>
+            <p>
+                Ingame Gifting, Gamepass & Roblox Plus
+            </p>
 
         </div>
 
+    </div>
 
-        <div
-            id="robuxProducts"
-            class="products"
-        ></div>
+</section>
 
-    </section>
+
+<!-- ================= PETS ================= -->
+
+<section
+    id="petsMarket"
+    class="marketplace"
+>
+
+<button
+    class="back"
+    onclick="showHome()"
+>
+    ← Back to Games
+</button>
+
+<h1>
+    Pets Universe
+</h1>
+
+<p class="marketplace-subtitle">
+    Buy Pets Universe items from different sellers.
+</p>
+
+<input
+    id="petsSearch"
+    class="market-search"
+    placeholder="Search Pets Universe..."
+    oninput="renderProducts('pets')"
+>
+
+<div class="filters">
+
+<button
+    class="filter active"
+    onclick="setFilter('pets','All',this)"
+>
+    All
+</button>
+
+<button
+    class="filter"
+    onclick="setFilter('pets','Pets',this)"
+>
+    🐾 Pets
+</button>
+
+<button
+    class="filter"
+    onclick="setFilter('pets','Tickets',this)"
+>
+    🎟️ Tickets
+</button>
+
+</div>
+
+<div
+    id="petsProducts"
+    class="products"
+></div>
+
+</section>
+
+
+<!-- ================= ROBUX ================= -->
+
+<section
+    id="robuxMarket"
+    class="marketplace"
+>
+
+<button
+    class="back"
+    onclick="showHome()"
+>
+    ← Back to Games
+</button>
+
+<h1>
+    Robux
+</h1>
+
+<p class="marketplace-subtitle">
+    Buy Roblox services from different sellers.
+</p>
+
+<input
+    id="robuxSearch"
+    class="market-search"
+    placeholder="Search Robux products..."
+    oninput="renderProducts('robux')"
+>
+
+<div class="filters">
+
+<button
+    class="filter active"
+    onclick="setFilter('robux','All',this)"
+>
+    All
+</button>
+
+<button
+    class="filter"
+    onclick="setFilter('robux','Ingame Gifting',this)"
+>
+    🎁 Ingame Gifting
+</button>
+
+<button
+    class="filter"
+    onclick="setFilter('robux','Gamepass',this)"
+>
+    🎮 Gamepass
+</button>
+
+<button
+    class="filter"
+    onclick="setFilter('robux','Roblox Plus',this)"
+>
+    ⭐ Roblox Plus
+</button>
+
+</div>
+
+<div
+    id="robuxProducts"
+    class="products"
+></div>
+
+</section>
 
 </main>
 
 
+<!-- ================= LOGIN MODAL ================= -->
+
+<div
+    class="modal"
+    id="loginModal"
+>
+
+<div class="modal-box">
+
+    <div class="modal-top">
+
+        <h2 id="authTitle">
+            Login
+        </h2>
+
+        <button
+            class="close"
+            onclick="closeLogin()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <form
+        class="form"
+        id="loginForm"
+        onsubmit="login(event)"
+    >
+
+        <input
+            id="loginEmail"
+            type="email"
+            placeholder="Email"
+            required
+        >
+
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Password"
+            required
+        >
+
+        <button
+            class="primary"
+            type="submit"
+        >
+            Login
+        </button>
+
+    </form>
+
+
+    <!-- SIGN UP -->
+
+    <form
+        class="form"
+        id="signupForm"
+        style="display:none;"
+        onsubmit="signup(event)"
+    >
+
+        <input
+            id="signupUsername"
+            type="text"
+            placeholder="Username"
+            minlength="3"
+            maxlength="20"
+            required
+        >
+
+        <input
+            id="signupEmail"
+            type="email"
+            placeholder="Email"
+            required
+        >
+
+        <input
+            id="signupPassword"
+            type="password"
+            placeholder="Password"
+            minlength="6"
+            required
+        >
+
+        <button
+            class="primary"
+            type="submit"
+        >
+            Create Account
+        </button>
+
+    </form>
+
+
+    <p
+        class="message"
+        id="authMessage"
+    ></p>
+
+
+    <button
+        class="switch"
+        id="switchButton"
+        onclick="switchAuth()"
+    >
+        Don't have an account? Sign Up
+    </button>
+
+</div>
+
+</div>
+
+
 <footer>
-    © 2026 WzyMarket
+© 2026 WzyMarket
 </footer>
 
 
 <script>
 
-/* ================= PRODUCTS ================= */
+/* ==========================================
+   SUPABASE
+========================================== */
+
+const SUPABASE_URL =
+    "https://tejyxzbagctgxymmefyg.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_AH2UNs734NFskZLWwLdaLw_jAHGKUk";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* ==========================================
+   PRODUCTS
+========================================== */
 
 const products = {
 
@@ -752,7 +1099,6 @@ const products = {
         }
 
     ],
-
 
     robux: [
 
@@ -793,15 +1139,320 @@ const products = {
 };
 
 
-/* ================= FILTER ================= */
-
 let filters = {
     pets: "All",
     robux: "All"
 };
 
 
-/* ================= OPEN GAME ================= */
+/* ==========================================
+   LOGIN MODAL
+========================================== */
+
+function openLogin() {
+
+    document.getElementById("loginModal").style.display = "flex";
+
+    document.getElementById("authMessage").style.display = "none";
+
+}
+
+
+function closeLogin() {
+
+    document.getElementById("loginModal").style.display = "none";
+
+}
+
+
+function switchAuth() {
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const signupForm =
+        document.getElementById("signupForm");
+
+    const title =
+        document.getElementById("authTitle");
+
+    const switchButton =
+        document.getElementById("switchButton");
+
+
+    if (loginForm.style.display !== "none") {
+
+        loginForm.style.display = "none";
+
+        signupForm.style.display = "flex";
+
+        title.textContent = "Create Account";
+
+        switchButton.textContent =
+            "Already have an account? Login";
+
+    } else {
+
+        loginForm.style.display = "flex";
+
+        signupForm.style.display = "none";
+
+        title.textContent = "Login";
+
+        switchButton.textContent =
+            "Don't have an account? Sign Up";
+
+    }
+
+}
+
+
+/* ==========================================
+   SIGN UP
+========================================== */
+
+async function signup(event) {
+
+    event.preventDefault();
+
+
+    const username =
+        document.getElementById("signupUsername").value.trim();
+
+    const email =
+        document.getElementById("signupEmail").value.trim();
+
+    const password =
+        document.getElementById("signupPassword").value;
+
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    message.style.display = "block";
+
+    message.style.color = "#aaa";
+
+    message.textContent =
+        "Creating your account...";
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient.auth.signUp({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data.user) {
+            throw new Error("Account could not be created.");
+        }
+
+
+        const { error: profileError } =
+            await supabaseClient
+                .from("profiles")
+                .insert({
+
+                    id: data.user.id,
+
+                    username: username
+
+                });
+
+
+        if (profileError) {
+
+            console.error(profileError);
+
+            throw new Error(
+                "Account created, but profile could not be created."
+            );
+
+        }
+
+
+        message.style.color = "#65d69a";
+
+        message.textContent =
+            "Account created successfully!";
+
+
+        setTimeout(() => {
+
+            closeLogin();
+
+        }, 1200);
+
+
+    } catch (error) {
+
+        message.style.color = "#ff7777";
+
+        message.textContent =
+            error.message;
+
+    }
+
+}
+
+
+/* ==========================================
+   LOGIN
+========================================== */
+
+async function login(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    message.style.display = "block";
+
+    message.style.color = "#aaa";
+
+    message.textContent =
+        "Logging in...";
+
+
+    const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        message.style.color = "#ff7777";
+
+        message.textContent =
+            error.message;
+
+        return;
+
+    }
+
+
+    message.style.color = "#65d69a";
+
+    message.textContent =
+        "Login successful!";
+
+
+    setTimeout(() => {
+
+        closeLogin();
+
+    }, 700);
+
+}
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+}
+
+
+/* ==========================================
+   UPDATE USER UI
+========================================== */
+
+async function updateUserUI() {
+
+    const {
+        data: {
+            user
+        }
+    } = await supabaseClient.auth.getUser();
+
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const userMenu =
+        document.getElementById("userMenu");
+
+    const usernameDisplay =
+        document.getElementById("usernameDisplay");
+
+
+    if (!user) {
+
+        loginButton.style.display = "block";
+
+        userMenu.style.display = "none";
+
+        return;
+
+    }
+
+
+    loginButton.style.display = "none";
+
+    userMenu.style.display = "flex";
+
+
+    const { data: profile } =
+        await supabaseClient
+            .from("profiles")
+            .select("username")
+            .eq("id", user.id)
+            .maybeSingle();
+
+
+    usernameDisplay.textContent =
+        profile?.username || user.email.split("@")[0];
+
+}
+
+
+/* ==========================================
+   AUTH STATE
+========================================== */
+
+supabaseClient.auth.onAuthStateChange(
+    async () => {
+
+        await updateUserUI();
+
+    }
+);
+
+
+/* ==========================================
+   GAME NAVIGATION
+========================================== */
 
 function openGame(game) {
 
@@ -834,10 +1485,9 @@ function openGame(game) {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
-
-/* ================= HOME ================= */
 
 function showHome() {
 
@@ -851,10 +1501,13 @@ function showHome() {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
-/* ================= RENDER ================= */
+/* ==========================================
+   PRODUCTS
+========================================== */
 
 function renderProducts(game) {
 
@@ -911,6 +1564,7 @@ function renderProducts(game) {
         const card =
             document.createElement("div");
 
+
         card.className = "product";
 
 
@@ -954,8 +1608,6 @@ function renderProducts(game) {
 }
 
 
-/* ================= SET FILTER ================= */
-
 function setFilter(game, category, button) {
 
     filters[game] = category;
@@ -966,7 +1618,9 @@ function setFilter(game, category, button) {
 
 
     buttons.forEach(btn => {
+
         btn.classList.remove("active");
+
     });
 
 
@@ -976,6 +1630,13 @@ function setFilter(game, category, button) {
     renderProducts(game);
 
 }
+
+
+/* ==========================================
+   START
+========================================== */
+
+updateUserUI();
 
 </script>
 
