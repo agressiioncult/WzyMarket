@@ -4,10 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WzyMarket</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
 
 body{
 font-family:Arial,Helvetica,sans-serif;
@@ -15,8 +21,15 @@ background:#08090d;
 color:white
 }
 
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+button,input,textarea,select{
+font:inherit
+}
+
+button{
+cursor:pointer
+}
+
+/* NAV */
 
 .hero{
 min-height:430px;
@@ -91,6 +104,8 @@ padding:8px 12px;
 border-radius:8px
 }
 
+/* HERO */
+
 .hero-content{
 max-width:900px;
 margin:auto;
@@ -144,6 +159,8 @@ padding:0 22px;
 border-radius:8px;
 font-weight:700
 }
+
+/* MAIN */
 
 .main{
 width:90%;
@@ -224,6 +241,8 @@ margin-bottom:7px
 color:#8e94a4;
 font-size:14px
 }
+
+/* MARKET */
 
 .marketplace{
 display:none;
@@ -352,6 +371,8 @@ border-radius:7px;
 font-size:12px;
 font-weight:700
 }
+
+/* SELL */
 
 .sell-page{
 display:none;
@@ -579,6 +600,11 @@ margin-bottom:10px
 background:#927cff
 }
 
+.buy-button:disabled{
+opacity:.5;
+cursor:not-allowed
+}
+
 .shop-button{
 width:100%;
 background:#191b24;
@@ -606,7 +632,7 @@ font-size:16px;
 font-weight:800
 }
 
-/* SHOP PAGE */
+/* SHOP */
 
 .shop-page{
 display:none;
@@ -630,6 +656,84 @@ margin-bottom:7px
 color:#858b9b;
 line-height:1.6
 }
+
+/* ORDERS */
+
+.orders-page{
+display:none;
+padding:45px 0 80px
+}
+
+.orders-page h1{
+font-size:34px;
+margin-bottom:8px
+}
+
+.orders-subtitle{
+color:#858b9b;
+margin-bottom:25px
+}
+
+.orders-list{
+display:flex;
+flex-direction:column;
+gap:12px
+}
+
+.order-card{
+background:#11131a;
+border:1px solid #292d39;
+border-radius:14px;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px
+}
+
+.order-left h3{
+font-size:17px;
+margin-bottom:7px
+}
+
+.order-left p{
+color:#777d8c;
+font-size:13px;
+margin-top:4px
+}
+
+.order-right{
+text-align:right
+}
+
+.order-price{
+font-size:19px;
+font-weight:800;
+margin-bottom:8px
+}
+
+.status{
+display:inline-block;
+padding:6px 10px;
+border-radius:7px;
+font-size:11px;
+font-weight:800;
+text-transform:uppercase;
+background:#28251a;
+color:#e7c45d
+}
+
+.status.completed{
+background:#142a20;
+color:#65d69a
+}
+
+.status.cancelled{
+background:#32181b;
+color:#ff7777
+}
+
+/* MODAL */
 
 .modal{
 display:none;
@@ -685,6 +789,8 @@ margin-top:8px;
 display:none
 }
 
+/* FOOTER */
+
 footer{
 border-top:1px solid #20232d;
 color:#666c7b;
@@ -692,6 +798,8 @@ text-align:center;
 padding:30px;
 font-size:13px
 }
+
+/* MOBILE */
 
 @media(max-width:750px){
 
@@ -745,11 +853,23 @@ padding:22px
 font-size:27px
 }
 
+.order-card{
+flex-direction:column;
+align-items:flex-start
 }
+
+.order-right{
+text-align:left
+}
+
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -769,8 +889,8 @@ Marketplace
 Sell Items
 </a>
 
-<a href="#" onclick="showHome();return false">
-Buy Items
+<a href="#" onclick="openOrders();return false">
+My Orders
 </a>
 
 </div>
@@ -782,7 +902,9 @@ onclick="openLogin()">
 Login
 </button>
 
-<div class="user-menu" id="userMenu">
+<div
+class="user-menu"
+id="userMenu">
 
 <span
 class="username"
@@ -830,7 +952,11 @@ Search
 
 <main class="main">
 
-<section id="home" class="games-section">
+<!-- HOME -->
+
+<section
+id="home"
+class="games-section">
 
 <div class="section-header">
 
@@ -888,7 +1014,11 @@ Ingame Gifting, Gamepass & Roblox Plus
 </section>
 
 
-<section id="petsMarket" class="marketplace">
+<!-- PETS MARKET -->
+
+<section
+id="petsMarket"
+class="marketplace">
 
 <button
 class="back"
@@ -940,7 +1070,11 @@ class="products">
 </section>
 
 
-<section id="robuxMarket" class="marketplace">
+<!-- ROBUX MARKET -->
+
+<section
+id="robuxMarket"
+class="marketplace">
 
 <button
 class="back"
@@ -998,7 +1132,11 @@ class="products">
 </section>
 
 
-<section id="productPage" class="product-page">
+<!-- PRODUCT PAGE -->
+
+<section
+id="productPage"
+class="product-page">
 
 <button
 class="back"
@@ -1006,14 +1144,17 @@ onclick="goBackFromProduct()">
 ← Back
 </button>
 
-<div
-id="productPageContent">
+<div id="productPageContent">
 </div>
 
 </section>
 
 
-<section id="shopPage" class="shop-page">
+<!-- SHOP PAGE -->
+
+<section
+id="shopPage"
+class="shop-page">
 
 <button
 class="back"
@@ -1021,14 +1162,17 @@ onclick="showHome()">
 ← Back to Marketplace
 </button>
 
-<div
-id="shopPageContent">
+<div id="shopPageContent">
 </div>
 
 </section>
 
 
-<section id="sellPage" class="sell-page">
+<!-- SELL PAGE -->
+
+<section
+id="sellPage"
+class="sell-page">
 
 <button
 class="small-back"
@@ -1072,8 +1216,7 @@ required>
 <textarea
 id="shopDescription"
 placeholder="Shop Description"
-maxlength="300">
-</textarea>
+maxlength="300"></textarea>
 
 <button
 class="primary"
@@ -1172,8 +1315,7 @@ required>
 <textarea
 id="productDescription"
 placeholder="Product Description"
-maxlength="500">
-</textarea>
+maxlength="500"></textarea>
 
 
 <input
@@ -1231,10 +1373,62 @@ class="own-products">
 
 </div>
 
+
+<!-- SELLER ORDERS -->
+
+<div class="panel">
+
+<h2>
+Orders for My Products
+</h2>
+
+<div
+id="sellerOrders"
+class="orders-list">
+
+<p style="color:#777d8c">
+Loading orders...
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MY ORDERS -->
+
+<section
+id="ordersPage"
+class="orders-page">
+
+<button
+class="back"
+onclick="showHome()">
+← Back to Marketplace
+</button>
+
+<h1>
+My Orders
+</h1>
+
+<p class="orders-subtitle">
+View your purchases and order status.
+</p>
+
+<div
+id="ordersList"
+class="orders-list">
+
+</div>
+
 </section>
 
 </main>
 
+
+<!-- LOGIN -->
 
 <div
 class="modal"
@@ -1343,6 +1537,8 @@ Don't have an account? Sign Up
 
 <script>
 
+/* SUPABASE */
+
 const SUPABASE_URL =
 "https://tejyxzbagctgxymmefyg.supabase.co";
 
@@ -1355,6 +1551,8 @@ SUPABASE_URL,
 SUPABASE_KEY
 );
 
+
+/* DEMO PRODUCTS */
 
 const demoProducts = {
 
@@ -1423,6 +1621,8 @@ icon:"⭐"
 };
 
 
+/* STATE */
+
 let filters = {
 pets:"All",
 robux:"All"
@@ -1432,6 +1632,8 @@ let currentUser = null;
 let currentShop = null;
 let previousProductGame = "pets";
 
+
+/* LOGIN */
 
 function openLogin(){
 
@@ -1496,6 +1698,8 @@ b.textContent=
 }
 
 
+/* SIGN UP */
+
 async function signup(e){
 
 e.preventDefault();
@@ -1526,13 +1730,17 @@ document.getElementById("signupPassword")
 
 try{
 
-const {data,error} =
+const {
+data,
+error
+} =
 await supabaseClient.auth.signUp({
 email,
 password
 });
 
-if(error) throw error;
+if(error)
+throw error;
 
 if(!data.user)
 throw new Error(
@@ -1540,7 +1748,9 @@ throw new Error(
 );
 
 
-const {error:pe} =
+const {
+error:profileError
+} =
 await supabaseClient
 .from("profiles")
 .insert({
@@ -1549,8 +1759,8 @@ username
 });
 
 
-if(pe)
-throw new Error(pe.message);
+if(profileError)
+throw new Error(profileError.message);
 
 
 m.className="message success";
@@ -1577,6 +1787,8 @@ err.message;
 }
 
 
+/* LOGIN */
+
 async function login(e){
 
 e.preventDefault();
@@ -1601,7 +1813,9 @@ document.getElementById("loginPassword")
 .value;
 
 
-const {error} =
+const {
+error
+} =
 await supabaseClient.auth
 .signInWithPassword({
 email,
@@ -1634,15 +1848,23 @@ closeLogin,
 }
 
 
+/* LOGOUT */
+
 async function logout(){
 
 await supabaseClient
 .auth.signOut();
 
+currentUser=null;
+
+currentShop=null;
+
 showHome();
 
 }
 
+
+/* USER UI */
 
 async function updateUserUI(){
 
@@ -1680,7 +1902,9 @@ lb.style.display="none";
 um.style.display="flex";
 
 
-const {data:profile} =
+const {
+data:profile
+} =
 await supabaseClient
 .from("profiles")
 .select("username")
@@ -1695,10 +1919,21 @@ user.email.split("@")[0];
 }
 
 
+/* AUTH LISTENER */
+
 supabaseClient.auth.onAuthStateChange(
-() => updateUserUI()
+() => {
+
+setTimeout(
+updateUserUI,
+0
 );
 
+}
+);
+
+
+/* SECTIONS */
 
 function hideAllSections(){
 
@@ -1720,8 +1955,30 @@ document.getElementById("shopPage")
 document.getElementById("sellPage")
 .style.display="none";
 
+document.getElementById("ordersPage")
+.style.display="none";
+
 }
 
+
+/* HOME */
+
+function showHome(){
+
+hideAllSections();
+
+document.getElementById("home")
+.style.display="block";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* GAME */
 
 function openGame(game){
 
@@ -1743,20 +2000,7 @@ behavior:"smooth"
 }
 
 
-function showHome(){
-
-hideAllSections();
-
-document.getElementById("home")
-.style.display="block";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
+/* SELL PAGE */
 
 async function openSell(){
 
@@ -1782,17 +2026,17 @@ hideAllSections();
 document.getElementById("sellPage")
 .style.display="block";
 
-
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
 
-
 await loadShop();
 
 }
 
+
+/* SHOP */
 
 async function loadShop(){
 
@@ -1853,6 +2097,8 @@ shop.description ||
 
 await loadMyProducts();
 
+await loadSellerOrders();
+
 }
 
 else{
@@ -1862,10 +2108,17 @@ document.getElementById(
 ).innerHTML =
 "<p style='color:#777d8c'>Create your shop first.</p>";
 
-}
+document.getElementById(
+"sellerOrders"
+).innerHTML =
+"<p style='color:#777d8c'>Create your shop first.</p>";
 
 }
 
+}
+
+
+/* CREATE SHOP */
 
 async function createShop(e){
 
@@ -1923,6 +2176,8 @@ await loadShop();
 }
 
 
+/* NOTICE */
+
 function showSellNotice(
 text,
 error
@@ -1944,6 +2199,8 @@ n.textContent=text;
 
 }
 
+
+/* PRODUCT FORM */
 
 function showProductForm(){
 
@@ -1969,6 +2226,8 @@ document.getElementById(
 }
 
 
+/* CATEGORIES */
+
 function updateCategories(){
 
 const game =
@@ -1987,31 +2246,37 @@ select.innerHTML =
 
 const cats =
 game==="pets"
-?["Pets","Tickets"]
-:game==="robux"
-?[
+?
+["Pets","Tickets"]
+:
+game==="robux"
+?
+[
 "Ingame Gifting",
 "Gamepass",
 "Roblox Plus"
 ]
-:[];
+:
+[];
 
 
 cats.forEach(c=>{
 
-const o =
+const option =
 document.createElement("option");
 
-o.value=c;
+option.value=c;
 
-o.textContent=c;
+option.textContent=c;
 
-select.appendChild(o);
+select.appendChild(option);
 
 });
 
 }
 
+
+/* CREATE PRODUCT */
 
 async function createProduct(e){
 
@@ -2066,11 +2331,14 @@ document.getElementById(
 const image_url =
 document.getElementById(
 "productImage"
-).value.trim() ||
+).value.trim()
+||
 null;
 
 
-const {error} =
+const {
+error
+} =
 await supabaseClient
 .from("products")
 .insert({
@@ -2109,8 +2377,13 @@ hideProductForm();
 
 await loadMyProducts();
 
+renderProducts("pets");
+renderProducts("robux");
+
 }
 
+
+/* MY PRODUCTS */
 
 async function loadMyProducts(){
 
@@ -2194,6 +2467,8 @@ Delete
 }
 
 
+/* DELETE PRODUCT */
+
 async function deleteProduct(id){
 
 if(!confirm(
@@ -2202,15 +2477,14 @@ if(!confirm(
 return;
 
 
-const {error} =
+const {
+error
+} =
 await supabaseClient
 .from("products")
 .delete()
 .eq("id",id)
-.eq(
-"seller_id",
-currentUser.id
-);
+.eq("seller_id",currentUser.id);
 
 
 if(error){
@@ -2233,11 +2507,12 @@ false
 await loadMyProducts();
 
 renderProducts("pets");
-
 renderProducts("robux");
 
 }
 
+
+/* MARKET PRODUCTS */
 
 async function renderProducts(game){
 
@@ -2271,10 +2546,7 @@ await supabaseClient
 .select(
 "id,name,category,price,stock,image_url,seller_id,shop_id,description,profiles(username)"
 )
-.eq(
-"game",
-game
-)
+.eq("game",game)
 .order(
 "created_at",
 {ascending:false}
@@ -2341,8 +2613,10 @@ p.seller
 
 container.innerHTML =
 demos.length
-?demos.map(demoCard).join("")
-:"<p style='color:#777d8c'>No products found.</p>";
+?
+demos.map(demoCard).join("")
+:
+"<p style='color:#777d8c'>No products found.</p>";
 
 return;
 
@@ -2362,8 +2636,10 @@ onerror="this.style.display='none'">`
 :
 (
 game==="pets"
-?"🐾"
-:"💰"
+?
+"🐾"
+:
+"💰"
 );
 
 
@@ -2416,6 +2692,8 @@ View
 }
 
 
+/* DEMO CARD */
+
 function demoCard(p){
 
 return `
@@ -2447,7 +2725,7 @@ ${escapeHtml(p.price)}
 
 <button
 class="view"
-onclick="alert('This is a demo product. Real product pages are available for products created by sellers.')">
+onclick="alert('This is a demo product. Create a real product through Sell Items to purchase it.')">
 View
 </button>
 
@@ -2460,23 +2738,25 @@ View
 }
 
 
+/* PRODUCT PAGE */
+
 async function viewProduct(id){
 
 previousProductGame =
 document.getElementById("petsMarket")
 .style.display==="block"
-?"pets"
-:"robux";
+?
+"pets"
+:
+"robux";
 
 
 hideAllSections();
 
-const page =
 document.getElementById(
 "productPage"
-);
+).style.display="block";
 
-page.style.display="block";
 
 const content =
 document.getElementById(
@@ -2502,14 +2782,20 @@ await supabaseClient
 
 if(error || !p){
 
-content.innerHTML =
-`
+content.innerHTML = `
+
 <div class="panel">
-<h2>Product not found</h2>
+
+<h2>
+Product not found
+</h2>
+
 <p style="color:#858b9b">
 This product could not be found.
 </p>
+
 </div>
+
 `;
 
 return;
@@ -2533,16 +2819,20 @@ alt="${escapeAttr(p.name)}">
 :
 (
 p.category==="Pets"
-?"🐾"
+?
+"🐾"
 :
 p.category==="Tickets"
-?"🎟️"
+?
+"🎟️"
 :
 p.category==="Gamepass"
-?"🎮"
+?
+"🎮"
 :
 p.category==="Ingame Gifting"
-?"🎁"
+?
+"🎁"
 :
 "⭐"
 );
@@ -2579,16 +2869,32 @@ $${Number(p.price).toFixed(2)}
 </div>
 
 <div class="product-page-stock">
-${Number(p.stock)>0
-?`${Number(p.stock)} available`
-:"Out of stock"}
+${
+Number(p.stock)>0
+?
+`${Number(p.stock)} available`
+:
+"Out of stock"
+}
 </div>
 
 <button
 class="buy-button"
 onclick="startPurchase(${p.id})"
-${Number(p.stock)<=0?"disabled":""}>
-${Number(p.stock)>0?"Buy Now":"Out of Stock"}
+${
+Number(p.stock)<=0
+?
+"disabled"
+:
+""
+}>
+${
+Number(p.stock)>0
+?
+"Buy Now"
+:
+"Out of Stock"
+}
 </button>
 
 <button
@@ -2624,6 +2930,8 @@ behavior:"smooth"
 }
 
 
+/* BACK FROM PRODUCT */
+
 function goBackFromProduct(){
 
 openGame(previousProductGame);
@@ -2631,11 +2939,15 @@ openGame(previousProductGame);
 }
 
 
+/* SHOP PAGE */
+
 async function openShop(shopId){
 
 if(!shopId){
 
-alert("This product has no shop attached.");
+alert(
+"This product has no shop attached."
+);
 
 return;
 
@@ -2670,11 +2982,16 @@ await supabaseClient
 
 if(error || !shop){
 
-content.innerHTML =
-`
+content.innerHTML = `
+
 <div class="panel">
-<h2>Shop not found</h2>
+
+<h2>
+Shop not found
+</h2>
+
 </div>
+
 `;
 
 return;
@@ -2729,6 +3046,7 @@ src="${escapeAttr(p.image_url)}"
 style="width:100%;height:100%;object-fit:cover;border-radius:10px">`
 :
 "🐾";
+
 
 return `
 
@@ -2785,6 +3103,10 @@ behavior:"smooth"
 }
 
 
+/* =========================
+   CREATE REAL ORDER
+========================= */
+
 async function startPurchase(productId){
 
 const {
@@ -2802,14 +3124,522 @@ return;
 }
 
 
+/* LOAD PRODUCT */
+
+const {
+data:product,
+error:productError
+} =
+await supabaseClient
+.from("products")
+.select(
+"id,name,price,stock,seller_id"
+)
+.eq("id",productId)
+.single();
+
+
+if(productError || !product){
+
 alert(
-"Checkout will be connected next. You are logged in and ready to purchase product ID: "
-+
-productId
+"Product could not be found."
 );
+
+return;
 
 }
 
+
+/* STOCK CHECK */
+
+if(Number(product.stock)<=0){
+
+alert(
+"This product is out of stock."
+);
+
+return;
+
+}
+
+
+/* PREVENT BUYING OWN PRODUCT */
+
+if(product.seller_id===user.id){
+
+alert(
+"You cannot buy your own product."
+);
+
+return;
+
+}
+
+
+/* CREATE ORDER */
+
+const {
+data:order,
+error:orderError
+} =
+await supabaseClient
+.from("orders")
+.insert({
+buyer_id:user.id,
+product_id:product.id,
+seller_id:product.seller_id,
+price:product.price,
+status:"pending"
+})
+.select()
+.single();
+
+
+if(orderError){
+
+alert(
+"Could not create order:\n\n"+
+orderError.message
+);
+
+return;
+
+}
+
+
+/* SUCCESS */
+
+alert(
+"Order created successfully!\n\n"+
+"Product: "+
+product.name+
+"\nPrice: $"+
+Number(product.price).toFixed(2)+
+"\nOrder ID: "+
+order.id+
+"\n\nStatus: Pending"
+);
+
+
+/* OPEN ORDERS */
+
+await openOrders();
+
+}
+
+
+/* =========================
+   MY ORDERS
+========================= */
+
+async function openOrders(){
+
+const {
+data:{user}
+} =
+await supabaseClient.auth.getUser();
+
+
+if(!user){
+
+openLogin();
+
+return;
+
+}
+
+
+currentUser=user;
+
+hideAllSections();
+
+document.getElementById(
+"ordersPage"
+).style.display="block";
+
+
+const box =
+document.getElementById(
+"ordersList"
+);
+
+box.innerHTML =
+"<p style='color:#777d8c'>Loading orders...</p>";
+
+
+const {
+data:orders,
+error
+} =
+await supabaseClient
+.from("orders")
+.select(
+"id,price,status,created_at,product_id,seller_id"
+)
+.eq(
+"buyer_id",
+user.id
+)
+.order(
+"created_at",
+{ascending:false}
+);
+
+
+if(error){
+
+box.innerHTML =
+`
+<div class="panel">
+
+<p class="error">
+${escapeHtml(error.message)}
+</p>
+
+</div>
+`;
+
+return;
+
+}
+
+
+if(!orders?.length){
+
+box.innerHTML =
+`
+<div class="panel">
+
+<h2>
+No orders yet
+</h2>
+
+<p style="color:#777d8c">
+Your purchases will appear here.
+</p>
+
+</div>
+`;
+
+return;
+
+}
+
+
+/* LOAD PRODUCTS */
+
+const productIds =
+orders
+.map(o=>o.product_id)
+.filter(Boolean);
+
+
+let productMap={};
+
+
+if(productIds.length){
+
+const {
+data:products
+} =
+await supabaseClient
+.from("products")
+.select("id,name,category")
+.in("id",productIds);
+
+
+(products||[]).forEach(p=>{
+productMap[p.id]=p;
+});
+
+}
+
+
+/* RENDER */
+
+box.innerHTML =
+orders.map(order=>{
+
+const product =
+productMap[order.product_id];
+
+
+let statusClass="";
+
+if(order.status==="completed"){
+statusClass="completed";
+}
+
+if(order.status==="cancelled"){
+statusClass="cancelled";
+}
+
+
+return `
+
+<div class="order-card">
+
+<div class="order-left">
+
+<h3>
+${escapeHtml(
+product?.name ||
+"Product"
+)}
+</h3>
+
+<p>
+Order #${order.id}
+</p>
+
+<p>
+${
+product?.category
+?
+escapeHtml(product.category)
+:
+""
+}
+</p>
+
+<p>
+${new Date(
+order.created_at
+).toLocaleString()}
+</p>
+
+</div>
+
+
+<div class="order-right">
+
+<div class="order-price">
+$${Number(order.price).toFixed(2)}
+</div>
+
+<span class="status ${statusClass}">
+${escapeHtml(
+order.status
+)}
+</span>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+   SELLER ORDERS
+========================= */
+
+async function loadSellerOrders(){
+
+const box =
+document.getElementById(
+"sellerOrders"
+);
+
+
+if(!currentUser){
+
+box.innerHTML =
+"<p style='color:#777d8c'>Login required.</p>";
+
+return;
+
+}
+
+
+box.innerHTML =
+"<p style='color:#777d8c'>Loading orders...</p>";
+
+
+const {
+data:orders,
+error
+} =
+await supabaseClient
+.from("orders")
+.select(
+"id,buyer_id,product_id,price,status,created_at"
+)
+.eq(
+"seller_id",
+currentUser.id
+)
+.order(
+"created_at",
+{ascending:false}
+);
+
+
+if(error){
+
+box.innerHTML =
+`
+<p class="error">
+${escapeHtml(error.message)}
+</p>
+`;
+
+return;
+
+}
+
+
+if(!orders?.length){
+
+box.innerHTML =
+"<p style='color:#777d8c'>No orders yet.</p>";
+
+return;
+
+}
+
+
+const productIds =
+orders
+.map(o=>o.product_id)
+.filter(Boolean);
+
+
+let productMap={};
+
+
+if(productIds.length){
+
+const {
+data:products
+} =
+await supabaseClient
+.from("products")
+.select("id,name,category")
+.in("id",productIds);
+
+
+(products||[]).forEach(p=>{
+productMap[p.id]=p;
+});
+
+}
+
+
+const buyerIds =
+orders
+.map(o=>o.buyer_id)
+.filter(Boolean);
+
+
+let buyerMap={};
+
+
+if(buyerIds.length){
+
+const {
+data:buyers
+} =
+await supabaseClient
+.from("profiles")
+.select("id,username")
+.in("id",buyerIds);
+
+
+(buyers||[]).forEach(b=>{
+buyerMap[b.id]=b.username;
+});
+
+}
+
+
+box.innerHTML =
+orders.map(order=>{
+
+const product =
+productMap[order.product_id];
+
+const buyer =
+buyerMap[order.buyer_id] ||
+"Buyer";
+
+
+let statusClass="";
+
+if(order.status==="completed"){
+statusClass="completed";
+}
+
+if(order.status==="cancelled"){
+statusClass="cancelled";
+}
+
+
+return `
+
+<div class="order-card">
+
+<div class="order-left">
+
+<h3>
+${escapeHtml(
+product?.name ||
+"Product"
+)}
+</h3>
+
+<p>
+Order #${order.id}
+</p>
+
+<p>
+Buyer:
+${escapeHtml(buyer)}
+</p>
+
+<p>
+${new Date(
+order.created_at
+).toLocaleString()}
+</p>
+
+</div>
+
+
+<div class="order-right">
+
+<div class="order-price">
+$${Number(order.price).toFixed(2)}
+</div>
+
+<span class="status ${statusClass}">
+${escapeHtml(
+order.status
+)}
+</span>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+/* FILTER */
 
 function setFilter(
 game,
@@ -2821,8 +3651,8 @@ filters[game]=category;
 
 button.parentElement
 .querySelectorAll(".filter")
-.forEach(b=>
-b.classList.remove("active")
+.forEach(
+b=>b.classList.remove("active")
 );
 
 button.classList.add("active");
@@ -2831,6 +3661,8 @@ renderProducts(game);
 
 }
 
+
+/* GLOBAL SEARCH */
 
 function globalSearch(){
 
@@ -2876,17 +3708,21 @@ renderProducts("robux");
 }
 
 
+/* SECURITY */
+
 function escapeHtml(v){
 
 return String(v??"")
 .replace(
 /[&<>"']/g,
 c=>({
+
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
+
 }[c])
 );
 
@@ -2903,6 +3739,8 @@ return String(v??"")
 
 }
 
+
+/* START */
 
 updateUserUI();
 
