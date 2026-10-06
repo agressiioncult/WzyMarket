@@ -7,323 +7,399 @@
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background: #08090d;
-  color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #08090d;
+    color: white;
 }
 
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* HEADER */
+
 header {
-  height: 70px;
-  border-bottom: 1px solid #20232c;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 6%;
-  position: sticky;
-  top: 0;
-  background: #08090df2;
-  backdrop-filter: blur(12px);
-  z-index: 10;
+    height: 72px;
+    background: #0d0f15;
+    border-bottom: 1px solid #20232d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-  font-size: 25px;
-  font-weight: 800;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
 }
 
 .logo span {
-  color: #6c63ff;
+    color: #7c5cff;
 }
 
-nav {
-  display: flex;
-  gap: 28px;
+.nav {
+    display: flex;
+    gap: 28px;
 }
 
-nav a {
-  color: #aaa;
-  text-decoration: none;
+.nav a {
+    color: #aeb3c2;
+    text-decoration: none;
+    font-size: 14px;
 }
 
-nav a:hover {
-  color: white;
-}
-
-.login,
-.sell {
-  padding: 11px 18px;
-  border-radius: 9px;
-  text-decoration: none;
-  font-weight: bold;
+.nav a:hover {
+    color: white;
 }
 
 .login {
-  background: #6c63ff;
-  color: white;
+    background: #7c5cff;
+    border: none;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+/* MAIN */
+
+.container {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
 }
 
 .hero {
-  text-align: center;
-  padding: 85px 20px 55px;
+    padding: 70px 0 45px;
 }
 
 .hero h1 {
-  font-size: 55px;
-  line-height: 1.05;
+    font-size: clamp(35px, 6vw, 64px);
+    line-height: 1;
+    margin-bottom: 18px;
 }
 
 .hero h1 span {
-  color: #6c63ff;
+    color: #7c5cff;
 }
 
 .hero p {
-  color: #999;
-  font-size: 17px;
-  max-width: 600px;
-  margin: 22px auto;
-  line-height: 1.6;
+    color: #8e94a5;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 16px;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.button {
-  padding: 14px 23px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.primary {
-  background: #6c63ff;
-  color: white;
-}
-
-.secondary {
-  border: 1px solid #30333d;
-  color: white;
-  background: #11131a;
-}
-
-.section {
-  padding: 40px 6%;
-}
+/* GAMES */
 
 .section-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .section-title h2 {
-  font-size: 28px;
+    font-size: 23px;
 }
 
-.search {
-  width: 100%;
-  background: #11131a;
-  border: 1px solid #252832;
-  border-radius: 11px;
-  padding: 15px;
-  color: white;
-  font-size: 15px;
-  margin-bottom: 25px;
-  outline: none;
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
 }
 
-.search:focus {
-  border-color: #6c63ff;
+.game-card {
+    min-height: 190px;
+    border: 1px solid #252936;
+    background: linear-gradient(145deg, #12151d, #0c0e13);
+    border-radius: 17px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: .2s;
+    position: relative;
+    overflow: hidden;
 }
 
-.games {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
-
-.game {
-  background: #11131a;
-  border: 1px solid #20232c;
-  border-radius: 14px;
-  padding: 23px;
-  text-align: center;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.game:hover {
-  border-color: #6c63ff;
-  transform: translateY(-3px);
+.game-card:hover {
+    transform: translateY(-3px);
+    border-color: #7c5cff;
 }
 
 .game-icon {
-  font-size: 38px;
-  margin-bottom: 10px;
+    position: absolute;
+    top: 22px;
+    left: 23px;
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+    background: #202431;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 29px;
 }
 
-.game h3 {
-  font-size: 16px;
+.game-card h3 {
+    font-size: 21px;
+    margin-bottom: 6px;
 }
 
-.game p {
-  color: #777;
-  font-size: 12px;
-  margin-top: 6px;
+.game-card p {
+    color: #818797;
+    font-size: 13px;
 }
 
-.market {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+/* MARKETPLACE */
+
+.marketplace {
+    display: none;
+    padding: 40px 0 70px;
 }
 
-.item {
-  background: #11131a;
-  border: 1px solid #20232c;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: .2s;
+.back {
+    border: none;
+    background: transparent;
+    color: #969cac;
+    margin-bottom: 25px;
+    padding: 0;
 }
 
-.item:hover {
-  border-color: #6c63ff;
-  transform: translateY(-3px);
+.back:hover {
+    color: white;
 }
 
-.item-image {
-  height: 150px;
-  background: #171923;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 55px;
+.market-header {
+    margin-bottom: 25px;
 }
 
-.item-info {
-  padding: 18px;
+.market-header h1 {
+    font-size: 32px;
+    margin-bottom: 7px;
 }
 
-.game-name {
-  color: #888;
-  font-size: 12px;
-  margin-bottom: 7px;
+.market-header p {
+    color: #858b9b;
 }
 
-.item-name {
-  font-size: 17px;
-  font-weight: bold;
+/* SEARCH */
+
+.search-area {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.search {
+    flex: 1;
+    background: #11141b;
+    border: 1px solid #292d38;
+    border-radius: 11px;
+    padding: 14px 16px;
+    color: white;
+    outline: none;
+}
+
+.search:focus {
+    border-color: #7c5cff;
+}
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.filter {
+    white-space: nowrap;
+    border: 1px solid #292d38;
+    background: #11141b;
+    color: #9ca2b1;
+    padding: 9px 14px;
+    border-radius: 8px;
+}
+
+.filter.active,
+.filter:hover {
+    background: #7c5cff;
+    border-color: #7c5cff;
+    color: white;
+}
+
+/* PRODUCTS */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.product {
+    background: #11141b;
+    border: 1px solid #242833;
+    border-radius: 13px;
+    padding: 17px;
+    transition: .2s;
+}
+
+.product:hover {
+    border-color: #7c5cff;
+    transform: translateY(-2px);
+}
+
+.product-image {
+    height: 125px;
+    border-radius: 10px;
+    background: #191d27;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    margin-bottom: 14px;
+}
+
+.product-category {
+    color: #7c5cff;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.product h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .seller {
-  color: #777;
-  font-size: 13px;
-  margin-top: 8px;
+    color: #858b99;
+    font-size: 12px;
+    margin-bottom: 12px;
 }
 
-.price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 18px;
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .price {
-  font-size: 18px;
-  font-weight: bold;
+    font-size: 18px;
+    font-weight: 800;
 }
 
 .buy {
-  background: #6c63ff;
-  color: white;
-  border: none;
-  padding: 9px 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
+    background: #7c5cff;
+    border: none;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.sell-box {
-  margin-top: 35px;
-  background: linear-gradient(135deg, #11131a, #17152b);
-  border: 1px solid #29253f;
-  border-radius: 18px;
-  padding: 35px;
-  text-align: center;
+.no-products {
+    color: #73798a;
+    padding: 30px 0;
 }
 
-.sell-box h2 {
-  font-size: 27px;
+/* SELL */
+
+.sell-section {
+    margin: 70px 0;
+    background: linear-gradient(135deg, #151525, #101119);
+    border: 1px solid #272b39;
+    border-radius: 18px;
+    padding: 35px;
 }
 
-.sell-box p {
-  color: #999;
-  margin: 12px auto 22px;
-  max-width: 550px;
+.sell-section h2 {
+    margin-bottom: 10px;
+}
+
+.sell-section p {
+    color: #858b9b;
+    margin-bottom: 20px;
 }
 
 .sell-button {
-  display: inline-block;
-  background: #6c63ff;
-  color: white;
-  padding: 13px 22px;
-  border-radius: 9px;
-  text-decoration: none;
-  font-weight: bold;
+    background: white;
+    color: #111;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 18px;
+    font-weight: bold;
 }
+
+/* FOOTER */
 
 footer {
-  border-top: 1px solid #20232c;
-  margin-top: 50px;
-  padding: 30px;
-  text-align: center;
-  color: #666;
+    border-top: 1px solid #20232d;
+    padding: 30px 6%;
+    color: #666c7b;
+    font-size: 13px;
 }
 
-@media(max-width: 700px) {
+/* MOBILE */
 
-  header {
-    padding: 0 20px;
-  }
+@media (max-width: 750px) {
 
-  nav {
-    display: none;
-  }
+    header {
+        padding: 0 5%;
+    }
 
-  .hero {
-    padding-top: 65px;
-  }
+    .nav {
+        display: none;
+    }
 
-  .hero h1 {
-    font-size: 40px;
-  }
+    .container {
+        width: 90%;
+    }
 
-  .buttons {
-    flex-direction: column;
-    max-width: 280px;
-    margin: auto;
-  }
+    .hero {
+        padding-top: 45px;
+    }
 
-  .games {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .market {
-    grid-template-columns: 1fr;
-  }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .section {
-    padding: 35px 20px;
-  }
+    .search-area {
+        flex-direction: column;
+    }
+
+    .game-card {
+        min-height: 165px;
+    }
+
+    .sell-section {
+        padding: 25px;
+    }
 }
 </style>
 </head>
@@ -331,226 +407,457 @@ footer {
 <body>
 
 <header>
+    <div class="logo">Wzy<span>Market</span></div>
 
-  <div class="logo">
-    Wzy<span>Market</span>
-  </div>
+    <nav class="nav">
+        <a href="#" onclick="showHome()">Marketplace</a>
+        <a href="#sell">Sell</a>
+    </nav>
 
-  <nav>
-    <a href="#marketplace">Marketplace</a>
-    <a href="#games">Games</a>
-    <a href="#sell">Sell</a>
-  </nav>
-
-  <a href="#" class="login">Login</a>
-
+    <button class="login">Login</button>
 </header>
 
 
-<section class="hero">
+<main class="container">
 
-  <h1>
-    Buy & Sell<br>
-    <span>Gaming Items.</span>
-  </h1>
+    <!-- HOME -->
 
-  <p>
-    WzyMarket is a marketplace for gaming items,
-    currencies and digital goods from independent sellers.
-  </p>
+    <section id="home">
 
-  <div class="buttons">
+        <div class="hero">
+            <h1>Trade your favorite<br><span>Roblox items.</span></h1>
 
-    <a href="#marketplace" class="button primary">
-      Explore Marketplace
-    </a>
-
-    <a href="#sell" class="button secondary">
-      Start Selling
-    </a>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="games">
-
-  <div class="section-title">
-    <h2>Popular Games</h2>
-  </div>
-
-  <div class="games">
-
-    <div class="game">
-      <div class="game-icon">🎮</div>
-      <h3>Roblox</h3>
-      <p>Items & Currency</p>
-    </div>
-
-    <div class="game">
-      <div class="game-icon">🔫</div>
-      <h3>Fortnite</h3>
-      <p>Skins & Items</p>
-    </div>
-
-    <div class="game">
-      <div class="game-icon">🔥</div>
-      <h3>Valorant</h3>
-      <p>Gaming Items</p>
-    </div>
-
-    <div class="game">
-      <div class="game-icon">⛏️</div>
-      <h3>Minecraft</h3>
-      <p>Items & Currency</p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section" id="marketplace">
-
-  <div class="section-title">
-    <h2>Marketplace</h2>
-  </div>
-
-  <input
-    class="search"
-    type="text"
-    placeholder="🔎 Search gaming items..."
-  >
-
-  <div class="market">
-
-    <div class="item">
-
-      <div class="item-image">💎</div>
-
-      <div class="item-info">
-
-        <div class="game-name">ROBLOX</div>
-
-        <div class="item-name">
-          10,000 Robux
+            <p>
+                Buy and sell Roblox items, currencies and services
+                from different sellers on WzyMarket.
+            </p>
         </div>
 
-        <div class="seller">
-          Sold by @Seller
+
+        <div class="section-title">
+            <h2>Roblox Games</h2>
         </div>
 
-        <div class="price-row">
 
-          <div class="price">
-            $45.00
-          </div>
+        <div class="game-grid">
 
-          <button class="buy">
-            Buy
-          </button>
+            <div class="game-card" onclick="openGame('pets')">
+                <div class="game-icon">🐾</div>
+                <h3>Pets Universe</h3>
+                <p>Pets & Tickets</p>
+            </div>
+
+
+            <div class="game-card" onclick="openGame('robux')">
+                <div class="game-icon">💰</div>
+                <h3>Robux</h3>
+                <p>Gifting, Gamepass & Roblox Plus</p>
+            </div>
 
         </div>
 
-      </div>
 
-    </div>
+        <section class="sell-section" id="sell">
+            <h2>Start selling on WzyMarket</h2>
+
+            <p>
+                Create your shop and sell your Roblox products
+                to buyers on WzyMarket.
+            </p>
+
+            <button class="sell-button">
+                Start selling
+            </button>
+        </section>
+
+    </section>
 
 
-    <div class="item">
 
-      <div class="item-image">🦙</div>
+    <!-- PETS UNIVERSE -->
 
-      <div class="item-info">
+    <section class="marketplace" id="petsMarket">
 
-        <div class="game-name">FORTNITE</div>
+        <button class="back" onclick="showHome()">
+            ← Back to games
+        </button>
 
-        <div class="item-name">
-          Rare Skin
+        <div class="market-header">
+            <h1>Pets Universe</h1>
+            <p>Buy Pets Universe products from different sellers.</p>
         </div>
 
-        <div class="seller">
-          Sold by @Player
+
+        <div class="search-area">
+            <input
+                class="search"
+                id="petsSearch"
+                type="text"
+                placeholder="Search Pets Universe items..."
+                oninput="filterProducts('pets')"
+            >
         </div>
 
-        <div class="price-row">
 
-          <div class="price">
-            $12.99
-          </div>
+        <div class="filters">
 
-          <button class="buy">
-            Buy
-          </button>
+            <button
+                class="filter active"
+                onclick="setFilter('pets','All',this)"
+            >
+                All
+            </button>
 
-        </div>
+            <button
+                class="filter"
+                onclick="setFilter('pets','Pets',this)"
+            >
+                🐾 Pets
+            </button>
 
-      </div>
-
-    </div>
-
-
-    <div class="item">
-
-      <div class="item-image">💠</div>
-
-      <div class="item-info">
-
-        <div class="game-name">MINECRAFT</div>
-
-        <div class="item-name">
-          5,000 Coins
-        </div>
-
-        <div class="seller">
-          Sold by @Builder
-        </div>
-
-        <div class="price-row">
-
-          <div class="price">
-            $7.50
-          </div>
-
-          <button class="buy">
-            Buy
-          </button>
+            <button
+                class="filter"
+                onclick="setFilter('pets','Tickets',this)"
+            >
+                🎟️ Tickets
+            </button>
 
         </div>
 
-      </div>
 
-    </div>
+        <div class="product-grid" id="petsProducts"></div>
 
-  </div>
-
-</section>
+    </section>
 
 
-<section class="section" id="sell">
 
-  <div class="sell-box">
+    <!-- ROBUX -->
 
-    <h2>Start selling on WzyMarket</h2>
+    <section class="marketplace" id="robuxMarket">
 
-    <p>
-      Create your own seller shop and list your
-      gaming items for thousands of potential buyers.
-    </p>
+        <button class="back" onclick="showHome()">
+            ← Back to games
+        </button>
 
-    <a href="#" class="sell-button">
-      Create Your Shop
-    </a>
+        <div class="market-header">
+            <h1>Robux</h1>
+            <p>Buy Roblox services from different sellers.</p>
+        </div>
 
-  </div>
 
-</section>
+        <div class="search-area">
+            <input
+                class="search"
+                id="robuxSearch"
+                type="text"
+                placeholder="Search Robux products..."
+                oninput="filterProducts('robux')"
+            >
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                class="filter active"
+                onclick="setFilter('robux','All',this)"
+            >
+                All
+            </button>
+
+            <button
+                class="filter"
+                onclick="setFilter('robux','Ingame Gifting',this)"
+            >
+                🎁 Ingame Gifting
+            </button>
+
+            <button
+                class="filter"
+                onclick="setFilter('robux','Gamepass',this)"
+            >
+                🎮 Gamepass
+            </button>
+
+            <button
+                class="filter"
+                onclick="setFilter('robux','Roblox Plus',this)"
+            >
+                ⭐ Roblox Plus
+            </button>
+
+        </div>
+
+
+        <div class="product-grid" id="robuxProducts"></div>
+
+    </section>
+
+</main>
 
 
 <footer>
-  © 2026 WzyMarket — Gaming Marketplace
+    © 2026 WzyMarket — Roblox Marketplace
 </footer>
+
+
+<script>
+
+/* SAMPLE PRODUCTS */
+
+const products = {
+
+    pets: [
+
+        {
+            name: "Exclusive Pet",
+            category: "Pets",
+            seller: "ExampleSeller",
+            price: "$2.99",
+            icon: "🐾"
+        },
+
+        {
+            name: "Rare Pet",
+            category: "Pets",
+            seller: "PetTrader",
+            price: "$4.50",
+            icon: "🐶"
+        },
+
+        {
+            name: "Legendary Pet",
+            category: "Pets",
+            seller: "WzySeller",
+            price: "$8.99",
+            icon: "🦄"
+        },
+
+        {
+            name: "Pets Universe Tickets",
+            category: "Tickets",
+            seller: "TicketShop",
+            price: "$1.99",
+            icon: "🎟️"
+        },
+
+        {
+            name: "100 Tickets",
+            category: "Tickets",
+            seller: "GameStore",
+            price: "$3.49",
+            icon: "🎟️"
+        }
+
+    ],
+
+
+    robux: [
+
+        {
+            name: "1,000 Robux Gamepass",
+            category: "Gamepass",
+            seller: "RobuxShop",
+            price: "$4.99",
+            icon: "🎮"
+        },
+
+        {
+            name: "5,000 Robux Gamepass",
+            category: "Gamepass",
+            seller: "FastRobux",
+            price: "$22.99",
+            icon: "🎮"
+        },
+
+        {
+            name: "Ingame Gifting",
+            category: "Ingame Gifting",
+            seller: "GiftStore",
+            price: "$5.00",
+            icon: "🎁"
+        },
+
+        {
+            name: "Roblox Plus",
+            category: "Roblox Plus",
+            seller: "PremiumSeller",
+            price: "$6.99",
+            icon: "⭐"
+        }
+
+    ]
+
+};
+
+
+/* CURRENT FILTER */
+
+let currentFilters = {
+    pets: "All",
+    robux: "All"
+};
+
+
+/* OPEN GAME */
+
+function openGame(game) {
+
+    document.getElementById("home").style.display = "none";
+
+    document.getElementById("petsMarket").style.display = "none";
+    document.getElementById("robuxMarket").style.display = "none";
+
+    if (game === "pets") {
+
+        document.getElementById("petsMarket").style.display = "block";
+
+        renderProducts("pets");
+
+    }
+
+    if (game === "robux") {
+
+        document.getElementById("robuxMarket").style.display = "block";
+
+        renderProducts("robux");
+
+    }
+
+    window.scrollTo(0, 0);
+}
+
+
+/* HOME */
+
+function showHome() {
+
+    document.getElementById("home").style.display = "block";
+
+    document.getElementById("petsMarket").style.display = "none";
+
+    document.getElementById("robuxMarket").style.display = "none";
+
+    window.scrollTo(0, 0);
+}
+
+
+/* RENDER PRODUCTS */
+
+function renderProducts(game) {
+
+    const container =
+        document.getElementById(
+            game === "pets"
+            ? "petsProducts"
+            : "robuxProducts"
+        );
+
+    const search =
+        document.getElementById(
+            game === "pets"
+            ? "petsSearch"
+            : "robuxSearch"
+        ).value.toLowerCase();
+
+    let filtered = products[game].filter(product => {
+
+        const matchesCategory =
+            currentFilters[game] === "All" ||
+            product.category === currentFilters[game];
+
+        const matchesSearch =
+            product.name.toLowerCase().includes(search) ||
+            product.category.toLowerCase().includes(search) ||
+            product.seller.toLowerCase().includes(search);
+
+        return matchesCategory && matchesSearch;
+
+    });
+
+
+    container.innerHTML = "";
+
+
+    if (filtered.length === 0) {
+
+        container.innerHTML =
+            '<div class="no-products">No products found.</div>';
+
+        return;
+    }
+
+
+    filtered.forEach(product => {
+
+        const card = document.createElement("div");
+
+        card.className = "product";
+
+        card.innerHTML = `
+
+            <div class="product-image">
+                ${product.icon}
+            </div>
+
+            <div class="product-category">
+                ${product.category}
+            </div>
+
+            <h3>
+                ${product.name}
+            </h3>
+
+            <div class="seller">
+                Seller: ${product.seller}
+            </div>
+
+            <div class="product-bottom">
+
+                <div class="price">
+                    ${product.price}
+                </div>
+
+                <button class="buy">
+                    View
+                </button>
+
+            </div>
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* SEARCH */
+
+function filterProducts(game) {
+    renderProducts(game);
+}
+
+
+/* CATEGORY FILTER */
+
+function setFilter(game, category, button) {
+
+    currentFilters[game] = category;
+
+    const buttons =
+        button.parentElement.querySelectorAll(".filter");
+
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderProducts(game);
+}
+
+</script>
 
 </body>
 </html>
