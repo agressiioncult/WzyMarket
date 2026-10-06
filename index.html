@@ -4,26 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>WzyMarket</title>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#08090d;
-color:#fff
-}
-
+body{font-family:Arial,Helvetica,sans-serif;background:#08090d;color:#fff}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 
 .hero{
-min-height:430px;
+min-height:420px;
 background:
-radial-gradient(circle at 20% 20%,#34266b 0%,transparent 35%),
-radial-gradient(circle at 80% 40%,#191b45 0%,transparent 35%),
+radial-gradient(circle at 20% 20%,#34266b 0,transparent 35%),
+radial-gradient(circle at 80% 40%,#191b45 0,transparent 35%),
 linear-gradient(135deg,#10111b,#08090d);
 border-bottom:1px solid #242633
 }
@@ -38,18 +30,10 @@ width:90%;
 margin:auto
 }
 
-.logo{
-font-size:25px;
-font-weight:900
-}
-
+.logo{font-size:25px;font-weight:900}
 .logo span{color:#8065ff}
 
-.nav-links{
-display:flex;
-gap:30px
-}
-
+.nav-links{display:flex;gap:30px}
 .nav-links a{
 color:#aeb2c0;
 text-decoration:none;
@@ -57,7 +41,7 @@ font-size:14px;
 font-weight:600
 }
 
-.login,.logout{
+.login,.logout,.secondary{
 background:#151722;
 border:1px solid #383b4a;
 color:#fff;
@@ -76,7 +60,7 @@ gap:10px
 max-width:900px;
 margin:auto;
 text-align:center;
-padding:75px 20px 60px
+padding:70px 20px
 }
 
 .hero-content h1{
@@ -109,20 +93,21 @@ padding:6px
 .hero-search input{
 flex:1;
 background:transparent;
-border:none;
-outline:none;
+border:0;
+outline:0;
 color:#fff;
 padding:13px
 }
 
-.hero-search button{
+.hero-search button,.primary,.view,.buy-button{
 background:#8065ff;
-border:none;
+border:0;
 color:#fff;
-padding:0 22px;
 border-radius:8px;
-font-weight:700
+font-weight:800
 }
+
+.hero-search button{padding:0 22px}
 
 .main{
 width:90%;
@@ -130,25 +115,15 @@ max-width:1250px;
 margin:auto
 }
 
-.games-section,
-.marketplace,
-.sell-page,
-.product-page,
-.shop-page,
-.orders-page{
+.games-section,.marketplace,.sell-page,.product-page,.shop-page,.orders-page{
 padding:45px 0 80px
 }
 
-.marketplace,
-.sell-page,
-.product-page,
-.shop-page,
-.orders-page{
+.marketplace,.sell-page,.product-page,.shop-page,.orders-page{
 display:none
 }
 
 .section-header{margin-bottom:22px}
-
 .section-header h2{font-size:25px}
 
 .section-header p,
@@ -205,11 +180,14 @@ font-size:23px;
 margin-bottom:7px
 }
 
-.game-card p{color:#8e94a4;font-size:14px}
+.game-card p{
+color:#8e94a4;
+font-size:14px
+}
 
 .back{
 background:none;
-border:none;
+border:0;
 color:#9298a8;
 margin-bottom:25px
 }
@@ -228,7 +206,7 @@ border:1px solid #292d39;
 border-radius:11px;
 padding:15px;
 color:#fff;
-outline:none;
+outline:0;
 margin:25px 0 18px
 }
 
@@ -248,15 +226,13 @@ padding:9px 14px;
 border-radius:8px
 }
 
-.filter.active,
-.filter:hover{
+.filter.active,.filter:hover{
 background:#8065ff;
 border-color:#8065ff;
 color:#fff
 }
 
-.products,
-.own-products{
+.products,.own-products{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:15px
@@ -312,7 +288,7 @@ font-size:12px;
 margin-bottom:14px
 }
 
-.product-bottom{
+.product-bottom,.row{
 display:flex;
 justify-content:space-between;
 align-items:center
@@ -324,13 +300,8 @@ font-weight:800
 }
 
 .view{
-background:#8065ff;
-border:none;
-color:#fff;
 padding:8px 13px;
-border-radius:7px;
-font-size:12px;
-font-weight:700
+font-size:12px
 }
 
 .panel{
@@ -352,16 +323,14 @@ flex-direction:column;
 gap:13px
 }
 
-.form input,
-.form textarea,
-.form select{
+.form input,.form textarea,.form select{
 width:100%;
 background:#0b0d12;
 border:1px solid #292d39;
 color:#fff;
 padding:13px;
 border-radius:9px;
-outline:none
+outline:0
 }
 
 .form textarea{
@@ -369,14 +338,8 @@ min-height:100px;
 resize:vertical
 }
 
-.primary{
-background:#8065ff;
-color:#fff;
-border:none;
-padding:13px;
-border-radius:9px;
-font-weight:800
-}
+.primary{padding:13px}
+.secondary{padding:13px}
 
 .shop-info{
 display:flex;
@@ -408,12 +371,6 @@ padding:15px
 color:#858b9b;
 font-size:13px;
 margin-bottom:10px
-}
-
-.row{
-display:flex;
-justify-content:space-between;
-align-items:center
 }
 
 .danger{
@@ -501,8 +458,7 @@ font-size:13px;
 margin-bottom:22px
 }
 
-.buy-button,
-.shop-button{
+.buy-button,.shop-button{
 width:100%;
 padding:15px;
 border-radius:10px;
@@ -510,11 +466,11 @@ font-weight:800;
 font-size:15px
 }
 
-.buy-button{
-background:#8065ff;
-border:none;
-color:#fff;
-margin-bottom:10px
+.buy-button{margin-bottom:10px}
+
+.buy-button:disabled{
+opacity:.5;
+cursor:not-allowed
 }
 
 .shop-button{
@@ -645,14 +601,14 @@ margin-bottom:25px
 
 .close{
 background:none;
-border:none;
+border:0;
 color:#777d8c;
 font-size:25px
 }
 
 .switch{
 background:none;
-border:none;
+border:0;
 color:#8065ff;
 margin-top:17px;
 width:100%
@@ -673,35 +629,25 @@ font-size:13px
 }
 
 @media(max-width:750px){
-
 .nav-links{display:none}
-
 .games{
 display:flex;
 overflow-x:auto
 }
-
 .game-card{min-width:280px}
-
-.products,
-.own-products{
+.products,.own-products{
 grid-template-columns:1fr
 }
-
 .product-page-inner{
 grid-template-columns:1fr;
 gap:18px
 }
-
 .product-page-image{height:300px}
-
 .order-card{
 flex-direction:column;
 align-items:flex-start
 }
-
 .order-right{text-align:left}
-
 }
 </style>
 </head>
@@ -739,14 +685,9 @@ onclick="openLogin()">
 Login
 </button>
 
-<div
-class="user-menu"
-id="userMenu">
+<div class="user-menu" id="userMenu">
 
-<span
-class="username"
-id="usernameDisplay">
-</span>
+<span id="usernameDisplay"></span>
 
 <button
 class="logout"
@@ -761,11 +702,12 @@ Logout
 <div class="hero-content">
 
 <h1>
-Buy & Sell <span>Roblox Items.</span>
+Buy & Sell
+<span>Roblox Items.</span>
 </h1>
 
 <p>
-Find the best Roblox items, services and offers from trusted sellers on WzyMarket.
+Find Roblox items, services and offers from sellers on WzyMarket.
 </p>
 
 <div class="hero-search">
@@ -785,12 +727,9 @@ Search
 
 </section>
 
-
 <main class="main">
 
-<section
-id="home"
-class="games-section">
+<section id="home" class="games-section">
 
 <div class="section-header">
 
@@ -808,11 +747,17 @@ Choose a game to browse its marketplace.
 class="game-card"
 onclick="openGame('pets')">
 
-<div class="game-icon">🐾</div>
+<div class="game-icon">
+🐾
+</div>
 
-<h3>Pets Universe</h3>
+<h3>
+Pets Universe
+</h3>
 
-<p>Pets & Tickets</p>
+<p>
+Pets & Tickets
+</p>
 
 </div>
 
@@ -820,11 +765,17 @@ onclick="openGame('pets')">
 class="game-card"
 onclick="openGame('robux')">
 
-<div class="game-icon">💰</div>
+<div class="game-icon">
+💰
+</div>
 
-<h3>Robux</h3>
+<h3>
+Robux
+</h3>
 
-<p>Ingame Gifting, Gamepass & Roblox Plus</p>
+<p>
+Ingame Gifting, Gamepass & Roblox Plus
+</p>
 
 </div>
 
@@ -833,9 +784,7 @@ onclick="openGame('robux')">
 </section>
 
 
-<section
-id="petsMarket"
-class="marketplace">
+<section id="petsMarket" class="marketplace">
 
 <button
 class="back"
@@ -843,7 +792,9 @@ onclick="showHome()">
 ← Back to Games
 </button>
 
-<h1>Pets Universe</h1>
+<h1>
+Pets Universe
+</h1>
 
 <p class="marketplace-subtitle">
 Buy Pets Universe items from different sellers.
@@ -885,9 +836,7 @@ class="products">
 </section>
 
 
-<section
-id="robuxMarket"
-class="marketplace">
+<section id="robuxMarket" class="marketplace">
 
 <button
 class="back"
@@ -895,7 +844,9 @@ onclick="showHome()">
 ← Back to Games
 </button>
 
-<h1>Robux</h1>
+<h1>
+Robux
+</h1>
 
 <p class="marketplace-subtitle">
 Buy Roblox services from different sellers.
@@ -953,7 +904,8 @@ onclick="goBackFromProduct()">
 ← Back
 </button>
 
-<div id="productPageContent"></div>
+<div id="productPageContent">
+</div>
 
 </section>
 
@@ -968,7 +920,8 @@ onclick="showHome()">
 ← Back to Marketplace
 </button>
 
-<div id="shopPageContent"></div>
+<div id="shopPageContent">
+</div>
 
 </section>
 
@@ -983,7 +936,9 @@ onclick="showHome()">
 ← Back to Marketplace
 </button>
 
-<h1>My Shop</h1>
+<h1>
+My Shop
+</h1>
 
 <p class="sell-subtitle">
 Create your shop and publish products on WzyMarket.
@@ -1000,7 +955,9 @@ style="display:none">
 id="createShopPanel"
 class="panel">
 
-<h2>Create your shop</h2>
+<h2>
+Create your shop
+</h2>
 
 <form
 class="form"
@@ -1015,7 +972,8 @@ required>
 <textarea
 id="shopDescription"
 placeholder="Shop Description"
-maxlength="300"></textarea>
+maxlength="300">
+</textarea>
 
 <button
 class="primary"
@@ -1065,7 +1023,9 @@ id="productFormPanel"
 class="panel"
 style="display:none">
 
-<h2>Add Product</h2>
+<h2>
+Add Product
+</h2>
 
 <form
 class="form"
@@ -1076,19 +1036,31 @@ id="productGame"
 onchange="updateCategories()"
 required>
 
-<option value="">Choose Game</option>
-<option value="pets">Pets Universe</option>
-<option value="robux">Robux</option>
+<option value="">
+Choose Game
+</option>
+
+<option value="pets">
+Pets Universe
+</option>
+
+<option value="robux">
+Robux
+</option>
 
 </select>
+
 
 <select
 id="productCategory"
 required>
 
-<option value="">Choose Category</option>
+<option value="">
+Choose Category
+</option>
 
 </select>
+
 
 <input
 id="productName"
@@ -1096,10 +1068,13 @@ placeholder="Product Name"
 maxlength="80"
 required>
 
+
 <textarea
 id="productDescription"
 placeholder="Product Description"
-maxlength="500"></textarea>
+maxlength="500">
+</textarea>
+
 
 <input
 id="productPrice"
@@ -1109,6 +1084,7 @@ step="0.01"
 placeholder="Price in USD"
 required>
 
+
 <input
 id="productStock"
 type="number"
@@ -1117,9 +1093,12 @@ step="1"
 value="1"
 required>
 
+
 <input
 id="productImage"
+type="url"
 placeholder="Product image URL (optional)">
+
 
 <button
 class="primary"
@@ -1129,7 +1108,7 @@ Publish Product
 
 <button
 type="button"
-class="logout"
+class="secondary"
 onclick="hideProductForm()">
 Cancel
 </button>
@@ -1141,7 +1120,9 @@ Cancel
 
 <div class="panel">
 
-<h2>My Products</h2>
+<h2>
+My Products
+</h2>
 
 <div
 id="myProducts"
@@ -1153,7 +1134,9 @@ class="own-products">
 
 <div class="panel">
 
-<h2>Orders for My Products</h2>
+<h2>
+Orders for My Products
+</h2>
 
 <div
 id="sellerOrders"
@@ -1175,7 +1158,9 @@ onclick="showHome()">
 ← Back to Marketplace
 </button>
 
-<h1>My Orders</h1>
+<h1>
+My Orders
+</h1>
 
 <p class="orders-subtitle">
 View your purchases and order status.
@@ -1199,7 +1184,9 @@ id="loginModal">
 
 <div class="modal-top">
 
-<h2 id="authTitle">Login</h2>
+<h2 id="authTitle">
+Login
+</h2>
 
 <button
 class="close"
@@ -1270,10 +1257,12 @@ Create Account
 
 </form>
 
+
 <p
 class="message"
 id="authMessage">
 </p>
+
 
 <button
 class="switch"
@@ -1294,19 +1283,6 @@ Don't have an account? Sign Up
 
 <script>
 
-/* =====================================================
-   SUPABASE
-===================================================== */
-
-/*
-IMPORTANT:
-
-Hier deinen AKTUELLEN Publishable Key aus
-Supabase > Settings > API Keys einsetzen.
-
-NICHT den Secret Key verwenden.
-*/
-
 const SUPABASE_URL =
 "https://tejyxzbagctgxymmefyg.supabase.co";
 
@@ -1320,288 +1296,73 @@ SUPABASE_KEY
 );
 
 
-/* =====================================================
-   STATE
-===================================================== */
-
-let filters={
+let filters = {
 pets:"All",
 robux:"All"
 };
 
-let currentUser=null;
-let currentShop=null;
-let previousProductGame="pets";
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-function openLogin(){
-
-document.getElementById("loginModal")
-.style.display="flex";
-
-document.getElementById("authMessage")
-.style.display="none";
-
-}
-
-function closeLogin(){
-
-document.getElementById("loginModal")
-.style.display="none";
-
-}
-
-function switchAuth(){
-
-const loginForm=
-document.getElementById("loginForm");
-
-const signupForm=
-document.getElementById("signupForm");
-
-const title=
-document.getElementById("authTitle");
-
-const button=
-document.getElementById("switchButton");
-
-if(loginForm.style.display!=="none"){
-
-loginForm.style.display="none";
-signupForm.style.display="flex";
-
-title.textContent="Create Account";
-
-button.textContent=
-"Already have an account? Login";
-
-}else{
-
-loginForm.style.display="flex";
-signupForm.style.display="none";
-
-title.textContent="Login";
-
-button.textContent=
-"Don't have an account? Sign Up";
-
-}
-
-}
-
-
-/* =====================================================
-   SIGNUP
-===================================================== */
-
-async function signup(e){
-
-e.preventDefault();
-
-const message=
-document.getElementById("authMessage");
-
-message.style.display="block";
-message.className="message";
-message.textContent="Creating account...";
-
-const username=
-document.getElementById("signupUsername")
-.value.trim();
-
-const email=
-document.getElementById("signupEmail")
-.value.trim();
-
-const password=
-document.getElementById("signupPassword")
-.value;
-
-try{
-
-const {
-data,
-error
-}=
-await supabaseClient.auth.signUp({
-email,
-password
-});
-
-if(error)throw error;
-
-if(!data.user)
-throw new Error("Account could not be created.");
-
-const {
-error:profileError
-}=
-await supabaseClient
-.from("profiles")
-.insert({
-id:data.user.id,
-username
-});
-
-if(profileError)
-throw profileError;
-
-message.className="message success";
-message.textContent=
-"Account created successfully!";
-
-setTimeout(closeLogin,900);
-
-}catch(error){
-
-message.className="message error";
-message.textContent=
-error.message;
-
-}
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-async function login(e){
-
-e.preventDefault();
-
-const message=
-document.getElementById("authMessage");
-
-message.style.display="block";
-message.className="message";
-message.textContent="Logging in...";
-
-const email=
-document.getElementById("loginEmail")
-.value.trim();
-
-const password=
-document.getElementById("loginPassword")
-.value;
-
-const {
-error
-}=
-await supabaseClient.auth
-.signInWithPassword({
-email,
-password
-});
-
-if(error){
-
-message.className="message error";
-message.textContent=
-error.message;
-
-return;
-
-}
-
-message.className="message success";
-message.textContent="Login successful!";
-
-setTimeout(closeLogin,600);
-
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-async function logout(){
-
-await supabaseClient.auth.signOut();
-
-currentUser=null;
-currentShop=null;
-
-showHome();
-
-}
-
-
-/* =====================================================
-   USER UI
-===================================================== */
-
-async function updateUserUI(){
-
-const {
-data:{user}
-}=
-await supabaseClient.auth.getUser();
-
-currentUser=user;
-
-const loginButton=
-document.getElementById("loginButton");
-
-const userMenu=
-document.getElementById("userMenu");
-
-const usernameDisplay=
-document.getElementById("usernameDisplay");
-
-if(!user){
-
-loginButton.style.display="block";
-userMenu.style.display="none";
-
-return;
-
-}
-
-loginButton.style.display="none";
-userMenu.style.display="flex";
-
-const {
-data:profile
-}=
-await supabaseClient
-.from("profiles")
-.select("username")
-.eq("id",user.id)
-.maybeSingle();
-
-usernameDisplay.textContent=
-profile?.username ||
-user.email.split("@")[0];
-
-}
-
-
-/* =====================================================
-   AUTH LISTENER
-===================================================== */
-
-supabaseClient.auth.onAuthStateChange(
-()=>{
-
-setTimeout(
-updateUserUI,
-0
+let currentUser = null;
+let currentShop = null;
+let previousProductGame = "pets";
+
+
+const $ =
+id => document.getElementById(id);
+
+
+function esc(v){
+
+return String(v ?? "")
+.replace(
+/[&<>"']/g,
+c => ({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[c])
 );
 
 }
-);
 
 
-/* =====================================================
-   SECTIONS
-===================================================== */
+function showMessage(
+el,
+text,
+type=""
+){
+
+el.style.display = "block";
+
+el.className =
+"message " + type;
+
+el.textContent = text;
+
+}
+
+
+function showSellNotice(
+text,
+isError=false
+){
+
+const n =
+$("sellNotice");
+
+n.style.display =
+"block";
+
+n.className =
+"notice " +
+(isError ? "error" : "success");
+
+n.textContent =
+text;
+
+}
+
 
 function hideAllSections(){
 
@@ -1613,12 +1374,10 @@ function hideAllSections(){
 "shopPage",
 "sellPage",
 "ordersPage"
-].forEach(id=>{
-
-document.getElementById(id)
-.style.display="none";
-
-});
+].forEach(
+id =>
+$(id).style.display="none"
+);
 
 }
 
@@ -1627,8 +1386,8 @@ function showHome(){
 
 hideAllSections();
 
-document.getElementById("home")
-.style.display="block";
+$("home").style.display =
+"block";
 
 window.scrollTo({
 top:0,
@@ -1638,15 +1397,257 @@ behavior:"smooth"
 }
 
 
+function openLogin(){
+
+$("loginModal").style.display =
+"flex";
+
+$("authMessage").style.display =
+"none";
+
+}
+
+
+function closeLogin(){
+
+$("loginModal").style.display =
+"none";
+
+}
+
+
+function switchAuth(){
+
+const l =
+$("loginForm");
+
+const s =
+$("signupForm");
+
+const signup =
+s.style.display !== "none";
+
+l.style.display =
+signup ? "flex" : "none";
+
+s.style.display =
+signup ? "none" : "flex";
+
+$("authTitle").textContent =
+signup
+? "Login"
+: "Create Account";
+
+$("switchButton").textContent =
+signup
+? "Don't have an account? Sign Up"
+: "Already have an account? Login";
+
+$("authMessage").style.display =
+"none";
+
+}
+
+
+async function signup(e){
+
+e.preventDefault();
+
+const m =
+$("authMessage");
+
+showMessage(
+m,
+"Creating account..."
+);
+
+const username =
+$("signupUsername").value.trim();
+
+const email =
+$("signupEmail").value.trim();
+
+const password =
+$("signupPassword").value;
+
+try{
+
+const {
+data,
+error
+} =
+await supabaseClient.auth.signUp({
+
+email,
+password,
+
+options:{
+data:{
+username
+}
+}
+
+});
+
+if(error)
+throw error;
+
+if(!data.user)
+throw new Error(
+"Account could not be created."
+);
+
+showMessage(
+m,
+"Account created successfully!",
+"success"
+);
+
+setTimeout(
+async()=>{
+closeLogin();
+await updateUserUI();
+},
+700
+);
+
+}catch(err){
+
+showMessage(
+m,
+err.message,
+"error"
+);
+
+}
+
+}
+
+
+async function login(e){
+
+e.preventDefault();
+
+const m =
+$("authMessage");
+
+showMessage(
+m,
+"Logging in..."
+);
+
+const email =
+$("loginEmail").value.trim();
+
+const password =
+$("loginPassword").value;
+
+const {
+error
+} =
+await supabaseClient.auth.signInWithPassword({
+
+email,
+password
+
+});
+
+if(error){
+
+showMessage(
+m,
+error.message,
+"error"
+);
+
+return;
+
+}
+
+showMessage(
+m,
+"Login successful!",
+"success"
+);
+
+setTimeout(
+closeLogin,
+500
+);
+
+}
+
+
+async function logout(){
+
+await supabaseClient.auth.signOut();
+
+currentUser = null;
+currentShop = null;
+
+showHome();
+
+await updateUserUI();
+
+}
+
+
+async function updateUserUI(){
+
+const {
+data:{
+user
+}
+} =
+await supabaseClient.auth.getUser();
+
+currentUser =
+user;
+
+$("loginButton").style.display =
+user ? "none" : "block";
+
+$("userMenu").style.display =
+user ? "flex" : "none";
+
+if(!user)
+return;
+
+const {
+data:profile
+} =
+await supabaseClient
+.from("profiles")
+.select("username")
+.eq("id",user.id)
+.maybeSingle();
+
+$("usernameDisplay").textContent =
+profile?.username ||
+user.email.split("@")[0];
+
+}
+
+
+supabaseClient.auth.onAuthStateChange(
+() =>
+setTimeout(
+updateUserUI,
+0
+)
+);
+
+
 function openGame(game){
 
 hideAllSections();
 
-document.getElementById(
-game==="pets"
-?"petsMarket"
-:"robuxMarket"
-).style.display="block";
+$(
+game === "pets"
+? "petsMarket"
+: "robuxMarket"
+).style.display =
+"block";
 
 renderProducts(game);
 
@@ -1658,35 +1659,33 @@ behavior:"smooth"
 }
 
 
-/* =====================================================
-   PRODUCTS
-===================================================== */
-
 async function renderProducts(game){
 
-const container=
-document.getElementById(
-game==="pets"
-?"petsProducts"
-:"robuxProducts"
+const box =
+$(
+game === "pets"
+? "petsProducts"
+: "robuxProducts"
 );
 
-const search=
-document.getElementById(
-game==="pets"
-?"petsSearch"
-:"robuxSearch"
-).value
+const search =
+$(
+game === "pets"
+? "petsSearch"
+: "robuxSearch"
+)
+.value
 .toLowerCase()
 .trim();
 
-container.innerHTML=
+box.innerHTML =
 "<p style='color:#777d8c'>Loading products...</p>";
+
 
 const {
 data,
 error
-}=
+} =
 await supabaseClient
 .from("products")
 .select(
@@ -1695,144 +1694,130 @@ await supabaseClient
 .eq("game",game)
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
+
 
 if(error){
 
-container.innerHTML=
-`
-<p class="error">
-${escapeHtml(error.message)}
-</p>
-`;
-
-return;
-
-}
-
-const filtered=
-(data||[]).filter(product=>{
-
-const categoryMatch=
-filters[game]==="All" ||
-product.category===filters[game];
-
-const searchMatch=
-(product.name||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-(product.category||"")
-.toLowerCase()
-.includes(search)
-
-||
-
-(product.profiles?.username||"")
-.toLowerCase()
-.includes(search);
-
-return categoryMatch && searchMatch;
-
-});
-
-
-if(!filtered.length){
-
-container.innerHTML=
-`
-<p style="color:#777d8c">
-No products found.
-</p>
-`;
+box.innerHTML =
+`<p class="error">
+${esc(error.message)}
+</p>`;
 
 return;
 
 }
 
 
-container.innerHTML=
-filtered.map(product=>{
-
-const image=
-product.image_url
-?
-`
-<img
-src="${escapeAttr(product.image_url)}"
-onerror="this.style.display='none'">
-`
-:
+const list =
+(data || [])
+.filter(
+p =>
 (
-game==="pets"
-?"🐾"
-:"💰"
+filters[game] === "All" ||
+p.category === filters[game]
+)
+&&
+(
+`${p.name || ""}
+${p.category || ""}
+${p.profiles?.username || ""}`
+.toLowerCase()
+.includes(search)
+)
 );
 
-return `
 
-<div class="product">
+if(!list.length){
+
+box.innerHTML =
+"<p style='color:#777d8c'>No products found.</p>";
+
+return;
+
+}
+
+
+box.innerHTML =
+list
+.map(
+p =>
+
+`<div class="product">
 
 <div class="product-image">
-${image}
+
+${
+p.image_url
+?
+`<img
+src="${esc(p.image_url)}"
+alt="">`
+:
+game === "pets"
+?
+"🐾"
+:
+"💰"
+}
+
 </div>
 
 <div class="category">
-${escapeHtml(product.category)}
+${esc(p.category)}
 </div>
 
 <h3>
-${escapeHtml(product.name)}
+${esc(p.name)}
 </h3>
 
 <div class="seller">
 Seller:
-${escapeHtml(
-product.profiles?.username ||
-"Seller"
-)}
+${esc(p.profiles?.username || "Seller")}
 · Stock:
-${Number(product.stock)}
+${Number(p.stock)}
 </div>
 
 <div class="product-bottom">
 
 <div class="price">
-$${Number(product.price).toFixed(2)}
+$${Number(p.price).toFixed(2)}
 </div>
 
 <button
 class="view"
-onclick="viewProduct(${product.id})">
+onclick="viewProduct(${p.id})">
 View
 </button>
 
 </div>
 
-</div>
+</div>`
 
-`;
-
-}).join("");
+)
+.join("");
 
 }
 
 
-/* =====================================================
-   FILTER
-===================================================== */
+function setFilter(
+game,
+category,
+button
+){
 
-function setFilter(game,category,button){
+filters[game] =
+category;
 
-filters[game]=category;
-
-button.parentElement
+button
+.parentElement
 .querySelectorAll(".filter")
 .forEach(
-b=>b.classList.remove("active")
+b =>
+b.classList.remove("active")
 );
 
 button.classList.add("active");
@@ -1842,33 +1827,29 @@ renderProducts(game);
 }
 
 
-/* =====================================================
-   PRODUCT PAGE
-===================================================== */
-
 async function viewProduct(id){
 
-previousProductGame=
-document.getElementById("petsMarket")
-.style.display==="block"
-?"pets"
-:"robux";
+previousProductGame =
+$("petsMarket").style.display === "block"
+? "pets"
+: "robux";
 
 hideAllSections();
 
-document.getElementById("productPage")
-.style.display="block";
+$("productPage").style.display =
+"block";
 
-const content=
-document.getElementById("productPageContent");
+const box =
+$("productPageContent");
 
-content.innerHTML=
+box.innerHTML =
 "<p style='color:#777d8c'>Loading product...</p>";
 
+
 const {
-data:product,
+data:p,
 error
-}=
+} =
 await supabaseClient
 .from("products")
 .select(
@@ -1877,16 +1858,22 @@ await supabaseClient
 .eq("id",id)
 .single();
 
-if(error || !product){
 
-content.innerHTML=
+if(error || !p){
+
+box.innerHTML =
 `
 <div class="panel">
 
-<h2>Product not found</h2>
+<h2>
+Product not found
+</h2>
 
 <p class="error">
-${escapeHtml(error?.message||"Product not found.")}
+${esc(
+error?.message ||
+"Product not found."
+)}
 </p>
 
 </div>
@@ -1896,90 +1883,104 @@ return;
 
 }
 
-const seller=
-product.profiles?.username ||
-"Seller";
 
-const image=
-product.image_url
-?
-`
-<img
-src="${escapeAttr(product.image_url)}"
-alt="${escapeAttr(product.name)}">
-`
-:
-(
-product.category==="Pets"
-?"🐾"
-:
-product.category==="Tickets"
-?"🎟️"
-:
-product.category==="Gamepass"
-?"🎮"
-:
-product.category==="Ingame Gifting"
-?"🎁"
-:
-"⭐"
-);
+const icon =
+p.category === "Pets"
+? "🐾"
+: p.category === "Tickets"
+? "🎟️"
+: p.category === "Gamepass"
+? "🎮"
+: p.category === "Ingame Gifting"
+? "🎁"
+: "⭐";
 
-content.innerHTML=`
+
+box.innerHTML =
+`
 
 <div class="product-page-inner">
 
 <div class="product-page-image">
-${image}
+
+${
+p.image_url
+?
+`<img
+src="${esc(p.image_url)}"
+alt="">`
+:
+icon
+}
+
 </div>
+
 
 <div class="product-page-info">
 
 <div class="product-page-category">
-${escapeHtml(product.category)}
+${esc(p.category)}
 </div>
 
 <h1>
-${escapeHtml(product.name)}
+${esc(p.name)}
 </h1>
 
 <div class="product-page-description">
-${escapeHtml(
-product.description ||
+${esc(
+p.description ||
 "No description provided."
 )}
 </div>
 
 <div class="product-page-price">
-$${Number(product.price).toFixed(2)}
+$${Number(p.price).toFixed(2)}
 </div>
 
 <div class="product-page-stock">
+
 ${
-Number(product.stock)>0
+Number(p.stock) > 0
 ?
-`${Number(product.stock)} available`
+Number(p.stock) +
+" available"
 :
 "Out of stock"
 }
+
 </div>
+
 
 <button
 class="buy-button"
-onclick="startPurchase(${product.id})"
-${Number(product.stock)<=0?"disabled":""}>
+onclick="startPurchase(${p.id})"
 ${
-Number(product.stock)>0
-?"Buy Now"
-:"Out of Stock"
+Number(p.stock) <= 0
+?
+"disabled"
+:
+""
+}>
+
+${
+Number(p.stock) > 0
+?
+"Buy Now"
+:
+"Out of Stock"
 }
+
 </button>
+
 
 <button
 class="shop-button"
-onclick="openShop(${product.shop_id})">
+onclick="openShop(${p.shop_id})">
+
 Visit Shop
+
 </button>
+
 
 <div class="seller-box">
 
@@ -1988,7 +1989,10 @@ SELLER
 </div>
 
 <div class="seller-name">
-${escapeHtml(seller)}
+${esc(
+p.profiles?.username ||
+"Seller"
+)}
 </div>
 
 </div>
@@ -2009,20 +2013,20 @@ behavior:"smooth"
 
 function goBackFromProduct(){
 
-openGame(previousProductGame);
+openGame(
+previousProductGame
+);
 
 }
 
-
-/* =====================================================
-   SHOP
-===================================================== */
 
 async function openShop(shopId){
 
 if(!shopId){
 
-alert("This product has no shop.");
+alert(
+"This product has no shop."
+);
 
 return;
 
@@ -2030,31 +2034,37 @@ return;
 
 hideAllSections();
 
-document.getElementById("shopPage")
-.style.display="block";
+$("shopPage").style.display =
+"block";
 
-const content=
-document.getElementById("shopPageContent");
+const box =
+$("shopPageContent");
 
-content.innerHTML=
+box.innerHTML =
 "<p style='color:#777d8c'>Loading shop...</p>";
+
 
 const {
 data:shop,
 error
-}=
+} =
 await supabaseClient
 .from("shops")
 .select("*")
 .eq("id",shopId)
 .single();
 
+
 if(error || !shop){
 
-content.innerHTML=
+box.innerHTML =
 `
-<div class="panel">
-<h2>Shop not found</h2>
+<div class='panel'>
+
+<h2>
+Shop not found
+</h2>
+
 </div>
 `;
 
@@ -2062,30 +2072,35 @@ return;
 
 }
 
+
 const {
 data:products
-}=
+} =
 await supabaseClient
 .from("products")
 .select(
-"id,name,category,price,stock,image_url,shop_id"
+"id,name,category,price,stock,image_url,shop_id,game"
 )
 .eq("shop_id",shopId)
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
 
-content.innerHTML=`
+
+box.innerHTML =
+`
 
 <div class="shop-header">
 
 <h1>
-${escapeHtml(shop.name)}
+${esc(shop.name)}
 </h1>
 
 <p>
-${escapeHtml(
+${esc(
 shop.description ||
 "No shop description."
 )}
@@ -2093,66 +2108,68 @@ shop.description ||
 
 </div>
 
+
 <div class="products">
 
 ${
 products?.length
 ?
-products.map(product=>`
+products
+.map(
+p =>
 
-<div class="product">
+`<div class="product">
 
 <div class="product-image">
 
 ${
-product.image_url
+p.image_url
 ?
-`
-<img
-src="${escapeAttr(product.image_url)}">
-`
+`<img
+src="${esc(p.image_url)}"
+alt="">`
 :
-"🐾"
+"🛍️"
 }
 
 </div>
 
 <div class="category">
-${escapeHtml(product.category)}
+${esc(p.category)}
 </div>
 
 <h3>
-${escapeHtml(product.name)}
+${esc(p.name)}
 </h3>
 
 <div class="seller">
-Stock: ${Number(product.stock)}
+Stock:
+${Number(p.stock)}
 </div>
 
 <div class="product-bottom">
 
 <div class="price">
-$${Number(product.price).toFixed(2)}
+$${Number(p.price).toFixed(2)}
 </div>
 
 <button
 class="view"
-onclick="viewProduct(${product.id})">
+onclick="viewProduct(${p.id})">
 View
 </button>
 
 </div>
 
-</div>
+</div>`
 
-`).join("")
+)
+.join("")
 
 :
-`
-<p style="color:#777d8c">
-This shop has no products yet.
-</p>
-`
+
+"<p style='color:#777d8c'>This shop has no products yet.</p>"
+
 }
 
 </div>
@@ -2167,15 +2184,13 @@ behavior:"smooth"
 }
 
 
-/* =====================================================
-   SELL PAGE
-===================================================== */
-
 async function openSell(){
 
 const {
-data:{user}
-}=
+data:{
+user
+}
+} =
 await supabaseClient.auth.getUser();
 
 if(!user){
@@ -2186,12 +2201,13 @@ return;
 
 }
 
-currentUser=user;
+currentUser =
+user;
 
 hideAllSections();
 
-document.getElementById("sellPage")
-.style.display="block";
+$("sellPage").style.display =
+"block";
 
 await loadShop();
 
@@ -2203,21 +2219,18 @@ behavior:"smooth"
 }
 
 
-/* =====================================================
-   LOAD SHOP
-===================================================== */
-
 async function loadShop(){
 
 const {
 data:shop,
 error
-}=
+} =
 await supabaseClient
 .from("shops")
 .select("*")
 .eq("owner_id",currentUser.id)
 .maybeSingle();
+
 
 if(error){
 
@@ -2230,28 +2243,32 @@ return;
 
 }
 
-currentShop=shop||null;
 
-document.getElementById(
-"createShopPanel"
-).style.display=
-shop?"none":"block";
+currentShop =
+shop || null;
 
-document.getElementById(
-"shopPanel"
-).style.display=
-shop?"block":"none";
+
+$("createShopPanel").style.display =
+shop
+?
+"none"
+:
+"block";
+
+$("shopPanel").style.display =
+shop
+?
+"block"
+:
+"none";
+
 
 if(shop){
 
-document.getElementById(
-"myShopName"
-).textContent=
+$("myShopName").textContent =
 shop.name;
 
-document.getElementById(
-"myShopDescription"
-).textContent=
+$("myShopDescription").textContent =
 shop.description ||
 "No description";
 
@@ -2261,43 +2278,39 @@ await loadSellerOrders();
 
 }else{
 
-document.getElementById(
-"myProducts"
-).innerHTML=
+$("myProducts").innerHTML =
 "<p style='color:#777d8c'>Create your shop first.</p>";
 
-document.getElementById(
-"sellerOrders"
-).innerHTML=
+$("sellerOrders").innerHTML =
 "<p style='color:#777d8c'>Create your shop first.</p>";
 
 }
 
 }
 
-
-/* =====================================================
-   CREATE SHOP
-===================================================== */
 
 async function createShop(e){
 
 e.preventDefault();
 
-if(!currentUser)return;
+if(!currentUser)
+return;
 
-const name=
-document.getElementById("shopName")
-.value.trim();
+const name =
+$("shopName")
+.value
+.trim();
 
-const description=
-document.getElementById("shopDescription")
-.value.trim();
+const description =
+$("shopDescription")
+.value
+.trim();
+
 
 const {
 data,
 error
-}=
+} =
 await supabaseClient
 .from("shops")
 .insert({
@@ -2308,6 +2321,7 @@ description
 .select()
 .single();
 
+
 if(error){
 
 showSellNotice(
@@ -2319,91 +2333,63 @@ return;
 
 }
 
-currentShop=data;
+
+currentShop =
+data;
 
 showSellNotice(
-"Shop created successfully!",
-false
+"Shop created successfully!"
 );
+
+e.target.reset();
 
 await loadShop();
 
 }
 
 
-/* =====================================================
-   NOTICE
-===================================================== */
-
-function showSellNotice(text,error){
-
-const notice=
-document.getElementById("sellNotice");
-
-notice.style.display="block";
-
-notice.className=
-error
-?"notice error"
-:"notice success";
-
-notice.textContent=text;
-
-}
-
-
-/* =====================================================
-   PRODUCT FORM
-===================================================== */
-
 function showProductForm(){
 
-document.getElementById(
-"productFormPanel"
-).style.display="block";
+$("productFormPanel").style.display =
+"block";
 
-document.getElementById(
-"productFormPanel"
-).scrollIntoView({
+$("productFormPanel")
+.scrollIntoView({
 behavior:"smooth"
 });
 
 }
 
+
 function hideProductForm(){
 
-document.getElementById(
-"productFormPanel"
-).style.display="none";
+$("productFormPanel").style.display =
+"none";
 
 }
 
 
-/* =====================================================
-   CATEGORIES
-===================================================== */
-
 function updateCategories(){
 
-const game=
-document.getElementById(
-"productGame"
-).value;
+const game =
+$("productGame").value;
 
-const select=
-document.getElementById(
-"productCategory"
-);
+const select =
+$("productCategory");
 
-select.innerHTML=
+select.innerHTML =
 '<option value="">Choose Category</option>';
 
-const categories=
-game==="pets"
+
+const cats =
+game === "pets"
 ?
-["Pets","Tickets"]
+[
+"Pets",
+"Tickets"
+]
 :
-game==="robux"
+game === "robux"
 ?
 [
 "Ingame Gifting",
@@ -2413,30 +2399,37 @@ game==="robux"
 :
 [];
 
-categories.forEach(category=>{
 
-const option=
-document.createElement("option");
+cats.forEach(
+c => {
 
-option.value=category;
-option.textContent=category;
+const o =
+document.createElement(
+"option"
+);
 
-select.appendChild(option);
+o.value =
+c;
 
-});
+o.textContent =
+c;
+
+select.appendChild(o);
+
+}
+);
 
 }
 
-
-/* =====================================================
-   CREATE PRODUCT
-===================================================== */
 
 async function createProduct(e){
 
 e.preventDefault();
 
-if(!currentUser || !currentShop){
+if(
+!currentUser ||
+!currentShop
+){
 
 showSellNotice(
 "Create a shop first.",
@@ -2447,47 +2440,44 @@ return;
 
 }
 
-const game=
-document.getElementById(
-"productGame"
-).value;
 
-const category=
-document.getElementById(
-"productCategory"
-).value;
+const game =
+$("productGame").value;
 
-const name=
-document.getElementById(
-"productName"
-).value.trim();
+const category =
+$("productCategory").value;
 
-const description=
-document.getElementById(
-"productDescription"
-).value.trim();
+const name =
+$("productName")
+.value
+.trim();
 
-const price=
+const description =
+$("productDescription")
+.value
+.trim();
+
+const price =
 Number(
-document.getElementById(
-"productPrice"
-).value
+$("productPrice").value
 );
 
-const stock=
+const stock =
 Number(
-document.getElementById(
-"productStock"
-).value
+$("productStock").value
 );
 
-const image_url=
-document.getElementById(
-"productImage"
-).value.trim() ||
+const image_url =
+$("productImage")
+.value
+.trim() ||
 null;
 
-if(price<=0 || stock<1){
+
+if(
+price <= 0 ||
+stock < 1
+){
 
 showSellNotice(
 "Enter a valid price and stock.",
@@ -2498,22 +2488,36 @@ return;
 
 }
 
+
 const {
 error
-}=
+} =
 await supabaseClient
 .from("products")
 .insert({
-seller_id:currentUser.id,
-shop_id:currentShop.id,
+
+seller_id:
+currentUser.id,
+
+shop_id:
+currentShop.id,
+
 game,
+
 category,
+
 name,
+
 description,
+
 price,
+
 stock,
+
 image_url
+
 });
+
 
 if(error){
 
@@ -2526,9 +2530,9 @@ return;
 
 }
 
+
 showSellNotice(
-"Product published successfully!",
-false
+"Product published successfully!"
 );
 
 e.target.reset();
@@ -2540,36 +2544,37 @@ await loadMyProducts();
 }
 
 
-/* =====================================================
-   MY PRODUCTS
-===================================================== */
-
 async function loadMyProducts(){
 
-const box=
-document.getElementById(
-"myProducts"
-);
+const box =
+$("myProducts");
+
 
 const {
 data,
 error
-}=
+} =
 await supabaseClient
 .from("products")
 .select("*")
-.eq("seller_id",currentUser.id)
+.eq(
+"seller_id",
+currentUser.id
+)
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
+
 
 if(error){
 
-box.innerHTML=
+box.innerHTML =
 `
 <p class="error">
-${escapeHtml(error.message)}
+${esc(error.message)}
 </p>
 `;
 
@@ -2577,70 +2582,80 @@ return;
 
 }
 
+
 if(!data?.length){
 
-box.innerHTML=
+box.innerHTML =
 "<p style='color:#777d8c'>No products yet.</p>";
 
 return;
 
 }
 
-box.innerHTML=
-data.map(product=>`
 
-<div class="own-card">
+box.innerHTML =
+data
+.map(
+p =>
+
+`<div class="own-card">
 
 <h3>
-${escapeHtml(product.name)}
+${esc(p.name)}
 </h3>
 
 <p>
-${escapeHtml(product.game)}
+${esc(p.game)}
 ·
-${escapeHtml(product.category)}
-·
-Stock ${Number(product.stock)}
+${esc(p.category)}
+· Stock
+${Number(p.stock)}
 </p>
 
 <div class="row">
 
 <b>
-$${Number(product.price).toFixed(2)}
+$${Number(p.price).toFixed(2)}
 </b>
 
 <button
 class="danger"
-onclick="deleteProduct(${product.id})">
+onclick="deleteProduct(${p.id})">
 Delete
 </button>
 
 </div>
 
-</div>
+</div>`
 
-`).join("");
+)
+.join("");
 
 }
 
 
-/* =====================================================
-   DELETE PRODUCT
-===================================================== */
-
 async function deleteProduct(id){
 
-if(!confirm("Delete this product?"))
+if(
+!confirm(
+"Delete this product?"
+)
+)
 return;
+
 
 const {
 error
-}=
+} =
 await supabaseClient
 .from("products")
 .delete()
 .eq("id",id)
-.eq("seller_id",currentUser.id);
+.eq(
+"seller_id",
+currentUser.id
+);
+
 
 if(error){
 
@@ -2653,9 +2668,9 @@ return;
 
 }
 
+
 showSellNotice(
-"Product deleted.",
-false
+"Product deleted."
 );
 
 await loadMyProducts();
@@ -2663,16 +2678,15 @@ await loadMyProducts();
 }
 
 
-/* =====================================================
-   ORDERS
-===================================================== */
-
 async function startPurchase(productId){
 
 const {
-data:{user}
-}=
+data:{
+user
+}
+} =
 await supabaseClient.auth.getUser();
+
 
 if(!user){
 
@@ -2682,10 +2696,11 @@ return;
 
 }
 
+
 const {
-data:product,
-error:productError
-}=
+data:p,
+error
+} =
 await supabaseClient
 .from("products")
 .select(
@@ -2694,65 +2709,98 @@ await supabaseClient
 .eq("id",productId)
 .single();
 
-if(productError || !product){
 
-alert("Product could not be found.");
+if(error || !p){
 
-return;
-
-}
-
-if(Number(product.stock)<=0){
-
-alert("This product is out of stock.");
+alert(
+"Product could not be found."
+);
 
 return;
 
 }
 
-if(product.seller_id===user.id){
 
-alert("You cannot buy your own product.");
+if(
+Number(p.stock) <= 0
+){
+
+alert(
+"This product is out of stock."
+);
 
 return;
 
 }
+
+
+if(
+p.seller_id === user.id
+){
+
+alert(
+"You cannot buy your own product."
+);
+
+return;
+
+}
+
 
 const {
 data:order,
-error:orderError
-}=
+error:oe
+} =
 await supabaseClient
-.from("orders")
-.insert({
-buyer_id:user.id,
-product_id:product.id,
-seller_id:product.seller_id,
-price:product.price,
-status:"pending"
-})
-.select()
-.single();
+.rpc(
+"purchase_product",
+{
+p_product_id:
+productId
+}
+);
 
-if(orderError){
+
+if(oe){
 
 alert(
-"Could not create order:\n\n"+
-orderError.message
+"Could not create order:\n\n" +
+oe.message
 );
 
 return;
 
 }
 
+
+const createdOrder =
+Array.isArray(order)
+?
+order[0]
+:
+order;
+
+
 alert(
-"Order created successfully!\n\n"+
-"Product: "+product.name+
-"\nPrice: $"+
-Number(product.price).toFixed(2)+
-"\nOrder ID: "+order.id+
-"\n\nStatus: Pending"
+
+"Order created successfully!\n\n" +
+
+"Product: " +
+p.name +
+"\n" +
+
+"Price: $" +
+Number(p.price).toFixed(2) +
+"\n" +
+
+"Order ID: " +
+createdOrder.id +
+"\n\n" +
+
+"Status: Pending"
+
 );
+
 
 await openOrders();
 
@@ -2762,9 +2810,12 @@ await openOrders();
 async function openOrders(){
 
 const {
-data:{user}
-}=
+data:{
+user
+}
+} =
 await supabaseClient.auth.getUser();
+
 
 if(!user){
 
@@ -2774,42 +2825,54 @@ return;
 
 }
 
-currentUser=user;
+
+currentUser =
+user;
 
 hideAllSections();
 
-document.getElementById("ordersPage")
-.style.display="block";
+$("ordersPage").style.display =
+"block";
 
-const box=
-document.getElementById("ordersList");
 
-box.innerHTML=
+const box =
+$("ordersList");
+
+box.innerHTML =
 "<p style='color:#777d8c'>Loading orders...</p>";
+
 
 const {
 data:orders,
 error
-}=
+} =
 await supabaseClient
 .from("orders")
 .select(
 "id,price,status,created_at,product_id"
 )
-.eq("buyer_id",user.id)
+.eq(
+"buyer_id",
+user.id
+)
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
+
 
 if(error){
 
-box.innerHTML=
+box.innerHTML =
 `
 <div class="panel">
+
 <p class="error">
-${escapeHtml(error.message)}
+${esc(error.message)}
 </p>
+
 </div>
 `;
 
@@ -2817,15 +2880,18 @@ return;
 
 }
 
+
 if(!orders?.length){
 
-box.innerHTML=
+box.innerHTML =
 `
-<div class="panel">
+<div class='panel'>
 
-<h2>No orders yet</h2>
+<h2>
+No orders yet
+</h2>
 
-<p style="color:#777d8c">
+<p style='color:#777d8c'>
 Your purchases will appear here.
 </p>
 
@@ -2836,44 +2902,56 @@ return;
 
 }
 
-const ids=
-orders
-.map(order=>order.product_id)
-.filter(Boolean);
 
-let productMap={};
+const ids =
+orders.map(
+o => o.product_id
+);
 
-if(ids.length){
 
 const {
 data:products
-}=
+} =
 await supabaseClient
 .from("products")
 .select(
 "id,name,category"
 )
-.in("id",ids);
+.in(
+"id",
+ids
+);
 
-(products||[]).forEach(product=>{
-productMap[product.id]=product;
-});
 
-}
+const map = {};
 
-box.innerHTML=
-orders.map(order=>{
+(products || [])
+.forEach(
+p =>
+map[p.id] =
+p
+);
 
-const product=
-productMap[order.product_id];
 
-const statusClass=
-order.status==="completed"
-?"completed"
+box.innerHTML =
+orders
+.map(
+o => {
+
+const p =
+map[o.product_id];
+
+const cls =
+o.status === "completed"
+?
+"completed"
 :
-order.status==="cancelled"
-?"cancelled"
-:"";
+o.status === "cancelled"
+?
+"cancelled"
+:
+"";
+
 
 return `
 
@@ -2882,37 +2960,41 @@ return `
 <div class="order-left">
 
 <h3>
-${escapeHtml(
-product?.name||"Product"
+${esc(
+p?.name ||
+"Product"
 )}
 </h3>
 
 <p>
-Order #${order.id}
+Order #${o.id}
 </p>
 
 <p>
-${escapeHtml(
-product?.category||""
+${esc(
+p?.category ||
+""
 )}
 </p>
 
 <p>
 ${new Date(
-order.created_at
+o.created_at
 ).toLocaleString()}
 </p>
 
 </div>
 
+
 <div class="order-right">
 
 <div class="order-price">
-$${Number(order.price).toFixed(2)}
+$${Number(o.price).toFixed(2)}
 </div>
 
-<span class="status ${statusClass}">
-${escapeHtml(order.status)}
+<span
+class="status ${cls}">
+${esc(o.status)}
 </span>
 
 </div>
@@ -2921,43 +3003,46 @@ ${escapeHtml(order.status)}
 
 `;
 
-}).join("");
+}
+)
+.join("");
 
 }
 
 
-/* =====================================================
-   SELLER ORDERS
-===================================================== */
-
 async function loadSellerOrders(){
 
-const box=
-document.getElementById(
-"sellerOrders"
-);
+const box =
+$("sellerOrders");
+
 
 const {
 data:orders,
 error
-}=
+} =
 await supabaseClient
 .from("orders")
 .select(
 "id,buyer_id,product_id,price,status,created_at"
 )
-.eq("seller_id",currentUser.id)
+.eq(
+"seller_id",
+currentUser.id
+)
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
+
 
 if(error){
 
-box.innerHTML=
+box.innerHTML =
 `
 <p class="error">
-${escapeHtml(error.message)}
+${esc(error.message)}
 </p>
 `;
 
@@ -2965,73 +3050,96 @@ return;
 
 }
 
+
 if(!orders?.length){
 
-box.innerHTML=
+box.innerHTML =
 "<p style='color:#777d8c'>No orders yet.</p>";
 
 return;
 
 }
 
-const productIds=
-orders.map(o=>o.product_id);
 
-const buyerIds=
-orders.map(o=>o.buyer_id);
+const pids =
+orders.map(
+o => o.product_id
+);
 
-let productMap={};
-let buyerMap={};
+const bids =
+orders.map(
+o => o.buyer_id
+);
 
-if(productIds.length){
 
-const {
-data:products
-}=
-await supabaseClient
+const [
+{data:ps},
+{data:bs}
+] =
+await Promise.all([
+
+supabaseClient
 .from("products")
-.select("id,name,category")
-.in("id",productIds);
+.select(
+"id,name,category"
+)
+.in(
+"id",
+pids
+),
 
-(products||[]).forEach(product=>{
-productMap[product.id]=product;
-});
-
-}
-
-if(buyerIds.length){
-
-const {
-data:buyers
-}=
-await supabaseClient
+supabaseClient
 .from("profiles")
-.select("id,username")
-.in("id",buyerIds);
+.select(
+"id,username"
+)
+.in(
+"id",
+bids
+)
 
-(buyers||[]).forEach(buyer=>{
-buyerMap[buyer.id]=buyer.username;
-});
+]);
 
-}
 
-box.innerHTML=
-orders.map(order=>{
+const pm = {};
+const bm = {};
 
-const product=
-productMap[order.product_id];
 
-const buyer=
-buyerMap[order.buyer_id] ||
-"Buyer";
+(ps || [])
+.forEach(
+p =>
+pm[p.id] =
+p
+);
 
-const statusClass=
-order.status==="completed"
-?"completed"
+
+(bs || [])
+.forEach(
+b =>
+bm[b.id] =
+b.username
+);
+
+
+box.innerHTML =
+orders
+.map(
+o => {
+
+const p =
+pm[o.product_id];
+
+const cls =
+o.status === "completed"
+?
+"completed"
 :
-order.status==="cancelled"
-?"cancelled"
-:"";
+o.status === "cancelled"
+?
+"cancelled"
+:
+"";
+
 
 return `
 
@@ -3040,36 +3148,42 @@ return `
 <div class="order-left">
 
 <h3>
-${escapeHtml(
-product?.name||"Product"
+${esc(
+p?.name ||
+"Product"
 )}
 </h3>
 
 <p>
-Order #${order.id}
+Order #${o.id}
 </p>
 
 <p>
 Buyer:
-${escapeHtml(buyer)}
+${esc(
+bm[o.buyer_id] ||
+"Buyer"
+)}
 </p>
 
 <p>
 ${new Date(
-order.created_at
+o.created_at
 ).toLocaleString()}
 </p>
 
 </div>
 
+
 <div class="order-right">
 
 <div class="order-price">
-$${Number(order.price).toFixed(2)}
+$${Number(o.price).toFixed(2)}
 </div>
 
-<span class="status ${statusClass}">
-${escapeHtml(order.status)}
+<span
+class="status ${cls}">
+${esc(o.status)}
 </span>
 
 </div>
@@ -3078,36 +3192,35 @@ ${escapeHtml(order.status)}
 
 `;
 
-}).join("");
+}
+)
+.join("");
 
 }
 
 
-/* =====================================================
-   GLOBAL SEARCH
-===================================================== */
-
 function globalSearch(){
 
-const query=
-document.getElementById(
-"globalSearch"
-).value
+const q =
+$("globalSearch")
+.value
 .trim()
 .toLowerCase();
 
-if(!query)return;
+
+if(!q)
+return;
+
 
 if(
-query.includes("pet") ||
-query.includes("ticket")
+q.includes("pet") ||
+q.includes("ticket")
 ){
 
 openGame("pets");
 
-document.getElementById(
-"petsSearch"
-).value=query;
+$("petsSearch").value =
+q;
 
 renderProducts("pets");
 
@@ -3115,9 +3228,8 @@ renderProducts("pets");
 
 openGame("robux");
 
-document.getElementById(
-"robuxSearch"
-).value=query;
+$("robuxSearch").value =
+q;
 
 renderProducts("robux");
 
@@ -3125,43 +3237,6 @@ renderProducts("robux");
 
 }
 
-
-/* =====================================================
-   SECURITY
-===================================================== */
-
-function escapeHtml(value){
-
-return String(value??"")
-.replace(
-/[&<>"']/g,
-character=>({
-
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-
-}[character])
-);
-
-}
-
-function escapeAttr(value){
-
-return String(value??"")
-.replace(
-/"/g,
-"&quot;"
-);
-
-}
-
-
-/* =====================================================
-   START
-===================================================== */
 
 updateUserUI();
 
