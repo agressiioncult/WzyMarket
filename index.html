@@ -10,3237 +10,1149 @@
 body{font-family:Arial,Helvetica,sans-serif;background:#08090d;color:#fff}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
 
-.hero{
-min-height:420px;
-background:
-radial-gradient(circle at 20% 20%,#34266b 0,transparent 35%),
-radial-gradient(circle at 80% 40%,#191b45 0,transparent 35%),
-linear-gradient(135deg,#10111b,#08090d);
-border-bottom:1px solid #242633
-}
-
-.navbar{
-height:76px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-max-width:1250px;
-width:90%;
-margin:auto
-}
-
-.logo{font-size:25px;font-weight:900}
+.hero{min-height:420px;background:radial-gradient(circle at 20% 20%,#34266b 0,transparent 35%),radial-gradient(circle at 80% 40%,#191b45 0,transparent 35%),linear-gradient(135deg,#10111b,#08090d);border-bottom:1px solid #242633}
+.navbar{height:76px;display:flex;align-items:center;justify-content:space-between;max-width:1250px;width:90%;margin:auto}
+.logo{font-size:25px;font-weight:900;cursor:pointer}
 .logo span{color:#8065ff}
-
 .nav-links{display:flex;gap:30px}
-.nav-links a{
-color:#aeb2c0;
-text-decoration:none;
-font-size:14px;
-font-weight:600
-}
+.nav-links a{color:#aeb2c0;text-decoration:none;font-size:14px;font-weight:600}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.login,.logout,.secondary{background:#151722;border:1px solid #383b4a;color:#fff;padding:10px 18px;border-radius:9px;font-weight:700}
+.user-menu{display:none;align-items:center;gap:10px}
+#usernameDisplay{color:#c9c2ff;font-weight:700;font-size:14px}
 
-.login,.logout,.secondary{
-background:#151722;
-border:1px solid #383b4a;
-color:#fff;
-padding:10px 18px;
-border-radius:9px;
-font-weight:700
-}
-
-.user-menu{
-display:none;
-align-items:center;
-gap:10px
-}
-
-.hero-content{
-max-width:900px;
-margin:auto;
-text-align:center;
-padding:70px 20px
-}
-
-.hero-content h1{
-font-size:clamp(38px,6vw,70px);
-line-height:1;
-font-weight:900;
-letter-spacing:-3px;
-margin-bottom:20px
-}
-
+.hero-content{max-width:900px;margin:auto;text-align:center;padding:70px 20px}
+.hero-content h1{font-size:clamp(38px,6vw,70px);line-height:1;font-weight:900;letter-spacing:-3px;margin-bottom:20px}
 .hero-content h1 span{color:#8065ff}
-
-.hero-content p{
-color:#9297a7;
-font-size:17px;
-line-height:1.6;
-margin-bottom:30px
-}
-
-.hero-search{
-max-width:620px;
-margin:auto;
-display:flex;
-background:#11131c;
-border:1px solid #343746;
-border-radius:12px;
-padding:6px
-}
-
-.hero-search input{
-flex:1;
-background:transparent;
-border:0;
-outline:0;
-color:#fff;
-padding:13px
-}
-
-.hero-search button,.primary,.view,.buy-button{
-background:#8065ff;
-border:0;
-color:#fff;
-border-radius:8px;
-font-weight:800
-}
-
+.hero-content p{color:#9297a7;font-size:17px;line-height:1.6;margin-bottom:30px}
+.hero-search{max-width:620px;margin:auto;display:flex;background:#11131c;border:1px solid #343746;border-radius:12px;padding:6px}
+.hero-search input{flex:1;background:transparent;border:0;outline:0;color:#fff;padding:13px}
+.hero-search button,.primary,.view,.buy-button{background:#8065ff;border:0;color:#fff;border-radius:8px;font-weight:800}
 .hero-search button{padding:0 22px}
 
-.main{
-width:90%;
-max-width:1250px;
-margin:auto
-}
-
-.games-section,.marketplace,.sell-page,.product-page,.shop-page,.orders-page{
-padding:45px 0 80px
-}
-
-.marketplace,.sell-page,.product-page,.shop-page,.orders-page{
-display:none
-}
-
+.main{width:90%;max-width:1250px;margin:auto}
+.games-section,.marketplace,.sell-page,.product-page,.shop-page,.orders-page{padding:45px 0 80px}
+.marketplace,.sell-page,.product-page,.shop-page,.orders-page{display:none}
 .section-header{margin-bottom:22px}
 .section-header h2{font-size:25px}
+.section-header p,.marketplace-subtitle,.sell-subtitle,.orders-subtitle{color:#747989;font-size:14px;margin-top:5px}
 
-.section-header p,
-.marketplace-subtitle,
-.sell-subtitle,
-.orders-subtitle{
-color:#747989;
-font-size:14px;
-margin-top:5px
-}
+.games{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.game-card{height:220px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(128,101,255,.18),rgba(20,22,31,.95));border:1px solid #292c39;border-radius:18px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:.2s}
+.game-card:hover{transform:translateY(-4px);border-color:#8065ff}
+.game-icon{position:absolute;top:25px;left:28px;width:65px;height:65px;border-radius:16px;background:#202332;display:flex;align-items:center;justify-content:center;font-size:34px}
+.game-card h3{font-size:23px;margin-bottom:7px}
+.game-card p{color:#8e94a4;font-size:14px}
+.game-count{position:absolute;top:25px;right:28px;background:#202332;color:#aeb2c0;font-size:12px;font-weight:700;padding:6px 10px;border-radius:8px}
 
-.games{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px
-}
+.back{background:none;border:0;color:#9298a8;margin-bottom:25px}
+.marketplace h1,.sell-page h1,.orders-page h1{font-size:34px;margin-bottom:8px}
+.market-search{width:100%;background:#11131a;border:1px solid #292d39;border-radius:11px;padding:15px;color:#fff;outline:0;margin:25px 0 18px}
+.filters{display:flex;gap:9px;overflow-x:auto;margin-bottom:25px}
+.filter{white-space:nowrap;background:#11131a;border:1px solid #292d39;color:#969cab;padding:9px 14px;border-radius:8px}
+.filter.active,.filter:hover{background:#8065ff;border-color:#8065ff;color:#fff}
+.sort{margin-left:auto;background:#11131a;border:1px solid #292d39;color:#969cab;padding:9px 12px;border-radius:8px;outline:0}
 
-.game-card{
-height:220px;
-position:relative;
-overflow:hidden;
-background:linear-gradient(135deg,rgba(128,101,255,.18),rgba(20,22,31,.95));
-border:1px solid #292c39;
-border-radius:18px;
-padding:28px;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-cursor:pointer;
-transition:.2s
-}
+.products,.own-products{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.product{background:#11131a;border:1px solid #262a35;border-radius:13px;padding:16px;transition:.2s}
+.product:hover{border-color:#8065ff;transform:translateY(-2px)}
+.product-image{height:130px;border-radius:10px;background:#1a1d27;display:flex;align-items:center;justify-content:center;font-size:45px;margin-bottom:14px;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:cover}
+.category{color:#8065ff;font-size:11px;font-weight:800;text-transform:uppercase;margin-bottom:7px}
+.product h3{font-size:16px;margin-bottom:8px}
+.seller{color:#777d8c;font-size:12px;margin-bottom:14px}
+.product-bottom,.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.price{font-size:18px;font-weight:800}
+.view{padding:8px 13px;font-size:12px}
+.muted{color:#777d8c}
 
-.game-card:hover{
-transform:translateY(-4px);
-border-color:#8065ff
-}
-
-.game-icon{
-position:absolute;
-top:25px;
-left:28px;
-width:65px;
-height:65px;
-border-radius:16px;
-background:#202332;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px
-}
-
-.game-card h3{
-font-size:23px;
-margin-bottom:7px
-}
-
-.game-card p{
-color:#8e94a4;
-font-size:14px
-}
-
-.back{
-background:none;
-border:0;
-color:#9298a8;
-margin-bottom:25px
-}
-
-.marketplace h1,
-.sell-page h1,
-.orders-page h1{
-font-size:34px;
-margin-bottom:8px
-}
-
-.market-search{
-width:100%;
-background:#11131a;
-border:1px solid #292d39;
-border-radius:11px;
-padding:15px;
-color:#fff;
-outline:0;
-margin:25px 0 18px
-}
-
-.filters{
-display:flex;
-gap:9px;
-overflow-x:auto;
-margin-bottom:25px
-}
-
-.filter{
-white-space:nowrap;
-background:#11131a;
-border:1px solid #292d39;
-color:#969cab;
-padding:9px 14px;
-border-radius:8px
-}
-
-.filter.active,.filter:hover{
-background:#8065ff;
-border-color:#8065ff;
-color:#fff
-}
-
-.products,.own-products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px
-}
-
-.product{
-background:#11131a;
-border:1px solid #262a35;
-border-radius:13px;
-padding:16px;
-transition:.2s
-}
-
-.product:hover{
-border-color:#8065ff;
-transform:translateY(-2px)
-}
-
-.product-image{
-height:130px;
-border-radius:10px;
-background:#1a1d27;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:45px;
-margin-bottom:14px;
-overflow:hidden
-}
-
-.product-image img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.category{
-color:#8065ff;
-font-size:11px;
-font-weight:800;
-text-transform:uppercase;
-margin-bottom:7px
-}
-
-.product h3{
-font-size:16px;
-margin-bottom:8px
-}
-
-.seller{
-color:#777d8c;
-font-size:12px;
-margin-bottom:14px
-}
-
-.product-bottom,.row{
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-
-.price{
-font-size:18px;
-font-weight:800
-}
-
-.view{
-padding:8px 13px;
-font-size:12px
-}
-
-.panel{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:16px;
-padding:22px;
-margin-bottom:20px
-}
-
-.panel h2{
-font-size:20px;
-margin-bottom:18px
-}
-
-.form{
-display:flex;
-flex-direction:column;
-gap:13px
-}
-
-.form input,.form textarea,.form select{
-width:100%;
-background:#0b0d12;
-border:1px solid #292d39;
-color:#fff;
-padding:13px;
-border-radius:9px;
-outline:0
-}
-
-.form textarea{
-min-height:100px;
-resize:vertical
-}
-
+.panel{background:#11131a;border:1px solid #292d39;border-radius:16px;padding:22px;margin-bottom:20px}
+.panel h2{font-size:20px;margin-bottom:18px}
+.form{display:flex;flex-direction:column;gap:13px}
+.form input,.form textarea,.form select{width:100%;background:#0b0d12;border:1px solid #292d39;color:#fff;padding:13px;border-radius:9px;outline:0}
+.form input:focus,.form textarea:focus,.form select:focus{border-color:#8065ff}
+.form textarea{min-height:100px;resize:vertical}
+.form label{color:#858b9b;font-size:12px;margin-bottom:-7px}
 .primary{padding:13px}
 .secondary{padding:13px}
-
-.shop-info{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px
-}
-
-.shop-name{
-font-size:22px;
-font-weight:800
-}
-
-.shop-desc{
-color:#858b9b;
-margin-top:5px
-}
-
-.own-card{
-background:#0b0d12;
-border:1px solid #292d39;
-border-radius:12px;
-padding:15px
-}
-
+.shop-info{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.shop-actions{display:flex;gap:10px;flex-wrap:wrap}
+.shop-name{font-size:22px;font-weight:800}
+.shop-desc{color:#858b9b;margin-top:5px}
+.own-card{background:#0b0d12;border:1px solid #292d39;border-radius:12px;padding:15px}
 .own-card h3{margin-bottom:7px}
-
-.own-card p{
-color:#858b9b;
-font-size:13px;
-margin-bottom:10px
-}
-
-.danger{
-background:#38171b;
-border:1px solid #63252c;
-color:#ff8d96;
-padding:8px 12px;
-border-radius:8px
-}
-
-.notice{
-padding:12px;
-border-radius:9px;
-background:#191b24;
-color:#9da3b3;
-font-size:13px;
-margin-bottom:15px
-}
-
+.own-card p{color:#858b9b;font-size:13px;margin-bottom:10px}
+.own-buttons{display:flex;gap:6px}
+.small{background:#191b24;border:1px solid #303441;color:#fff;padding:8px 12px;border-radius:8px;font-size:12px}
+.danger{background:#38171b;border:1px solid #63252c;color:#ff8d96;padding:8px 12px;border-radius:8px;font-size:12px}
+.ok{background:#142a20;border:1px solid #23573d;color:#65d69a;padding:8px 12px;border-radius:8px;font-size:12px}
+.notice{padding:12px;border-radius:9px;background:#191b24;color:#9da3b3;font-size:13px;margin-bottom:15px}
 .success{color:#65d69a}
 .error{color:#ff7777}
 
-.product-page-inner{
-display:grid;
-grid-template-columns:1.05fr .95fr;
-gap:35px;
-align-items:start
-}
-
-.product-page-image{
-height:430px;
-background:#11131a;
-border:1px solid #292d39;
-border-radius:18px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:120px;
-overflow:hidden
-}
-
-.product-page-image img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.product-page-info{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:18px;
-padding:28px
-}
-
-.product-page-category{
-color:#8065ff;
-font-size:12px;
-font-weight:800;
-text-transform:uppercase;
-margin-bottom:10px
-}
-
-.product-page-info h1{
-font-size:34px;
-margin-bottom:12px
-}
-
-.product-page-description{
-color:#9298a8;
-font-size:15px;
-line-height:1.7;
-margin-bottom:24px;
-white-space:pre-wrap
-}
-
-.product-page-price{
-font-size:30px;
-font-weight:900;
-margin-bottom:8px
-}
-
-.product-page-stock{
-color:#777d8c;
-font-size:13px;
-margin-bottom:22px
-}
-
-.buy-button,.shop-button{
-width:100%;
-padding:15px;
-border-radius:10px;
-font-weight:800;
-font-size:15px
-}
-
+.product-page-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:35px;align-items:start}
+.product-page-image{height:430px;background:#11131a;border:1px solid #292d39;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:120px;overflow:hidden}
+.product-page-image img{width:100%;height:100%;object-fit:cover}
+.product-page-info{background:#11131a;border:1px solid #292d39;border-radius:18px;padding:28px}
+.product-page-category{color:#8065ff;font-size:12px;font-weight:800;text-transform:uppercase;margin-bottom:10px}
+.product-page-info h1{font-size:34px;margin-bottom:12px;word-break:break-word}
+.product-page-description{color:#9298a8;font-size:15px;line-height:1.7;margin-bottom:24px;white-space:pre-wrap;word-break:break-word}
+.product-page-price{font-size:30px;font-weight:900;margin-bottom:8px}
+.product-page-stock{color:#777d8c;font-size:13px;margin-bottom:22px}
+.buy-button,.shop-button{width:100%;padding:15px;border-radius:10px;font-weight:800;font-size:15px}
 .buy-button{margin-bottom:10px}
+.shop-button{background:#191b24;border:1px solid #303441;color:#fff}
+.seller-box{margin-top:22px;padding-top:20px;border-top:1px solid #292d39}
+.seller-label{color:#707687;font-size:12px;margin-bottom:6px}
+.seller-name{font-size:16px;font-weight:800}
 
-.buy-button:disabled{
-opacity:.5;
-cursor:not-allowed
-}
+.shop-header{background:#11131a;border:1px solid #292d39;border-radius:18px;padding:28px;margin-bottom:25px}
+.shop-header h1{font-size:32px;margin-bottom:7px}
+.shop-header p{color:#858b9b;line-height:1.6}
 
-.shop-button{
-background:#191b24;
-border:1px solid #303441;
-color:#fff
-}
-
-.seller-box{
-margin-top:22px;
-padding-top:20px;
-border-top:1px solid #292d39
-}
-
-.seller-label{
-color:#707687;
-font-size:12px;
-margin-bottom:6px
-}
-
-.seller-name{
-font-size:16px;
-font-weight:800
-}
-
-.shop-header{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:18px;
-padding:28px;
-margin-bottom:25px
-}
-
-.shop-header h1{
-font-size:32px;
-margin-bottom:7px
-}
-
-.shop-header p{
-color:#858b9b;
-line-height:1.6
-}
-
-.orders-list{
-display:flex;
-flex-direction:column;
-gap:12px
-}
-
-.order-card{
-background:#11131a;
-border:1px solid #292d39;
-border-radius:14px;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px
-}
-
-.order-left h3{
-font-size:17px;
-margin-bottom:7px
-}
-
-.order-left p{
-color:#777d8c;
-font-size:13px;
-margin-top:4px
-}
-
+.orders-list{display:flex;flex-direction:column;gap:12px}
+.order-card{background:#11131a;border:1px solid #292d39;border-radius:14px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.orders-list .order-card{background:#0b0d12}
+#ordersList .order-card{background:#11131a}
+.order-left h3{font-size:17px;margin-bottom:7px}
+.order-left p{color:#777d8c;font-size:13px;margin-top:4px}
+.order-left b{color:#c9c2ff}
 .order-right{text-align:right}
+.order-price{font-size:19px;font-weight:800;margin-bottom:8px}
+.order-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:10px}
+.status{display:inline-block;padding:6px 10px;border-radius:7px;font-size:11px;font-weight:800;text-transform:uppercase;background:#28251a;color:#e7c45d}
+.status.completed{background:#142a20;color:#65d69a}
+.status.cancelled{background:#32181b;color:#ff7777}
 
-.order-price{
-font-size:19px;
-font-weight:800;
-margin-bottom:8px
-}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:500;align-items:center;justify-content:center;padding:20px}
+.modal-box{width:100%;max-width:420px;background:#11131a;border:1px solid #292d39;border-radius:17px;padding:28px}
+.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.close{background:none;border:0;color:#777d8c;font-size:25px}
+.switch{background:none;border:0;color:#8065ff;margin-top:17px;width:100%}
+.message{font-size:13px;margin-top:8px;display:none}
+.summary{background:#0b0d12;border:1px solid #292d39;border-radius:10px;padding:14px;margin-bottom:15px;font-size:14px;line-height:1.7}
+.summary b{float:right}
 
-.status{
-display:inline-block;
-padding:6px 10px;
-border-radius:7px;
-font-size:11px;
-font-weight:800;
-text-transform:uppercase;
-background:#28251a;
-color:#e7c45d
-}
+.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(20px);background:#151722;border:1px solid #383b4a;color:#fff;padding:13px 20px;border-radius:10px;font-size:14px;font-weight:700;z-index:999;opacity:0;pointer-events:none;transition:.25s;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.error{border-color:#63252c;color:#ff8d96}
+.toast.success{border-color:#23573d;color:#65d69a}
 
-.status.completed{
-background:#142a20;
-color:#65d69a
-}
+footer{border-top:1px solid #20232d;color:#666c7b;text-align:center;padding:30px;font-size:13px}
 
-.status.cancelled{
-background:#32181b;
-color:#ff7777
-}
-
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(8px);
-z-index:500;
-align-items:center;
-justify-content:center;
-padding:20px
-}
-
-.modal-box{
-width:100%;
-max-width:420px;
-background:#11131a;
-border:1px solid #292d39;
-border-radius:17px;
-padding:28px
-}
-
-.modal-top{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px
-}
-
-.close{
-background:none;
-border:0;
-color:#777d8c;
-font-size:25px
-}
-
-.switch{
-background:none;
-border:0;
-color:#8065ff;
-margin-top:17px;
-width:100%
-}
-
-.message{
-font-size:13px;
-margin-top:8px;
-display:none
-}
-
-footer{
-border-top:1px solid #20232d;
-color:#666c7b;
-text-align:center;
-padding:30px;
-font-size:13px
-}
-
+@media(max-width:1000px){.products,.own-products{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:750px){
 .nav-links{display:none}
-.games{
-display:flex;
-overflow-x:auto
-}
+.games{display:flex;overflow-x:auto}
 .game-card{min-width:280px}
-.products,.own-products{
-grid-template-columns:1fr
-}
-.product-page-inner{
-grid-template-columns:1fr;
-gap:18px
-}
+.products,.own-products{grid-template-columns:1fr}
+.product-page-inner{grid-template-columns:1fr;gap:18px}
 .product-page-image{height:300px}
-.order-card{
-flex-direction:column;
-align-items:flex-start
-}
+.order-card{flex-direction:column;align-items:flex-start}
 .order-right{text-align:left}
+.order-actions{justify-content:flex-start}
 }
 </style>
 </head>
-
 <body>
 
 <section class="hero">
+  <nav class="navbar">
+    <div class="logo" onclick="showHome()">Wzy<span>Market</span></div>
+    <div class="nav-links">
+      <a href="#" onclick="showHome();return false">Marketplace</a>
+      <a href="#" onclick="openSell();return false">Sell Items</a>
+      <a href="#" onclick="openOrders();return false">My Orders</a>
+    </div>
+    <button class="login" id="loginButton" onclick="openLogin()">Login</button>
+    <div class="user-menu" id="userMenu">
+      <span id="usernameDisplay"></span>
+      <button class="logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
 
-<nav class="navbar">
-
-<div class="logo">
-Wzy<span>Market</span>
-</div>
-
-<div class="nav-links">
-
-<a href="#" onclick="showHome();return false">
-Marketplace
-</a>
-
-<a href="#" onclick="openSell();return false">
-Sell Items
-</a>
-
-<a href="#" onclick="openOrders();return false">
-My Orders
-</a>
-
-</div>
-
-<button
-class="login"
-id="loginButton"
-onclick="openLogin()">
-Login
-</button>
-
-<div class="user-menu" id="userMenu">
-
-<span id="usernameDisplay"></span>
-
-<button
-class="logout"
-onclick="logout()">
-Logout
-</button>
-
-</div>
-
-</nav>
-
-<div class="hero-content">
-
-<h1>
-Buy & Sell
-<span>Roblox Items.</span>
-</h1>
-
-<p>
-Find Roblox items, services and offers from sellers on WzyMarket.
-</p>
-
-<div class="hero-search">
-
-<input
-id="globalSearch"
-placeholder="Search for items..."
-onkeydown="if(event.key==='Enter')globalSearch()">
-
-<button onclick="globalSearch()">
-Search
-</button>
-
-</div>
-
-</div>
-
+  <div class="hero-content">
+    <h1>Buy &amp; Sell <span>Roblox Items.</span></h1>
+    <p>Find Roblox items, services and offers from sellers on WzyMarket.</p>
+    <div class="hero-search">
+      <input id="globalSearch" placeholder="Search for items..." onkeydown="if(event.key==='Enter')globalSearch()">
+      <button onclick="globalSearch()">Search</button>
+    </div>
+  </div>
 </section>
 
 <main class="main">
 
-<section id="home" class="games-section">
-
-<div class="section-header">
-
-<h2>Roblox Games</h2>
-
-<p>
-Choose a game to browse its marketplace.
-</p>
-
-</div>
-
-<div class="games">
-
-<div
-class="game-card"
-onclick="openGame('pets')">
-
-<div class="game-icon">
-🐾
-</div>
-
-<h3>
-Pets Universe
-</h3>
-
-<p>
-Pets & Tickets
-</p>
-
-</div>
-
-<div
-class="game-card"
-onclick="openGame('robux')">
-
-<div class="game-icon">
-💰
-</div>
-
-<h3>
-Robux
-</h3>
-
-<p>
-Ingame Gifting, Gamepass & Roblox Plus
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section id="petsMarket" class="marketplace">
-
-<button
-class="back"
-onclick="showHome()">
-← Back to Games
-</button>
-
-<h1>
-Pets Universe
-</h1>
-
-<p class="marketplace-subtitle">
-Buy Pets Universe items from different sellers.
-</p>
-
-<input
-id="petsSearch"
-class="market-search"
-placeholder="Search Pets Universe..."
-oninput="renderProducts('pets')">
-
-<div class="filters">
-
-<button
-class="filter active"
-onclick="setFilter('pets','All',this)">
-All
-</button>
-
-<button
-class="filter"
-onclick="setFilter('pets','Pets',this)">
-🐾 Pets
-</button>
-
-<button
-class="filter"
-onclick="setFilter('pets','Tickets',this)">
-🎟️ Tickets
-</button>
-
-</div>
-
-<div
-id="petsProducts"
-class="products">
-</div>
-
-</section>
-
-
-<section id="robuxMarket" class="marketplace">
-
-<button
-class="back"
-onclick="showHome()">
-← Back to Games
-</button>
-
-<h1>
-Robux
-</h1>
-
-<p class="marketplace-subtitle">
-Buy Roblox services from different sellers.
-</p>
-
-<input
-id="robuxSearch"
-class="market-search"
-placeholder="Search Robux products..."
-oninput="renderProducts('robux')">
-
-<div class="filters">
-
-<button
-class="filter active"
-onclick="setFilter('robux','All',this)">
-All
-</button>
-
-<button
-class="filter"
-onclick="setFilter('robux','Ingame Gifting',this)">
-🎁 Ingame Gifting
-</button>
-
-<button
-class="filter"
-onclick="setFilter('robux','Gamepass',this)">
-🎮 Gamepass
-</button>
-
-<button
-class="filter"
-onclick="setFilter('robux','Roblox Plus',this)">
-⭐ Roblox Plus
-</button>
-
-</div>
-
-<div
-id="robuxProducts"
-class="products">
-</div>
-
-</section>
-
-
-<section
-id="productPage"
-class="product-page">
-
-<button
-class="back"
-onclick="goBackFromProduct()">
-← Back
-</button>
-
-<div id="productPageContent">
-</div>
-
-</section>
-
-
-<section
-id="shopPage"
-class="shop-page">
-
-<button
-class="back"
-onclick="showHome()">
-← Back to Marketplace
-</button>
-
-<div id="shopPageContent">
-</div>
-
-</section>
-
-
-<section
-id="sellPage"
-class="sell-page">
-
-<button
-class="back"
-onclick="showHome()">
-← Back to Marketplace
-</button>
-
-<h1>
-My Shop
-</h1>
-
-<p class="sell-subtitle">
-Create your shop and publish products on WzyMarket.
-</p>
-
-<div
-id="sellNotice"
-class="notice"
-style="display:none">
-</div>
-
-
-<div
-id="createShopPanel"
-class="panel">
-
-<h2>
-Create your shop
-</h2>
-
-<form
-class="form"
-onsubmit="createShop(event)">
-
-<input
-id="shopName"
-placeholder="Shop Name"
-maxlength="40"
-required>
-
-<textarea
-id="shopDescription"
-placeholder="Shop Description"
-maxlength="300">
-</textarea>
-
-<button
-class="primary"
-type="submit">
-Create Shop
-</button>
-
-</form>
-
-</div>
-
-
-<div
-id="shopPanel"
-class="panel"
-style="display:none">
-
-<div class="shop-info">
-
-<div>
-
-<div
-class="shop-name"
-id="myShopName">
-</div>
-
-<div
-class="shop-desc"
-id="myShopDescription">
-</div>
-
-</div>
-
-<button
-class="primary"
-onclick="showProductForm()">
-+ Add Product
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="productFormPanel"
-class="panel"
-style="display:none">
-
-<h2>
-Add Product
-</h2>
-
-<form
-class="form"
-onsubmit="createProduct(event)">
-
-<select
-id="productGame"
-onchange="updateCategories()"
-required>
-
-<option value="">
-Choose Game
-</option>
-
-<option value="pets">
-Pets Universe
-</option>
-
-<option value="robux">
-Robux
-</option>
-
-</select>
-
-
-<select
-id="productCategory"
-required>
-
-<option value="">
-Choose Category
-</option>
-
-</select>
-
-
-<input
-id="productName"
-placeholder="Product Name"
-maxlength="80"
-required>
-
-
-<textarea
-id="productDescription"
-placeholder="Product Description"
-maxlength="500">
-</textarea>
-
-
-<input
-id="productPrice"
-type="number"
-min="0.01"
-step="0.01"
-placeholder="Price in USD"
-required>
-
-
-<input
-id="productStock"
-type="number"
-min="1"
-step="1"
-value="1"
-required>
-
-
-<input
-id="productImage"
-type="url"
-placeholder="Product image URL (optional)">
-
-
-<button
-class="primary"
-type="submit">
-Publish Product
-</button>
-
-<button
-type="button"
-class="secondary"
-onclick="hideProductForm()">
-Cancel
-</button>
-
-</form>
-
-</div>
-
-
-<div class="panel">
-
-<h2>
-My Products
-</h2>
-
-<div
-id="myProducts"
-class="own-products">
-</div>
-
-</div>
-
-
-<div class="panel">
-
-<h2>
-Orders for My Products
-</h2>
-
-<div
-id="sellerOrders"
-class="orders-list">
-</div>
-
-</div>
-
-</section>
-
-
-<section
-id="ordersPage"
-class="orders-page">
-
-<button
-class="back"
-onclick="showHome()">
-← Back to Marketplace
-</button>
-
-<h1>
-My Orders
-</h1>
-
-<p class="orders-subtitle">
-View your purchases and order status.
-</p>
-
-<div
-id="ordersList"
-class="orders-list">
-</div>
-
-</section>
+  <!-- HOME -->
+  <section id="home" class="games-section">
+    <div class="section-header">
+      <h2>Roblox Games</h2>
+      <p>Choose a game to browse its marketplace.</p>
+    </div>
+    <div class="games">
+      <div class="game-card" onclick="openGame('pets')">
+        <div class="game-icon">🐾</div>
+        <div class="game-count" id="petsCount"></div>
+        <h3>Pets Universe</h3>
+        <p>Pets &amp; Tickets</p>
+      </div>
+      <div class="game-card" onclick="openGame('robux')">
+        <div class="game-icon">💰</div>
+        <div class="game-count" id="robuxCount"></div>
+        <h3>Robux</h3>
+        <p>Ingame Gifting, Gamepass &amp; Roblox Plus</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PETS MARKET -->
+  <section id="petsMarket" class="marketplace">
+    <button class="back" onclick="showHome()">← Back to Games</button>
+    <h1>Pets Universe</h1>
+    <p class="marketplace-subtitle">Buy Pets Universe items from different sellers.</p>
+    <input id="petsSearch" class="market-search" placeholder="Search Pets Universe..." oninput="debouncedRender('pets')">
+    <div class="filters">
+      <button class="filter active" onclick="setFilter('pets','All',this)">All</button>
+      <button class="filter" onclick="setFilter('pets','Pets',this)">🐾 Pets</button>
+      <button class="filter" onclick="setFilter('pets','Tickets',this)">🎟️ Tickets</button>
+      <select class="sort" id="petsSort" onchange="renderProducts('pets')">
+        <option value="new">Newest</option>
+        <option value="low">Price: Low → High</option>
+        <option value="high">Price: High → Low</option>
+      </select>
+    </div>
+    <div id="petsProducts" class="products"></div>
+  </section>
+
+  <!-- ROBUX MARKET -->
+  <section id="robuxMarket" class="marketplace">
+    <button class="back" onclick="showHome()">← Back to Games</button>
+    <h1>Robux</h1>
+    <p class="marketplace-subtitle">Buy Roblox services from different sellers.</p>
+    <input id="robuxSearch" class="market-search" placeholder="Search Robux products..." oninput="debouncedRender('robux')">
+    <div class="filters">
+      <button class="filter active" onclick="setFilter('robux','All',this)">All</button>
+      <button class="filter" onclick="setFilter('robux','Ingame Gifting',this)">🎁 Ingame Gifting</button>
+      <button class="filter" onclick="setFilter('robux','Gamepass',this)">🎮 Gamepass</button>
+      <button class="filter" onclick="setFilter('robux','Roblox Plus',this)">⭐ Roblox Plus</button>
+      <select class="sort" id="robuxSort" onchange="renderProducts('robux')">
+        <option value="new">Newest</option>
+        <option value="low">Price: Low → High</option>
+        <option value="high">Price: High → Low</option>
+      </select>
+    </div>
+    <div id="robuxProducts" class="products"></div>
+  </section>
+
+  <!-- PRODUCT PAGE -->
+  <section id="productPage" class="product-page">
+    <button class="back" onclick="goBackFromProduct()">← Back</button>
+    <div id="productPageContent"></div>
+  </section>
+
+  <!-- SHOP PAGE -->
+  <section id="shopPage" class="shop-page">
+    <button class="back" onclick="showHome()">← Back to Marketplace</button>
+    <div id="shopPageContent"></div>
+  </section>
+
+  <!-- SELL PAGE -->
+  <section id="sellPage" class="sell-page">
+    <button class="back" onclick="showHome()">← Back to Marketplace</button>
+    <h1>My Shop</h1>
+    <p class="sell-subtitle">Create your shop and publish products on WzyMarket.</p>
+    <div id="sellNotice" class="notice" style="display:none"></div>
+
+    <div id="createShopPanel" class="panel">
+      <h2>Create your shop</h2>
+      <form class="form" onsubmit="createShop(event)">
+        <input id="shopName" placeholder="Shop Name" maxlength="40" required>
+        <textarea id="shopDescription" placeholder="Shop Description" maxlength="300"></textarea>
+        <button class="primary" type="submit">Create Shop</button>
+      </form>
+    </div>
+
+    <div id="shopPanel" class="panel" style="display:none">
+      <div class="shop-info">
+        <div>
+          <div class="shop-name" id="myShopName"></div>
+          <div class="shop-desc" id="myShopDescription"></div>
+        </div>
+        <div class="shop-actions">
+          <button class="secondary" onclick="openShop(currentShop.id)">View Shop</button>
+          <button class="secondary" onclick="showEditShop()">Edit Shop</button>
+          <button class="primary" onclick="showProductForm()">+ Add Product</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="editShopPanel" class="panel" style="display:none">
+      <h2>Edit Shop</h2>
+      <form class="form" onsubmit="updateShop(event)">
+        <input id="editShopName" placeholder="Shop Name" maxlength="40" required>
+        <textarea id="editShopDescription" placeholder="Shop Description" maxlength="300"></textarea>
+        <button class="primary" type="submit">Save</button>
+        <button type="button" class="secondary" onclick="$('editShopPanel').style.display='none'">Cancel</button>
+      </form>
+    </div>
+
+    <div id="productFormPanel" class="panel" style="display:none">
+      <h2 id="productFormTitle">Add Product</h2>
+      <form class="form" id="productForm" onsubmit="saveProduct(event)">
+        <select id="productGame" onchange="updateCategories()" required>
+          <option value="">Choose Game</option>
+          <option value="pets">Pets Universe</option>
+          <option value="robux">Robux</option>
+        </select>
+        <select id="productCategory" required>
+          <option value="">Choose Category</option>
+        </select>
+        <input id="productName" placeholder="Product Name" maxlength="80" required>
+        <textarea id="productDescription" placeholder="Product Description" maxlength="500"></textarea>
+        <label for="productPrice">Price (USD)</label>
+        <input id="productPrice" type="number" min="0.01" step="0.01" placeholder="Price in USD" required>
+        <label for="productStock">Stock</label>
+        <input id="productStock" type="number" min="0" step="1" value="1" required>
+        <input id="productImage" type="url" placeholder="Product image URL (optional)">
+        <button class="primary" type="submit" id="productSubmit">Publish Product</button>
+        <button type="button" class="secondary" onclick="hideProductForm()">Cancel</button>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>My Products</h2>
+      <div id="myProducts" class="own-products"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Orders for My Products</h2>
+      <div id="sellerOrders" class="orders-list"></div>
+    </div>
+  </section>
+
+  <!-- ORDERS PAGE -->
+  <section id="ordersPage" class="orders-page">
+    <button class="back" onclick="showHome()">← Back to Marketplace</button>
+    <h1>My Orders</h1>
+    <p class="orders-subtitle">View your purchases and order status.</p>
+    <div id="ordersList" class="orders-list"></div>
+  </section>
 
 </main>
 
-
-<div
-class="modal"
-id="loginModal">
-
-<div class="modal-box">
-
-<div class="modal-top">
-
-<h2 id="authTitle">
-Login
-</h2>
-
-<button
-class="close"
-onclick="closeLogin()">
-×
-</button>
-
+<!-- LOGIN / SIGNUP MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <div class="modal-top">
+      <h2 id="authTitle">Login</h2>
+      <button class="close" onclick="closeLogin()">×</button>
+    </div>
+    <form class="form" id="loginForm" onsubmit="login(event)">
+      <input id="loginEmail" type="email" placeholder="Email" required>
+      <input id="loginPassword" type="password" placeholder="Password" required>
+      <button class="primary" type="submit">Login</button>
+    </form>
+    <form class="form" id="signupForm" style="display:none" onsubmit="signup(event)">
+      <input id="signupUsername" placeholder="Username" minlength="3" maxlength="20" required>
+      <input id="signupEmail" type="email" placeholder="Email" required>
+      <input id="signupPassword" type="password" placeholder="Password" minlength="6" required>
+      <button class="primary" type="submit">Create Account</button>
+    </form>
+    <p class="message" id="authMessage"></p>
+    <button class="switch" id="switchButton" onclick="switchAuth()">Don't have an account? Sign Up</button>
+  </div>
 </div>
 
-
-<form
-class="form"
-id="loginForm"
-onsubmit="login(event)">
-
-<input
-id="loginEmail"
-type="email"
-placeholder="Email"
-required>
-
-<input
-id="loginPassword"
-type="password"
-placeholder="Password"
-required>
-
-<button
-class="primary"
-type="submit">
-Login
-</button>
-
-</form>
-
-
-<form
-class="form"
-id="signupForm"
-style="display:none"
-onsubmit="signup(event)">
-
-<input
-id="signupUsername"
-placeholder="Username"
-minlength="3"
-maxlength="20"
-required>
-
-<input
-id="signupEmail"
-type="email"
-placeholder="Email"
-required>
-
-<input
-id="signupPassword"
-type="password"
-placeholder="Password"
-minlength="6"
-required>
-
-<button
-class="primary"
-type="submit">
-Create Account
-</button>
-
-</form>
-
-
-<p
-class="message"
-id="authMessage">
-</p>
-
-
-<button
-class="switch"
-id="switchButton"
-onclick="switchAuth()">
-Don't have an account? Sign Up
-</button>
-
+<!-- PURCHASE MODAL -->
+<div class="modal" id="buyModal">
+  <div class="modal-box">
+    <div class="modal-top">
+      <h2>Confirm Purchase</h2>
+      <button class="close" onclick="closeBuy()">×</button>
+    </div>
+    <div class="summary" id="buySummary"></div>
+    <form class="form" onsubmit="confirmPurchase(event)">
+      <input id="buyRobloxName" placeholder="Your Roblox username (for delivery)" maxlength="30" required>
+      <button class="primary" type="submit" id="buyConfirm">Confirm Order</button>
+      <button type="button" class="secondary" onclick="closeBuy()">Cancel</button>
+    </form>
+    <p class="message" id="buyMessage"></p>
+  </div>
 </div>
 
-</div>
+<div class="toast" id="toast"></div>
 
-
-<footer>
-© 2026 WzyMarket
-</footer>
-
+<footer>© 2026 WzyMarket</footer>
 
 <script>
+/* ================= SUPABASE ================= */
+const SUPABASE_URL = "https://tejyxzbagctgxymmefyg.supabase.co";
+const SUPABASE_KEY = "sb_publishable_AH2UNs734NFskZLWwLdaLw_jAHGKUkZ";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const SUPABASE_URL =
-"https://tejyxzbagctgxymmefyg.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_AH2UNs734NFskZLWwLdaLw_jAHGKUkZ";
-
-const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-
-let filters = {
-pets:"All",
-robux:"All"
+/* ================= STATE ================= */
+const CATEGORIES = {
+  pets:  ["Pets", "Tickets"],
+  robux: ["Ingame Gifting", "Gamepass", "Roblox Plus"]
 };
+const ICONS = { "Pets":"🐾", "Tickets":"🎟️", "Ingame Gifting":"🎁", "Gamepass":"🎮", "Roblox Plus":"⭐" };
 
+let filters = { pets:"All", robux:"All" };
 let currentUser = null;
 let currentShop = null;
-let previousProductGame = "pets";
+let currentView = "home";
+let previousView = { view:"home", arg:null };
+let editingProductId = null;
+let buyingProduct = null;
 
-
-const $ =
-id => document.getElementById(id);
-
+/* ================= HELPERS ================= */
+const $ = id => document.getElementById(id);
 
 function esc(v){
+  return String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+function money(v){ return "$" + Number(v || 0).toFixed(2); }
+function safeUrl(u){ return /^https?:\/\//i.test(u || "") ? u : ""; }
+function loading(text){ return `<p class="muted">${text}</p>`; }
 
-return String(v ?? "")
-.replace(
-/[&<>"']/g,
-c => ({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[c])
-);
-
+function imageOrIcon(p, fallback){
+  const url = safeUrl(p.image_url);
+  const icon = ICONS[p.category] || fallback || "🛍️";
+  return url
+    ? `<img src="${esc(url)}" alt="" onerror="this.replaceWith(document.createTextNode('${icon}'))">`
+    : icon;
 }
 
-
-function showMessage(
-el,
-text,
-type=""
-){
-
-el.style.display = "block";
-
-el.className =
-"message " + type;
-
-el.textContent = text;
-
+function showMessage(el, text, type=""){
+  el.style.display = "block";
+  el.className = "message " + type;
+  el.textContent = text;
 }
 
-
-function showSellNotice(
-text,
-isError=false
-){
-
-const n =
-$("sellNotice");
-
-n.style.display =
-"block";
-
-n.className =
-"notice " +
-(isError ? "error" : "success");
-
-n.textContent =
-text;
-
+let toastTimer;
+function toast(text, type=""){
+  const t = $("toast");
+  t.textContent = text;
+  t.className = "toast show " + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.className = "toast", 3200);
 }
 
+function showSellNotice(text, isError=false){
+  const n = $("sellNotice");
+  n.style.display = "block";
+  n.className = "notice " + (isError ? "error" : "success");
+  n.textContent = text;
+  clearTimeout(n._t);
+  n._t = setTimeout(() => n.style.display = "none", 5000);
+}
+
+async function getUser(){
+  const { data:{ user } } = await supabaseClient.auth.getUser();
+  currentUser = user;
+  return user;
+}
+
+const renderTimers = {};
+function debouncedRender(game){
+  clearTimeout(renderTimers[game]);
+  renderTimers[game] = setTimeout(() => renderProducts(game), 250);
+}
+
+/* ================= NAVIGATION ================= */
+const SECTIONS = ["home","petsMarket","robuxMarket","productPage","shopPage","sellPage","ordersPage"];
 
 function hideAllSections(){
-
-[
-"home",
-"petsMarket",
-"robuxMarket",
-"productPage",
-"shopPage",
-"sellPage",
-"ordersPage"
-].forEach(
-id =>
-$(id).style.display="none"
-);
-
+  SECTIONS.forEach(id => $(id).style.display = "none");
 }
-
+function showSection(id){
+  hideAllSections();
+  $(id).style.display = "block";
+  window.scrollTo({ top:0, behavior:"smooth" });
+}
+function rememberView(){
+  if (currentView === "petsMarket")  previousView = { view:"game", arg:"pets" };
+  else if (currentView === "robuxMarket") previousView = { view:"game", arg:"robux" };
+  else if (currentView === "shopPage") previousView = { view:"shop", arg:previousView.shopId };
+  else if (currentView === "sellPage") previousView = { view:"sell" };
+  else if (currentView === "home") previousView = { view:"home" };
+}
 
 function showHome(){
-
-hideAllSections();
-
-$("home").style.display =
-"block";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
+  currentView = "home";
+  showSection("home");
+  loadGameCounts();
 }
 
-
+/* ================= AUTH ================= */
 function openLogin(){
-
-$("loginModal").style.display =
-"flex";
-
-$("authMessage").style.display =
-"none";
-
+  $("loginModal").style.display = "flex";
+  $("authMessage").style.display = "none";
+  setTimeout(() => ($("loginForm").style.display !== "none" ? $("loginEmail") : $("signupUsername")).focus(), 50);
 }
-
-
-function closeLogin(){
-
-$("loginModal").style.display =
-"none";
-
-}
-
+function closeLogin(){ $("loginModal").style.display = "none"; }
 
 function switchAuth(){
-
-const l =
-$("loginForm");
-
-const s =
-$("signupForm");
-
-const signup =
-s.style.display !== "none";
-
-l.style.display =
-signup ? "flex" : "none";
-
-s.style.display =
-signup ? "none" : "flex";
-
-$("authTitle").textContent =
-signup
-? "Login"
-: "Create Account";
-
-$("switchButton").textContent =
-signup
-? "Don't have an account? Sign Up"
-: "Already have an account? Login";
-
-$("authMessage").style.display =
-"none";
-
+  const l = $("loginForm"), s = $("signupForm");
+  const signup = s.style.display !== "none";
+  l.style.display = signup ? "flex" : "none";
+  s.style.display = signup ? "none" : "flex";
+  $("authTitle").textContent = signup ? "Login" : "Create Account";
+  $("switchButton").textContent = signup ? "Don't have an account? Sign Up" : "Already have an account? Login";
+  $("authMessage").style.display = "none";
 }
-
 
 async function signup(e){
+  e.preventDefault();
+  const m = $("authMessage");
+  const btn = e.target.querySelector("button[type=submit]");
+  const username = $("signupUsername").value.trim();
+  const email = $("signupEmail").value.trim();
+  const password = $("signupPassword").value;
 
-e.preventDefault();
+  if (!/^[A-Za-z0-9_]{3,20}$/.test(username)){
+    showMessage(m, "Username: 3–20 characters, only letters, numbers and _.", "error");
+    return;
+  }
 
-const m =
-$("authMessage");
+  btn.disabled = true;
+  showMessage(m, "Creating account...");
+  try{
+    const { data, error } = await supabaseClient.auth.signUp({ email, password, options:{ data:{ username } } });
+    if (error) throw error;
+    if (!data.user) throw new Error("Account could not be created.");
 
-showMessage(
-m,
-"Creating account..."
-);
-
-const username =
-$("signupUsername").value.trim();
-
-const email =
-$("signupEmail").value.trim();
-
-const password =
-$("signupPassword").value;
-
-try{
-
-const {
-data,
-error
-} =
-await supabaseClient.auth.signUp({
-
-email,
-password,
-
-options:{
-data:{
-username
+    if (!data.session){
+      showMessage(m, "Account created! Please confirm your email, then log in.", "success");
+      e.target.reset();
+      setTimeout(() => { switchAuth(); $("loginEmail").value = email; }, 1800);
+    } else {
+      showMessage(m, "Account created successfully!", "success");
+      e.target.reset();
+      setTimeout(() => { closeLogin(); toast("Welcome, " + username + "!", "success"); }, 700);
+    }
+  }catch(err){
+    showMessage(m, err.message, "error");
+  }finally{
+    btn.disabled = false;
+  }
 }
-}
-
-});
-
-if(error)
-throw error;
-
-if(!data.user)
-throw new Error(
-"Account could not be created."
-);
-
-showMessage(
-m,
-"Account created successfully!",
-"success"
-);
-
-setTimeout(
-async()=>{
-closeLogin();
-await updateUserUI();
-},
-700
-);
-
-}catch(err){
-
-showMessage(
-m,
-err.message,
-"error"
-);
-
-}
-
-}
-
 
 async function login(e){
+  e.preventDefault();
+  const m = $("authMessage");
+  const btn = e.target.querySelector("button[type=submit]");
+  btn.disabled = true;
+  showMessage(m, "Logging in...");
 
-e.preventDefault();
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email: $("loginEmail").value.trim(),
+    password: $("loginPassword").value
+  });
+  btn.disabled = false;
 
-const m =
-$("authMessage");
+  if (error){ showMessage(m, error.message, "error"); return; }
 
-showMessage(
-m,
-"Logging in..."
-);
-
-const email =
-$("loginEmail").value.trim();
-
-const password =
-$("loginPassword").value;
-
-const {
-error
-} =
-await supabaseClient.auth.signInWithPassword({
-
-email,
-password
-
-});
-
-if(error){
-
-showMessage(
-m,
-error.message,
-"error"
-);
-
-return;
-
+  showMessage(m, "Login successful!", "success");
+  e.target.reset();
+  setTimeout(() => { closeLogin(); toast("Logged in!", "success"); }, 500);
 }
-
-showMessage(
-m,
-"Login successful!",
-"success"
-);
-
-setTimeout(
-closeLogin,
-500
-);
-
-}
-
 
 async function logout(){
-
-await supabaseClient.auth.signOut();
-
-currentUser = null;
-currentShop = null;
-
-showHome();
-
-await updateUserUI();
-
+  await supabaseClient.auth.signOut();
+  currentUser = null;
+  currentShop = null;
+  showHome();
+  toast("Logged out.");
 }
-
 
 async function updateUserUI(){
+  const user = await getUser();
+  $("loginButton").style.display = user ? "none" : "block";
+  $("userMenu").style.display = user ? "flex" : "none";
+  if (!user) return;
 
-const {
-data:{
-user
-}
-} =
-await supabaseClient.auth.getUser();
-
-currentUser =
-user;
-
-$("loginButton").style.display =
-user ? "none" : "block";
-
-$("userMenu").style.display =
-user ? "flex" : "none";
-
-if(!user)
-return;
-
-const {
-data:profile
-} =
-await supabaseClient
-.from("profiles")
-.select("username")
-.eq("id",user.id)
-.maybeSingle();
-
-$("usernameDisplay").textContent =
-profile?.username ||
-user.email.split("@")[0];
-
+  const { data:profile } = await supabaseClient.from("profiles").select("username").eq("id", user.id).maybeSingle();
+  $("usernameDisplay").textContent = profile?.username || user.user_metadata?.username || user.email.split("@")[0];
 }
 
+supabaseClient.auth.onAuthStateChange(() => setTimeout(updateUserUI, 0));
 
-supabaseClient.auth.onAuthStateChange(
-() =>
-setTimeout(
-updateUserUI,
-0
-)
-);
-
+/* ================= MARKETPLACE ================= */
+async function loadGameCounts(){
+  for (const game of ["pets","robux"]){
+    const { count } = await supabaseClient.from("products").select("id", { count:"exact", head:true }).eq("game", game).gt("stock", 0);
+    $(game + "Count").textContent = count != null ? count + " offers" : "";
+  }
+}
 
 function openGame(game){
-
-hideAllSections();
-
-$(
-game === "pets"
-? "petsMarket"
-: "robuxMarket"
-).style.display =
-"block";
-
-renderProducts(game);
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
+  currentView = game === "pets" ? "petsMarket" : "robuxMarket";
+  showSection(currentView);
+  renderProducts(game);
 }
 
+function productCard(p, fallbackIcon, showSeller=true){
+  return `
+  <div class="product">
+    <div class="product-image">${imageOrIcon(p, fallbackIcon)}</div>
+    <div class="category">${esc(p.category)}</div>
+    <h3>${esc(p.name)}</h3>
+    <div class="seller">
+      ${showSeller ? "Seller: " + esc(p.profiles?.username || "Seller") + " · " : ""}
+      ${Number(p.stock) > 0 ? "Stock: " + Number(p.stock) : "<span class='error'>Sold out</span>"}
+    </div>
+    <div class="product-bottom">
+      <div class="price">${money(p.price)}</div>
+      <button class="view" onclick="viewProduct(${Number(p.id)})">View</button>
+    </div>
+  </div>`;
+}
 
 async function renderProducts(game){
+  const box = $(game === "pets" ? "petsProducts" : "robuxProducts");
+  const search = $(game === "pets" ? "petsSearch" : "robuxSearch").value.toLowerCase().trim();
+  const sort = $(game + "Sort").value;
 
-const box =
-$(
-game === "pets"
-? "petsProducts"
-: "robuxProducts"
-);
+  box.innerHTML = loading("Loading products...");
 
-const search =
-$(
-game === "pets"
-? "petsSearch"
-: "robuxSearch"
-)
-.value
-.toLowerCase()
-.trim();
+  let q = supabaseClient
+    .from("products")
+    .select("id,name,category,price,stock,image_url,seller_id,shop_id,description,profiles(username)")
+    .eq("game", game);
 
-box.innerHTML =
-"<p style='color:#777d8c'>Loading products...</p>";
+  if (filters[game] !== "All") q = q.eq("category", filters[game]);
 
+  q = sort === "low"  ? q.order("price", { ascending:true })
+    : sort === "high" ? q.order("price", { ascending:false })
+    :                   q.order("created_at", { ascending:false });
 
-const {
-data,
-error
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,category,price,stock,image_url,seller_id,shop_id,description,profiles(username)"
-)
-.eq("game",game)
-.order(
-"created_at",
-{
-ascending:false
-}
-);
+  const { data, error } = await q;
 
+  if (error){ box.innerHTML = `<p class="error">${esc(error.message)}</p>`; return; }
 
-if(error){
+  const list = (data || []).filter(p =>
+    `${p.name || ""} ${p.category || ""} ${p.description || ""} ${p.profiles?.username || ""}`
+      .toLowerCase().includes(search)
+  );
 
-box.innerHTML =
-`<p class="error">
-${esc(error.message)}
-</p>`;
+  // Ausverkaufte Produkte ans Ende
+  list.sort((a, b) => (b.stock > 0) - (a.stock > 0));
 
-return;
-
+  box.innerHTML = list.length
+    ? list.map(p => productCard(p, game === "pets" ? "🐾" : "💰")).join("")
+    : loading("No products found.");
 }
 
-
-const list =
-(data || [])
-.filter(
-p =>
-(
-filters[game] === "All" ||
-p.category === filters[game]
-)
-&&
-(
-`${p.name || ""}
-${p.category || ""}
-${p.profiles?.username || ""}`
-.toLowerCase()
-.includes(search)
-)
-);
-
-
-if(!list.length){
-
-box.innerHTML =
-"<p style='color:#777d8c'>No products found.</p>";
-
-return;
-
+function setFilter(game, category, button){
+  filters[game] = category;
+  button.parentElement.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+  renderProducts(game);
 }
 
+async function globalSearch(){
+  const q = $("globalSearch").value.trim();
+  if (!q) return;
 
-box.innerHTML =
-list
-.map(
-p =>
+  // In beiden Spielen suchen und das mit mehr Treffern öffnen
+  const like = `%${q.replace(/[%_,()]/g, "")}%`;
+  const counts = {};
+  for (const game of ["pets","robux"]){
+    const { count } = await supabaseClient.from("products")
+      .select("id", { count:"exact", head:true })
+      .eq("game", game)
+      .or(`name.ilike.${like},category.ilike.${like},description.ilike.${like}`);
+    counts[game] = count || 0;
+  }
 
-`<div class="product">
+  let game = counts.robux > counts.pets ? "robux" : "pets";
+  if (!counts.pets && !counts.robux){
+    const l = q.toLowerCase();
+    game = (l.includes("pet") || l.includes("ticket")) ? "pets" : "robux";
+  }
 
-<div class="product-image">
-
-${
-p.image_url
-?
-`<img
-src="${esc(p.image_url)}"
-alt="">`
-:
-game === "pets"
-?
-"🐾"
-:
-"💰"
+  const other = game === "pets" ? "robux" : "pets";
+  $(game + "Search").value = q;
+  $(other + "Search").value = "";
+  openGame(game);
+  if (counts[other]) toast(`${counts[other]} more result(s) in ${other === "pets" ? "Pets Universe" : "Robux"}.`);
 }
 
-</div>
-
-<div class="category">
-${esc(p.category)}
-</div>
-
-<h3>
-${esc(p.name)}
-</h3>
-
-<div class="seller">
-Seller:
-${esc(p.profiles?.username || "Seller")}
-· Stock:
-${Number(p.stock)}
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-$${Number(p.price).toFixed(2)}
-</div>
-
-<button
-class="view"
-onclick="viewProduct(${p.id})">
-View
-</button>
-
-</div>
-
-</div>`
-
-)
-.join("");
-
-}
-
-
-function setFilter(
-game,
-category,
-button
-){
-
-filters[game] =
-category;
-
-button
-.parentElement
-.querySelectorAll(".filter")
-.forEach(
-b =>
-b.classList.remove("active")
-);
-
-button.classList.add("active");
-
-renderProducts(game);
-
-}
-
-
+/* ================= PRODUCT PAGE ================= */
 async function viewProduct(id){
+  rememberView();
+  currentView = "productPage";
+  showSection("productPage");
 
-previousProductGame =
-$("petsMarket").style.display === "block"
-? "pets"
-: "robux";
+  const box = $("productPageContent");
+  box.innerHTML = loading("Loading product...");
 
-hideAllSections();
+  const { data:p, error } = await supabaseClient
+    .from("products")
+    .select("id,name,game,category,price,stock,image_url,description,seller_id,shop_id,created_at,profiles(username)")
+    .eq("id", id)
+    .single();
 
-$("productPage").style.display =
-"block";
+  if (error || !p){
+    box.innerHTML = `<div class="panel"><h2>Product not found</h2><p class="error">${esc(error?.message || "Product not found.")}</p></div>`;
+    return;
+  }
 
-const box =
-$("productPageContent");
+  if (previousView.view === "home") previousView = { view:"game", arg:p.game };
 
-box.innerHTML =
-"<p style='color:#777d8c'>Loading product...</p>";
+  const inStock = Number(p.stock) > 0;
+  const isOwn = currentUser && currentUser.id === p.seller_id;
 
+  box.innerHTML = `
+  <div class="product-page-inner">
+    <div class="product-page-image">${imageOrIcon(p)}</div>
+    <div class="product-page-info">
+      <div class="product-page-category">${p.game === "pets" ? "Pets Universe" : "Robux"} · ${esc(p.category)}</div>
+      <h1>${esc(p.name)}</h1>
+      <div class="product-page-description">${esc(p.description || "No description provided.")}</div>
+      <div class="product-page-price">${money(p.price)}</div>
+      <div class="product-page-stock">${inStock ? Number(p.stock) + " available" : "Out of stock"}</div>
 
-const {
-data:p,
-error
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,category,price,stock,image_url,description,seller_id,shop_id,profiles(username)"
-)
-.eq("id",id)
-.single();
+      ${isOwn
+        ? `<button class="buy-button" onclick="editProduct(${p.id})">Edit Your Product</button>`
+        : `<button class="buy-button" onclick="startPurchase(${p.id})" ${inStock ? "" : "disabled"}>${inStock ? "Buy Now" : "Out of Stock"}</button>`}
 
+      <button class="shop-button" onclick="openShop(${Number(p.shop_id) || 0})">Visit Shop</button>
 
-if(error || !p){
-
-box.innerHTML =
-`
-<div class="panel">
-
-<h2>
-Product not found
-</h2>
-
-<p class="error">
-${esc(
-error?.message ||
-"Product not found."
-)}
-</p>
-
-</div>
-`;
-
-return;
-
+      <div class="seller-box">
+        <div class="seller-label">SELLER</div>
+        <div class="seller-name">${esc(p.profiles?.username || "Seller")}</div>
+        <p class="muted" style="font-size:12px;margin-top:6px">Listed ${new Date(p.created_at).toLocaleDateString()}</p>
+      </div>
+    </div>
+  </div>`;
 }
-
-
-const icon =
-p.category === "Pets"
-? "🐾"
-: p.category === "Tickets"
-? "🎟️"
-: p.category === "Gamepass"
-? "🎮"
-: p.category === "Ingame Gifting"
-? "🎁"
-: "⭐";
-
-
-box.innerHTML =
-`
-
-<div class="product-page-inner">
-
-<div class="product-page-image">
-
-${
-p.image_url
-?
-`<img
-src="${esc(p.image_url)}"
-alt="">`
-:
-icon
-}
-
-</div>
-
-
-<div class="product-page-info">
-
-<div class="product-page-category">
-${esc(p.category)}
-</div>
-
-<h1>
-${esc(p.name)}
-</h1>
-
-<div class="product-page-description">
-${esc(
-p.description ||
-"No description provided."
-)}
-</div>
-
-<div class="product-page-price">
-$${Number(p.price).toFixed(2)}
-</div>
-
-<div class="product-page-stock">
-
-${
-Number(p.stock) > 0
-?
-Number(p.stock) +
-" available"
-:
-"Out of stock"
-}
-
-</div>
-
-
-<button
-class="buy-button"
-onclick="startPurchase(${p.id})"
-${
-Number(p.stock) <= 0
-?
-"disabled"
-:
-""
-}>
-
-${
-Number(p.stock) > 0
-?
-"Buy Now"
-:
-"Out of Stock"
-}
-
-</button>
-
-
-<button
-class="shop-button"
-onclick="openShop(${p.shop_id})">
-
-Visit Shop
-
-</button>
-
-
-<div class="seller-box">
-
-<div class="seller-label">
-SELLER
-</div>
-
-<div class="seller-name">
-${esc(
-p.profiles?.username ||
-"Seller"
-)}
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
 
 function goBackFromProduct(){
-
-openGame(
-previousProductGame
-);
-
+  const v = previousView;
+  if (v.view === "game") openGame(v.arg);
+  else if (v.view === "shop" && v.arg) openShop(v.arg);
+  else if (v.view === "sell") openSell();
+  else showHome();
 }
 
-
+/* ================= SHOP PAGE ================= */
 async function openShop(shopId){
+  if (!shopId){ toast("This product has no shop.", "error"); return; }
 
-if(!shopId){
+  currentView = "shopPage";
+  previousView.shopId = shopId;
+  showSection("shopPage");
 
-alert(
-"This product has no shop."
-);
+  const box = $("shopPageContent");
+  box.innerHTML = loading("Loading shop...");
 
-return;
+  const [{ data:shop, error }, { data:products }] = await Promise.all([
+    supabaseClient.from("shops").select("*").eq("id", shopId).single(),
+    supabaseClient.from("products").select("id,name,category,price,stock,image_url,shop_id,game").eq("shop_id", shopId).order("created_at", { ascending:false })
+  ]);
 
+  if (error || !shop){
+    box.innerHTML = `<div class="panel"><h2>Shop not found</h2></div>`;
+    return;
+  }
+
+  const { data:owner } = await supabaseClient.from("profiles").select("username").eq("id", shop.owner_id).maybeSingle();
+
+  box.innerHTML = `
+  <div class="shop-header">
+    <h1>${esc(shop.name)}</h1>
+    <p>${esc(shop.description || "No shop description.")}</p>
+    <p class="muted" style="font-size:13px;margin-top:10px">
+      Owner: ${esc(owner?.username || "Seller")} · ${products?.length || 0} product(s)
+    </p>
+  </div>
+  <div class="products">
+    ${products?.length ? products.map(p => productCard(p, null, false)).join("") : loading("This shop has no products yet.")}
+  </div>`;
 }
 
-hideAllSections();
-
-$("shopPage").style.display =
-"block";
-
-const box =
-$("shopPageContent");
-
-box.innerHTML =
-"<p style='color:#777d8c'>Loading shop...</p>";
-
-
-const {
-data:shop,
-error
-} =
-await supabaseClient
-.from("shops")
-.select("*")
-.eq("id",shopId)
-.single();
-
-
-if(error || !shop){
-
-box.innerHTML =
-`
-<div class='panel'>
-
-<h2>
-Shop not found
-</h2>
-
-</div>
-`;
-
-return;
-
-}
-
-
-const {
-data:products
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,category,price,stock,image_url,shop_id,game"
-)
-.eq("shop_id",shopId)
-.order(
-"created_at",
-{
-ascending:false
-}
-);
-
-
-box.innerHTML =
-`
-
-<div class="shop-header">
-
-<h1>
-${esc(shop.name)}
-</h1>
-
-<p>
-${esc(
-shop.description ||
-"No shop description."
-)}
-</p>
-
-</div>
-
-
-<div class="products">
-
-${
-products?.length
-?
-products
-.map(
-p =>
-
-`<div class="product">
-
-<div class="product-image">
-
-${
-p.image_url
-?
-`<img
-src="${esc(p.image_url)}"
-alt="">`
-:
-"🛍️"
-}
-
-</div>
-
-<div class="category">
-${esc(p.category)}
-</div>
-
-<h3>
-${esc(p.name)}
-</h3>
-
-<div class="seller">
-Stock:
-${Number(p.stock)}
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-$${Number(p.price).toFixed(2)}
-</div>
-
-<button
-class="view"
-onclick="viewProduct(${p.id})">
-View
-</button>
-
-</div>
-
-</div>`
-
-)
-.join("")
-
-:
-
-"<p style='color:#777d8c'>This shop has no products yet.</p>"
-
-}
-
-</div>
-
-`;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
+/* ================= SELL / MY SHOP ================= */
 async function openSell(){
+  const user = await getUser();
+  if (!user){ openLogin(); toast("Please log in to sell items."); return; }
 
-const {
-data:{
-user
+  currentView = "sellPage";
+  showSection("sellPage");
+  await loadShop();
 }
-} =
-await supabaseClient.auth.getUser();
-
-if(!user){
-
-openLogin();
-
-return;
-
-}
-
-currentUser =
-user;
-
-hideAllSections();
-
-$("sellPage").style.display =
-"block";
-
-await loadShop();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
 
 async function loadShop(){
+  const { data:shop, error } = await supabaseClient.from("shops").select("*").eq("owner_id", currentUser.id).maybeSingle();
 
-const {
-data:shop,
-error
-} =
-await supabaseClient
-.from("shops")
-.select("*")
-.eq("owner_id",currentUser.id)
-.maybeSingle();
+  if (error){ showSellNotice(error.message, true); return; }
 
+  currentShop = shop || null;
+  $("createShopPanel").style.display = shop ? "none" : "block";
+  $("shopPanel").style.display = shop ? "block" : "none";
+  $("editShopPanel").style.display = "none";
 
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
+  if (shop){
+    $("myShopName").textContent = shop.name;
+    $("myShopDescription").textContent = shop.description || "No description";
+    await Promise.all([loadMyProducts(), loadSellerOrders()]);
+  } else {
+    $("productFormPanel").style.display = "none";
+    $("myProducts").innerHTML = loading("Create your shop first.");
+    $("sellerOrders").innerHTML = loading("Create your shop first.");
+  }
 }
-
-
-currentShop =
-shop || null;
-
-
-$("createShopPanel").style.display =
-shop
-?
-"none"
-:
-"block";
-
-$("shopPanel").style.display =
-shop
-?
-"block"
-:
-"none";
-
-
-if(shop){
-
-$("myShopName").textContent =
-shop.name;
-
-$("myShopDescription").textContent =
-shop.description ||
-"No description";
-
-await loadMyProducts();
-
-await loadSellerOrders();
-
-}else{
-
-$("myProducts").innerHTML =
-"<p style='color:#777d8c'>Create your shop first.</p>";
-
-$("sellerOrders").innerHTML =
-"<p style='color:#777d8c'>Create your shop first.</p>";
-
-}
-
-}
-
 
 async function createShop(e){
+  e.preventDefault();
+  if (!currentUser) return;
 
-e.preventDefault();
+  const { data, error } = await supabaseClient
+    .from("shops")
+    .insert({ owner_id:currentUser.id, name:$("shopName").value.trim(), description:$("shopDescription").value.trim() })
+    .select()
+    .single();
 
-if(!currentUser)
-return;
+  if (error){ showSellNotice(error.message, true); return; }
 
-const name =
-$("shopName")
-.value
-.trim();
-
-const description =
-$("shopDescription")
-.value
-.trim();
-
-
-const {
-data,
-error
-} =
-await supabaseClient
-.from("shops")
-.insert({
-owner_id:currentUser.id,
-name,
-description
-})
-.select()
-.single();
-
-
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
+  currentShop = data;
+  showSellNotice("Shop created successfully!");
+  e.target.reset();
+  await loadShop();
 }
 
-
-currentShop =
-data;
-
-showSellNotice(
-"Shop created successfully!"
-);
-
-e.target.reset();
-
-await loadShop();
-
+function showEditShop(){
+  $("editShopName").value = currentShop.name;
+  $("editShopDescription").value = currentShop.description || "";
+  $("editShopPanel").style.display = "block";
+  $("editShopPanel").scrollIntoView({ behavior:"smooth" });
 }
 
+async function updateShop(e){
+  e.preventDefault();
+  const { error } = await supabaseClient
+    .from("shops")
+    .update({ name:$("editShopName").value.trim(), description:$("editShopDescription").value.trim() })
+    .eq("id", currentShop.id)
+    .eq("owner_id", currentUser.id);
 
+  if (error){ showSellNotice(error.message, true); return; }
+  showSellNotice("Shop updated!");
+  await loadShop();
+}
+
+/* ---------- Product form (add + edit) ---------- */
 function showProductForm(){
-
-$("productFormPanel").style.display =
-"block";
-
-$("productFormPanel")
-.scrollIntoView({
-behavior:"smooth"
-});
-
+  editingProductId = null;
+  $("productForm").reset();
+  updateCategories();
+  $("productFormTitle").textContent = "Add Product";
+  $("productSubmit").textContent = "Publish Product";
+  $("productFormPanel").style.display = "block";
+  $("productFormPanel").scrollIntoView({ behavior:"smooth" });
 }
-
 
 function hideProductForm(){
-
-$("productFormPanel").style.display =
-"none";
-
+  editingProductId = null;
+  $("productForm").reset();
+  $("productFormPanel").style.display = "none";
 }
 
-
-function updateCategories(){
-
-const game =
-$("productGame").value;
-
-const select =
-$("productCategory");
-
-select.innerHTML =
-'<option value="">Choose Category</option>';
-
-
-const cats =
-game === "pets"
-?
-[
-"Pets",
-"Tickets"
-]
-:
-game === "robux"
-?
-[
-"Ingame Gifting",
-"Gamepass",
-"Roblox Plus"
-]
-:
-[];
-
-
-cats.forEach(
-c => {
-
-const o =
-document.createElement(
-"option"
-);
-
-o.value =
-c;
-
-o.textContent =
-c;
-
-select.appendChild(o);
-
-}
-);
-
+function updateCategories(selected=""){
+  const game = $("productGame").value;
+  const select = $("productCategory");
+  select.innerHTML = '<option value="">Choose Category</option>';
+  (CATEGORIES[game] || []).forEach(c => {
+    const o = document.createElement("option");
+    o.value = c;
+    o.textContent = c;
+    if (c === selected) o.selected = true;
+    select.appendChild(o);
+  });
 }
 
+async function editProduct(id){
+  if (currentView !== "sellPage") await openSell();
+  const { data:p, error } = await supabaseClient.from("products").select("*").eq("id", id).eq("seller_id", currentUser.id).single();
+  if (error || !p){ showSellNotice(error?.message || "Product not found.", true); return; }
 
-async function createProduct(e){
-
-e.preventDefault();
-
-if(
-!currentUser ||
-!currentShop
-){
-
-showSellNotice(
-"Create a shop first.",
-true
-);
-
-return;
-
+  editingProductId = p.id;
+  $("productGame").value = p.game;
+  updateCategories(p.category);
+  $("productName").value = p.name;
+  $("productDescription").value = p.description || "";
+  $("productPrice").value = p.price;
+  $("productStock").value = p.stock;
+  $("productImage").value = p.image_url || "";
+  $("productFormTitle").textContent = "Edit Product";
+  $("productSubmit").textContent = "Save Changes";
+  $("productFormPanel").style.display = "block";
+  $("productFormPanel").scrollIntoView({ behavior:"smooth" });
 }
 
+async function saveProduct(e){
+  e.preventDefault();
+  if (!currentUser || !currentShop){ showSellNotice("Create a shop first.", true); return; }
 
-const game =
-$("productGame").value;
+  const product = {
+    game:        $("productGame").value,
+    category:    $("productCategory").value,
+    name:        $("productName").value.trim(),
+    description: $("productDescription").value.trim(),
+    price:       Math.round(Number($("productPrice").value) * 100) / 100,
+    stock:       Math.floor(Number($("productStock").value)),
+    image_url:   $("productImage").value.trim() || null
+  };
 
-const category =
-$("productCategory").value;
+  if (!(product.price > 0) || !(product.stock >= 0)){
+    showSellNotice("Enter a valid price and stock.", true);
+    return;
+  }
+  if (product.image_url && !safeUrl(product.image_url)){
+    showSellNotice("Image URL must start with http:// or https://", true);
+    return;
+  }
 
-const name =
-$("productName")
-.value
-.trim();
+  const btn = $("productSubmit");
+  btn.disabled = true;
 
-const description =
-$("productDescription")
-.value
-.trim();
+  const { error } = editingProductId
+    ? await supabaseClient.from("products").update(product).eq("id", editingProductId).eq("seller_id", currentUser.id)
+    : await supabaseClient.from("products").insert({ ...product, seller_id:currentUser.id, shop_id:currentShop.id });
 
-const price =
-Number(
-$("productPrice").value
-);
+  btn.disabled = false;
 
-const stock =
-Number(
-$("productStock").value
-);
+  if (error){ showSellNotice(error.message, true); return; }
 
-const image_url =
-$("productImage")
-.value
-.trim() ||
-null;
-
-
-if(
-price <= 0 ||
-stock < 1
-){
-
-showSellNotice(
-"Enter a valid price and stock.",
-true
-);
-
-return;
-
+  showSellNotice(editingProductId ? "Product updated!" : "Product published successfully!");
+  hideProductForm();
+  await loadMyProducts();
 }
-
-
-const {
-error
-} =
-await supabaseClient
-.from("products")
-.insert({
-
-seller_id:
-currentUser.id,
-
-shop_id:
-currentShop.id,
-
-game,
-
-category,
-
-name,
-
-description,
-
-price,
-
-stock,
-
-image_url
-
-});
-
-
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
-}
-
-
-showSellNotice(
-"Product published successfully!"
-);
-
-e.target.reset();
-
-hideProductForm();
-
-await loadMyProducts();
-
-}
-
 
 async function loadMyProducts(){
+  const box = $("myProducts");
+  const { data, error } = await supabaseClient.from("products").select("*").eq("seller_id", currentUser.id).order("created_at", { ascending:false });
 
-const box =
-$("myProducts");
+  if (error){ box.innerHTML = `<p class="error">${esc(error.message)}</p>`; return; }
+  if (!data?.length){ box.innerHTML = loading("No products yet."); return; }
 
-
-const {
-data,
-error
-} =
-await supabaseClient
-.from("products")
-.select("*")
-.eq(
-"seller_id",
-currentUser.id
-)
-.order(
-"created_at",
-{
-ascending:false
+  box.innerHTML = data.map(p => `
+  <div class="own-card">
+    <h3>${esc(p.name)}</h3>
+    <p>${p.game === "pets" ? "Pets Universe" : "Robux"} · ${esc(p.category)} · Stock ${Number(p.stock)}</p>
+    <div class="row">
+      <b>${money(p.price)}</b>
+      <div class="own-buttons">
+        <button class="small" onclick="viewProduct(${p.id})">View</button>
+        <button class="small" onclick="editProduct(${p.id})">Edit</button>
+        <button class="danger" onclick="deleteProduct(${p.id})">Delete</button>
+      </div>
+    </div>
+  </div>`).join("");
 }
-);
-
-
-if(error){
-
-box.innerHTML =
-`
-<p class="error">
-${esc(error.message)}
-</p>
-`;
-
-return;
-
-}
-
-
-if(!data?.length){
-
-box.innerHTML =
-"<p style='color:#777d8c'>No products yet.</p>";
-
-return;
-
-}
-
-
-box.innerHTML =
-data
-.map(
-p =>
-
-`<div class="own-card">
-
-<h3>
-${esc(p.name)}
-</h3>
-
-<p>
-${esc(p.game)}
-·
-${esc(p.category)}
-· Stock
-${Number(p.stock)}
-</p>
-
-<div class="row">
-
-<b>
-$${Number(p.price).toFixed(2)}
-</b>
-
-<button
-class="danger"
-onclick="deleteProduct(${p.id})">
-Delete
-</button>
-
-</div>
-
-</div>`
-
-)
-.join("");
-
-}
-
 
 async function deleteProduct(id){
+  if (!confirm("Delete this product?")) return;
 
-if(
-!confirm(
-"Delete this product?"
-)
-)
-return;
+  const { error } = await supabaseClient.from("products").delete().eq("id", id).eq("seller_id", currentUser.id);
+  if (error){ showSellNotice(error.message, true); return; }
 
-
-const {
-error
-} =
-await supabaseClient
-.from("products")
-.delete()
-.eq("id",id)
-.eq(
-"seller_id",
-currentUser.id
-);
-
-
-if(error){
-
-showSellNotice(
-error.message,
-true
-);
-
-return;
-
+  if (editingProductId === id) hideProductForm();
+  showSellNotice("Product deleted.");
+  await loadMyProducts();
 }
 
-
-showSellNotice(
-"Product deleted."
-);
-
-await loadMyProducts();
-
-}
-
-
+/* ================= PURCHASE ================= */
 async function startPurchase(productId){
+  const user = await getUser();
+  if (!user){ openLogin(); toast("Please log in to buy."); return; }
 
-const {
-data:{
-user
-}
-} =
-await supabaseClient.auth.getUser();
+  const { data:p, error } = await supabaseClient.from("products").select("id,name,price,stock,seller_id,category").eq("id", productId).single();
 
+  if (error || !p){ toast("Product could not be found.", "error"); return; }
+  if (Number(p.stock) <= 0){ toast("This product is out of stock.", "error"); return; }
+  if (p.seller_id === user.id){ toast("You cannot buy your own product.", "error"); return; }
 
-if(!user){
-
-openLogin();
-
-return;
-
-}
-
-
-const {
-data:p,
-error
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,price,stock,seller_id"
-)
-.eq("id",productId)
-.single();
-
-
-if(error || !p){
-
-alert(
-"Product could not be found."
-);
-
-return;
-
+  buyingProduct = p;
+  $("buySummary").innerHTML = `
+    Product <b>${esc(p.name)}</b><br>
+    Category <b>${esc(p.category)}</b><br>
+    Price <b>${money(p.price)}</b>`;
+  $("buyMessage").style.display = "none";
+  $("buyConfirm").disabled = false;
+  $("buyModal").style.display = "flex";
+  setTimeout(() => $("buyRobloxName").focus(), 50);
 }
 
-
-if(
-Number(p.stock) <= 0
-){
-
-alert(
-"This product is out of stock."
-);
-
-return;
-
+function closeBuy(){
+  $("buyModal").style.display = "none";
+  buyingProduct = null;
 }
 
+async function confirmPurchase(e){
+  e.preventDefault();
+  if (!buyingProduct) return;
 
-if(
-p.seller_id === user.id
-){
+  const m = $("buyMessage");
+  const btn = $("buyConfirm");
+  btn.disabled = true;
+  showMessage(m, "Creating order...");
 
-alert(
-"You cannot buy your own product."
-);
+  const { data:order, error } = await supabaseClient.rpc("purchase_product", {
+    p_product_id: buyingProduct.id,
+    p_roblox_username: $("buyRobloxName").value.trim()
+  });
 
-return;
+  if (error){
+    btn.disabled = false;
+    showMessage(m, "Could not create order: " + error.message, "error");
+    return;
+  }
 
+  const created = Array.isArray(order) ? order[0] : order;
+  closeBuy();
+  toast(`Order #${created?.id ?? ""} created! Status: Pending`, "success");
+  await openOrders();
 }
 
+/* ================= ORDERS ================= */
+function statusClass(s){ return s === "completed" ? "completed" : s === "cancelled" ? "cancelled" : ""; }
 
-const {
-data:order,
-error:oe
-} =
-await supabaseClient
-.rpc(
-"purchase_product",
-{
-p_product_id:
-productId
+async function changeOrderStatus(orderId, status){
+  const label = status === "completed" ? "Mark this order as completed?" : "Cancel this order? (Stock will be returned.)";
+  if (!confirm(label)) return;
+
+  const { error } = await supabaseClient.rpc("update_order_status", { p_order_id:orderId, p_status:status });
+  if (error){ toast(error.message, "error"); return; }
+
+  toast("Order " + status + ".", "success");
+  if (currentView === "sellPage"){ await loadSellerOrders(); await loadMyProducts(); }
+  else await openOrders();
 }
-);
-
-
-if(oe){
-
-alert(
-"Could not create order:\n\n" +
-oe.message
-);
-
-return;
-
-}
-
-
-const createdOrder =
-Array.isArray(order)
-?
-order[0]
-:
-order;
-
-
-alert(
-
-"Order created successfully!\n\n" +
-
-"Product: " +
-p.name +
-"\n" +
-
-"Price: $" +
-Number(p.price).toFixed(2) +
-"\n" +
-
-"Order ID: " +
-createdOrder.id +
-"\n\n" +
-
-"Status: Pending"
-
-);
-
-
-await openOrders();
-
-}
-
 
 async function openOrders(){
+  const user = await getUser();
+  if (!user){ openLogin(); toast("Please log in to see your orders."); return; }
 
-const {
-data:{
-user
+  currentView = "ordersPage";
+  showSection("ordersPage");
+
+  const box = $("ordersList");
+  box.innerHTML = loading("Loading orders...");
+
+  const { data:orders, error } = await supabaseClient
+    .from("orders")
+    .select("id,price,status,created_at,product_id,product_name,roblox_username,seller_id")
+    .eq("buyer_id", user.id)
+    .order("created_at", { ascending:false });
+
+  if (error){ box.innerHTML = `<div class="panel"><p class="error">${esc(error.message)}</p></div>`; return; }
+  if (!orders?.length){
+    box.innerHTML = `<div class="panel"><h2>No orders yet</h2><p class="muted">Your purchases will appear here.</p></div>`;
+    return;
+  }
+
+  const pids = [...new Set(orders.map(o => o.product_id).filter(Boolean))];
+  const sids = [...new Set(orders.map(o => o.seller_id))];
+
+  const [{ data:products }, { data:sellers }] = await Promise.all([
+    pids.length ? supabaseClient.from("products").select("id,name,category").in("id", pids) : { data:[] },
+    supabaseClient.from("profiles").select("id,username").in("id", sids)
+  ]);
+
+  const pm = {}, sm = {};
+  (products || []).forEach(p => pm[p.id] = p);
+  (sellers || []).forEach(s => sm[s.id] = s.username);
+
+  box.innerHTML = orders.map(o => {
+    const p = pm[o.product_id];
+    return `
+    <div class="order-card">
+      <div class="order-left">
+        <h3>${esc(p?.name || o.product_name || "Deleted product")}</h3>
+        <p>Order #${o.id}${p?.category ? " · " + esc(p.category) : ""}</p>
+        <p>Seller: ${esc(sm[o.seller_id] || "Seller")}</p>
+        ${o.roblox_username ? `<p>Delivery to: <b>${esc(o.roblox_username)}</b></p>` : ""}
+        <p>${new Date(o.created_at).toLocaleString()}</p>
+      </div>
+      <div class="order-right">
+        <div class="order-price">${money(o.price)}</div>
+        <span class="status ${statusClass(o.status)}">${esc(o.status)}</span>
+        ${o.status === "pending" ? `<div class="order-actions"><button class="danger" onclick="changeOrderStatus(${o.id},'cancelled')">Cancel</button></div>` : ""}
+      </div>
+    </div>`;
+  }).join("");
 }
-} =
-await supabaseClient.auth.getUser();
-
-
-if(!user){
-
-openLogin();
-
-return;
-
-}
-
-
-currentUser =
-user;
-
-hideAllSections();
-
-$("ordersPage").style.display =
-"block";
-
-
-const box =
-$("ordersList");
-
-box.innerHTML =
-"<p style='color:#777d8c'>Loading orders...</p>";
-
-
-const {
-data:orders,
-error
-} =
-await supabaseClient
-.from("orders")
-.select(
-"id,price,status,created_at,product_id"
-)
-.eq(
-"buyer_id",
-user.id
-)
-.order(
-"created_at",
-{
-ascending:false
-}
-);
-
-
-if(error){
-
-box.innerHTML =
-`
-<div class="panel">
-
-<p class="error">
-${esc(error.message)}
-</p>
-
-</div>
-`;
-
-return;
-
-}
-
-
-if(!orders?.length){
-
-box.innerHTML =
-`
-<div class='panel'>
-
-<h2>
-No orders yet
-</h2>
-
-<p style='color:#777d8c'>
-Your purchases will appear here.
-</p>
-
-</div>
-`;
-
-return;
-
-}
-
-
-const ids =
-orders.map(
-o => o.product_id
-);
-
-
-const {
-data:products
-} =
-await supabaseClient
-.from("products")
-.select(
-"id,name,category"
-)
-.in(
-"id",
-ids
-);
-
-
-const map = {};
-
-(products || [])
-.forEach(
-p =>
-map[p.id] =
-p
-);
-
-
-box.innerHTML =
-orders
-.map(
-o => {
-
-const p =
-map[o.product_id];
-
-const cls =
-o.status === "completed"
-?
-"completed"
-:
-o.status === "cancelled"
-?
-"cancelled"
-:
-"";
-
-
-return `
-
-<div class="order-card">
-
-<div class="order-left">
-
-<h3>
-${esc(
-p?.name ||
-"Product"
-)}
-</h3>
-
-<p>
-Order #${o.id}
-</p>
-
-<p>
-${esc(
-p?.category ||
-""
-)}
-</p>
-
-<p>
-${new Date(
-o.created_at
-).toLocaleString()}
-</p>
-
-</div>
-
-
-<div class="order-right">
-
-<div class="order-price">
-$${Number(o.price).toFixed(2)}
-</div>
-
-<span
-class="status ${cls}">
-${esc(o.status)}
-</span>
-
-</div>
-
-</div>
-
-`;
-
-}
-)
-.join("");
-
-}
-
 
 async function loadSellerOrders(){
+  const box = $("sellerOrders");
 
-const box =
-$("sellerOrders");
+  const { data:orders, error } = await supabaseClient
+    .from("orders")
+    .select("id,buyer_id,product_id,product_name,roblox_username,price,status,created_at")
+    .eq("seller_id", currentUser.id)
+    .order("created_at", { ascending:false });
 
+  if (error){ box.innerHTML = `<p class="error">${esc(error.message)}</p>`; return; }
+  if (!orders?.length){ box.innerHTML = loading("No orders yet."); return; }
 
-const {
-data:orders,
-error
-} =
-await supabaseClient
-.from("orders")
-.select(
-"id,buyer_id,product_id,price,status,created_at"
-)
-.eq(
-"seller_id",
-currentUser.id
-)
-.order(
-"created_at",
-{
-ascending:false
-}
-);
+  const pids = [...new Set(orders.map(o => o.product_id).filter(Boolean))];
+  const bids = [...new Set(orders.map(o => o.buyer_id))];
 
+  const [{ data:ps }, { data:bs }] = await Promise.all([
+    pids.length ? supabaseClient.from("products").select("id,name,category").in("id", pids) : { data:[] },
+    supabaseClient.from("profiles").select("id,username").in("id", bids)
+  ]);
 
-if(error){
+  const pm = {}, bm = {};
+  (ps || []).forEach(p => pm[p.id] = p);
+  (bs || []).forEach(b => bm[b.id] = b.username);
 
-box.innerHTML =
-`
-<p class="error">
-${esc(error.message)}
-</p>
-`;
+  const pending = orders.filter(o => o.status === "pending").length;
+  const earned = orders.filter(o => o.status === "completed").reduce((s, o) => s + Number(o.price), 0);
 
-return;
-
-}
-
-
-if(!orders?.length){
-
-box.innerHTML =
-"<p style='color:#777d8c'>No orders yet.</p>";
-
-return;
-
-}
-
-
-const pids =
-orders.map(
-o => o.product_id
-);
-
-const bids =
-orders.map(
-o => o.buyer_id
-);
-
-
-const [
-{data:ps},
-{data:bs}
-] =
-await Promise.all([
-
-supabaseClient
-.from("products")
-.select(
-"id,name,category"
-)
-.in(
-"id",
-pids
-),
-
-supabaseClient
-.from("profiles")
-.select(
-"id,username"
-)
-.in(
-"id",
-bids
-)
-
-]);
-
-
-const pm = {};
-const bm = {};
-
-
-(ps || [])
-.forEach(
-p =>
-pm[p.id] =
-p
-);
-
-
-(bs || [])
-.forEach(
-b =>
-bm[b.id] =
-b.username
-);
-
-
-box.innerHTML =
-orders
-.map(
-o => {
-
-const p =
-pm[o.product_id];
-
-const cls =
-o.status === "completed"
-?
-"completed"
-:
-o.status === "cancelled"
-?
-"cancelled"
-:
-"";
-
-
-return `
-
-<div class="order-card">
-
-<div class="order-left">
-
-<h3>
-${esc(
-p?.name ||
-"Product"
-)}
-</h3>
-
-<p>
-Order #${o.id}
-</p>
-
-<p>
-Buyer:
-${esc(
-bm[o.buyer_id] ||
-"Buyer"
-)}
-</p>
-
-<p>
-${new Date(
-o.created_at
-).toLocaleString()}
-</p>
-
-</div>
-
-
-<div class="order-right">
-
-<div class="order-price">
-$${Number(o.price).toFixed(2)}
-</div>
-
-<span
-class="status ${cls}">
-${esc(o.status)}
-</span>
-
-</div>
-
-</div>
-
-`;
-
-}
-)
-.join("");
-
+  box.innerHTML = `
+    <div class="notice">${pending} pending · ${money(earned)} from completed orders</div>
+    ${orders.map(o => {
+      const p = pm[o.product_id];
+      return `
+      <div class="order-card">
+        <div class="order-left">
+          <h3>${esc(p?.name || o.product_name || "Deleted product")}</h3>
+          <p>Order #${o.id}</p>
+          <p>Buyer: ${esc(bm[o.buyer_id] || "Buyer")}</p>
+          ${o.roblox_username ? `<p>Roblox username: <b>${esc(o.roblox_username)}</b></p>` : ""}
+          <p>${new Date(o.created_at).toLocaleString()}</p>
+        </div>
+        <div class="order-right">
+          <div class="order-price">${money(o.price)}</div>
+          <span class="status ${statusClass(o.status)}">${esc(o.status)}</span>
+          ${o.status === "pending" ? `
+          <div class="order-actions">
+            <button class="ok" onclick="changeOrderStatus(${o.id},'completed')">Complete</button>
+            <button class="danger" onclick="changeOrderStatus(${o.id},'cancelled')">Cancel</button>
+          </div>` : ""}
+        </div>
+      </div>`;
+    }).join("")}`;
 }
 
+/* ================= MODALS: click outside / ESC ================= */
+["loginModal","buyModal"].forEach(id => {
+  $(id).addEventListener("click", e => {
+    if (e.target.id === id) id === "loginModal" ? closeLogin() : closeBuy();
+  });
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape"){ closeLogin(); closeBuy(); }
+});
 
-function globalSearch(){
-
-const q =
-$("globalSearch")
-.value
-.trim()
-.toLowerCase();
-
-
-if(!q)
-return;
-
-
-if(
-q.includes("pet") ||
-q.includes("ticket")
-){
-
-openGame("pets");
-
-$("petsSearch").value =
-q;
-
-renderProducts("pets");
-
-}else{
-
-openGame("robux");
-
-$("robuxSearch").value =
-q;
-
-renderProducts("robux");
-
-}
-
-}
-
-
+/* ================= START ================= */
 updateUserUI();
-
+loadGameCounts();
 </script>
-
 </body>
 </html>
